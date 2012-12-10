@@ -1,5 +1,3 @@
-
-
 var data = [
   {id: 0, date: '2011-01-01', x: 1, y: 2, z: 3, country: 'DE', geo: {lat:52.56, lon:13.40} },
   {id: 1, date: '2011-02-02', x: 2, y: 4, z: 24, country: 'UK', geo: {lat:54.97, lon:-1.60}},
@@ -9,27 +7,3 @@ var data = [
   {id: 5, date: '2011-06-02', x: 6, y: 12, z: 18, country: 'DE', geo: {lat:51.04, lon:7.9}}
 ];
 
-var dataset = new recline.Model.Dataset({
-  records: data
-});
-
-
-var $el = $('#mygrid');
-var grid = new recline.View.SlickGrid({
-  model: dataset,
-  el: $el,
-  state: {
-    hiddenColumns:['x','geo'],
-    columnsWidth:[
-      {column:'id',width: 250}
-    ],
-    gridOptions: {editable: true},
-    columnsEditor: [
-      {column: 'country', editor: Slick.Editors.Text},
-      {column: 'date', editor: Slick.Editors.Date},
-      {column: 'z', editor: Slick.Editors.Integer}
-    ]
-  }  
-});
-grid.visible = true;
-grid.render();
