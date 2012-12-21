@@ -1,0 +1,16 @@
+.row
+  .span5
+    .well
+      %h3 Olvidaste tu contraseña?
+      %hr
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
+        = devise_error_messages!    
+        %fieldset
+          .control-group
+            = f.label :email
+            .controls
+              = f.text_field :email
+          .form-actions
+            = f.submit "Resetear", :class => 'btn-primary btn-large'
+  .span4
+    = render :partial => "devise/shared/links"

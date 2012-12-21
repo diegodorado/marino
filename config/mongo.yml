@@ -1,0 +1,19 @@
+defaults: &defaults
+  host: 127.0.0.1
+  port: 27017
+
+development:
+  <<: *defaults
+  database: marino_development
+
+test:
+  <<: *defaults
+  database: marino_test
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+  database: marino
+  uri: <%= ENV['MONGODB_URI'] %>
+  username: <%= ENV['MONGO_USERNAME'] %>
+  password: <%= ENV['MONGO_PASSWORD'] %>

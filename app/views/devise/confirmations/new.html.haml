@@ -1,0 +1,16 @@
+.row
+  .span6
+    .well
+      %h3 Reenviar Instrucciones de confirmación
+      %hr
+      = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
+        = devise_error_messages!    
+        %fieldset
+          .control-group
+            = f.label :email
+            .controls
+              = f.text_field :email
+          .form-actions
+            = f.submit "Reenviar", :class => 'btn-primary btn-large'
+  .span5.offset1
+    = render :partial => "devise/shared/links"

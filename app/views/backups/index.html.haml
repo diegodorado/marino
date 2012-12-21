@@ -1,0 +1,27 @@
+%h1 Listing backups
+
+%table
+  %tr
+    %th
+    %th
+    %th
+    %th
+
+  - for backup in @backups
+    %tr
+      %td= backup.title
+      %td= backup.x
+      %td= link_to 'Show', backup
+      %td= link_to 'Edit', edit_backup_path(backup)
+      %td= link_to 'Destroy', backup, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Backup', new_backup_path
+
+%button#commit.btn-primary.btn-large Commit
+%button#test.btn-primary.btn-large TEST
+#grid(style="height: 400px")
+.ex-events
+  
+= app_js_load :backups=> @backups
