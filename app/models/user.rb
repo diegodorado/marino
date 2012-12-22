@@ -1,6 +1,5 @@
 class User
   include MongoMapper::Document
-  safe
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
