@@ -20,6 +20,10 @@ gem 'quiet_assets', :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.
+
+
+gem 'twitter-bootstrap-rails' #this gem has some helpers
+
 group :assets do
   gem "less-rails"
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,7 +35,6 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby
 
-  gem 'twitter-bootstrap-rails'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
 
