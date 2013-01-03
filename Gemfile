@@ -6,6 +6,7 @@ gem 'rails', '3.2.9'
 
 gem 'mongo_mapper'
 gem 'bson_ext'  #improve MongoDB performance
+gem "joint"
 
 gem 'devise'
 gem 'mm-devise'
@@ -14,7 +15,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "cancan"
 
-gem "joint"
+
+gem 'quiet_assets', :group => :development
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -3,10 +3,7 @@ class Message
 
   key :text, String
   
-  plugin Joint
-  attachment :zip
-
   userstamps!
-  
+  timestamps!
 
 end

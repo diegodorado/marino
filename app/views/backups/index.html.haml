@@ -1,19 +1,26 @@
 %h1 Listing backups
 
-%table
+%table.table.table-striped.table-bordered
   %tr
-    %th
+    %th Owner
+    %th Name
+    %th Uploaded
+    %th Type
     %th
     %th
     %th
 
-  - for backup in @backups
+  - @backups.each do |backup|
     %tr
-      %td= backup.title
-      %td= backup.x
+      %td= backup.creator.email if backup.creator
+      %td= backup.zip.name
+      %td= backup.created_at
+      %td= backup.zip.type
       %td= link_to 'Show', backup
       %td= link_to 'Edit', edit_backup_path(backup)
       %td= link_to 'Destroy', backup, method: :delete, data: { confirm: 'Are you sure?' }
+
+
 
 %br
 

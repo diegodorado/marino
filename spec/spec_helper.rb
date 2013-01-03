@@ -27,20 +27,6 @@ Spork.prefork do
   end 
 
 
-  module Kernel
-    def require_with_trace(*args)
-      start = Time.now.to_f
-      @indent ||= 0
-      @indent += 2
-      require_without_trace(*args)
-      @indent -= 2
-      #Kernel::puts "#{' '*@indent}#{((Time.now.to_f - start)*1000).to_i} #{args[0]}"
-    end
-    alias_method_chain :require, :trace
-  end
-
-
-
   RSpec.configure do |config|
     # ## Mock Framework
     #

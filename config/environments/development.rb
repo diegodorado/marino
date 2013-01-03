@@ -31,4 +31,7 @@ Marino::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  #unncomment if you want to temporarily turn on back assets' log 
+  #config.quiet_assets = false
 end

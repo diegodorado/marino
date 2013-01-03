@@ -1,19 +1,19 @@
 %h1 Listing messages
 
-%table
+%table.table.table-striped.table-bordered
   %tr
+    %th Owner
     %th Text
-    %th Creator
-    %th Updater
+    %th Created
     %th
     %th
     %th
 
   - @messages.each do |message|
     %tr
+      %td= message.creator.email if message.creator
       %td= message.text
-      %td= message.creator_id
-      %td= message.updater_id
+      %td= message.created_at
       %td= link_to 'Show', message
       %td= link_to 'Edit', edit_message_path(message)
       %td= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' }
