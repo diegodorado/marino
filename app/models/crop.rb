@@ -1,32 +1,26 @@
 class Crop
-  include MongoMapper::Document
+  include Mongoid::Document
 
-  key :name, String
-  key :market, String
-  key :source, String
-  key :unit, String
-
-  many :crop_prices
+  field :name
+  field :market
+  field :source
+  field :unit
+  field :prices, :type => Hash
 
 
 
   def as_json(options={})
     options[:include] = [:crop_prices]
-    results = super(options)
-    crop_prices = results['crop_prices']
-    results.delete 'crop_prices'
-    crop_prices.each { |cp| results[cp['month']] = cp['price'] }
-    results
+
+    attrs = super(options)
+    attrs["id"] = self.persisted? ? self._id : nil
+    attrs.merge! attrs.delete 'prices'
+    attrs
   end
 
   def update_price(month, price, user)
-
-    cp = crop_prices.find_or_create_by_month(month)
-    cp.price = price
-    cp.creator_id ||= user.id
-    cp.updater_id = user.id
-    cp.save
-    
+    self.prices.merge! Hash[month,price]
+    self.save
   end
 
   def self.grid_column(column)

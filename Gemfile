@@ -1,21 +1,19 @@
 source 'https://rubygems.org'
+ruby "1.9.3"
 
 gem 'rails', '3.2.9'
 
 #gem "rails-settings-cached" ...alternative for mongodb?
 
-gem 'mongo_mapper'
+gem 'mongoid' #must be loaded before cancan
 gem 'bson_ext'  #improve MongoDB performance
-gem "joint"
+gem "grid_attachment"
 
 gem 'devise'
-gem 'mm-devise'
 gem "omniauth"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "cancan"
-
-#gem "surveyor"
 
 gem 'quiet_assets', :group => :development
 

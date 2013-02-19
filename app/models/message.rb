@@ -1,24 +1,24 @@
 class Message
-  include MongoMapper::Document
-  #validates :creator, :presence => true
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  belongs_to :creator, class_name: "User"
+  belongs_to :updater, class_name: "User"
 
-
-  key :fecha, Date
-  key :tipo_doc, String
-  key :debe, Integer
-  key :haber, Integer
-  key :precio_unitario , Integer
-
-
-  userstamps!
-  timestamps!
+  field :fecha
+  field :tipo_doc
+  field :debe
+  field :haber
+  field :precio_unitario
 
 
   def as_json(options={})
+
     #options[:only] = [:id, :fecha, :tipo_doc, :debe, :haber, :precio_unitario]
     #options[:methods] ||= []
     #options[:methods] << :tag_names
-    super(options)    
+    attrs = super(options)
+    attrs["id"] = self.persisted? ? self._id : nil
+    attrs  
     
   end
 

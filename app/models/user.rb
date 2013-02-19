@@ -1,23 +1,25 @@
 class User
-  include MongoMapper::Document
+  include Mongoid::Document
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  key :email, String
-  key :encrypted_password, String
+
+
+  field :email, :type => String 
+  field :encrypted_password, :type => String 
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
   
   ## Recoverable
-  key :reset_password_token, String
-  key :reset_password_sent_at, Time
+  field :reset_password_token, :type => String 
+  field :reset_password_sent_at, :type => Time
 
   ## Rememberable
-  key :remember_created_at, Time
+  field :remember_created_at, :type => Time
 
 
   ## Confirmable
@@ -28,17 +30,17 @@ class User
 
 
   ## Trackable
-  key :sign_in_count, Integer
-  key :current_sign_in_at, Time
-  key :last_sign_in_at, Time
-  key :current_sign_in_ip, String
-  key :last_sign_in_ip, String
+  field :sign_in_count, :type => Integer
+  field :current_sign_in_at, :type => Time
+  field :last_sign_in_at, :type => Time
+  field :current_sign_in_ip, :type => String
+  field :last_sign_in_ip, :type => String
   
   
   
 
-  many :authentications
-  many :backups
+  has_and_belongs_to_many :authentications
+  has_and_belongs_to_many :backups
 
   def password_required?
     (authentications.empty? || !password.blank?) && super

@@ -1,9 +1,9 @@
 class Authentication
-  include MongoMapper::Document
+  include Mongoid::Document
   safe
   
-  key :uid, String
-  key :provider, String
+  field :uid, :type => String
+  field :provider, :type => String
   
-  belongs_to :user
+  has_and_belongs_to_many :user
 end

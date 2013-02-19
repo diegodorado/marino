@@ -4,7 +4,7 @@ class BackupsController < ApplicationController
   respond_to :html, :json
 
   def index
-    respond_with @backups
+    #respond_with @backups
   end
 
   def show

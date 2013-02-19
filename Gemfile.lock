@@ -90,6 +90,8 @@ GEM
       multipart-post (~> 1.1)
     ffi (1.2.0)
     fssm (0.2.9)
+    grid_attachment (0.0.2)
+      mime-types
     guard (1.5.4)
       listen (>= 0.4.2)
       lumberjack (>= 1.0.2)
@@ -112,10 +114,6 @@ GEM
     hike (1.2.1)
     httpauth (0.2.0)
     i18n (0.6.1)
-    joint (0.6.2)
-      mime-types
-      mongo_mapper (~> 0.9)
-      wand (~> 0.4)
     journey (1.0.4)
     jquery-plugins-rails (0.1.1)
       jquery-rails
@@ -148,15 +146,12 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.19)
-    mm-devise (2.0)
-      devise (>= 1.2)
-      mongo_mapper (>= 0.9.0)
-    mongo (1.8.0)
-      bson (~> 1.8.0)
-    mongo_mapper (0.12.0)
-      activemodel (~> 3.0)
-      activesupport (~> 3.0)
-      plucky (~> 0.5.2)
+    mongoid (3.1.1)
+      activemodel (~> 3.2)
+      moped (~> 1.4.2)
+      origin (~> 1.0)
+      tzinfo (~> 0.3.22)
+    moped (1.4.2)
     multi_json (1.5.0)
     multipart-post (1.1.5)
     nokogiri (1.5.6)
@@ -177,9 +172,8 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    origin (1.0.11)
     orm_adapter (0.0.7)
-    plucky (0.5.2)
-      mongo (~> 1.5)
     polyglot (0.3.3)
     pry (0.9.10)
       coderay (~> 1.0.5)
@@ -230,7 +224,6 @@ GEM
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
     rubyzip (0.9.9)
-    safe_shell (1.0.2)
     sass (3.2.3)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -268,9 +261,6 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    wand (0.4)
-      mime-types
-      safe_shell (~> 1.0.0)
     warden (1.1.1)
       rack (>= 1.0)
     websocket (1.0.6)
@@ -289,17 +279,16 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  grid_attachment
   guard-rspec
   guard-spork
   haml-rails
-  joint
   jquery-plugins-rails
   jquery-rails
   jquery-ui-rails
   launchy
   less-rails
-  mm-devise
-  mongo_mapper
+  mongoid
   omniauth
   omniauth-facebook
   omniauth-google-oauth2

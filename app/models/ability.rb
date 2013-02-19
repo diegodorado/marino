@@ -7,7 +7,7 @@ class Ability
 
     can :manage, :all if user.email == 'diegodorado@gmail.com'
 
-    can :manage, Backup , :creator_id => user.id
+    #can :manage, Backup , :creator_id => user.id
     can :manage, Message , :creator_id => user.id
     
     

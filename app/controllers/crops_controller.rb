@@ -3,6 +3,12 @@ class CropsController < ApplicationController
   # GET /crops.json
   def index
     @crops = Crop.all
+
+    respond_to do |format|
+      format.html {}
+      format.json {render json: @crops}
+    end
+    
   end
 
   # GET /crops/1
@@ -49,7 +55,7 @@ class CropsController < ApplicationController
       
       format.json do
         if @crop.update_price(params[:month], params[:price], current_user)
-          head :no_content
+          render json: @crop #head :no_content
         else
           render json: @crop.errors, status: :unprocessable_entity
         end
