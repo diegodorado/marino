@@ -2,15 +2,27 @@ class MessagesController < ApplicationController
 
   load_and_authorize_resource
 
-  respond_to :html, :json
+  respond_to :json
+
+  def index
+    respond_with @messages
+  end
+
+
+  def show
+    respond_with @message
+  end
 
   def create
+    @message = Message.new(params)
     @message.creator = current_user
 
+    puts @message.to_json
+    
     if @message.save
-      redirect_to messages_url, notice: "Message was successfully created. (#{Message.count})"
+      render json: @message, status: :created, location: @message
     else
-      render action: "new"
+      render json: @message.errors, status: :unprocessable_entity
     end
 
   end
@@ -18,22 +30,20 @@ class MessagesController < ApplicationController
   def update
     @message.updater = current_user
 
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        format.html { redirect_to messages_url, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+
+    if @message.update_attributes(params)
+      puts params
+      puts @message.to_json
+      render json: @message, status: :ok
+    else
+      render json: @message.errors, status: :unprocessable_entity
     end
+
   end
 
   def destroy
-    @message = Message.find(params[:id])
     @message.destroy
-
-    redirect_to messages_url , notice: 'Message was successfully removed.'
+    head :ok
   end
 
 end

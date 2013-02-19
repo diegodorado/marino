@@ -15,6 +15,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "cancan"
 
+#gem "surveyor"
 
 gem 'quiet_assets', :group => :development
 
@@ -22,7 +23,8 @@ gem 'quiet_assets', :group => :development
 # in production environments by default.
 
 
-gem 'twitter-bootstrap-rails' #this gem has some helpers
+gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git" #this gem has some helpers
+gem 'slickgrid-rails' #, :path => "~/proyectos/gems/slickgrid-rails"
 
 group :assets do
   gem "less-rails"
@@ -30,14 +32,13 @@ group :assets do
   gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
-  gem "rails-backbone", :git => 'git://github.com/codebrew/backbone-rails.git'
-
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby
 
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
-
+  gem 'jquery-plugins-rails'
+  
   gem 'uglifier', '>= 1.0.3'
 end
 

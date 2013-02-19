@@ -1,4 +1,7 @@
 Marino::Application.routes.draw do
+  resources :crops
+
+
   resources :messages
   resources :backups
 

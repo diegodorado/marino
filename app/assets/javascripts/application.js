@@ -12,6 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require datepicker_hack
 //= require bootstrap
-//= require recline
+//= require slick
+//= require slick/dataview
+//= require slick/editors
+//= require slick/formatters
+
+
 //= require main
+//= require remotemodel
+//= require grid
+//= require crops
+//= require ajax_common
+

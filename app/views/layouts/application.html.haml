@@ -18,6 +18,8 @@
 
 
   %body
+    #ajax-indicator
+      =image_tag 'loading.gif', :size=> '32x32'
     .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         .container
@@ -25,37 +27,42 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Marino
+          %a.brand(href="/") Home
           .container.nav-collapse
             %ul.nav
-              %li= link_to "backups", "/backups"
-              %li= link_to "messages", "/messages"
-
+              %li= link_to "Backups", "/backups"
+              %li= link_to "Messages", "/messages"
+            %ul.nav.pull-right
+              - if user_signed_in?
+                %li
+                  = link_to(current_user.email, edit_user_registration_path)
+                %li
+                  = link_to('Salir', destroy_user_session_path, :method=>'delete')
+              - else
+                %li
+                  = link_to('Ingresar', new_user_session_path)
+                %li
+                  = link_to('Registrarse', new_user_registration_path)
+    .container
+      .row
+        .span3
+          .well
+            %ul.nav.nav-list
+              %li.nav-header Menu
+              %li.active= link_to "Backups", "/backups"
+              %li= link_to "Messages", "/messages"
+              %li= link_to "Precios Granos", "/crops"
+              %li= link_to "Logout", destroy_user_session_path, :method=>:delete
 
 
               
-
-    .container
-
-      .row
         .span9
           = bootstrap_flash
           = yield
-        .span3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Logout", destroy_user_session_path, :method=>:delete
-               
-
-
 
     
       %footer
-        %p &copy; Company 2012
+        %p &copy; Marino 2012
     /
       Javascripts
       \==================================================
