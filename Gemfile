@@ -17,9 +17,11 @@ gem "cancan"
 
 gem "rails_admin"
 
+
+gem 'thin'
+
 group :development do
   gem 'quiet_assets'
-  gem 'thin'
 end
 
 # Gems used only for assets and not required
