@@ -15,7 +15,12 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem "cancan"
 
-gem 'quiet_assets', :group => :development
+gem "rails_admin"
+
+group :development do
+  gem 'quiet_assets'
+  gem 'thin'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

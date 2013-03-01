@@ -3,6 +3,7 @@ class Grid
     @dataView = new Slick.Data.DataView()
     @grid = new Slick.Grid(@selector, @dataView, @columns, @options)
     @model = new Slick.Data.RemoteModel('/messages')
+    @grid.setSortColumn "tipo_doc", true
 
   initLoader: ->
 
@@ -10,9 +11,11 @@ class Grid
       @dataView.beginUpdate()
       @dataView.setItems(args.data)
       @dataView.endUpdate()
+      @dataView.fastSort()
       @calculateItems()
       @grid.invalidateAllRows()
       @grid.render()
+
 
   calculateItems: ->
     saldo = 0

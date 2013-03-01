@@ -1,6 +1,6 @@
 class Authentication
   include Mongoid::Document
-  safe
+  #safe
   
   field :uid, :type => String
   field :provider, :type => String

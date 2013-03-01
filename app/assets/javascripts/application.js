@@ -22,6 +22,7 @@
 
 //= require main
 //= require remotemodel
+//= require tipodoc-editor
 //= require grid
 //= require crops
 //= require ajax_common

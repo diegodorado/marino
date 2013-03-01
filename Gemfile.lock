@@ -40,6 +40,8 @@ GEM
     addressable (2.3.2)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.3.0.1)
+      sass (~> 3.2)
     bson (1.8.0)
       activesupport
     bson_ext (1.8.0)
@@ -71,6 +73,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.1)
       compass (~> 0.12.0)
+    daemons (1.1.9)
     database_cleaner (0.9.1)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
@@ -79,6 +82,7 @@ GEM
       warden (~> 1.1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
+    eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.1.0)
@@ -89,6 +93,9 @@ GEM
     faraday (0.8.4)
       multipart-post (~> 1.1)
     ffi (1.2.0)
+    font-awesome-sass-rails (3.0.2.2)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     fssm (0.2.9)
     grid_attachment (0.0.2)
       mime-types
@@ -127,6 +134,9 @@ GEM
     json (1.7.6)
     jwt (0.1.5)
       multi_json (>= 1.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.1.2)
       addressable (~> 2.3)
     less (2.2.1)
@@ -154,6 +164,7 @@ GEM
     moped (1.4.2)
     multi_json (1.5.0)
     multipart-post (1.1.5)
+    nested_form (0.3.1)
     nokogiri (1.5.6)
     oauth2 (0.8.0)
       faraday (~> 0.8)
@@ -184,6 +195,9 @@ GEM
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-pjax (0.7.0)
+      nokogiri (~> 1.5)
+      rack (~> 1.3)
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -196,6 +210,20 @@ GEM
       activesupport (= 3.2.9)
       bundler (~> 1.0)
       railties (= 3.2.9)
+    rails_admin (0.4.0)
+      bootstrap-sass (~> 2.1)
+      builder (~> 3.0)
+      coffee-rails (~> 3.1)
+      font-awesome-sass-rails (~> 3.0)
+      haml (~> 3.1)
+      jquery-rails (~> 2.1)
+      jquery-ui-rails (~> 2.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.2)
+      rack-pjax (~> 0.6)
+      rails (~> 3.1)
+      remotipart (~> 1.0)
+      sass-rails (~> 3.1)
     railties (3.2.9)
       actionpack (= 3.2.9)
       activesupport (= 3.2.9)
@@ -208,6 +236,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
+    remotipart (1.0.5)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -252,6 +281,10 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
+    thin (1.5.0)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.17.0)
     tilt (1.3.3)
     treetop (1.4.12)
@@ -294,11 +327,13 @@ DEPENDENCIES
   omniauth-google-oauth2
   quiet_assets
   rails (= 3.2.9)
+  rails_admin
   rb-inotify
   rspec-rails
   sass-rails (~> 3.2.3)
   slickgrid-rails
   spork-rails
   therubyracer
+  thin
   twitter-bootstrap-rails!
   uglifier (>= 1.0.3)

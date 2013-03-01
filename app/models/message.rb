@@ -44,7 +44,7 @@ class Message
     {
       :columns => [
         self.grid_column("fecha",'Slick.Editors.Date'),
-        self.grid_column("tipo_doc",'Slick.Editors.Text'),
+        self.grid_column("tipo_doc",'Slick.Editors.Tipodoc'),
         self.grid_column("entrada",'Slick.Editors.Integer'),
         self.grid_column("salida",'Slick.Editors.Integer'),
         self.grid_column("saldo"),
