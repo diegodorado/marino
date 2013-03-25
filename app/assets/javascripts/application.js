@@ -18,6 +18,9 @@
 //= require slick/dataview
 //= require slick/editors
 //= require slick/formatters
+//= require slick/plugins/rowselectionmodel
+//= require slick/controls/pager
+//= require slick/controls/columnpicker
 
 
 //= require main

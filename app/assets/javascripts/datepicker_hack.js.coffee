@@ -1,4 +1,4 @@
-
+#todo: remove $ function wrapper
 $ ->
   #override datepicker options
 

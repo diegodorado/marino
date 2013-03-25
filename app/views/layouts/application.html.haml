@@ -30,10 +30,12 @@
           %a.brand(href="/") Home
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Backups", "/backups"
+              %li.active= link_to "Backups", "/backups"
               %li= link_to "Messages", "/messages"
+              %li= link_to "Precios Granos", "/crops"
             %ul.nav.pull-right
               - if user_signed_in?
+                %li= link_to "Admin", "/admin"
                 %li
                   = link_to(current_user.email, edit_user_registration_path)
                 %li
@@ -44,21 +46,9 @@
                 %li
                   = link_to('Registrarse', new_user_registration_path)
     .container
-      .row
-        .span3
-          .well
-            %ul.nav.nav-list
-              %li.nav-header Menu
-              %li.active= link_to "Backups", "/backups"
-              %li= link_to "Messages", "/messages"
-              %li= link_to "Precios Granos", "/crops"
-              %li= link_to "Logout", destroy_user_session_path, :method=>:delete
-
-
-              
-        .span9
-          = bootstrap_flash
-          = yield
+      #content
+        = bootstrap_flash
+        = yield
 
     
       %footer

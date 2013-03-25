@@ -1,0 +1,12 @@
+%h1 Mis Empresas
+
+
+%table.table.table-striped.table-bordered
+  %tr
+    %th Empresa
+    %th
+
+  - @companies.each do |company|
+    %tr
+      %td= company.name
+      %td= link_to 'Seleccionar', select_company_path(company), :class => 'btn btn-primary'

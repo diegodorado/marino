@@ -1,17 +1,10 @@
+.row
+  .span3
+    .well
+      %ul.nav.nav-list
+        %li.nav-header Menu
 
-#grid(style="height: 400px")
-%ul#contextMenu{:style => "display:none;position:absolute"}
-  %li{:data => "delete"} Eliminar
+  .span9
+    %h2 Estas trabajando con #{current_company.name}
+    = link_to 'cambiar de empresa', companies_path
 
-
-%ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", :role => "menu"}
-  %li
-    %a{:href => "#", :tabindex => "-1"} Action
-  %li
-    %a{:href => "#", :tabindex => "-1"} Something else here
-  %li.divider
-  %li
-    %a{:href => "#", :tabindex => "-1"} Separated link
-  
-  
-= app_js_load :grid=> Message.grid

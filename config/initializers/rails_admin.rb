@@ -14,6 +14,8 @@ RailsAdmin.config do |config|
   # RailsAdmin may need a way to know who the current user is]
   config.current_user_method { current_user } # auto-generated
 
+  config.authorize_with :cancan
+
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
 
@@ -234,7 +236,15 @@ RailsAdmin.config do |config|
 
 
   ###  User  ###
+  config.model User do
+    label "Usuario" 
+    label_plural "Usuarios"
+    
+    object_label_method do
+      :to_label
+    end
 
+  end
   # config.model 'User' do
 
   #   # You can copy this to a 'rails_admin do ... end' block inside your user.rb model definition

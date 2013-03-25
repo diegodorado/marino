@@ -1,0 +1,17 @@
+
+#grid(style="height: 400px")
+%ul#contextMenu{:style => "display:none;position:absolute"}
+  %li{:data => "delete"} Eliminar
+
+
+%ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", :role => "menu"}
+  %li
+    %a{:href => "#", :tabindex => "-1"} Action
+  %li
+    %a{:href => "#", :tabindex => "-1"} Something else here
+  %li.divider
+  %li
+    %a{:href => "#", :tabindex => "-1"} Separated link
+  
+  
+= app_js_load :grid=> Message.grid

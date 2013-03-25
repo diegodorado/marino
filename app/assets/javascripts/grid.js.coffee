@@ -1,26 +1,225 @@
+
+
+DateFormatter= (row, cell, value, columnDef, dataContext) ->
+  p = value.match(/(\d+)/g)
+  "#{p[2]}/#{p[1]}/#{p[0]}"
+
+columns = [
+  id: "fecha"
+  name: "Fecha"
+  field: "fecha"
+  cssClass: "fecha"
+  headerCssClass: "fecha"
+  editor: Slick.Editors.Date
+  #formatter: DateFormatter
+  sortable: true
+  focusable: true
+  selectable: true
+,
+  id: "tipo_doc"
+  name: "Tipo Doc"
+  field: "tipo_doc"
+  cssClass: "tipo_doc"
+  headerCssClass: "tipo_doc"
+  editor: Slick.Editors.Tipodoc
+  focusable: true
+  selectable: true
+,
+  id: "entrada"
+  name: "Entrada"
+  field: "entrada"
+  cssClass: "entrada"
+  headerCssClass: "entrada"
+  editor: Slick.Editors.Integer
+  focusable: true
+  selectable: true
+,
+  id: "salida"
+  name: "Salida"
+  field: "salida"
+  cssClass: "salida"
+  headerCssClass: "salida"
+  editor: Slick.Editors.Integer
+  focusable: true
+  selectable: true
+,
+  id: "saldo"
+  name: "Saldo"
+  field: "saldo"
+  cssClass: "saldo"
+  headerCssClass: "saldo"
+  focusable: false
+  selectable: false
+
+,
+  id: "precio_unitario"
+  name: "Prec. Un."
+  field: "precio_unitario"
+  cssClass: "precio_unitario"
+  headerCssClass: "precio_unitario"
+  editor: Slick.Editors.Integer
+  focusable: true
+  selectable: true
+,
+  id: "debe"
+  name: "Debe"
+  field: "debe"
+  cssClass: "debe"
+  headerCssClass: "debe"
+  focusable: false
+  selectable: false
+,
+  id: "haber"
+  name: "Haber"
+  field: "haber"
+  cssClass: "haber"
+  headerCssClass: "haber"
+  focusable: false
+  selectable: false
+,
+  id: "saldo_p"
+  name: "Saldo"
+  field: "saldo_p"
+  cssClass: "saldo_p"
+  headerCssClass: "saldo_p"
+  focusable: false
+  selectable: false
+,
+  id: "updater_email"
+  name: "Actualizado por"
+  field: "updater_email"
+  focusable: false
+  selectable: false
+]
+options =
+  editable: true
+  enableAddRow: false
+  enableCellNavigation: true
+  asyncEditorLoading: true
+  topPanelHeight: 25
+  enableColumnReorder: false
+  autoEdit: true
+  forceFitColumns: true
+
+
+to_date = (s)->
+  return '' unless s
+  p = s.match(/(\d+)/g)
+  "#{p[2]}/#{p[1]}/#{p[0]}"
+
+comparer = (a, b) ->
+  x = to_date(a["fecha"])
+  y = to_date(b["fecha"])
+  (if x is y then 0 else ((if x > y then 1 else -1)))
+
+
 class Grid
-  initGrid: (@selector, @columns, @options) ->
-    @dataView = new Slick.Data.DataView()
-    @grid = new Slick.Grid(@selector, @dataView, @columns, @options)
-    @model = new Slick.Data.RemoteModel('/messages')
-    @grid.setSortColumn "tipo_doc", true
 
-  initLoader: ->
+  constructor: ->
 
-    @model.onDataLoadedSuccess.subscribe (e, args) =>
-      @dataView.beginUpdate()
-      @dataView.setItems(args.data)
-      @dataView.endUpdate()
-      @dataView.fastSort()
+    @dataView = new Slick.Data.DataView
+    @grid = new Slick.Grid("#crop_control_grid", @dataView, columns, options)
+    @grid.setSelectionModel new Slick.RowSelectionModel()
+    @model = new Slick.Data.RemoteModel('/crop_controls')    
+
+
+    $('#store_select').change (e) =>
+      Slick.GlobalEditorLock.cancelCurrentEdit()
+      @updateFilter()
+      $("#add_cc").toggleClass 'disabled', $('#store_select').val() is ''
+      
+    $('#crop_select').change (e) =>
+      Slick.GlobalEditorLock.cancelCurrentEdit()
+      @updateFilter()
+
+    $("#add_cc").click (e) =>
+      return if $("#add_cc").hasClass 'disabled'
+      prev = @dataView.getItem @dataView.getLength()-1
+      item =
+        store_id: $('#store_select').val()
+        crop_id: $('#crop_select').val()
+        fecha: prev.fecha if prev
+        tipo_doc: prev.tipo_doc if prev
+        entrada: 0
+        salida: 0
+        precio_unitario: prev.precio_unitario if prev
+      @model.createItem(item)
+
+    @model.onCreated.subscribe (e, args) =>
+      @dataView.addItem args.item
+      @dataView.refresh()
       @calculateItems()
       @grid.invalidateAllRows()
       @grid.render()
 
 
+    @grid.onSelectedRowsChanged.subscribe () =>
+      $("#delete_cc").toggleClass 'disabled', @grid.getSelectedRows().length is 0
+
+    $("#delete_cc").click (e) =>
+      for row in @grid.getSelectedRows()
+        item = @grid.getDataItem row
+        @model.deleteItem(item)
+
+    @model.onDeleted.subscribe (e, args) =>
+      @dataView.deleteItem args.item.id
+      @dataView.refresh()
+      @calculateItems()
+      @grid.invalidateAllRows()
+      @grid.render()
+
+
+    @grid.onCellChange.subscribe (e, args) =>
+      console.log e, args
+      
+      @model.updateItem(args.item)
+
+    @model.onUpdated.subscribe (e, args) =>
+      console.log e, args
+      @dataView.updateItem args.item.id, args.item
+      @updateFilter()
+
+    @grid.onKeyDown.subscribe (e) =>
+      return false  if e.which isnt 65 or not e.ctrlKey
+      rows = []
+      i = 0
+      console.log @dataView.getLength()
+      while i < @dataView.getLength()
+        rows.push i
+        i++
+      @grid.setSelectedRows rows
+      e.preventDefault()
+    
+    @dataView.setFilter (item, args) ->
+      #console.log item, args
+      return false  if item["crop_id"] isnt args.crop_id
+      return false  if item["store_id"] isnt args.store_id and args.store_id isnt ''
+      true
+    
+    @updateFilter()
+    
+    # if you don't want the items that are not visible (due to being filtered out
+    # or being on a different page) to stay selected, pass 'false' to the second arg
+    @dataView.syncGridSelection @grid, false
+
+
+  updateFilter: ->
+    @dataView.setFilterArgs
+      store_id: $('#store_select').val()
+      crop_id: $('#crop_select').val()
+    @dataView.sort comparer, 1
+    @dataView.refresh()
+    
+    @calculateItems()
+    @grid.invalidateAllRows()
+    @grid.render()
+
   calculateItems: ->
     saldo = 0
     saldo_p = 0
-    items = for item in @dataView.getItems()
+    l = @dataView.getLength()
+    for i in [0..l-1] when l > 0
+      item =@dataView.getItem(i)
       item.entrada or=0
       item.salida or=0
       item.precio_unitario or=0
@@ -30,55 +229,10 @@ class Grid
       item.haber = item.salida*item.precio_unitario
       saldo_p += item.debe-item.haber
       item.saldo_p = saldo_p
-      item
-    @dataView.setItems(items)
-
-  initWriter: ->
-
-    @model.onDataWrittenSuccess.subscribe (e, args) =>
-      false
-      
-    @grid.onCellChange.subscribe (e, args) =>
-      console.log args
-      @model.writeData(args)
-      @dataView.updateItem(args.item.id, args.item)
-      #@grid.updateRow(args.row)
-      
-      @calculateItems()
-      @grid.invalidateAllRows()
-      @grid.render()
-
-    @grid.onAddNewRow.subscribe (e, args) =>
-      @model.addItem(args.item)
+      @dataView.updateItem item.id, item
 
 
-    @model.onCreatedSuccess.subscribe (e, args) =>
-      @dataView.addItem args.item
-      @grid.invalidate()
-
-    @grid.onContextMenu.subscribe (e, args) =>
-      e.preventDefault()
-      cell = @grid.getCellFromEvent(e)
-      $("#contextMenu")
-          .data("row", cell.row)
-          .css("top", e.pageY)
-          .css("left", e.pageX)
-          .show()
-
-      $("body").one "click", ->
-        $("#contextMenu").hide()
 
 
-    $("#contextMenu").on 'click', 'li', (e) =>
-      item = @grid.getDataItem $("#contextMenu").data("row")
-      @model.deleteItem(item)
 
-    @model.onDeleted.subscribe (e, args) =>
-      console.log 'asdfasdf',args
-
-    @model.onDeletedSuccess.subscribe (e, args) =>
-      @dataView.deleteItem args.item.id
-      @grid.invalidate()
-
-
-app.grid = new Grid      
+app.CropControlGrid = Grid

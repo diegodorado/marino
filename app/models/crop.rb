@@ -14,7 +14,7 @@ class Crop
 
     attrs = super(options)
     attrs["id"] = self.persisted? ? self._id : nil
-    attrs.merge! attrs.delete 'prices'
+    #attrs.merge! attrs.delete 'prices'
     attrs
   end
 

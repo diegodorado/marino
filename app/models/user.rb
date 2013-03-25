@@ -37,7 +37,8 @@ class User
   field :last_sign_in_ip, :type => String
   
   
-  
+  has_many :own_companies, :class_name => "Company", :inverse_of => :owner
+  has_and_belongs_to_many :companies, :inverse_of => :users
 
   has_and_belongs_to_many :authentications
   has_and_belongs_to_many :backups
@@ -45,5 +46,13 @@ class User
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end  
+  
+  def to_label
+    email
+  end
+  
+  def store_ids
+    companies.map{|c| c.stores}.flatten.map{|s| s._id}
+  end
   
 end

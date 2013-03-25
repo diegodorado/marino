@@ -1,0 +1,25 @@
+.row
+  .span3
+    .well
+      %h3 #{current_company.name}
+      %h4 Control de granos
+      %hr/
+      %label Depósito
+      = select_tag 'store_select', options_from_collection_for_select(@stores, :_id, :name), :prompt => "(Todos)"
+      %br/
+      %label Grano
+      = select_tag 'crop_select', options_from_collection_for_select(@crops, :_id, :name)
+
+      %br/
+      %button#add_cc.btn.btn-large.disabled Agregar
+      %br/
+      %br/
+      %button#delete_cc.btn.btn-large.disabled Eliminar
+
+  .span9
+    #crop_control_grid{:style => "width:100%;height:500px;"}
+  
+= app_js_load :crop_control=> true
+= app_js_load :crop_controls=> @crop_controls
+= app_js_load :stores=> @stores
+= app_js_load :crops=> @crops

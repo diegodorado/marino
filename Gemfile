@@ -22,6 +22,7 @@ gem 'thin'
 
 group :development do
   gem 'quiet_assets'
+  gem "faker"
 end
 
 # Gems used only for assets and not required
@@ -30,6 +31,8 @@ end
 
 gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git" #this gem has some helpers
 gem 'slickgrid-rails' #, :path => "~/proyectos/gems/slickgrid-rails"
+
+gem 'mongoid-slugify'
 
 group :assets do
   gem "less-rails"

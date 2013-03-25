@@ -18,25 +18,15 @@ class Application
     #set users
     @user_id = @options.user_id
 
-    if @options.backups
-      return
-
-  
-    if @options.grid
-      
-      for c in @options.grid.columns
-        c.editor = eval(c.editor) if c.editor
-        c.formatter = eval(c.formatter) if c.formatter
-
-      @grid.initGrid '#grid', @options.grid.columns, @options.grid.options
-      @grid.model.loadData()
-      @grid.initLoader()
-      @grid.initWriter()
-      
 
     if @options.crop_prices
       @grid = new @CropGrid '#crop_prices_grid', @options.crop_prices
-      
 
+
+    if @options.crop_control
+      @crop_control_grid = new @CropControlGrid
+      @crop_control_grid.dataView.setItems @options.crop_controls
+      @crop_control_grid.updateFilter()
+      
 
 window.app = new Application  

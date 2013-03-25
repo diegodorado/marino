@@ -61,7 +61,7 @@ module Marino
 
 
     config.generators do |g|
-      g.orm :mongo_mapper
+      g.orm :mongoid
       g.template_engine :haml 
       g.test_framework :rspec
       g.fixture_replacement :factory_girl

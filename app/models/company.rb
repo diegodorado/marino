@@ -1,22 +1,16 @@
 class Company
   include Mongoid::Document
   include Mongoid::Timestamps
-  belongs_to :owner, class_name: "User"
-  
-  embeds_many :crop_controls
-  accepts_nested_attributes_for :crop_controls
-
-  field :name
-  
-
-end
-
-class CropControl
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  embedded_in :company, :inverse_of => :crop_controls
+  include Mongoid::Slugify
+  belongs_to :owner, :class_name => "User", :inverse_of => :own_companies
+  has_and_belongs_to_many :users, :class_name => "User", :inverse_of => :companies
+  has_many :stores, :inverse_of => :company
   
   field :name
+
+  private
+  def generate_slug
+    name.parameterize
+  end  
+
 end
-
-
