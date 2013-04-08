@@ -15,7 +15,7 @@ Marino::Application.routes.draw do
   resources :crop_controls
   resources :backups
 
-  devise_for :users, :controllers => { :sessions => "sessions" }
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords=> "passwords" }
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"

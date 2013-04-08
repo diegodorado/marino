@@ -35,6 +35,9 @@ class User
   field :last_sign_in_at, :type => Time
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip, :type => String
+
+
+  field :role, :type => String
   
   
   has_many :own_companies, :class_name => "Company", :inverse_of => :owner
@@ -46,6 +49,19 @@ class User
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end  
+  
+  def admin?
+    email == 'diegodorado@gmail.com'
+  end
+
+
+  def role_enum
+    %w[admin employee]
+  end
+
+  def role?(role)
+    self.role == role.to_s
+  end
   
   def to_label
     email

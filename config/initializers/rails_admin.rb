@@ -1,6 +1,8 @@
 # RailsAdmin config file. Generated on February 25, 2013 13:31
 # See github.com/sferik/rails_admin for more informations
 
+
+
 RailsAdmin.config do |config|
 
 
