@@ -18,8 +18,11 @@
 
   .span9
     #crop_control_grid{:style => "width:100%;height:500px;"}
+    #comments
   
+= app_js_load :company_comments=> @company_comments
 = app_js_load :crop_control=> true
 = app_js_load :crop_controls=> @crop_controls
 = app_js_load :stores=> @stores
 = app_js_load :crops=> @crops
+

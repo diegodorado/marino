@@ -3,6 +3,9 @@ class CompaniesController < ApplicationController
 
   before_filter :require_company!, :except => [:index, :select]
 
+
+  respond_to :html, :json
+
   helper_method :current_company
   def current_company
     Company.find(session[:company_id]) rescue nil
@@ -18,10 +21,12 @@ class CompaniesController < ApplicationController
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company
     @crop_controls = CropControl.all
-    #redirect_to companies_path, notice: "Seleccionaste #{@company.name}"
+    @company_comments = @company.comments
   end
 
-  
+  def comment
+    @comment = @company.create_comment! :author => current_user, :text => params[:text]
+  end
  
   private
  

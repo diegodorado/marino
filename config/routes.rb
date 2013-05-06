@@ -5,6 +5,7 @@ Marino::Application.routes.draw do
 
   resources :companies, :only => [:index] do
     get 'select', :on => :member
+    post 'comment', :on => :member
   end
   
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

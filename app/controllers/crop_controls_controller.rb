@@ -9,7 +9,6 @@ class CropControlsController < ApplicationController
     @crop_control = CropControl.new(params)
     @crop_control.updater = current_user
     
-    puts @crop_control
     @crop_control.save!
     
     
