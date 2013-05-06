@@ -29,7 +29,8 @@ end
 # in production environments by default.
 
 
-gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git" #this gem has some helpers
+gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"  #this gem has some helpers
+#gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git" , :group => [:production, :development, :assets]#this gem has some helpers
 gem 'slickgrid-rails' #, :path => "~/proyectos/gems/slickgrid-rails"
 
 gem 'mongoid-slugify'
