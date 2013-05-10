@@ -35,7 +35,8 @@
               %li= link_to "Precios Granos", "/crops"
             %ul.nav.pull-right
               - if user_signed_in?
-                %li= link_to "Admin", "/admin"
+                - if can? :access, :rails_admin
+                  %li= link_to "Admin", "/admin"
                 %li
                   = link_to(current_user.email, edit_user_registration_path)
                 %li

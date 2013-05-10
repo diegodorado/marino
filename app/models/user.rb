@@ -49,10 +49,6 @@ class User
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end  
-  
-  def admin?
-    email == 'diegodorado@gmail.com'
-  end
 
 
   def role_enum
