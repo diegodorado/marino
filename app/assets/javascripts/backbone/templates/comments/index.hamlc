@@ -1,0 +1,9 @@
+.chat_title
+  Discusion
+#chat.collapse
+  .messages
+  %form.send
+    %i.icon-comment
+    %input
+
+

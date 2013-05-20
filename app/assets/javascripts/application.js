@@ -12,7 +12,7 @@
 //
 
 //= require js-routes
-
+//= require store
 //= require jquery
 //= require jquery_ujs
 //= require datepicker_hack

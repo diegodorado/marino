@@ -40,6 +40,9 @@ gem 'mongoid_commentable'
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
 group :assets do
+  gem 'haml_coffee_assets'
+  #gem 'execjs'
+
   gem "less-rails"
   gem 'sass-rails',   '~> 3.2.3'
   gem 'compass-rails'

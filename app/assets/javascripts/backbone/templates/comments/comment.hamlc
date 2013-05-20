@@ -1,0 +1,4 @@
+%img.avatar{ src:"#{@_id}", width:30, height:30, title:"#{@_id}"}
+%p 
+  =@text
+  -#%a{ :href=> "#/#{@id}/destroy", :class=> "destroy"} Destroy

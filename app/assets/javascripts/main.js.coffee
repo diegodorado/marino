@@ -27,9 +27,14 @@ class Application
       @crop_control_grid = new @CropControlGrid
       @crop_control_grid.dataView.setItems @options.crop_controls
       @crop_control_grid.updateFilter()
+  
+      #window.router = new Marino.Routers.CommentsRouter({comments: @options.company_comments})
+      #Backbone.history.start()
+      comments = new Marino.Collections.CommentsCollection()
+      comments.reset @options.company_comments
+      view = new Marino.Views.Comments.IndexView(comments: comments)
+      view.render()
 
-      window.router = new Marino.Routers.CommentsRouter({comments: @options.company_comments})
-      Backbone.history.start()
-
+  
 
 window.app = new Application  
