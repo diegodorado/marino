@@ -5,5 +5,4 @@ $ ->
     $('#ajax-indicator').removeClass 'on'
   $(document).ajaxError (e) -> 
     console.log e
-    alert e
 

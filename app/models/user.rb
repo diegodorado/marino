@@ -8,12 +8,11 @@ class User
 
 
 
-  field :email, :type => String 
-  field :encrypted_password, :type => String 
+  field :email, :type => String
+  field :encrypted_password, :type => String
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
-  
   ## Recoverable
   field :reset_password_token, :type => String 
   field :reset_password_sent_at, :type => Time
@@ -38,8 +37,7 @@ class User
 
 
   field :role, :type => String
-  
-  
+
   has_many :own_companies, :class_name => "Company", :inverse_of => :owner
   has_and_belongs_to_many :companies, :inverse_of => :users
 
@@ -48,7 +46,7 @@ class User
 
   def password_required?
     (authentications.empty? || !password.blank?) && super
-  end  
+  end
 
 
   def role_enum
@@ -58,13 +56,13 @@ class User
   def role?(role)
     self.role == role.to_s
   end
-  
+
   def to_label
     email
   end
-  
+
   def store_ids
     companies.map{|c| c.stores}.flatten.map{|s| s._id}
   end
-  
+
 end

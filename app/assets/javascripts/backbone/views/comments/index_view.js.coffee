@@ -34,8 +34,12 @@ class Marino.Views.Comments.IndexView extends Backbone.View
     event.preventDefault()
     msg = @$('.send input').val()
     return unless msg
-    @options.comments.add
+    @options.comments.create
       text: msg
+      ,
+        silent:true
+        success: ((model)=> @addOne(model))
+    
     @$('.send input').val('').focus()
 
 

@@ -6,4 +6,5 @@ class Marino.Models.Comment extends Backbone.Model
 
 class Marino.Collections.CommentsCollection extends Backbone.Collection
   model: Marino.Models.Comment
-  url: '/comments'
+  url: ->
+    Routes.comment_company_path(app.options.company.slug)

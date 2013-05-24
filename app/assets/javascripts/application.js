@@ -16,6 +16,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require datepicker_hack
+//= require jquery.timeago
+//= require jquery.timeago.es
 //= require bootstrap
 //= require slick
 //= require slick/dataview

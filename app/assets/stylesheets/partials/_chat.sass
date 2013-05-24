@@ -25,28 +25,25 @@
     max-height: 200px
     overflow-y: auto
     .message
+      padding: 5px
+      clear: both
+      overflow: hidden
+      background: #fff
       &:nth-child(even)
         background: #fafafa
       p    
         margin: 0
-    .sys_message
-      padding: 5px
-      p
+      time
         font-style: italic
         color: #777
         font-size: 11px
-    .user_message
-      clear: both
-      overflow: hidden
-      background: #fff
       img.avatar
         float: left
         width: 30px
         height: 30px
         display: block
         padding: 5px
-      p    
-        padding: 5px 5px 5px 50px
+
 
   .send
     border-top: 1px solid #ccc

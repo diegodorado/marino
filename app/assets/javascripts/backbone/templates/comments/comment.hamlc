@@ -1,4 +1,6 @@
-%img.avatar{ src:"#{@_id}", width:30, height:30, title:"#{@_id}"}
+-# %img.avatar{ src:"", width:30, height:30, title:"#{@_id}"}
 %p 
+  %strong #{@author_name}: 
   =@text
-  -#%a{ :href=> "#/#{@id}/destroy", :class=> "destroy"} Destroy
+%time{ datetime: "#{@created_at}"}
+  

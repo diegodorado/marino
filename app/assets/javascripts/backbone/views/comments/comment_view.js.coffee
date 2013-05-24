@@ -15,5 +15,6 @@ class Marino.Views.Comments.CommentView extends Backbone.View
   render: ->
     @$el.html(@template(@model.toJSON() ))
     @$(".avatar").tooltip { placement: 'left'}
+    @$('time').timeago()    
     @
     

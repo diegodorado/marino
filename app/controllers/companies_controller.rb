@@ -26,6 +26,7 @@ class CompaniesController < ApplicationController
 
   def comment
     @comment = @company.create_comment! :author => current_user, :text => params[:text]
+    return render :json => @comment.to_json
   end
  
   private
