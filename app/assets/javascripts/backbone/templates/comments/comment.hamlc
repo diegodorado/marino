@@ -1,6 +1,7 @@
--# %img.avatar{ src:"", width:30, height:30, title:"#{@_id}"}
-%p 
+%td 
+  %time{ datetime: "#{@created_at}"}
+%td 
   %strong #{@author_name}: 
-  =@text
-%time{ datetime: "#{@created_at}"}
+%td =@text
+
   

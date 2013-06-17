@@ -46,21 +46,19 @@ group :assets do
   gem "less-rails"
   gem 'sass-rails',   '~> 3.2.3'
   gem 'compass-rails'
-
+  gem "susy"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby
 
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'jquery-plugins-rails'
-  
   gem 'uglifier', '>= 1.0.3'
 
 
   gem "js-routes" #, '0.7.4'
   gem "rails-backbone" #, '0.6.1'
 
-  
 end
 
 gem "haml-rails"
@@ -74,7 +72,7 @@ group :test do
   gem "guard-rspec"
   gem "rb-inotify"
   gem 'launchy'
-  gem 'database_cleaner' 
+  gem 'database_cleaner'
 end
 
 # Use unicorn as the app server

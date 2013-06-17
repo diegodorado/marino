@@ -1,9 +1,16 @@
-.chat_title
+.title
   Discusion
-#chat.collapse
-  .messages
-  %form.send
-    %i.icon-comment
-    %input
+
+.messages
+  %table.table.table-striped
+    %tr
+      %td(style="width: 100px;")
+      %td(style="width: 100px;")
+      %td
+
+    
+%form.send
+  %i.icon-comment
+  %input
 
 

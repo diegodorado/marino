@@ -3,6 +3,7 @@ Marino.Views.Comments ||= {}
 class Marino.Views.Comments.CommentView extends Backbone.View
   template: JST["backbone/templates/comments/comment"]
   className: 'user_message message'
+  tagName: 'tr'
 
   events:
     "click .destroy" : "destroy"
@@ -14,7 +15,6 @@ class Marino.Views.Comments.CommentView extends Backbone.View
 
   render: ->
     @$el.html(@template(@model.toJSON() ))
-    @$(".avatar").tooltip { placement: 'left'}
     @$('time').timeago()    
     @
     

@@ -1,49 +1,25 @@
-#chat_viewport
-  z-index: 1000
-  position: fixed
-  bottom: 0
-  right: 15px
+#comments
+  margin-top: 20px
   border: 1px solid #ccc
   background: #fff
-  width: 500px
-  .chat_title
+  .title
     background: #3A87AD
     padding: 2px 3px
-    font-size: 10px
+    font-size: 11px
     font-weight: bold
     color: #fff
     text-transform: uppercase  
     cursor: pointer
-    text-align: center
-  .swf-wrapper
-    display: none
-  
 
-#chat
-  position: relative
+
   .messages
     max-height: 200px
     overflow-y: auto
-    .message
-      padding: 5px
-      clear: both
-      overflow: hidden
-      background: #fff
-      &:nth-child(even)
-        background: #fafafa
-      p    
-        margin: 0
-      time
-        font-style: italic
-        color: #777
-        font-size: 11px
-      img.avatar
-        float: left
-        width: 30px
-        height: 30px
-        display: block
-        padding: 5px
 
+    time
+      font-style: italic
+      color: #777
+      font-size: 11px
 
   .send
     border-top: 1px solid #ccc
@@ -55,10 +31,8 @@
     input
       border-radius: 0
       padding: 3px
-      width: 425px
+      width: 90%
       margin: 0
       &:focus 
         outline: 0
-    .icon-trash
-      margin: 5px
-      cursor: pointer
+

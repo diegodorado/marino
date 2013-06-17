@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
 
   def select
     session[:company_id] = @company.id
-    
+
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company
@@ -28,9 +28,9 @@ class CompaniesController < ApplicationController
     @comment = @company.create_comment! :author => current_user, :text => params[:text]
     return render :json => @comment.to_json
   end
- 
+
   private
- 
+
   def require_company!
     unless current_company
       redirect_to companies_path, notice: "Debes seleccionar una empresa para comenzar."

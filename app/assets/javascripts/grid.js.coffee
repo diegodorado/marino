@@ -1,8 +1,29 @@
+accounting.settings =
+	currency:
+		symbol : "$"   # default currency symbol is '$'
+		format: "%s%v" # controls output: %s = symbol, %v = value/number (can be object: see below)
+		decimal : "." # decimal point separator
+		thousand: "," # thousands separator
+		precision : 2  # decimal places
+	number:
+		precision : 3 # default precision on numbers is 0
+		thousand: " " 
+		decimal : ","
+
+
 
 
 DateFormatter= (row, cell, value, columnDef, dataContext) ->
   p = value.match(/(\d+)/g)
   "#{p[2]}/#{p[1]}/#{p[0]}"
+
+
+MoneyFormatter= (row, cell, value, columnDef, dataContext) ->
+  accounting.formatMoney(value)
+
+NumberFormatter= (row, cell, value, columnDef, dataContext) ->
+  accounting.formatNumber(value)
+
 
 columns = [
   id: "fecha"
@@ -11,7 +32,6 @@ columns = [
   cssClass: "fecha"
   headerCssClass: "fecha"
   editor: Slick.Editors.Date
-  #formatter: DateFormatter
   sortable: true
   focusable: true
   selectable: true
@@ -26,61 +46,69 @@ columns = [
   selectable: true
 ,
   id: "entrada"
-  name: "Entrada"
+  name: "Entrada Tn"
   field: "entrada"
   cssClass: "entrada"
   headerCssClass: "entrada"
   editor: Slick.Editors.Integer
+  formatter: NumberFormatter
   focusable: true
   selectable: true
+
 ,
   id: "salida"
-  name: "Salida"
+  name: "Salida Tn"
   field: "salida"
   cssClass: "salida"
   headerCssClass: "salida"
   editor: Slick.Editors.Integer
+  formatter: NumberFormatter
   focusable: true
   selectable: true
 ,
   id: "saldo"
-  name: "Saldo"
+  name: "Saldo Tn"
   field: "saldo"
   cssClass: "saldo"
+  formatter: NumberFormatter
   headerCssClass: "saldo"
   focusable: false
   selectable: false
 
 ,
   id: "precio_unitario"
-  name: "Prec. Un."
+  name: "Precio/Tn"
   field: "precio_unitario"
   cssClass: "precio_unitario"
   headerCssClass: "precio_unitario"
   editor: Slick.Editors.Integer
+  formatter: MoneyFormatter
   focusable: true
   selectable: true
 ,
   id: "debe"
-  name: "Debe"
+  name: "Debe $"
   field: "debe"
   cssClass: "debe"
+  formatter: MoneyFormatter
   headerCssClass: "debe"
   focusable: false
   selectable: false
 ,
   id: "haber"
-  name: "Haber"
+  name: "Haber $"
   field: "haber"
   cssClass: "haber"
+  formatter: MoneyFormatter
   headerCssClass: "haber"
   focusable: false
   selectable: false
 ,
   id: "saldo_p"
-  name: "Saldo"
+  name: "Saldo $"
   field: "saldo_p"
   cssClass: "saldo_p"
+  formatter: MoneyFormatter
   headerCssClass: "saldo_p"
   focusable: false
   selectable: false

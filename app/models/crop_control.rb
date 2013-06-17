@@ -19,16 +19,12 @@ class CropControl
     options[:methods] << :updater_email
     attrs = super(options)
     attrs["id"] = attrs["_id"]
-    attrs  
-    
+    attrs
   end
 
   def updater_email
     updater.email rescue nil
   end
-
-
-  
 
 end
 

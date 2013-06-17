@@ -1,5 +1,19 @@
-@import 'compass'
-@import 'partials/chat'
+@import "partials/vars"
+@import "susy"
+@import "compass"
+
+@import "partials/chat"
+@import "partials/users"
+@import "partials/companies"
+
+.container
+  +container($total-columns, $tablet, $computer)
+  img
+    max-width: 100%
+  +at-breakpoint($tablet)
+  +at-breakpoint($computer)
+
+
 
 #ajax-indicator
   position: fixed
