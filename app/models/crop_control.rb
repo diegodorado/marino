@@ -10,6 +10,7 @@ class CropControl
   field :entrada
   field :salida
   field :precio_unitario
+  field :comentario
 
 
   def as_json(options={})

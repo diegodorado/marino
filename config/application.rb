@@ -71,6 +71,10 @@ module Marino
     config.assets.enabled = true
     config.assets.initialize_on_precompile = true
 
+    # Add the fonts path
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    # Precompile additional assets
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

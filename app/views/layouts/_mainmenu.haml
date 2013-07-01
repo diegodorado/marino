@@ -1,0 +1,98 @@
+/ Main navigation
+%nav.main-navigation
+  / Responsive navbar button
+  .navbar
+    %a.btn.btn-alt.btn-large.btn-primary.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+      %span.icon-home
+      Dashboard
+  / /Responsive navbar button
+  / Navigation
+  .nav-collapse.collapse{:role => "navigation"}
+    %ul
+      %li.active
+        %a{:href => "/"}
+          %span.icon-home
+          Dashboard
+      %li
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "forms.html"}
+          %span.icon-tasks
+          Forms & Tables
+          %span.badge 6
+        %ul.dropdown-menu
+          %li
+            %a{:href => "forms.html"}
+              %span.icon-align-left>
+              Forms
+          %li
+            %a{:href => "tables.html"}
+              %span.icon-th-list>
+              Tables
+            %span.badge 23
+      %li
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %span.icon-asl
+          Elements
+        %ul.dropdown-menu
+          %li
+            %a{:href => "charts.html"}
+              %span.icon-graph
+              Charts
+          %li
+            %a{:href => "gallery.html"}
+              %span.icon-picture
+              Gallery
+          %li
+            %a{:href => "file-explorer.html"}
+              %span.icon-inbox
+              File explorer
+          %li
+            %a{:href => "calendar.html"}
+              %span.icon-calendar
+              Calendar
+          %li.divider
+          %li
+            %a{:href => "ui-buttons.html"}
+              %span.icon-cogs
+              UI & Buttons
+          %li
+            %a{:href => "typo.html"}
+              %span.icon-font
+              Typography
+            %span.badge 7
+          %li
+            %a{:href => "grid.html"}
+              %span.icon-th
+              Grid
+          %li
+            %a{:href => "goodies.html"}
+              %span.icon-heart
+              Goodies
+      %li
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %span.icon-file
+          Pages
+        %ul.dropdown-menu
+          %li
+            %a{:href => "eshop.html"} Online store
+          %li
+            %a{:href => "add-item.html"} Add item / product
+          %li
+            %a{:href => "invoice.html"} Invoice
+          %li
+            %a{:href => "user-profile.html"} User profile
+          %li
+            %a{:href => "401.html"} Error 401
+          %li
+            %a{:href => "403.html"} Error 403
+          %li
+            %a{:href => "404.html"} Error 404
+          %li
+            %a{:href => "500.html"} Error 500
+          %li
+            %a{:href => "503.html"} Error 503
+          %li
+            %a{:href => "login.html"} Login page
+      %li
+        %a{:href => "docs/index.html"}
+          %span.icon-info-sign
+          Docs

@@ -1,29 +1,37 @@
 .row
-  .span5
-    .well
-      %h3 Ingresar    
-      %hr
-      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
-        %fieldset
-          .control-group
-            = f.label :email, :class =>'control-label'
-            .controls
-              = f.text_field :email
-          .control-group
-            = f.label :password, :class =>'control-label'
-            .controls
-              = f.password_field :password
-          - if devise_mapping.rememberable?
+  .span6
+    .dark.data-block
+      %header
+        %h2
+          %span.icon-thumbs-up
+          Ingresar
+      %section  
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
+          %fieldset
             .control-group
+              = f.label :email, :class =>'control-label'
               .controls
-                %label
-                  = f.check_box :remember_me
-                  Recordarme
-          .form-actions
-            = f.submit "Entrar", :class => 'btn-primary btn-large'
+                = f.text_field :email
+            .control-group
+              = f.label :password, :class =>'control-label'
+              .controls
+                = f.password_field :password
+            - if devise_mapping.rememberable?
+              .control-group
+                .controls
+                  %label
+                    = f.check_box :remember_me
+                    Recordarme
+            .form-actions
+              = f.submit "Entrar", :class => 'btn btn-alt btn-inverse btn-large'
 
-  .span4
-    %h3 Entrar utilizando:
-    Puedes entrar a través de estos servicios
-    = render :partial => "devise/shared/authentications"
-    = render :partial => "devise/shared/links"
+  .span6
+    .dark.data-block
+      %header
+        %h2
+          %span.icon-thumbs-up
+          Entrar utilizando
+      %section
+        Puedes entrar a través de estos servicios
+        = render :partial => "devise/shared/authentications"
+        = render :partial => "devise/shared/links"

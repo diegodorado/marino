@@ -1,7 +1,25 @@
-%h1 Mis Empresas
+%h2 
 
-
-%ul.companies-list
-  - @companies.each do |company|
-    %li
-      = link_to company.name, select_company_path(company)
+.row
+  .span8
+    .dark.data-block
+      %header
+        %h2
+          Mis Empresas
+    .row
+      - @companies.each do |company|
+        %a.span2.data-block.widget-block(href="#{select_company_path(company)}")
+          %section
+            %span.icon-website-alt
+            %strong #{company.name}      
+        
+  .span4
+    .dark.data-block
+      %header
+        %h2
+          %span.icon-thumbs-up
+          Made for Twitter Bootstrap
+      %section
+        %p.lead Sangoma is a Zulu term that is used to commonly describe all types of Southern African traditional healers.
+        %p Sangoma relies primarily on divination for healing purposes and might also be considered a type of fortune teller. He perform a holistic and symbolic form of healing by drawing on the embedded beliefs that ancestors in the afterlife guide and protect the living.
+    

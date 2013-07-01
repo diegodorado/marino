@@ -6,7 +6,6 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %title= content_for?(:title) ? yield(:title) : "Marino"
     = csrf_meta_tags
-    / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
     = stylesheet_link_tag "application", :media => "all"
@@ -16,51 +15,23 @@
     %link(href="/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="/favicon.ico" rel="shortcut icon")
 
-
   %body
     #ajax-indicator
       =image_tag 'loading.gif', :size=> '32x32'
-    .navbar.navbar-inverse.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="/") Home
-          .container-fluid.nav-collapse
-            %ul.nav
-              %li.active= link_to "Backups", "/backups"
-              %li= link_to "Messages", "/messages"
-              %li= link_to "Precios Granos", "/crops"
-            %ul.nav.pull-right
-              - if user_signed_in?
-                - if can? :access, :rails_admin
-                  %li= link_to "Admin", "/admin"
-                %li
-                  = link_to(current_user.email, edit_user_registration_path)
-                %li
-                  = link_to('Salir', destroy_user_session_path, :method=>'delete')
-              - else
-                %li
-                  = link_to('Ingresar', new_user_session_path)
-                %li
-                  = link_to('Registrarse', new_user_registration_path)
-    .container-fluid
-      #content
+    #wrapper
+      = render 'layouts/header'
+      %section.container-fluid{:role => "main"}
         = bootstrap_flash
         = yield
+        /= render 'layouts/row1'
+        /= render 'layouts/row2'
+        /= render 'layouts/row3'
+        /= render 'layouts/row4'
 
-    
-      %footer
-        %p &copy; Marino 2013
-    #chat_viewport
-        
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+      / Sticky footer push
+      #push
+    = render 'layouts/footer'
+          
     = javascript_include_tag "application"
     = javascript_tag yield :app_js_load
     = javascript_tag "app.start();"
-    

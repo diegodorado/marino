@@ -1,9 +1,7 @@
-.row
-  .span3
-    .well
-      %ul.nav.nav-list
-        %li.nav-header Menu
-
-  .span9
-    = link_to 'Seleccionar empresa', companies_path, :class => "btn btn-primary"
+%article.span4.data-block.plan-block
+  %section
+    %span.icon-play
+    %h3 Inicio
+    %p Debes seleccionar una empresa para comenzar
+    = link_to 'Seleccionar empresa', companies_path, :class => "btn btn-alt btn-info"
 

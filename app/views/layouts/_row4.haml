@@ -1,0 +1,95 @@
+/ Grid row
+.row
+  / Data block
+  %article.span4.red.data-block
+    %header
+      %h2 Donec non quam elit
+      %ul.data-header-actions
+        %li
+          %a{:href => "#"} Calendar
+    %section
+      %form.no-margin
+        %fieldset
+          .control-group
+            %label.control-label{:for => "input"} Name
+            .controls
+              %input#input.span3{:type => "text"}/
+              %p.help-block Lorem ipsum dolor sit amet
+          .control-group
+            %label.control-label{:for => "textarea"} Request
+            .controls
+              %textarea#textarea.span3{:rows => "5"}
+          .control-group
+            %button.btn.btn-alt.btn-large.btn-danger{:type => "submit"} Send
+  / /Data block
+  / Data block
+  %article.span4.data-block
+    %header
+      %h2 Praesent et sem
+      %form.header-search
+        %input{"data-items" => "4", "data-provide" => "typeahead", "data-source" => "[\"Alabama\",\"Alaska\",\"Arizona\"]", :placeholder => "Search…", :type => "text"}/
+    %section
+      .tab-content
+        #text1.tab-pane.fade.in.active
+          %p Vivamus posuere molestie nulla. Aliquam pulvinar eros id urna sollicitudin in viverra justo tristique.
+          %p Praesent at quam et ligula scelerisque vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec non quam elit, sit amet pretium magna.
+          %p Donec venenatis justo vel est eleifend sollicitudin. Pellentesque mollis felis eu metus facilisis consectetur. Praesent et sem id dui euismod accumsan et quis lectus. Fusce eget erat mi, et laoreet nibh.
+        #text2.tab-pane.fade
+          %h4 Aliquam pulvinar eros
+          %p Donec venenatis justo vel est eleifend sollicitudin. Pellentesque mollis felis eu metus facilisis consectetur. Praesent et sem id dui euismod accumsan et quis lectus. Fusce eget erat mi, et laoreet nibh.
+        #text3.tab-pane.fade
+          %p.lead Pellentesque mollis felis eu metus facilisis consectetur. Praesent et sem id dui euismod accumsan et quis lectus.
+          %p Praesent at quam et ligula scelerisque vehicula. Donec non quam elit, sit amet pretium magna.
+          %p Donec venenatis justo vel est eleifend sollicitudin. Fusce eget erat mi, et laoreet nibh.
+        #text4.tab-pane.fade
+          %p Vivamus posuere molestie nulla. Aliquam pulvinar eros id urna sollicitudin in viverra justo tristique.
+          %p Praesent at quam et ligula scelerisque vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec non quam elit, sit amet pretium magna.
+          %a.btn.btn-block.btn-large.btn-alt.btn-primary{:href => "#"} Download
+        #text5.tab-pane.fade
+          .btn-toolbar
+            .btn-group
+              %button.btn.btn-alt
+                %span.icon-ok
+              %button.btn.btn-alt
+                %span.icon-remove
+            .btn-group
+              %button.btn.btn-alt
+                %span.icon-tag
+              %button.btn.btn-alt
+                %span.icon-print
+              %button.btn.btn-alt
+                %span.icon-refresh
+          %p Praesent at quam et ligula scelerisque vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec non quam elit, sit amet pretium magna.
+          %p Donec venenatis justo vel est eleifend sollicitudin. Pellentesque mollis felis eu metus facilisis consectetur. Praesent et sem id dui euismod accumsan et quis lectus. Fusce eget erat mi, et laoreet nibh.
+      .pagination.pagination-centered.no-bottom-margin
+        %ul
+          %li.demoTabs2.active
+            %a{:href => "#text1"} 1
+          %li.demoTabs2
+            %a{:href => "#text2"} 2
+          %li.demoTabs2
+            %a{:href => "#text3"} 3
+          %li.demoTabs2
+            %a{:href => "#text4"} 4
+          %li.demoTabs2
+            %a{:href => "#text5"} 5
+  / /Data block
+  / Data block
+  %article.span4.dark.data-block
+    %header
+      %h2
+        %span.icon-fire
+        Morbi vulputate
+      %ul.data-header-actions
+        %li
+          %span.loading.dark{:title => "Loading, please wait…"} Loading…
+    %section
+      .alert.alert-inverse.fade.in
+        %button.close{"data-dismiss" => "alert"} ×
+        %strong Gray alert box!
+        This is default style. Nothing special to see.
+      .well Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vulputate nulla ut enim vestibulum vel porttitor odio euismod.
+      %p.muted.no-margin
+        %small Etiam sem augue, auctor vel dapibus id, lobortis nec ante. Donec pharetra neque nec nibh semper aliquam. Morbi vulputate auctor lectus, sed porta sem sollicitudin a. Nunc lacinia rhoncus ligula non vestibulum. Donec quis purus nibh.
+  / /Data block
+/ /Grid row

@@ -1,0 +1,1375 @@
+
+.accordion
+  .accordion-group
+    margin: 0
+    border: none
+    border-bottom: 2px solid #ffffff
+    background: #bdc3c7
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    &:first-child
+      -webkit-border-radius: 4px 4px 0 0
+      -moz-border-radius: 4px 4px 0 0
+      border-radius: 4px 4px 0 0
+      .accordion-toggle
+        -webkit-border-radius: 4px 4px 0 0
+        -moz-border-radius: 4px 4px 0 0
+        border-radius: 4px 4px 0 0
+    &:last-child
+      border: none
+      -webkit-border-radius: 0 0 4px 4px
+      -moz-border-radius: 0 0 4px 4px
+      border-radius: 0 0 4px 4px
+      .accordion-toggle, .accordion-inner
+        -webkit-border-radius: 0 0 4px 4px
+        -moz-border-radius: 0 0 4px 4px
+        border-radius: 0 0 4px 4px
+  .accordion-toggle
+    font-weight: bold
+    font-size: 14px
+    color: #2c3e50
+    overflow: hidden
+    &:hover
+      color: #ffffff
+      background: #2980b9
+      text-decoration: none
+  .accordion-heading
+    border: none
+  .accordion-inner
+    border: none
+    background: #f2f3f4
+  .collapse
+    overflow: hidden
+
+.hero-unit
+  line-height: 25px
+  h1
+    letter-spacing: normal
+    margin-bottom: 10px
+  &.turquoise
+    background: #16a085
+    color: #96d4c8
+    h1, a
+      color: #ffffff
+  &.orange
+    background: #f39c12
+    color: #fad294
+    h1, a
+      color: #ffffff
+  &.purple
+    background: #8e44ad
+    color: #ccabda
+    h1, a
+      color: #ffffff
+  &.green
+    background: #27ae60
+    color: #9edbb7
+    h1, a
+      color: #ffffff
+  &.blue
+    background: #2980b9
+    color: #9fc6e0
+    h1, a
+      color: #ffffff
+  &.red
+    background: #c0392b
+    color: #e3a6a0
+    h1, a
+      color: #ffffff
+  &.gray
+    background: #7f8c8d
+    color: #f9f9f9
+    h1, a
+      color: #ffffff
+  &.dark
+    background: #2c3e50
+    color: #a0a8b0
+    h1, a
+      color: #2c3e50
+
+.page-header p
+  font-size: 17.5px
+  line-height: normal
+  margin: 0
+  + p
+    margin-top: 20px
+
+.progress
+  margin-bottom: 10px
+  background-image: none
+  background-color: #f2f3f4
+  border: 1px solid #f2f3f4
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+  &:last-child
+    margin-bottom: 0
+  .bar:last-child
+    -webkit-border-top-right-radius: 4px
+    -moz-border-radius-topright: 4px
+    border-top-right-radius: 4px
+    -webkit-border-bottom-right-radius: 4px
+    -moz-border-radius-bottomright: 4px
+    border-bottom-right-radius: 4px
+  &.progress-line
+    height: 10px
+  .bar
+    background: #2980b9
+    font-weight: bold
+    text-shadow: none
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+
+.progress-striped .bar
+  -webkit-background-size: 20px 20px
+  -moz-background-size: 20px 20px
+  -o-background-size: 20px 20px
+  background-size: 20px 20px
+
+.progress .bar + .bar
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+.progress-danger .bar, .progress .bar-danger
+  background-color: #c0392b
+
+.progress-danger.progress-striped .bar, .progress-striped .bar-danger
+  background-color: #c0392b
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+
+.progress-success .bar, .progress .bar-success
+  background-color: #27ae60
+
+.progress-success.progress-striped .bar, .progress-striped .bar-success
+  background-color: #27ae60
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+
+.progress-info .bar, .progress .bar-info
+  background-color: #2980b9
+
+.progress-info.progress-striped .bar, .progress-striped .bar-info
+  background-color: #2980b9
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+
+.progress-warning .bar, .progress .bar-warning
+  background-color: #f39c12
+
+.progress-warning.progress-striped .bar, .progress-striped .bar-warning
+  background-color: #f39c12
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+
+.progress-inverse
+  .bar
+    background-color: #2c3e50
+  &.progress-striped .bar
+    background-color: #2c3e50
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent))
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+    background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+
+.filter-bar .form-inline
+  margin-bottom: 0
+  .control-group, .controls
+    display: inline-block
+  .control-group
+    margin: 0
+    + .control-group
+      margin-left: 10px
+  .note-inline
+    margin-left: 10px
+    &:first-child
+      margin-left: 0
+  .control-label
+    margin: 0 10px 0 0
+  .input-mini
+    width: 30px
+
+.btn.btn-alt
+  padding: 6px 12px
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+  border: none
+  background-image: none
+  background-color: #dce4ec
+  color: #7f8c8d
+  text-shadow: none
+  font-weight: bold
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  &:hover, &:active, &.active, &.disabled, &[disabled]
+    background: #bbcbda
+  &:active, &.active
+    outline: 0
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+  &.btn-primary
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    border: none
+    background-image: none
+    background-color: #2980b9
+    color: #ffffff
+    text-shadow: none
+    font-weight: bold
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover, &:active, &.active, &.disabled, &[disabled]
+      background: #20638f
+    &:active, &.active
+      outline: 0
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.btn-warning
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    border: none
+    background-image: none
+    background-color: #f39c12
+    color: #ffffff
+    text-shadow: none
+    font-weight: bold
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover, &:active, &.active, &.disabled, &[disabled]
+      background: #c87f0a
+    &:active, &.active
+      outline: 0
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.btn-danger
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    border: none
+    background-image: none
+    background-color: #c0392b
+    color: #ffffff
+    text-shadow: none
+    font-weight: bold
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover, &:active, &.active, &.disabled, &[disabled]
+      background: #962d22
+    &:active, &.active
+      outline: 0
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.btn-success
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    border: none
+    background-image: none
+    background-color: #27ae60
+    color: #ffffff
+    text-shadow: none
+    font-weight: bold
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover, &:active, &.active, &.disabled, &[disabled]
+      background: #1e8449
+    &:active, &.active
+      outline: 0
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.btn-info
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    border: none
+    background-image: none
+    background-color: #2980b9
+    color: #ffffff
+    text-shadow: none
+    font-weight: bold
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover, &:active, &.active, &.disabled, &[disabled]
+      background: #20638f
+    &:active, &.active
+      outline: 0
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.btn-inverse
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+    border: none
+    background-image: none
+    background-color: #2c3e50
+    color: #ffffff
+    text-shadow: none
+    font-weight: bold
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover, &:active, &.active, &.disabled, &[disabled]
+      background: #1a242f
+    &:active, &.active
+      outline: 0
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.btn-large
+    padding: 11px 19px
+  &.btn-small
+    padding: 2px 10px
+  &.btn-mini
+    padding: 0px 6px
+
+.btn-group.open
+  .dropdown-toggle
+    background-image: none
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+  .btn.dropdown-toggle
+    background-color: #bbcbda
+  .btn-primary.dropdown-toggle
+    background-color: #20638f
+  .btn-warning.dropdown-toggle
+    background-color: #c87f0a
+  .btn-danger.dropdown-toggle
+    background-color: #962d22
+  .btn-success.dropdown-toggle
+    background-color: #1e8449
+  .btn-info.dropdown-toggle
+    background-color: #20638f
+  .btn-inverse.dropdown-toggle
+    background-color: #1a242f
+
+.btn
+  &.disabled, &[disabled]
+    cursor: default
+    background-color: #e6e6e6
+    background-image: none
+    opacity: 0.65
+    filter: alpha(opacity = 65)
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+
+.alert
+  color: #ffffff
+  text-shadow: none
+  h4
+    color: #ffffff
+    margin: 0
+  .close
+    color: #ffffff
+    font-weight: bold
+    text-shadow: none
+    opacity: 0.4
+    filter: alpha(opacity = 40)
+    &:hover, &:focus
+      opacity: 0.8
+      filter: alpha(opacity = 80)
+  &.alert-gray
+    color: #727f80
+    background-color: #bdc3c7
+    border-color: #bdc3c7
+    h4
+      color: #727f80
+  &.alert-inverse
+    background-color: #2c3e50
+    border-color: #2c3e50
+
+
+.well
+  border: none
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  blockquote
+    border-color: rgba(0, 0, 0, 0.15)
+  &.large
+    padding: 24px
+    -webkit-border-radius: 8px
+    -moz-border-radius: 8px
+    border-radius: 8px
+  &.small
+    padding: 9px
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+
+.thumbnails
+  margin-bottom: 0
+  &.row-fluid
+    margin-left: 0
+  .thumbnail
+    background-color: #ffffff
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+  a.thumbnail
+    &:hover, &:focus
+      border-color: #2980b9
+      background-color: #2980b9
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  li
+    margin: 0
+    position: relative
+    margin-bottom: 20px
+    margin-left: 20px
+    .thumbnail-actions
+      margin: 0
+      display: block
+      position: absolute
+      bottom: 10px
+      right: 10px
+      font-size: 11.9px
+      list-style: none
+      color: #ffffff
+      background-color: #2980b9
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      border-radius: 4px
+      opacity: 0
+      filter: alpha(opacity = 0)
+      li
+        margin: 0
+        display: inline-block
+        a
+          padding: 2px 5px
+          display: block
+          color: #ffffff
+          opacity: 1
+          filter: alpha(opacity = 100)
+          &:hover
+            opacity: 1
+            filter: alpha(opacity = 100)
+            text-decoration: none
+    &:hover .thumbnail-actions
+      opacity: 0.85
+      filter: alpha(opacity = 85)
+
+.thumbnail + p
+  margin-top: 20px
+
+/* Form gallery*/
+
+.form-gallery
+  background: none
+  border: none
+  -webkit-border-radius: none
+  -moz-border-radius: none
+  border-radius: none
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  li input[type="checkbox"]
+    margin: 0
+    position: absolute
+    top: 10px
+    left: 10px
+  .thumbnails .thumbnail
+    background-color: #ffffff
+    &.active
+      border-color: #2980b9
+      background-color: #2980b9
+  .form-actions
+    padding: 0
+    margin: 0
+    border: none
+    background: none
+    [class*="span"]
+      margin-bottom: 0
+
+.dropdown-menu >
+  li > a
+    &:hover, &:focus
+      background: #2980b9
+      color: #ffffff
+  .active > a
+    background: #2980b9
+    color: #ffffff
+    &:hover, &:focus
+      background: #2980b9
+      color: #ffffff
+  li > a
+    font-weight: bold
+
+
+
+.tab-content
+  overflow: visible
+
+.tabbable .tab-content
+  overflow: auto
+
+.tabs-left > .nav-tabs, .tabs-right > .nav-tabs, .tabs-top > .nav-tabs, .tabs-below > .nav-tabs
+  border: none
+
+.tabs-left > .nav-tabs > li > a, .tabs-right > .nav-tabs > li > a, .tabs-top > .nav-tabs > li > a, .tabs-below > .nav-tabs > li > a
+  font-weight: bold
+  color: #7f8c8d
+  border: none
+  background: #f2f3f4
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  -webkit-transition: all 300ms ease
+  -moz-transition: all 300ms ease
+  -o-transition: all 300ms ease
+  transition: all 300ms ease
+
+.tabs-left > .nav-tabs > li > a:hover, .tabs-right > .nav-tabs > li > a:hover, .tabs-top > .nav-tabs > li > a:hover, .tabs-below > .nav-tabs > li > a:hover, .tabs-left > .nav-tabs > li > a:focus, .tabs-right > .nav-tabs > li > a:focus, .tabs-top > .nav-tabs > li > a:focus, .tabs-below > .nav-tabs > li > a:focus, .tabs-left > .nav-tabs .active > a, .tabs-right > .nav-tabs .active > a, .tabs-top > .nav-tabs .active > a, .tabs-below > .nav-tabs .active > a, .tabs-left > .nav-tabs .active > a:hover, .tabs-right > .nav-tabs .active > a:hover, .tabs-top > .nav-tabs .active > a:hover, .tabs-below > .nav-tabs .active > a:hover, .tabs-left > .nav-tabs .active > a:focus, .tabs-right > .nav-tabs .active > a:focus, .tabs-top > .nav-tabs .active > a:focus, .tabs-below > .nav-tabs .active > a:focus
+  border: none
+  color: #ffffff
+  background: #2980b9
+
+.breadcrumb
+  display: block
+  margin-bottom: 20px
+  background: #f2f3f4
+  >
+    .active
+      color: #a7afb4
+    li
+      font-weight: bold
+      text-shadow: none
+  a
+    font-weight: bold
+    color: #869198
+
+.data-block .breadcrumb
+  margin-bottom: 20px
+
+.pagination
+  font-weight: bold
+  ul
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    li
+      a
+        border: none
+        padding: 6px 12px
+        color: #727f80
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+      &.disabled
+        > span
+          background-color: #bdc3c7
+          color: lighter(#7f8c8d, 5%)
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+          opacity: 0.65
+          filter: alpha(opacity = 65)
+        a
+          background-color: #bdc3c7
+          color: lighter(#7f8c8d, 5%)
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+          opacity: 0.65
+          filter: alpha(opacity = 65)
+          &:hover
+            background-color: #bdc3c7
+            color: lighter(#7f8c8d, 5%)
+            -webkit-box-shadow: none
+            -moz-box-shadow: none
+            box-shadow: none
+            opacity: 0.65
+            filter: alpha(opacity = 65)
+      a:hover, &.active a
+        color: #ffffff
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+      [class^="awe-"], [class*=" awe-"], [class^="icon-"], [class*=" icon-"], [class^="fam-"], [class*=" fam-"]
+        margin: -2px 0
+        vertical-align: middle
+
+.pager
+  font-weight: bold
+  .disabled a
+    background-color: #bdc3c7
+    color: lighter(#7f8c8d, 5%)
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    opacity: 0.65
+    filter: alpha(opacity = 65)
+    &:hover
+      background-color: #bdc3c7
+      color: lighter(#7f8c8d, 5%)
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+      opacity: 0.65
+      filter: alpha(opacity = 65)
+  li > a
+    padding: 6px 14px
+    border: none
+    background-color: #bdc3c7
+    color: #727f80
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover
+      color: #ffffff
+      background-color: #2980b9
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+
+.data-block
+  position: relative
+  margin-bottom: 20px
+  background: #ffffff
+  -webkit-border-radius: 6px
+  -moz-border-radius: 6px
+  border-radius: 6px
+  section
+    padding: 20px
+  &.turquoise header
+    background: #16a085
+    h2 +
+      .btn li a, .btn-group li a
+        color: #8bd0c2
+        background: #0d5d4d
+    .data-header-actions li a
+      color: #8bd0c2
+      background: #0d5d4d
+    .header-search input
+      color: #8bd0c2
+      border-color: #0d5d4d
+      background-color: #0d5d4d
+  &.orange header
+    background: #f39c12
+    h2 +
+      .btn li a, .btn-group li a
+        color: #f9ce89
+        background: #b06f09
+    .data-header-actions li a
+      color: #f9ce89
+      background: #b06f09
+    .header-search input
+      color: #f9ce89
+      border-color: #b06f09
+      background-color: #b06f09
+  &.purple header
+    background: #8e44ad
+    h2 +
+      .btn li a, .btn-group li a
+        color: #c7a2d6
+        background: #612e76
+    .data-header-actions li a
+      color: #c7a2d6
+      background: #612e76
+    .header-search input
+      color: #c7a2d6
+      border-color: #612e76
+      background-color: #612e76
+  &.green header
+    background: #27ae60
+    h2 +
+      .btn li a, .btn-group li a
+        color: #93d7b0
+        background: #19703e
+    .data-header-actions li a
+      color: #93d7b0
+      background: #19703e
+    .header-search input
+      color: #93d7b0
+      border-color: #19703e
+      background-color: #19703e
+  &.blue header
+    background: #2980b9
+    h2 +
+      .btn li a, .btn-group li a
+        color: #94c0dc
+        background: #1d5a83
+    .data-header-actions li a
+      color: #94c0dc
+      background: #1d5a83
+    .header-search input
+      color: #94c0dc
+      border-color: #1b557a
+      background-color: #1b557a
+  &.red header
+    background: #c0392b
+    h2 +
+      .btn li a, .btn-group li a
+        color: #e09c95
+        background: #81261d
+    .data-header-actions li a
+      color: #e09c95
+      background: #81261d
+    .header-search input
+      color: #e09c95
+      border-color: #81261d
+      background-color: #81261d
+  &.gray header
+    background: #7f8c8d
+    h2 +
+      .btn li a, .btn-group li a
+        color: #bfc6c6
+        background: #5a6465
+    .data-header-actions li a
+      color: #bfc6c6
+      background: #5a6465
+    .header-search input
+      color: #bfc6c6
+      border-color: #5a6465
+      background-color: #5a6465
+  &.dark header
+    background: #2c3e50
+    h2 +
+      .btn li a, .btn-group li a
+        color: #969fa8
+        background: #1a242f
+    .data-header-actions li a
+      color: #969fa8
+      background: #1a242f
+    .header-search input
+      color: #969fa8
+      border-color: #11181f
+      background-color: #11181f
+  header
+    padding: 15px 20px
+    background: #2980b9
+    *zoom: 1
+    -webkit-border-top-right-radius: 6px
+    -moz-border-radius-topright: 6px
+    border-top-right-radius: 6px
+    -webkit-border-top-left-radius: 6px
+    -moz-border-radius-topleft: 6px
+    border-top-left-radius: 6px
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+    h2
+      margin: 0
+      color: #ffffff
+      display: inline-block
+      font-size: 17.5px
+      line-height: 28px
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15)
+  footer
+    text-transform: uppercase
+    color: #727f80
+    font-size: 10.5px
+    padding: 10px
+    background: #bdc3c7
+    -webkit-border-bottom-right-radius: 6px
+    -moz-border-radius-bottomright: 6px
+    border-bottom-right-radius: 6px
+    -webkit-border-bottom-left-radius: 6px
+    -moz-border-radius-bottomleft: 6px
+    border-bottom-left-radius: 6px
+    p
+      margin: 0
+  header
+    h2 +
+      .btn, .btn-group
+        float: right
+        margin: 0
+        padding: 0
+        list-style: none
+        *zoom: 1
+    .data-header-actions
+      float: right
+      margin: 0
+      padding: 0
+      list-style: none
+      *zoom: 1
+    h2 +
+      .btn:before, .btn-group:before
+        display: table
+        content: ""
+        line-height: 0
+    .data-header-actions:before
+      display: table
+      content: ""
+      line-height: 0
+    h2 +
+      .btn:after, .btn-group:after
+        display: table
+        content: ""
+        line-height: 0
+    .data-header-actions:after
+      display: table
+      content: ""
+      line-height: 0
+    h2 +
+      .btn:after, .btn-group:after
+        clear: both
+    .data-header-actions:after
+      clear: both
+    h2 +
+      .btn > li, .btn-group > li
+        float: left
+        display: block
+        position: relative
+    .data-header-actions > li
+      float: left
+      display: block
+      position: relative
+    h2 +
+      .btn > li + li, .btn-group > li + li
+        margin-left: 5px
+    .data-header-actions > li + li
+      margin-left: 5px
+    h2 +
+      .btn > li a, .btn-group > li a
+        color: #94c0dc
+        cursor: pointer
+        display: inline-block
+        font-weight: bold
+        font-size: 14px
+        line-height: 20px
+        padding: 4px 12px
+        text-align: center
+        vertical-align: middle
+        background: #1b557a
+        -webkit-transition: all 350ms ease
+        -moz-transition: all 350ms ease
+        -o-transition: all 350ms ease
+        transition: all 350ms ease
+        -webkit-border-radius: 4px
+        -moz-border-radius: 4px
+        border-radius: 4px
+    .data-header-actions > li a
+      color: #94c0dc
+      cursor: pointer
+      display: inline-block
+      font-weight: bold
+      font-size: 14px
+      line-height: 20px
+      padding: 4px 12px
+      text-align: center
+      vertical-align: middle
+      background: #1b557a
+      -webkit-transition: all 350ms ease
+      -moz-transition: all 350ms ease
+      -o-transition: all 350ms ease
+      transition: all 350ms ease
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      border-radius: 4px
+    h2 +
+      .btn > li a:hover, .btn-group > li a:hover
+        color: #2c3e50
+        background: #f2f3f4
+        text-decoration: none
+    .data-header-actions > li a:hover
+      color: #2c3e50
+      background: #f2f3f4
+      text-decoration: none
+    h2 +
+      .btn > li.open a, .btn-group > li.open a
+        color: #2c3e50
+        background: #f2f3f4
+        text-decoration: none
+    .data-header-actions > li.open a
+      color: #2c3e50
+      background: #f2f3f4
+      text-decoration: none
+    h2 +
+      .btn > li.active a, .btn-group > li.active a
+        color: #2c3e50
+        background: #f2f3f4
+        text-decoration: none
+    .data-header-actions > li.active a
+      color: #2c3e50
+      background: #f2f3f4
+      text-decoration: none
+    h2 +
+      .btn > li .loading, .btn-group > li .loading
+        display: block
+    .data-header-actions > li .loading
+      display: block
+  .data-block-nav
+    background: #dce4ec
+    ul
+      padding: 15px 20px
+      margin: 0
+      list-style: none
+      *zoom: 1
+      &:before
+        display: table
+        content: ""
+        line-height: 0
+      &:after
+        display: table
+        content: ""
+        line-height: 0
+        clear: both
+      > li
+        float: left
+        display: block
+        position: relative
+        + li
+          margin-left: 5px
+        a
+          color: #ccd1d1
+          cursor: pointer
+          display: inline-block
+          font-weight: bold
+          font-size: 14px
+          line-height: 20px
+          padding: 4px 12px
+          text-align: center
+          vertical-align: middle
+          background: #7f8c8d
+          -webkit-transition: all 350ms ease
+          -moz-transition: all 350ms ease
+          -o-transition: all 350ms ease
+          transition: all 350ms ease
+          -webkit-border-radius: 4px
+          -moz-border-radius: 4px
+          border-radius: 4px
+          &:hover
+            color: #f2f3f4
+            background: #535c5d
+            text-decoration: none
+        &.open a, &.active a
+          color: #f2f3f4
+          background: #535c5d
+          text-decoration: none
+  header .header-search
+    display: inline
+    float: right
+    border: none
+    margin: 0
+    input
+      margin: 0
+      width: 106px
+      padding: 2px 10px
+      font-size: 11.9px
+      color: #94c0dc
+      border-color: #1b557a
+      background-color: #1b557a
+      -webkit-border-radius: 15px
+      -moz-border-radius: 15px
+      border-radius: 15px
+  &.accordion-block
+    .accordion
+      margin-bottom: 0
+      .accordion-inner
+        background: #ffffff
+      .accordion-group
+        border-color: #ecf0f1
+    section
+      padding: 0
+  &.todo-block
+    form
+      margin: 0
+    table
+      margin: 0
+      th
+        border-left: none
+      td
+        border-left: none
+        &:first-child
+          width: 13px
+      tr
+        &.done
+          -webkit-transition: all 300ms ease
+          -moz-transition: all 300ms ease
+          -o-transition: all 300ms ease
+          transition: all 300ms ease
+          opacity: 0.4
+          filter: alpha(opacity = 40)
+          p
+            text-decoration: line-through
+            + span
+              height: 0
+              -webkit-transition: all 300ms ease
+              -moz-transition: all 300ms ease
+              -o-transition: all 300ms ease
+              transition: all 300ms ease
+              opacity: 0
+              filter: alpha(opacity = 0)
+          &:hover
+            opacity: 1
+            filter: alpha(opacity = 100)
+            p
+              text-decoration: none
+              + span
+                height: auto
+                opacity: 1
+                filter: alpha(opacity = 100)
+        p
+          margin: 0
+          color: #5a6465
+          font-weight: bold
+          line-height: normal
+          + span
+            display: block
+            font-size: 10.5px
+            color: #7f8c8d
+        input
+          margin-top: -3px
+  &.widget-block
+    display: block
+    text-align: center
+    -webkit-transition: all 300ms ease
+    -moz-transition: all 300ms ease
+    -o-transition: all 300ms ease
+    transition: all 300ms ease
+    section > span
+      color: #2980b9
+      display: block
+      font-size: 47.6px
+      line-height: 1
+    strong
+      color: #2980b9
+      display: block
+      font-size: 47.6px
+      line-height: 1
+      margin-top: 5px
+      font-size: 16px
+    .sparkline
+      display: block
+      margin: 5px auto
+      canvas
+        display: block !important
+        margin: 0 auto
+      +
+        strong
+          color: #7f8c8d
+          font-size: 14px
+          font-weight: bold
+          -webkit-transition: color ease 0.3s
+          -moz-transition: color ease 0.3s
+          -o-transition: color ease 0.3s
+          transition: color ease 0.3s
+        a
+          color: #7f8c8d
+          font-size: 14px
+          font-weight: bold
+          -webkit-transition: color ease 0.3s
+          -moz-transition: color ease 0.3s
+          -o-transition: color ease 0.3s
+          transition: color ease 0.3s
+          &:hover
+            color: #2980b9
+
+
+
+a.data-block.widget-block:hover
+  text-decoration: none
+  background: #2980b9
+  span, strong
+    color: #ffffff
+
+.data-block.plan-block
+  text-align: center
+  span
+    color: #bdc3c7
+    display: block
+    font-size: 105px
+    line-height: normal
+    margin: 10px 0
+  h3
+    margin: 0
+  p + .btn
+    margin-top: 20px
+
+nav
+  ul, ol
+    margin: 0
+    padding: 0
+    list-style: none
+    list-style-image: none
+
+blockquote
+  clear: both
+  margin: 0 0 20px
+  border-color: #bdc3c7
+  &.pull-right
+    clear: both
+    margin: 0 0 20px
+    border-color: #bdc3c7
+  small, &.pull-right small
+    font-size: 10px
+    color: #bdc3c7
+
+code
+  padding: 1px 3px
+  background-color: #bdc3c7
+  border: none
+  color: #717577
+
+pre
+  border: none
+  color: #717577
+  background-color: #bdc3c7
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+.label
+  text-shadow: none
+  background-color: #7f8c8d
+  &.label-important
+    background-color: #c0392b
+  &.label-warning
+    background-color: #f39c12
+  &.label-success
+    background-color: #27ae60
+  &.label-info
+    background-color: #2980b9
+  &.label-inverse
+    background-color: #2c3e50
+
+a
+  &.label:hover
+    background-color: #667273
+    text-decoration: none
+    cursor: pointer
+  &.label-important:hover
+    background-color: #962d22
+  &.label-warning:hover
+    background-color: #c87f0a
+  &.label-success:hover
+    background-color: #1e8449
+  &.label-info:hover
+    background-color: #20638f
+  &.label-inverse:hover
+    background-color: #1a242f
+
+.data-block
+  ol, ul
+    margin-bottom: 0
+
+select, textarea
+  border-width: 2px
+  margin-bottom: 0
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+input
+  &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]
+    border-width: 2px
+    margin-bottom: 0
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+
+.uneditable-input
+  border-width: 2px
+  margin-bottom: 0
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+select:focus, textarea:focus
+  border-color: #7f8c8d
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+input
+  &[type="text"]:focus, &[type="password"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="time"]:focus, &[type="week"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="search"]:focus, &[type="tel"]:focus, &[type="color"]:focus
+    border-color: #7f8c8d
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+
+.uneditable-input:focus
+  border-color: #7f8c8d
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+
+legend
+  color: #2c3e50
+  font-weight: bold
+  border-bottom: 2px solid #dce4ec
+
+label
+  font-weight: bold
+  &.radio, &.checkbox
+    font-weight: normal
+
+.form-horizontal .control-group, .control-group
+  margin: 0
+
+.form-horizontal .control-group + .control-group, .control-group + .control-group
+  margin-top: 15px
+
+.form-actions
+  padding: 19px 20px 20px 0
+  border: none
+  margin: 0
+
+.help-block, .help-inline
+  color: #bdc3c7
+
+.form-horizontal
+  input + .help-block, select + .help-block, textarea + .help-block, .uneditable-input + .help-block, .input-prepend + .help-block, .input-append + .help-block
+    margin-top: 0
+
+.input-append .add-on, .input-prepend .add-on
+  color: #7f8c8d
+  font-weight: bold
+  text-shadow: none
+  border-width: 2px
+  border-color: #dce4ec
+  background: #dce4ec
+
+input[disabled], select[disabled], textarea[disabled], input[readonly], select[readonly], textarea[readonly]
+  color: #7f8c8d
+
+.input-xxlarge
+  width: 90%
+
+.input-xlarge
+  width: 75%
+
+.table
+  background-color: #f2f3f4
+  border: 2px solid #ffffff
+  border-collapse: separate
+  *border-collapse: collapsed
+  border-left: 0
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  th
+    text-align: center
+    background-color: #bdc3c7
+    border-top: 2px solid #ffffff
+    border-left: 2px solid #ffffff
+  td
+    border-top: 2px solid #ffffff
+    border-left: 2px solid #ffffff
+  caption +
+    thead tr:first-child th
+      border-top: 0
+    tbody tr:first-child
+      th, td
+        border-top: 0
+  colgroup +
+    thead tr:first-child th
+      border-top: 0
+    tbody tr:first-child
+      th, td
+        border-top: 0
+  thead:first-child tr:first-child th
+    border-top: 0
+  tbody:first-child tr:first-child
+    th, td
+      border-top: 0
+  thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child
+    -webkit-border-top-left-radius: 4px
+    -moz-border-radius-topleft: 4px
+    border-top-left-radius: 4px
+  thead:first-child tr:first-child th:last-child, tbody:first-child tr:first-child td:last-child
+    -webkit-border-top-right-radius: 4px
+    -moz-border-radius-topright: 4px
+    border-top-right-radius: 4px
+  thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child
+    -webkit-border-radius: 0 0 0 4px
+    -moz-border-radius: 0 0 0 4px
+    border-radius: 0 0 0 4px
+  thead:last-child tr:last-child th:last-child, tbody:last-child tr:last-child td:last-child
+    -webkit-border-bottom-right-radius: 4px
+    -moz-border-radius-bottomright: 4px
+    border-bottom-right-radius: 4px
+
+.table-media
+  tr
+    td
+      vertical-align: middle
+      &:first-child
+        width: 20px
+        text-align: center
+    th:first-child
+      width: 20px
+      text-align: center
+  .thumbnail
+    display: table-cell
+    width: 45px
+    border-right: none
+    border-bottom: none
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+  input[type="checkbox"]
+    margin-top: 0
+
+
+.modal
+  margin-top: 0 !important
+  border: none
+  -webkit-box-shadow: none
+  -moz-box-shadow: none
+  box-shadow: none
+  .modal-header
+    padding-bottom: 0
+    border: none
+  .modal-footer
+    text-align: center
+    background: none
+    border: none
+
+.modal-backdrop
+  background: #000000
+  &.fade.in
+    background: #000000
+
+.tooltip.in
+  font-weight: bold
+  opacity: 1
+  filter: alpha(opacity = 100)
+
+.popover
+  color: #969fa8
+  .popover-title
+    border: none
+    margin: 0
+    color: #ffffff
+    font-weight: bold
+    padding-bottom: 0
+    
+    

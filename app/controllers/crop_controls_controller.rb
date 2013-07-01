@@ -5,13 +5,11 @@ class CropControlsController < ApplicationController
   respond_to :json
 
   def create
-    params.keep_if {| key, value | [:fecha, :tipo_doc,:entrada,:salida, :precio_unitario, :store_id, :crop_id].include?(key.to_sym) }
+    params.keep_if {| key, value | [:fecha, :tipo_doc,:entrada,:salida, :precio_unitario, :store_id, :crop_id, :comentario].include?(key.to_sym) }
     @crop_control = CropControl.new(params)
     @crop_control.updater = current_user
-    
     @crop_control.save!
-    
-    
+
     if @crop_control.save
       render json: @crop_control, status: :created, location: @crop_control
     else
@@ -21,7 +19,7 @@ class CropControlsController < ApplicationController
   end
 
   def update
-    params.keep_if {| key, value | [:fecha, :tipo_doc,:entrada,:salida, :precio_unitario].include?(key.to_sym) }
+    params.keep_if {| key, value | [:fecha, :tipo_doc,:entrada,:salida, :precio_unitario, :comentario].include?(key.to_sym) }
     @crop_control.update_attributes(params)
     @crop_control.updater = current_user
 

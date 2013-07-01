@@ -1,0 +1,1400 @@
+
+/* Bootstrap switch*/
+
+.has-switch
+  display: inline-block
+  cursor: pointer
+  position: relative
+  text-align: left
+  font-weight: bold
+  overflow: hidden
+  line-height: 8px
+  min-width: 100px
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  -o-user-select: none
+  user-select: none
+  &.switch-mini
+    min-width: 72px
+  &.switch-small
+    min-width: 80px
+  &.switch-large
+    min-width: 120px
+  &.deactivate
+    opacity: 0.5
+    filter: alpha(opacity = 50)
+    cursor: default !important
+    label, span
+      cursor: default !important
+  > div
+    display: inline-block
+    width: 150%
+    position: relative
+    top: 0
+    &.switch-animate
+      -webkit-transition: left 0.5s
+      -moz-transition: left 0.5s
+      -o-transition: left 0.5s
+      transition: left 0.5s
+    &.switch-off
+      left: -49%
+    &.switch-on
+      left: 0%
+  input[type=checkbox]
+    display: none
+  span, label
+    cursor: pointer
+    position: relative
+    display: inline-block
+    height: 100%
+    padding-bottom: 4px
+    padding-top: 4px
+    font-size: 14px
+    line-height: 20px
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+  span.switch-mini, label.switch-mini
+    padding-bottom: 4px
+    padding-top: 4px
+    font-size: 10px
+    line-height: 9px
+  span.switch-small, label.switch-small
+    padding-bottom: 3px
+    padding-top: 3px
+    font-size: 12px
+    line-height: 18px
+  span.switch-large, label.switch-large
+    padding-bottom: 9px
+    padding-top: 9px
+    font-size: 16px
+    line-height: normal
+  span [class^="icon-"], label [class^="icon-"], span [class*=" icon-"]
+    padding: 0
+  label
+    [class*=" icon-"]
+      padding: 0
+    margin-top: -1px
+    margin-bottom: -1px
+    z-index: 100
+    width: 34%
+    background: #bdc3c7
+  span
+    text-align: center
+    z-index: 1
+    width: 33%
+    &.switch-left
+      -webkit-border-top-left-radius: 4px
+      -moz-border-radius-topleft: 4px
+      border-top-left-radius: 4px
+      -webkit-border-bottom-left-radius: 4px
+      -moz-border-radius-bottomleft: 4px
+      border-bottom-left-radius: 4px
+    &.switch-right
+      color: #7f8c8d
+      background: #bdc3c7
+      text-shadow: none
+    &.switch-primary, &.switch-left
+      color: #ffffff
+      background: #2980b9
+      text-shadow: none
+    &.switch-info
+      color: #ffffff
+      background: #2980b9
+    &.switch-success
+      color: #ffffff
+      background: #27ae60
+    &.switch-warning
+      color: #ffffff
+      background: #f39c12
+    &.switch-danger
+      color: #ffffff
+      background: #c0392b
+
+/* jQuery FullCalendar*/
+
+.full-calendar
+  .fc-header
+    margin-bottom: 15px
+    h2
+      margin: 0
+      font-size: 23.8px
+      line-height: normal
+  .fc-content
+    background-color: #f2f3f4
+  .fc-button
+    &.fc-state-default
+      display: inline-block
+      padding: 5px 10px
+      margin-bottom: 0
+      font-size: 14px
+      font-weight: bold
+      line-height: 20px
+      color: #7f8c8d
+      text-align: center
+      vertical-align: middle
+      cursor: pointer
+      position: relative
+      background: #bdc3c7
+      border: none
+      -webkit-border-radius: 0
+      -moz-border-radius: 0
+      border-radius: 0
+    &.fc-state-active
+      display: inline-block
+      padding: 5px 10px
+      margin-bottom: 0
+      font-size: 14px
+      line-height: 20px
+      color: #f2f3f4
+      text-align: center
+      vertical-align: middle
+      cursor: pointer
+      position: relative
+      outline: 0
+      background: #2980b9
+      -webkit-border-radius: 0
+      -moz-border-radius: 0
+      border-radius: 0
+    &.fc-state-disabled
+      display: inline-block
+      padding: 5px 10px
+      margin-bottom: 0
+      font-size: 14px
+      line-height: 20px
+      color: #2c3e50
+      text-align: center
+      vertical-align: middle
+      background: #bdc3c7
+      position: relative
+      cursor: default
+      -webkit-border-radius: 0
+      -moz-border-radius: 0
+      border-radius: 0
+      opacity: 0.65
+      filter: alpha(opacity = 65)
+      &:active
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+    &.fc-corner-left
+      margin-left: 0
+      -webkit-border-top-left-radius: 4px
+      -moz-border-radius-topleft: 4px
+      border-top-left-radius: 4px
+      -webkit-border-bottom-left-radius: 4px
+      -moz-border-radius-bottomleft: 4px
+      border-bottom-left-radius: 4px
+    &.fc-corner-right
+      -webkit-border-top-right-radius: 4px
+      -moz-border-radius-topright: 4px
+      border-top-right-radius: 4px
+      -webkit-border-bottom-right-radius: 4px
+      -moz-border-radius-bottomright: 4px
+      border-bottom-right-radius: 4px
+  .fc-state-default .fc-button-inner
+    background: transparent
+    border-width: 0
+  .fc-button-content
+    line-height: 20px
+    height: 20px
+    padding: 0
+  .fc-state-default
+    .fc-button-effect span
+      display: none
+    color: #7f8c8d
+    .fc-button-inner
+      color: #7f8c8d
+  .fc-state-active .fc-button-inner
+    color: #f2f3f4
+  .fc-button-content
+    [class^="awe-"], [class*=" awe-"]
+      font-size: 16px
+  .fc-state-highlight
+    background-color: #ffffff
+  .fc-widget-header, .fc-widget-content
+    border-color: #ffffff
+  .fc-widget-header
+    padding: 5px 0
+    font-size: 17.5px
+    color: #7f8c8d
+    background: #bdc3c7
+  .fc-grid .fc-day-number
+    color: #7f8c8d
+    font-weight: bold
+
+/* jQuery FullCalendar event style*/
+
+.fc-event
+  padding: 4px 10px
+  font-weight: bold
+  border: none
+  background-color: #2980b9
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  .fc-event-skin
+    background: none
+    border: none
+    color: inherit
+  &.fc-event-vert .fc-event-bg
+    display: none
+    background: transparent
+  &.event-red
+    background: #c0392b
+  &.event-blue
+    background: #2980b9
+  &.event-green
+    background: #27ae60
+  &.event-orange
+    background: #f39c12
+  &.event-purple
+    background: #8e44ad
+  &.event-turquoise
+    background: #16a085
+  &.event-dark
+    background: #2c3e50
+  &.event-gray
+    background: #7f8c8d
+
+a.fc-event:hover
+  color: #ffffff
+
+/* jQuery Visualize*/
+
+.visualize
+  margin: 50px auto 30px
+  margin-bottom: 30px !important
+  background-color: transparent
+  border: none
+  width: 100%
+  &.visualize-pie
+    margin-bottom: 0 !important
+  .visualize-info
+    border: none
+    padding: 0
+    color: #7f8c8d
+    font-weight: bold
+    font-size: 11.9px
+    right: auto
+    left: -10px
+    top: -48px
+    background-color: transparent
+    opacity: 1
+    filter: alpha(opacity = 100)
+  .visualize-title
+    font-weight: bold
+    margin-bottom: 0
+  + p
+    margin-top: 70px
+  .label
+    padding: 0
+    background-color: transparent
+    font-size: 10.5px
+    font-weight: normal
+    line-height: 14px
+    text-shadow: none
+    color: #bdc3c7
+    -webkit-border-radius: none
+    -moz-border-radius: none
+    border-radius: none
+  ul.visualize-key .visualize-key-label
+    color: #7f8c8d
+
+.ie8 .visualize-interaction-tracker
+  margin-top: 0 !important
+
+/* jQuery Flot*/
+
+.flot
+  margin: 10px auto
+  min-height: 280px
+  height: 280px
+  .legend
+    padding: 0 2px
+
+/* jQuery ElFinder*/
+
+.elfinder
+  border: none
+  -webkit-border-radius: 2px
+  -moz-border-radius: 2px
+  border-radius: 2px
+  .elfinder-navbar
+    height: 100%
+    background: #bdc3c7
+    .ui-state-hover
+      background: transparent
+      border-color: transparent
+    .ui-state-active
+      color: #eeeeee
+      background: #7f8c8d
+      border: none
+    padding: 15px 20px
+  .elfinder-cwd
+    padding: 15px 20px
+  .elfinder-cwd-view-icons .elfinder-cwd-file .elfinder-cwd-filename.ui-state-hover, .elfinder-cwd table td.ui-state-hover, .elfinder-button-menu .ui-state-hover
+    color: #ffffff
+    background: #2980b9
+  .elfinder-cwd-view-icons .elfinder-cwd-file .ui-state-hover
+    background: #eeeeee
+  .elfinder-cwd table tr:nth-child(odd)
+    background-color: #f8f8f8
+  .elfinder-workzone
+    background: #ecf0f1
+    border: none
+    -webkit-border-radius: 0 0 6px 6px
+    -moz-border-radius: 0 0 6px 6px
+    border-radius: 0 0 6px 6px
+  .elfinder-statusbar
+    color: #555555
+    a
+      text-decoration: none
+      color: #555555
+    &.ui-widget-header
+      background-color: transparent
+  .elfinder-buttonset
+    margin: 0 10px 0 0
+    background: none
+    border: none
+    .elfinder-button
+      background: none
+      padding: 6px 12px
+      background-color: #dce4ec
+      color: #7f8c8d
+      filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+      border: none
+      background-image: none
+      background-color: #2c3e50
+      color: #ffffff
+      text-shadow: none
+      font-weight: bold
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+      &:hover, &:active, &.active, &.disabled, &[disabled]
+        background: #bbcbda
+      &:active, &.active
+        outline: 0
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+      &.btn-primary
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+        border: none
+        background-image: none
+        background-color: #2980b9
+        color: #ffffff
+        text-shadow: none
+        font-weight: bold
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        &:hover, &:active, &.active, &.disabled, &[disabled]
+          background: #20638f
+        &:active, &.active
+          outline: 0
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+      &.btn-warning
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+        border: none
+        background-image: none
+        background-color: #f39c12
+        color: #ffffff
+        text-shadow: none
+        font-weight: bold
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        &:hover, &:active, &.active, &.disabled, &[disabled]
+          background: #c87f0a
+        &:active, &.active
+          outline: 0
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+      &.btn-danger
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+        border: none
+        background-image: none
+        background-color: #c0392b
+        color: #ffffff
+        text-shadow: none
+        font-weight: bold
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        &:hover, &:active, &.active, &.disabled, &[disabled]
+          background: #962d22
+        &:active, &.active
+          outline: 0
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+      &.btn-success
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+        border: none
+        background-image: none
+        background-color: #27ae60
+        color: #ffffff
+        text-shadow: none
+        font-weight: bold
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        &:hover, &:active, &.active, &.disabled, &[disabled]
+          background: #1e8449
+        &:active, &.active
+          outline: 0
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+      &.btn-info
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+        border: none
+        background-image: none
+        background-color: #2980b9
+        color: #ffffff
+        text-shadow: none
+        font-weight: bold
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        &:hover, &:active, &.active, &.disabled, &[disabled]
+          background: #20638f
+        &:active, &.active
+          outline: 0
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+      &.btn-inverse
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+        border: none
+        background-image: none
+        background-color: #2c3e50
+        color: #ffffff
+        text-shadow: none
+        font-weight: bold
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+        &:hover, &:active, &.active, &.disabled, &[disabled]
+          background: #1a242f
+        &:active, &.active
+          outline: 0
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+          box-shadow: none
+      &.btn-large
+        padding: 11px 19px
+      &.btn-small
+        padding: 2px 10px
+      &.btn-mini
+        padding: 0px 6px
+      &:hover, &:active, &.active, &.disabled, &[disabled]
+        background: #1a242f
+      &:active, &.active
+        outline: 0
+        -webkit-box-shadow: none
+        -moz-box-shadow: none
+        box-shadow: none
+      &:hover
+        cursor: pointer
+  .elfinder-button-search.elfinder-button
+    width: 191px
+    margin: 0
+    input
+      margin: 0
+      padding-left: 25px
+      border: none
+
+.elfinder-disabled
+  .elfinder-navbar .ui-state-active
+    color: #2c3e50
+    background: #a7afb4
+    border: none
+  .elfinder-cwd-view-icons .elfinder-cwd-file .elfinder-cwd-filename.ui-state-hover, .elfinder-cwd table td.ui-state-hover
+    background: #bfbfbf
+
+.elfinder-contextmenu .ui-state-hover
+  background: #3875d7
+  color: #fff
+  .elfinder-contextmenu-arrow
+    background-image: url('../img/arrows-active.png')
+
+#elfinder .elfinder-cwd-view-icons .elfinder-cwd-file
+  width: 120px
+  height: 95px
+
+.elfinder
+  .ui-widget-header
+    padding: 15px 20px
+    background: #7f8c8d
+    border: none
+    -webkit-border-radius: 6px 6px 0 0
+    -moz-border-radius: 6px 6px 0 0
+    border-radius: 6px 6px 0 0
+  .ui-widget-content
+    border-color: #7f8c8d
+    background: none
+
+/* jQuery DataTables*/
+
+.dataTables_wrapper
+  >
+    .row:first-child, .row-fluid:first-child
+      margin-bottom: 10px
+  .row [class*="span"], .row-fluid [class*="span"]
+    margin-bottom: 0
+  table.table
+    clear: both
+    margin-bottom: 10px
+  div
+    &.dataTables_length
+      label
+        float: left
+        text-align: left
+      select
+        width: 75px
+    &.dataTables_filter label
+      float: right
+  .dataTables_paginate
+    margin: 0
+    float: right
+  table
+    thead
+      .sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled
+        cursor: pointer
+        *cursor: hand
+    &.table thead
+      .sorting
+        background-image: url("../img/plugins/dataTables/sort_both.png")
+      .sorting_asc
+        background-image: url("../img/plugins/dataTables/sort_asc.png")
+      .sorting_desc
+        background-image: url("../img/plugins/dataTables/sort_desc.png")
+      .sorting_asc_disabled
+        background-image: url("../img/plugins/dataTables/sort_asc_disabled.png")
+      .sorting_desc_disabled
+        background-image: url("../img/plugins/dataTables/sort_desc_disabled.png")
+      .sorting, .sorting_asc, .sorting_desc, .sorting_asc_disabled, .sorting_desc_disabled
+        background-position: center right
+        background-repeat: no-repeat
+    &.dataTable th:active
+      outline: none
+  .dataTables_info
+    margin-top: 0
+    color: #7f8c8d
+
+/* jQuery DataTable filter*/
+
+.datatable-controls li
+  padding: 3px 15px
+
+/* jQuery Snippet*/
+
+.snippet-container
+  pre .snippet-num, .snippet-wrap .snippet-num
+    margin: 0
+  pre .snippet-num li, .snippet-wrap .snippet-num li
+    padding-left: 1em
+  pre pre.sh_sourceCode, .snippet-wrap pre.sh_sourceCode
+    margin: 0
+    background: #ecf0f1
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    -webkit-border-radius: 6px
+    -moz-border-radius: 6px
+    border-radius: 6px
+  .snippet-menu pre
+    border: none
+
+/* jQuery Tags Input*/
+
+div
+  &.tagsinput
+    padding: 0
+    margin: 0
+    width: auto !important
+    height: auto !important
+    color: #555555
+    background-color: transparent
+    border: none
+    -webkit-transition: 'border linear .2s, box-shadow linear .2s'
+    -moz-transition: 'border linear .2s, box-shadow linear .2s'
+    -o-transition: 'border linear .2s, box-shadow linear .2s'
+    transition: 'border linear .2s, box-shadow linear .2s'
+    &.focused
+      outline: 0
+      border-color: rgba(0, 0, 0, 0.3)
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.3)
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.3)
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 5px rgba(0, 0, 0, 0.3)
+    span.tag
+      text-shadow: none
+      line-height: normal
+      font-weight: bold
+      padding: 4px
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      border-radius: 3px
+      background: #2980b9
+      border-color: #2980b9
+      color: #ffffff
+      a
+        color: #ffffff
+        opacity: 0.5
+        filter: alpha(opacity = 50)
+        &:hover
+          opacity: 1
+          filter: alpha(opacity = 100)
+    input
+      margin: 0
+  &.wysiwyg
+    background: none
+    width: auto !important
+    border: none
+    .toolbar-container
+      padding: 5px
+    iframe
+      margin-top: 10px
+      background-color: #ffffff
+      width: 100% !important
+      min-height: 250px
+      border: 1px solid #dce4ec
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      border-radius: 4px
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+    ul.toolbar
+      margin-bottom: 0
+      border: none
+      li
+        background-image: url("../img/plugins/jWYSIWYG/jquery.wysiwyg.gif")
+        &.wysiwyg-button-hover
+          background-color: #f2f3f4
+        &.active
+          border: none
+
+/* jQuery jWYSIWYG*/
+
+/* Bootstrap wysihtml5*/
+
+.wysihtml5
+  width: 95% !important
+
+ul.wysihtml5-toolbar
+  margin-bottom: 0
+
+.wysihtml5-sandbox
+  margin-bottom: 0 !important
+
+/* jQuery jGrowl*/
+
+div.jGrowl div
+  &.jGrowl-notification
+    color: #ffffff
+    background-color: #2c3e50
+    text-shadow: none
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    opacity: 1
+    filter: alpha(opacity = 100)
+  &.jGrowl-closer
+    color: #ffffff
+    background-color: #2c3e50
+    text-shadow: none
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    opacity: 1
+    filter: alpha(opacity = 100)
+    color: #ecf0f1
+    opacity: 0.35
+    filter: alpha(opacity = 35)
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    &:hover
+      opacity: 0.9
+      filter: alpha(opacity = 90)
+      -webkit-box-shadow: none
+      -moz-box-shadow: none
+      box-shadow: none
+  &.primary
+    background-color: #2980b9
+    color: #ffffff
+    a
+      color: #ffffff
+      border-bottom: 1px dotted
+      &:hover
+        color: #ffffff
+        border-bottom: 1px solid
+        text-decoration: none
+  &.red
+    background-color: #c0392b
+    color: #ffffff
+    a
+      color: #ffffff
+      border-bottom: 1px dotted
+      &:hover
+        color: #ffffff
+        border-bottom: 1px solid
+        text-decoration: none
+  &.blue
+    background-color: #2980b9
+    color: #ffffff
+    a
+      color: #ffffff
+      border-bottom: 1px dotted
+      &:hover
+        color: #ffffff
+        border-bottom: 1px solid
+        text-decoration: none
+  &.green
+    background-color: #27ae60
+    color: #ffffff
+    a
+      color: #ffffff
+      border-bottom: 1px dotted
+      &:hover
+        color: #ffffff
+        border-bottom: 1px solid
+        text-decoration: none
+  &.orange
+    background-color: #f39c12
+    color: #ffffff
+    a
+      color: #ffffff
+      border-bottom: 1px dotted
+      &:hover
+        color: #ffffff
+        border-bottom: 1px solid
+        text-decoration: none
+  &.purple
+    background-color: #8e44ad
+    color: #ffffff
+    a
+      color: #ffffff
+      border-bottom: 1px dotted
+      &:hover
+        color: #ffffff
+        border-bottom: 1px solid
+        text-decoration: none
+
+/* Bootstrap File & Image input*/
+
+.btn-file
+  position: relative
+  overflow: hidden
+  vertical-align: middle
+  > input
+    position: absolute
+    top: 0
+    right: 0
+    margin: 0
+    cursor: pointer
+    direction: ltr
+    font-size: 23px
+    transform: translate(-300px, 0) scale(4)
+    opacity: 0
+    filter: alpha(opacity = 0)
+
+.fileupload
+  padding-left: 0
+  margin-bottom: 20px
+  h4
+    margin: 0 0 10px
+  .thumbnail
+    display: inline-block
+    margin-bottom: 5px
+    overflow: hidden
+    text-align: center
+    vertical-align: middle
+    background-color: #ffffff
+    > img
+      display: block
+      max-height: 100%
+      vertical-align: middle
+    &.fileupload-small
+      width: 50px
+      height: 50px
+      &.flexible
+        width: auto
+        height: auto
+        max-width: 75px
+        max-height: 75px
+    &.fileupload-large
+      width: 250px
+      height: 150px
+      &.flexible
+        width: auto
+        height: auto
+        max-width: 350px
+        max-height: 250px
+    + .btn
+      margin-bottom: 5px
+      + .btn
+        margin-bottom: 5px
+  .raw.thumbnail
+    padding: 0
+    border: none
+    -webkit-border-radius: 0
+    -moz-border-radius: 0
+    border-radius: 0
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+  .btn
+    vertical-align: middle
+  .uneditable-input
+    display: inline-block
+    margin-bottom: 0
+    vertical-align: middle
+    cursor: text
+
+.fileupload-exists .fileupload-new
+  display: none
+
+.fileupload-new
+  .fileupload-exists
+    display: none
+  .input-append .btn-file
+    -webkit-border-radius: 0 4px 4px 0
+    -moz-border-radius: 0 4px 4px 0
+    border-radius: 0 4px 4px 0
+
+.fileupload-exists .input-append .btn-file
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  border-radius: 0
+
+/* Color picker*/
+
+.colorpicker-saturation
+  width: 100px
+  height: 100px
+  background-image: url("../img/plugins/colorpicker/saturation.png")
+  cursor: crosshair
+  float: left
+  i
+    display: block
+    height: 5px
+    width: 5px
+    border: 1px solid #000
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    position: absolute
+    top: 0
+    left: 0
+    margin: -4px 0 0 -4px
+    b
+      display: block
+      height: 5px
+      width: 5px
+      border: 1px solid #fff
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      border-radius: 4px
+
+.colorpicker-hue, .colorpicker-alpha
+  width: 15px
+  height: 100px
+  float: left
+  cursor: row-resize
+  margin-left: 4px
+  margin-bottom: 4px
+
+.colorpicker-hue i, .colorpicker-alpha i
+  display: block
+  height: 1px
+  background: #000
+  border-top: 1px solid #fff
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  margin-top: -1px
+
+.colorpicker-hue
+  background-image: url("../img/plugins/colorpicker/hue.png")
+
+.colorpicker-alpha
+  background-image: url("../img/plugins/colorpicker/alpha.png")
+  display: none
+
+.colorpicker
+  *zoom: 1
+  top: 0
+  left: 0
+  padding: 4px
+  min-width: 120px
+  &:before
+    display: table
+    content: ""
+    line-height: 0
+  &:after
+    display: table
+    content: ""
+    line-height: 0
+    clear: both
+  div
+    position: relative
+  &.alpha
+    min-width: 140px
+    .colorpicker-alpha
+      display: block
+
+.colorpicker-color
+  height: 10px
+  margin-top: 5px
+  clear: both
+  background-image: url("../img/plugins/colorpicker/alpha.png")
+  background-position: 0 100%
+  div
+    height: 10px
+
+.input-append.color .add-on i, .input-prepend.color .add-on i
+  display: block
+  cursor: pointer
+  width: 16px
+  height: 16px
+
+.colorpicker-preview
+  display: block
+  width: 20px
+  height: 20px
+
+/* Date picker*/
+
+.datepicker
+  top: 0
+  left: 0
+  padding: 4px
+  -webkit-border-radius: 6px
+  -moz-border-radius: 6px
+  border-radius: 6px
+  &:before
+    content: ''
+    display: inline-block
+    border-left: 7px solid transparent
+    border-right: 7px solid transparent
+    border-bottom: 7px solid #ccc
+    border-bottom-color: #f2f3f4
+    position: absolute
+    top: -7px
+    left: 6px
+  &:after
+    content: ''
+    display: inline-block
+    border-left: 6px solid transparent
+    border-right: 6px solid transparent
+    border-bottom: 6px solid #f2f3f4
+    position: absolute
+    top: -6px
+    left: 7px
+  > div
+    display: none
+  &.days div.datepicker-days, &.months div.datepicker-months, &.years div.datepicker-years
+    display: block
+  table
+    width: 100%
+    margin: 0
+  td, th
+    text-align: center
+    width: 20px
+    height: 20px
+    -webkit-border-radius: 6px
+    -moz-border-radius: 6px
+    border-radius: 6px
+  td
+    color: #4d4d4d
+    &.day:hover
+      background: #eeeeee
+      cursor: pointer
+    &.old, &.new
+      color: #999999
+    &.active
+      color: #fff
+      background-color: #2980b9
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+      &:hover
+        color: #fff
+        background-color: #2980b9
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+    span
+      display: block
+      width: 47px
+      height: 54px
+      line-height: 54px
+      float: left
+      margin: 2px
+      cursor: pointer
+      -webkit-border-radius: 6px
+      -moz-border-radius: 6px
+      border-radius: 6px
+      &:hover
+        background: #bdc3c7
+      &.active
+        color: #fff
+        background-color: #2980b9
+      &.old
+        color: #bdc3c7
+  th.switch
+    width: 145px
+  thead tr:first-child th
+    cursor: pointer
+    &:hover
+      background: #bdc3c7
+
+.input-append.date .add-on i, .input-prepend.date .add-on i
+  display: block
+  cursor: pointer
+  width: 16px
+  height: 16px
+
+.datepicker + .add-on .icon-calendar
+  font-size: 21px
+
+/* Time picker*/
+
+.bootstrap-timepicker-widget
+  &.dropdown-menu
+    min-width: 0px
+    &.open
+      display: block
+    &:after
+      border-bottom: 6px solid #f2f3f4
+    &:before
+      border-bottom: 7px solid #f2f3f4
+  table
+    width: auto
+    td
+      height: 0
+      a
+        padding: 0
+        width: auto
+        display: block
+        &:hover
+          border: none
+          background: #f2f3f4
+
+/* Date Range picker*/
+
+.daterangepicker
+  &.opensleft:before, &.opensright:before
+    border-bottom: 7px solid #f2f3f4
+  &.opensleft:after, &.opensright:after
+    border-bottom: 6px solid #f2f3f4
+  td
+    &.in-range
+      background-color: #f2f3f4
+    &.active
+      text-shadow: none
+      background: #2980b9
+      filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+      &:hover
+        text-shadow: none
+        background: #2980b9
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+  input
+    padding: 2px 5px
+  .range_inputs .btn
+    margin-top: 10px
+
+/* Wizard*/
+
+.wizard
+  overflow: visible
+  .stepContainer
+    display: block
+    position: relative
+    overflow: hidden
+    height: 100%
+    > div.content
+      margin: 0
+      padding: 20px
+      display: block
+      position: absolute
+      text-align: left
+      overflow: visible
+      z-index: 88
+    .StepTitle
+      display: block
+      z-index: 88
+      *zoom: 1
+      &:before
+        display: table
+        content: ""
+        line-height: 0
+      &:after
+        display: table
+        content: ""
+        line-height: 0
+        clear: both
+  ul.anchor
+    margin: 0 0 10px
+    text-align: center
+    background-color: #f5f5f5
+    border: 1px solid #dedede
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    li
+      margin-left: 20px
+      display: inline-block
+      &:first-child
+        margin: 0
+      a
+        display: block
+        font-size: 16px
+        line-height: 40px
+        text-decoration: none
+        outline-style: none
+        *zoom: 1
+        z-index: 99
+        &:before
+          display: table
+          content: ""
+          line-height: 0
+        &:after
+          display: table
+          content: ""
+          line-height: 0
+          clear: both
+        &.selected
+          color: #2980b9
+          cursor: text
+        &.done
+          color: #2980b9
+          text-decoration: line-through
+          .stepDesc
+            color: #2980b9
+        &.disabled
+          color: #2c3e50
+          cursor: text
+  > div.actionBar
+    margin-top: 6.666666666666667px
+    display: block
+    text-align: left
+    overflow: auto
+    z-index: 88
+    *zoom: 1
+    &:before
+      display: table
+      content: ""
+      line-height: 0
+    &:after
+      display: table
+      content: ""
+      line-height: 0
+      clear: both
+  .buttonDisabled
+    cursor: default
+    background-color: #e6e6e6
+    background-image: none
+    opacity: 0.65
+    filter: alpha(opacity = 65)
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+    cursor: text !important
+  .buttonNext, .buttonPrevious, .buttonFinish
+    display: block
+    text-decoration: none
+    display: inline-block
+    *display: inline
+    /* IE7 inline-block hack*/
+    *zoom: 1
+    padding: 4px 12px
+    margin-bottom: 0
+    font-size: 14px
+    line-height: 20px
+    text-align: center
+    vertical-align: middle
+    cursor: pointer
+    color: #333333
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75)
+    background-color: #f5f5f5
+    background-image: -moz-linear-gradient(top, white, #e6e6e6)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#e6e6e6))
+    background-image: -webkit-linear-gradient(top, white, #e6e6e6)
+    background-image: -o-linear-gradient(top, white, #e6e6e6)
+    background-image: linear-gradient(to bottom, white, #e6e6e6)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0)
+    border-color: #e6e6e6 #e6e6e6 #bfbfbf
+    *background-color: #e6e6e6
+    border: 1px solid #bbbbbb
+    *border: 0
+    border-bottom-color: #a2a2a2
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+    *margin-left: .3em
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05)
+    color: #ffffff
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+    background-color: #296db9
+    background-image: -moz-linear-gradient(top, #2980b9, #2950b9)
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2980b9), to(#2950b9))
+    background-image: -webkit-linear-gradient(top, #2980b9, #2950b9)
+    background-image: -o-linear-gradient(top, #2980b9, #2950b9)
+    background-image: linear-gradient(to bottom, #2980b9, #2950b9)
+    background-repeat: repeat-x
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2980b9', endColorstr='#ff2950b9', GradientType=0)
+    border-color: #2950b9 #2950b9 #1b357a
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+    *background-color: #2950b9
+    /* Darken IE7 buttons by default so they stand out more given they won't have borders*/
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false)
+  .buttonNext:hover, .buttonPrevious:hover, .buttonFinish:hover, .buttonNext:focus, .buttonPrevious:focus, .buttonFinish:focus, .buttonNext:active, .buttonPrevious:active, .buttonFinish:active, .buttonNext.active, .buttonPrevious.active, .buttonFinish.active, .buttonNext.disabled, .buttonPrevious.disabled, .buttonFinish.disabled, .buttonNext[disabled], .buttonPrevious[disabled], .buttonFinish[disabled]
+    color: #333333
+    background-color: #e6e6e6
+    *background-color: #d9d9d9
+  .buttonNext:active, .buttonPrevious:active, .buttonFinish:active, .buttonNext.active, .buttonPrevious.active, .buttonFinish.active
+    background-color: #cccccc \9
+  .buttonNext:first-child, .buttonPrevious:first-child, .buttonFinish:first-child
+    *margin-left: 0
+  .buttonNext:hover, .buttonPrevious:hover, .buttonFinish:hover, .buttonNext:focus, .buttonPrevious:focus, .buttonFinish:focus
+    color: #333333
+    text-decoration: none
+    background-position: 0 -15px
+    -webkit-transition: background-position 0.1s linear
+    -moz-transition: background-position 0.1s linear
+    -o-transition: background-position 0.1s linear
+    transition: background-position 0.1s linear
+  .buttonNext:focus, .buttonPrevious:focus, .buttonFinish:focus
+    outline: thin dotted #333
+    outline: 5px auto -webkit-focus-ring-color
+    outline-offset: -2px
+  .buttonNext.active, .buttonPrevious.active, .buttonFinish.active, .buttonNext:active, .buttonPrevious:active, .buttonFinish:active
+    background-image: none
+    outline: 0
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)
+    -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)
+  .buttonNext.disabled, .buttonPrevious.disabled, .buttonFinish.disabled, .buttonNext[disabled], .buttonPrevious[disabled], .buttonFinish[disabled]
+    cursor: default
+    background-image: none
+    opacity: 0.65
+    filter: alpha(opacity = 65)
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    box-shadow: none
+  .buttonNext .label, .buttonPrevious .label, .buttonFinish .label, .buttonNext .badge, .buttonPrevious .badge, .buttonFinish .badge
+    position: relative
+    top: -1px
+  .buttonNext [class^="icon-"], .buttonPrevious [class^="icon-"], .buttonFinish [class^="icon-"], .buttonNext [class*=" icon-"], .buttonPrevious [class*=" icon-"], .buttonFinish [class*=" icon-"], .buttonNext [class^="awe-"], .buttonPrevious [class^="awe-"], .buttonFinish [class^="awe-"], .buttonNext [class*=" awe-"], .buttonPrevious [class*=" awe-"], .buttonFinish [class*=" awe-"]
+    /* keeps button heights with and without icons the same*/
+    line-height: .9em
+  .buttonNext:hover, .buttonPrevious:hover, .buttonFinish:hover, .buttonNext:focus, .buttonPrevious:focus, .buttonFinish:focus, .buttonNext:active, .buttonPrevious:active, .buttonFinish:active, .buttonNext.active, .buttonPrevious.active, .buttonFinish.active, .buttonNext.disabled, .buttonPrevious.disabled, .buttonFinish.disabled, .buttonNext[disabled], .buttonPrevious[disabled], .buttonFinish[disabled]
+    color: #ffffff
+    background-color: #2950b9
+    *background-color: #2447a4
+  .buttonNext:active, .buttonPrevious:active, .buttonFinish:active, .buttonNext.active, .buttonPrevious.active, .buttonFinish.active
+    background-color: #203e8f \9
+  .buttonNext .caret, .buttonPrevious .caret, .buttonFinish .caret
+    border-top-color: #ffffff
+    border-bottom-color: #ffffff
+  .buttonNext
+    float: right
+    margin-right: 5px
+  .buttonPrevious
+    float: left
+  .buttonFinish
+    float: right
+  .loader
+    position: relative
+    display: none
+    float: left
+    margin: 2px 0 0 2px
+    padding: 8px 10px 8px 40px
+    z-index: 998
+
+/* LightBox*/
+
+#lightbox .lb-data
+  padding: 0
+
+/* jQuery Sparkline*/
+
+#jqstooltip
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  &.jqstooltip
+    border: none
+    background: #2c3e50
+
+/* jQuery prettyCheckable*/
+
+.checkbox.custom-checkbox, .radio.custom-radio
+  padding: 0
+  *zoom: 1
+
+.checkbox.custom-checkbox:before, .radio.custom-radio:before, .checkbox.custom-checkbox:after, .radio.custom-radio:after
+  display: table
+  content: ""
+  line-height: 0
+
+.checkbox.custom-checkbox:after, .radio.custom-radio:after
+  clear: both
+
+.prettycheckbox, .prettyradio
+  display: block
+  float: left
+
+.prettycheckbox a, .prettyradio a
+  width: 20px
+  height: 20px
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-blue.png")
+
+.prettycheckbox label, .prettyradio label
+  margin-right: 0
+
+.prettycheckbox.red a, .prettyradio.red a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-red.png")
+
+.prettycheckbox.blue a, .prettyradio.blue a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-blue.png")
+
+.prettycheckbox.green a, .prettyradio.green a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-green.png")
+
+.prettycheckbox.purple a, .prettyradio.purple a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-purple.png")
+
+.prettycheckbox.turquoise a, .prettyradio.turquoise a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-turquoise.png")
+
+.prettycheckbox.orange a, .prettyradio.orange a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-orange.png")
+
+.prettycheckbox.gray a, .prettyradio.gray a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-gray.png")
+
+.prettycheckbox.dark a, .prettyradio.dark a
+  background-image: url("../img/plugins/prettyCheckable/prettyCheckable-dark.png")
+
+.todo-block
+  .prettycheckbox label, .prettyradio label
+    display: none

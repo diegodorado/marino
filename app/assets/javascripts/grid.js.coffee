@@ -11,8 +11,6 @@ accounting.settings =
 		decimal : ","
 
 
-
-
 DateFormatter= (row, cell, value, columnDef, dataContext) ->
   p = value.match(/(\d+)/g)
   "#{p[2]}/#{p[1]}/#{p[0]}"
@@ -118,6 +116,16 @@ columns = [
   field: "updater_email"
   focusable: false
   selectable: false
+,
+  id: "comentario"
+  name: "Comentario"
+  field: "comentario"
+  cssClass: "comentario"
+  headerCssClass: "comentario"
+  editor: Slick.Editors.Text
+  focusable: true
+  selectable: true  
+  width: 300
 ]
 options =
   editable: true

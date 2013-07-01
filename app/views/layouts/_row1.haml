@@ -1,0 +1,105 @@
+/ Grid row
+.row
+  / Flexible block scaffolding example
+  .span8
+    / Grid row
+    .row
+      / Data block
+      %a.span2.data-block.widget-block{:href => "#"}
+        %section
+          %span.icon-file-new-alt
+          %strong Add product
+      / /Data block
+      / Data block
+      %a.span2.data-block.widget-block{:href => "#"}
+        %section
+          %span.icon-address-book-alt
+          %strong Add contact
+      / /Data block
+      / Data block
+      %a.span2.data-block.widget-block{:href => "#"}
+        %section
+          %span.icon-globe-alt
+          %strong Shipping
+      / /Data block
+      / Data block
+      %a.span2.data-block.widget-block{:href => "#"}
+        %section
+          %span.icon-shopping-cart-sign
+          %strong Orders
+      / /Data block
+      / Data block
+      %article.span8.data-block
+        %section
+          #demo-1.flot
+        %footer
+          %p
+            %span.icon-idea
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      / /Data block
+    / /Grid row
+  / /Flexible block scaffolding example
+  / Data block with TODO list widget
+  %article.span4.data-block.todo-block
+    %header
+      %h2
+        %span.icon-folder-open
+        My TODO list
+    %section
+      %form
+        %table.table
+          %tbody
+            %tr.done
+              %td
+                %input{:checked => "", :type => "checkbox", :value => "done"}/
+              %td
+                %p doItNow(); does not work as expected
+                %span
+                  completed
+                  %time Apr 12
+            %tr
+              %td
+                %input{:type => "checkbox", :value => "done"}/
+              %td
+                %p buy some more socks
+                %span
+                  due
+                  %time Apr 12
+            %tr
+              %td
+                %input{:type => "checkbox", :value => "done"}/
+              %td
+                %p
+                  %span.label.label-important Important
+                  meeting at 10:30 am
+                %span
+                  due
+                  %time Apr 12
+            %tr
+              %td
+                %input{:type => "checkbox", :value => "done"}/
+              %td
+                %p take out the trash
+                %span
+                  due
+                  %time Apr 17
+            %tr
+              %td
+                %input{:type => "checkbox", :value => "done"}/
+              %td
+                %p
+                  %span.label.label-success Party
+                  Eric birthday
+                %span
+                  due
+                  %time Apr 22
+            %tr
+              %td
+                %input{:type => "checkbox", :value => "done"}/
+              %td
+                %p team meeting
+                %span
+                  due
+                  %time May 22
+  / /Data block with TODO list widget
+/ /Grid row
