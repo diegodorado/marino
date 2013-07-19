@@ -1,0 +1,14 @@
+.row
+  .span1 =@fecha
+  .span1 =@tipo_doc
+  .span1 =@entrada
+  .span1 =@salida
+  .span1 =@saldo
+  .span1 =@precio_unitario
+  .span1 =@debe
+  .span1 =@haber
+  .span1 =@saldo_p
+  .span1 =@updater_email
+  .span1 =@comentario
+
+  

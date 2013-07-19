@@ -24,16 +24,18 @@ class Application
 
 
     if @options.crop_control
-      @crop_control_grid = new @CropControlGrid
-      @crop_control_grid.dataView.setItems @options.crop_controls
-      @crop_control_grid.updateFilter()
-  
-      #window.router = new Marino.Routers.CommentsRouter({comments: @options.company_comments})
-      #Backbone.history.start()
+
       comments = new Marino.Collections.CommentsCollection()
       comments.reset @options.company_comments
       view = new Marino.Views.Comments.IndexView(comments: comments)
       view.render()
+
+  
+      crop_controls = new Marino.Collections.CropControlsCollection()
+      crop_controls.reset @options.crop_controls
+      view = new Marino.Views.CropControls.IndexView(crop_controls: crop_controls)
+      view.render()  
+  
 
   
 
