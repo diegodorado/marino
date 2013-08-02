@@ -5,9 +5,10 @@ gem 'rails', '3.2.9'
 
 #gem "rails-settings-cached" ...alternative for mongodb?
 
+gem 'mongo'
 gem 'mongoid' #must be loaded before cancan
 gem 'bson_ext'  #improve MongoDB performance
-gem "grid_attachment"
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 
 gem 'devise'
 gem "omniauth"
@@ -22,6 +23,7 @@ gem 'thin'
 
 group :development do
   gem 'quiet_assets'
+  gem 'guard-livereload'
   gem "faker"
 end
 

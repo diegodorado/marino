@@ -13,9 +13,8 @@
   - @backups.each do |backup|
     %tr
       %td= #backup.creator.email if backup.creator
-      %td= #backup.zip #.name
-      %td= #backup.created_at
-      %td= #backup.zip #.type
+      %td= backup.zip #.name
+      %td= backup.created_at
       %td= link_to 'Show', backup
       %td= link_to 'Edit', edit_backup_path(backup)
       %td= link_to 'Destroy', backup, method: :delete, data: { confirm: 'Are you sure?' }

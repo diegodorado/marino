@@ -1,14 +1,11 @@
-
-
 class Backup
   include Mongoid::Document
   include Mongoid::Timestamps
-  #include GridAttachment::Mongoid
+  #attr_accessible :zip, :zip_cache
 
   belongs_to :creator, class_name: "User"
-  
-  #attachment :zip, :prefix => :grid
-  
+  mount_uploader :zip, ZipBackupUploader
+
 end
 
 

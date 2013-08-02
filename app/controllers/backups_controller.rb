@@ -9,7 +9,7 @@ class BackupsController < ApplicationController
 
   def show
     zip_content = @backup.zip.read
-    send_data zip_content, :filename => @backup.zip.name
+    send_data zip_content, :filename => @backup.zip.identifier
   end
 
   def new
@@ -17,7 +17,7 @@ class BackupsController < ApplicationController
   end
 
   def create
-    @backup.creator = current_user
+    #@backup.creator = current_user
 
     if @backup.save
       redirect_to backups_url , notice: "Backup was successfully created. (#{Backup.count})"

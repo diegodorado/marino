@@ -1,5 +1,7 @@
 Marino::Application.routes.draw do
-  
+
+  match "/images/uploads/*path" => "gridfs#serve"
+
   resources :stores
 
 
@@ -7,10 +9,12 @@ Marino::Application.routes.draw do
     get 'select', :on => :member
     post 'comment', :on => :member
   end
-  
+
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  resources :crops
+  resources :crops do
+    get 'get_price', :on => :collection
+  end
 
 
   resources :crop_controls

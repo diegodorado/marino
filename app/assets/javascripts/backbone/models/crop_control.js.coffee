@@ -21,4 +21,5 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
   model: Marino.Models.CropControl
   url: '/crop_controls'
 
-
+  byStore: (store_id) ->
+    _(@filter( (data) -> data.get("store_id") == store_id) )

@@ -33,7 +33,14 @@ class Application
   
       crop_controls = new Marino.Collections.CropControlsCollection()
       crop_controls.reset @options.crop_controls
-      view = new Marino.Views.CropControls.IndexView(crop_controls: crop_controls)
+      
+      
+      view = new Marino.Views.CropControls.IndexView
+        crop_controls: crop_controls
+        company: @options.company
+        stores: @options.stores
+        crops: @options.crops
+      
       view.render()  
   
 

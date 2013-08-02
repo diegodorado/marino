@@ -8,7 +8,7 @@ class CropsController < ApplicationController
       format.html {}
       format.json {render json: @crops}
     end
-    
+
   end
 
   # GET /crops/1
@@ -51,8 +51,7 @@ class CropsController < ApplicationController
           render action: "edit"
         end
       end
-      
-      
+
       format.json do
         if @crop.update_price(params[:month], params[:price], current_user)
           render json: @crop #head :no_content
@@ -60,7 +59,7 @@ class CropsController < ApplicationController
           render json: @crop.errors, status: :unprocessable_entity
         end
       end
-      
+
     end
   end
 
@@ -72,4 +71,16 @@ class CropsController < ApplicationController
     redirect_to crops_url
 
   end
+
+
+  def get_price
+    @crop = Crop.find(params[:crop_id])
+    @crop.update_price(params[:month], '22.8', current_user)
+
+    render json: @crop.get_price(params[:month])
+  end
+
+
+
+
 end
