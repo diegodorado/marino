@@ -1,26 +1,43 @@
-%h1 Listing backups
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Backups de G3
+    %ul.data-header-actions
+      %li
+        = link_to 'Nuevo Backup', new_backup_path
 
-%table.table.table-striped.table-bordered
-  %tr
-    %th Owner
-    %th Name
-    %th Uploaded
-    %th Type
-    %th
-    %th
-    %th
+  %section
+    %table.table.table-bordered
+      %tr
+        %th Fecha
+        %th Archivo
+        %th Creado por
+        %th
+        %th
 
-  - @backups.each do |backup|
-    %tr
-      %td= #backup.creator.email if backup.creator
-      %td= backup.zip #.name
-      %td= backup.created_at
-      %td= link_to 'Show', backup
-      %td= link_to 'Edit', edit_backup_path(backup)
-      %td= link_to 'Destroy', backup, method: :delete, data: { confirm: 'Are you sure?' }
-
-
-
-%br
-
-= link_to 'New Backup', new_backup_path
+      - @backups.each do |backup|
+        %tr
+          %td= backup.created_at
+          %td= backup[:zip]
+          %td= backup.creator.email
+          %td(style ="text-align:center;font-size:1.5em")
+            = link_to backup do
+              %i.icon-download-alt
+          %td(style ="text-align:center;font-size:1.5em")
+            = link_to backup, method: :delete, data: { confirm: 'Estas seguro?' } do              
+              %i.icon-remove
+    
+    
+    = form_for @backup do |f|
+      .fileupload.fileupload-new{"data-provides" => "fileupload"}
+        .input-append
+          .uneditable-input.span2
+            %i.icon-file.fileupload-exists
+            %span.fileupload-preview
+          %span.btn.btn-file
+            %span.fileupload-new Elegir Archivo
+            %span.fileupload-exists Cambiar
+            = f.file_field :zip
+          %a.btn.fileupload-exists{"data-dismiss" => "fileupload", :href => "#"} Quitar
+          = f.submit "Subir", :class => 'btn fileupload-exists'
+          

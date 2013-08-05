@@ -33,6 +33,7 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backgrid
+//= require jasny-bootstrap
 
 //= require backbone/marino
 

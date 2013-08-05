@@ -42,7 +42,7 @@ class User
   has_and_belongs_to_many :companies, :inverse_of => :users
 
   has_and_belongs_to_many :authentications
-  has_and_belongs_to_many :backups
+  has_many :backups, :inverse_of => :creator
 
   def password_required?
     (authentications.empty? || !password.blank?) && super
