@@ -2,9 +2,6 @@
   %header
     %h2(style="float: left;")
       Backups de G3
-    %ul.data-header-actions
-      %li
-        = link_to 'Nuevo Backup', new_backup_path
 
   %section
     %table.table.table-bordered
@@ -38,6 +35,5 @@
             %span.fileupload-new Elegir Archivo
             %span.fileupload-exists Cambiar
             = f.file_field :zip
-          %a.btn.fileupload-exists{"data-dismiss" => "fileupload", :href => "#"} Quitar
           = f.submit "Subir", :class => 'btn fileupload-exists'
           

@@ -3,11 +3,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-  
+
     user ||= User.new # guest user (not logged in)
 
-    
-    
 
     #can :read, :all                   # allow everyone to read everything
     if user.role? :admin
@@ -28,8 +26,6 @@ class Ability
     can :manage, Company , :user_ids => user.id
     can :manage, Store , :company => {:user_ids => user.id}
     can :manage, CropControl , :store_id => user.store_ids
-    
-    
-    
+
   end
 end
