@@ -2,8 +2,9 @@ class User
   include Mongoid::Document
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  #  :encryptable, :lockable, :timeoutable and :omniauthable
+  devise :token_authenticatable,  :confirmable,
+         :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
 
@@ -22,9 +23,9 @@ class User
 
 
   ## Confirmable
-  # field :confirmation_token,   :type => String
-  # field :confirmed_at,         :type => Time
-  # field :confirmation_sent_at, :type => Time
+  field :confirmation_token,   :type => String
+  field :confirmed_at,         :type => Time
+  field :confirmation_sent_at, :type => Time
   # field :unconfirmed_email,    :type => String # Only if using reconfirmable
 
 

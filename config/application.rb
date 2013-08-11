@@ -81,5 +81,8 @@ module Marino
 
     #config.sass.preferred_syntax = :sass
 
+
+    config.action_mailer.default_url_options = { :host => 'marino.herokuapp.com' }
+
   end
 end
