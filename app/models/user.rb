@@ -50,7 +50,7 @@ class User
 
 
   def role_enum
-    %w[admin employee]
+    %w[admin backups employee]
   end
 
   def role?(role)

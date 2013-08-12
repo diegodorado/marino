@@ -21,6 +21,10 @@ class Ability
       #end
     end
 
+    if user.role? :backups
+      can :manage, Backup
+    end
+
 
     can :manage, Backup , :creator_id => user.id
     can :manage, Company , :user_ids => user.id
