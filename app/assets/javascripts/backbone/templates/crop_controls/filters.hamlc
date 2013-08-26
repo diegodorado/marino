@@ -1,0 +1,18 @@
+%ul.data-header-actions
+  %li
+    #switch-filter.make-switch{"data-on-label"=>"Cont", "data-off-label"=>"Gest"}
+      %input{:type=>"checkbox", :value=>false} 
+  %li
+    %select#store-filter
+      %option{ :value => "all" }  (Todos los Depósitos)
+      - for store in @stores
+        %option{ :value => store._id } #{store.name}
+      %option{ :value => "add" }  Agregar Depósito  
+  %li
+    %select#crop-filter
+      - for crop in @crops
+        %option{ :value => crop._id }
+          #{crop.name}  
+  %li
+    %button#new_crop_control.btn.btn-alt.btn-success.disabled Nuevo
+

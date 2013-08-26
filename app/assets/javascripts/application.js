@@ -34,14 +34,13 @@
 //= require backbone_datalink
 //= require backgrid
 //= require jasny-bootstrap
+//= require bootstrap-switch
+//= require prettyCheckable
 
 //= require backbone/marino
-
+//= require backbone-link
 
 //= require main
-//= require remotemodel
-//= require tipodoc-editor
 //= require grid
-//= require crops
 //= require ajax_common
 

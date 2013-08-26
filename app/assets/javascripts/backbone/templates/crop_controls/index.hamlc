@@ -1,66 +1,16 @@
-.dark.data-block
-  %header
-    %h2(style="float: left;")
-      #{@company.name} - Control de granos
-    %ul.data-header-actions
-      %li
-        %select.store-filter
-          %option{ :value => "all" }  (Todos los Depósitos)
-          - for store in @stores
-            %option{ :value => store._id } #{store.name}
-          %option{ :value => "add" }  Agregar Depósito
-
-      %li
-        %select.crop-filter
-          - for crop in @crops
-            %option{ :value => crop._id }
-              #{crop.name}    
-      %li
-        %button.add_cc.btn.btn-alt.btn-success Agregar Línea
-      %li
-        %button.delete_cc.btn.btn-alt.btn-danger.disabled Eliminar Línea
-      %li
-        %button.save.btn.btn-alt.btn-success Guardar
-
-  %section
-    .modal.hide.fade
-      .modal-header
-        %a.close{"data-dismiss" => "modal", :href => "#"} ×
-        %h3 Nueva linea
-      .modal-body
-
-        %form.form-horizontal
-          .control-group
-            %label.control-label{:for => "fecha"} Fecha
-            .controls
-              %input{:name =>"fecha", :required => true}
-          .control-group
-            %label.control-label{:for => "tipo_doc"} Tipo Doc
-            .controls
-              %select{:name =>"tipo_doc", :required => true}
-                %option EX INIC
-                %option CONSUMO
-                %option COSECHA
-                %option MERMAS
-                %option VENTAS
-          .control-group
-            %label.control-label{:for => "entrada"} Entrada
-            .controls
-              %input{:name =>"entrada"}
-          .control-group
-            %label.control-label{:for => "salida"} Salida
-            .controls
-              %input{:name =>"salida"}
-          .control-group
-            %label.control-label{:for => "precio_unitario"} Precio Unitario
-            .controls
-              %input{:name =>"precio_unitario"}
- 
-            
-      .modal-footer
-        %button.cancel.btn.btn-alt  Cancel
-        %button.ok.btn.btn-alt.btn-success Aceptar
-    
-    
-
-    .grid
+%table.table
+  %thead
+    %tr
+      %th fecha
+      %th tipo_doc
+      %th entrada
+      %th salida
+      %th saldo
+      %th precio_unitario
+      %th debe
+      %th haber
+      %th saldo_p
+      %th updater_email
+      %th comentario
+      %th
+  %tbody

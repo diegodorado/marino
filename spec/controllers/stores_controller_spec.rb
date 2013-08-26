@@ -24,7 +24,7 @@ describe StoresController do
   # Store. As you add validations to Store, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {  }
+    { "name" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe StoresController do
       it "assigns a newly created but unsaved store as @store" do
         # Trigger the behavior that occurs when invalid params are submitted
         Store.any_instance.stub(:save).and_return(false)
-        post :create, {:store => {  }}, valid_session
+        post :create, {:store => { "name" => "invalid value" }}, valid_session
         assigns(:store).should be_a_new(Store)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Store.any_instance.stub(:save).and_return(false)
-        post :create, {:store => {  }}, valid_session
+        post :create, {:store => { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe StoresController do
         # specifies that the Store created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Store.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => store.to_param, :store => { "these" => "params" }}, valid_session
+        Store.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+        put :update, {:id => store.to_param, :store => { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested store as @store" do
@@ -132,7 +132,7 @@ describe StoresController do
         store = Store.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Store.any_instance.stub(:save).and_return(false)
-        put :update, {:id => store.to_param, :store => {  }}, valid_session
+        put :update, {:id => store.to_param, :store => { "name" => "invalid value" }}, valid_session
         assigns(:store).should eq(store)
       end
 
@@ -140,7 +140,7 @@ describe StoresController do
         store = Store.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Store.any_instance.stub(:save).and_return(false)
-        put :update, {:id => store.to_param, :store => {  }}, valid_session
+        put :update, {:id => store.to_param, :store => { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

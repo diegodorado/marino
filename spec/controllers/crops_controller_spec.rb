@@ -24,7 +24,7 @@ describe CropsController do
   # Crop. As you add validations to Crop, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {  }
+    { "name" => "MyString" }
   end
 
   # This should return the minimal set of values that should be in the session
@@ -89,14 +89,14 @@ describe CropsController do
       it "assigns a newly created but unsaved crop as @crop" do
         # Trigger the behavior that occurs when invalid params are submitted
         Crop.any_instance.stub(:save).and_return(false)
-        post :create, {:crop => {  }}, valid_session
+        post :create, {:crop => { "name" => "invalid value" }}, valid_session
         assigns(:crop).should be_a_new(Crop)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Crop.any_instance.stub(:save).and_return(false)
-        post :create, {:crop => {  }}, valid_session
+        post :create, {:crop => { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -110,8 +110,8 @@ describe CropsController do
         # specifies that the Crop created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Crop.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
-        put :update, {:id => crop.to_param, :crop => { "these" => "params" }}, valid_session
+        Crop.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+        put :update, {:id => crop.to_param, :crop => { "name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested crop as @crop" do
@@ -132,7 +132,7 @@ describe CropsController do
         crop = Crop.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Crop.any_instance.stub(:save).and_return(false)
-        put :update, {:id => crop.to_param, :crop => {  }}, valid_session
+        put :update, {:id => crop.to_param, :crop => { "name" => "invalid value" }}, valid_session
         assigns(:crop).should eq(crop)
       end
 
@@ -140,7 +140,7 @@ describe CropsController do
         crop = Crop.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Crop.any_instance.stub(:save).and_return(false)
-        put :update, {:id => crop.to_param, :crop => {  }}, valid_session
+        put :update, {:id => crop.to_param, :crop => { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

@@ -1,14 +1,21 @@
-.row
-  .span1 =@fecha
-  .span1 =@tipo_doc
-  .span1 =@entrada
-  .span1 =@salida
-  .span1 =@saldo
-  .span1 =@precio_unitario
-  .span1 =@debe
-  .span1 =@haber
-  .span1 =@saldo_p
-  .span1 =@updater_email
-  .span1 =@comentario
+%td =@fecha
+%td =@tipo_doc
+%td =@entrada
+%td =@salida
+%td =@saldo
+%td =@precio_unitario
+%td =@debe
+%td =@haber
+%td =@saldo_p
+%td =@updater_email
+%td =@comentario
+%td{:style => "font-size:1.5em;text-align:center"}
+  %a{:href => "#/#{@id}/edit"}
+    %span.awe-pencil
+  &nbsp;&nbsp;&nbsp;
+  %a.destroy{:href => "#/#{@id}/destroy"}
+    %span.awe-remove
+  
+
 
   

@@ -1,25 +1,29 @@
 class Marino.Models.CropControl extends Backbone.Model
-  idAttribute: '_id'
-  calculatedFields: ["saldo", "debe","haber","saldo_p"]
+  paramRoot: 'crop_control'
 
   defaults:
+    entrada: 0
+    debe: 0
+    haber: 0
     gestion: true
-    
-  get: (key)->
-    if key in @calculatedFields
+    contabilidad: true
 
-      fecha = @get('fecha')
-      previous = @collection.filter( (model) -> model.get('fecha') < fecha )
-      sum = previous.reduce( (memo, model) ->
-        model.get('entrada')-model.get('salida') + memo
-      , 0 )
-      sum
-    else
-      super(key)
-    
 class Marino.Collections.CropControlsCollection extends Backbone.Collection
   model: Marino.Models.CropControl
   url: '/crop_controls'
 
-  byStore: (store_id) ->
-    _(@filter( (data) -> data.get("store_id") == store_id) )
+  params: {}
+
+  calculate: ()->
+    models = @where @params
+    models = _.invoke(models, 'toJSON');
+    saldo = 0
+    saldo_p = 0
+    _.each models, (item) ->
+      saldo += item.entrada-item.salida
+      item.saldo = saldo
+      item.debe = item.entrada*item.precio_unitario
+      item.haber = item.salida*item.precio_unitario
+      saldo_p += item.debe-item.haber
+      item.saldo_p = saldo_p
+    models

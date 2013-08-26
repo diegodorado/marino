@@ -28,22 +28,16 @@ class Application
       comments = new Marino.Collections.CommentsCollection()
       comments.reset @options.company_comments
       view = new Marino.Views.Comments.IndexView(comments: comments)
-      view.render()
+      #view.render()
 
-  
-      crop_controls = new Marino.Collections.CropControlsCollection()
-      crop_controls.reset @options.crop_controls
+      window.router = new Marino.Routers.CropControlsRouter(@options)
+      Backbone.history.start()
       
+      #view = new Marino.Views.CropControls.IndexView
+      #  crop_controls: crop_controls
+      #  company: @options.company
+      #  stores: @options.stores
+      #  crops: @options.crops
       
-      view = new Marino.Views.CropControls.IndexView
-        crop_controls: crop_controls
-        company: @options.company
-        stores: @options.stores
-        crops: @options.crops
-      
-      view.render()  
-  
-
-  
 
 window.app = new Application  

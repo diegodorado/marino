@@ -1,5 +1,11 @@
 Marino::Application.routes.draw do
 
+  resources :crops
+
+
+  resources :posts
+
+
   match "/images/uploads/*path" => "gridfs#serve"
 
   resources :stores

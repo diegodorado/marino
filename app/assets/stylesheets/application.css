@@ -14,4 +14,6 @@
  *= require backgrid
  *= require jasny-bootstrap.css
  *= require main
+ *= require bootstrap-switch
+ *= require prettyCheckable
  */
