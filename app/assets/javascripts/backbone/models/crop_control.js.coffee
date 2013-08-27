@@ -3,8 +3,8 @@ class Marino.Models.CropControl extends Backbone.Model
 
   defaults:
     entrada: 0
-    debe: 0
-    haber: 0
+    salida: 0
+    precio_unitario: 0
     gestion: true
     contabilidad: true
 
@@ -21,9 +21,9 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
     saldo_p = 0
     _.each models, (item) ->
       saldo += item.entrada-item.salida
-      item.saldo = saldo
-      item.debe = item.entrada*item.precio_unitario
-      item.haber = item.salida*item.precio_unitario
+      item.saldo = Math.round(saldo * 1000) / 1000
+      item.debe = Math.round(item.entrada*item.precio_unitario * 1000) / 1000
+      item.haber = Math.round(item.salida*item.precio_unitario * 1000) / 1000
       saldo_p += item.debe-item.haber
-      item.saldo_p = saldo_p
+      item.saldo_p = Math.round(saldo_p * 1000) / 1000
     models

@@ -1,16 +1,16 @@
 %table.table
   %thead
     %tr
-      %th fecha
-      %th tipo_doc
-      %th entrada
-      %th salida
-      %th saldo
-      %th precio_unitario
-      %th debe
-      %th haber
-      %th saldo_p
-      %th updater_email
-      %th comentario
+      %th Fecha
+      %th Tipo Dococ
+      %th Entrada (tn)
+      %th Salida (tn)
+      %th Saldo (tn)
+      %th Precio ($/tn)
+      %th Debe ($)
+      %th Haber ($)
+      %th Saldo ($)
+      %th Actualizado por
+      %th Comentario
       %th
   %tbody
