@@ -13,6 +13,13 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
   url: '/crop_controls'
 
   params: {}
+  
+  precio_unitario: ()->
+    models = @where @params
+    _.last(models).get('precio_unitario')
+
+  comparator: (model) ->
+    model.get("fecha")
 
   calculate: ()->
     models = @where @params

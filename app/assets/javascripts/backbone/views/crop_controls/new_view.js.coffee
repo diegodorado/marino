@@ -10,6 +10,8 @@ class Marino.Views.CropControls.NewView extends Backbone.View
     super(options)
     @model = new @collection.model()
     @model.set @collection.params #sets filters
+    @model.set 
+      precio_unitario: @collection.precio_unitario()
 
     @model.bind("change:errors", () =>
       this.render()

@@ -9,10 +9,15 @@
       .controls
         %select{:name =>"tipo_doc", :required => true, :value=> @tipo_doc}
           %option{:selected => true} EX INIC
-          %option CONSUMO
           %option COSECHA
-          %option MERMAS
+          %option AJUSTE +
           %option VENTAS
+          %option MERMAS
+          %option CONSUMOS
+          %option SEMILLA
+          %option AJUSTE -
+          
+          
     .control-group
       .controls
         %label.checkbox
@@ -30,6 +35,11 @@
       %label.control-label{:for => "precio_unitario"} Precio Unitario
       .controls
         %input{:name =>"precio_unitario", :value=> @precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+    .control-group
+      %label.control-label{:for => "comentario"} Comentarios
+      .controls
+        %textarea{:name =>"comentario"}
+          =@comentario
     .form-actions
       %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Cancelar
       %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Aceptar
