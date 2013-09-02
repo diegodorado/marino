@@ -36,4 +36,3 @@
     .form-actions
       %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Cancelar
       %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Aceptar
-      

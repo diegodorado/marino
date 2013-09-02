@@ -1,10 +1,11 @@
 Marino.Views.CropControls ||= {}
 
 class Marino.Views.CropControls.NewView extends Backbone.View
-  template: JST["backbone/templates/crop_controls/new"]
+  template: JST["backbone/templates/crop_controls/form"]
 
   events:
     "submit form": "save"
+    'change select[name="tipo_doc"]': 'tipo_doc_changed'
 
   constructor: (options) ->
     super(options)
@@ -33,23 +34,22 @@ class Marino.Views.CropControls.NewView extends Backbone.View
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 
+  tipo_doc_changed: () ->
+    if @model.isEntrada()
+      @$('input[name="entrada"]').prop "disabled", false
+      @$('input[name="salida"]').prop "disabled", true
+      @model.set 'salida', 0
+    if @model.isSalida()
+      @$('input[name="entrada"]').prop "disabled", true
+      @$('input[name="salida"]').prop "disabled", false
+      @model.set 'entrada', 0
+
   render: ->
     @$el.html(@template(@model.toJSON() ))
     @$('input.checkbox').prettyCheckable()
-    @$("form").backboneLink(@model)
+    @tipo_doc_changed()  #trigger this on render
+
+    this.$("form").backboneLink(@model)
+
     return this
 
-  fecha_changed: (e) ->
-    e.preventDefault()
-    date = $(e.target).val()
-    return unless date
-    return
-    
-    $.getJSON("/crops/get_price",
-      month: date[0..6]
-      crop_id: @$(".crop-filter").val() 
-    ).done((json) =>
-      @$("input[name=precio_unitario]").val(json) 
-    ).fail (jqxhr, textStatus, error) ->
-      err = textStatus + ", " + error
-      console.log "Request Failed: " + err
