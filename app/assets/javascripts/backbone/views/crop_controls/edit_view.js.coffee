@@ -6,7 +6,13 @@ class Marino.Views.CropControls.EditView extends Backbone.View
   events:
     "submit form": "update"
     'change select[name="tipo_doc"]': 'tipo_doc_changed'
+
+  constructor: (options) ->
+    super(options)
+    @collection = @options.crop_controls
     
+    
+        
   update: (e) ->
     e.preventDefault()
     e.stopPropagation()
@@ -30,10 +36,15 @@ class Marino.Views.CropControls.EditView extends Backbone.View
       @model.set 'entrada', 0
 
   render: ->
-    @$el.html(@template(@model.toJSON() ))
+    @$el.html @template
+      crop_control: @model.toJSON()
+      stores: @options.stores.toJSON()
+      crops: @options.crops.toJSON()
+      tipo_docs: @options.crop_controls.tipo_docs
     @$('input.checkbox').prettyCheckable()
     @tipo_doc_changed()  #trigger this on render
 
     this.$("form").backboneLink(@model)
+    $("#filters").hide()
 
     return this

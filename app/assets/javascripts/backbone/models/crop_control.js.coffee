@@ -9,20 +9,11 @@ class Marino.Models.CropControl extends Backbone.Model
     contabilidad: true
     tipo_doc: 'EX INIC'
 
-  tipo_docs: ['EX INIC','COSECHA','AJUSTE +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -']
-
   isEntrada: () ->
     @get('tipo_doc') in ['EX INIC','COSECHA','AJUSTE +']
 
   isSalida: () ->
     @get('tipo_doc') in ['VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -']
-
-  toJSON: ()->
-    attrs = super()
-    attrs['tipo_docs'] = @tipo_docs
-    attrs
-    
-
     
 
 
@@ -31,10 +22,15 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
   url: '/crop_controls'
 
   params: {}
+  tipo_docs: ['EX INIC','COSECHA','AJUSTE +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -']
   
   precio_unitario: ()->
     models = @where @params
-    _.last(models).get('precio_unitario')
+    last = _.last(models)
+    if last
+      last.get('precio_unitario')
+    else
+      0
 
   comparator: (model) ->
     model.get("fecha")

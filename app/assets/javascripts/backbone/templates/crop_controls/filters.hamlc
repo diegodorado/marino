@@ -14,5 +14,5 @@
         %option{ :value => crop._id }
           #{crop.name}  
   %li
-    %button#new_crop_control.btn.btn-alt.btn-success.disabled Nuevo
+    %button#new_crop_control.btn.btn-alt.btn-success Nuevo
 

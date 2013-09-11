@@ -23,7 +23,11 @@ class Marino.Routers.CropControlsRouter extends Backbone.Router
     ".*"        : "index"
 
   newCropControl: ->
-    @view = new Marino.Views.CropControls.NewView(collection: @crop_controls)
+    @view = new Marino.Views.CropControls.NewView
+      collection: @crop_controls
+      crop_controls: @crop_controls
+      stores: @stores
+      crops: @crops
     $("#crop_controls").html(@view.render().el)
 
   index: ->
@@ -36,5 +40,9 @@ class Marino.Routers.CropControlsRouter extends Backbone.Router
 
   edit: (id) ->
     crop_control = @crop_controls.get(id)
-    @view = new Marino.Views.CropControls.EditView(model: crop_control)
+    @view = new Marino.Views.CropControls.EditView
+      model: crop_control
+      crop_controls: @crop_controls
+      stores: @stores
+      crops: @crops
     $("#crop_controls").html(@view.render().el)

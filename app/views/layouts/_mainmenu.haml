@@ -9,7 +9,7 @@
   / Navigation
   .nav-collapse.collapse{:role => "navigation"}
     %ul
-      %li.active
+      %li.active-
         %a{:href => "/"}
           %span.icon-home
           Inicio
@@ -17,39 +17,7 @@
         %a{:href => "/backups"}
           %span.icon-file
           Backups
-        %ul.dropdown-menu
-          %li
-            %a{:href => "forms.html"}
-              %span.icon-align-left>
-              Forms
-          %li
-            %a{:href => "tables.html"}
-              %span.icon-th-list>
-              Tables
-            %span.badge 23
       %li
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          %span.icon-asl
-          Elements
-        %ul.dropdown-menu
-          %li
-            %a{:href => "charts.html"}
-              %span.icon-graph
-              Charts
-          %li.divider
-          %li
-            %a{:href => "typo.html"}
-              %span.icon-font
-              Typography
-            %span.badge 7
-      %li
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          %span.icon-file
-          Pages
-        %ul.dropdown-menu
-          %li
-            %a{:href => "eshop.html"} Online store
-      %li
-        %a{:href => "docs/index.html"}
+        = link_to companies_path do
           %span.icon-info-sign
-          Docs
+          Mis Empresas

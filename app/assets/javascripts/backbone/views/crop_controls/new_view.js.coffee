@@ -9,10 +9,12 @@ class Marino.Views.CropControls.NewView extends Backbone.View
 
   constructor: (options) ->
     super(options)
+    @collection = @options.crop_controls
     @model = new @collection.model()
     @model.set @collection.params #sets filters
     @model.set 
       precio_unitario: @collection.precio_unitario()
+      fecha: (new Date).toJSON().substring(0, 10)
 
     @model.bind("change:errors", () =>
       this.render()
@@ -20,6 +22,7 @@ class Marino.Views.CropControls.NewView extends Backbone.View
 
   save: (e) ->
     e.preventDefault()
+
     e.stopPropagation()
 
     @model.unset("errors")
@@ -28,7 +31,7 @@ class Marino.Views.CropControls.NewView extends Backbone.View
       success: (crop_control) =>
         @model = crop_control
         #window.location.hash = "/#{@model.id}"
-        window.location.hash = "/index"
+        window.location.hash = "index"
 
       error: (crop_control, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
@@ -45,11 +48,16 @@ class Marino.Views.CropControls.NewView extends Backbone.View
       @model.set 'entrada', 0
 
   render: ->
-    @$el.html(@template(@model.toJSON() ))
+    @$el.html @template
+      crop_control: @model.toJSON()
+      stores: @options.stores.toJSON()
+      crops: @options.crops.toJSON()
+      tipo_docs: @options.crop_controls.tipo_docs
     @$('input.checkbox').prettyCheckable()
     @tipo_doc_changed()  #trigger this on render
 
     this.$("form").backboneLink(@model)
+    $("#filters").hide()
 
     return this
 

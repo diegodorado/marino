@@ -3,36 +3,51 @@
     .control-group
       %label.control-label{:for => "fecha"} Fecha
       .controls
-        %input{:type=> "date", :name =>"fecha", :required => true, :value=> @fecha}
+        %input{:type=> "date", :name =>"fecha", :required => true, :value=> @crop_control.fecha}
     .control-group
       %label.control-label{:for => "tipo_doc"} Tipo Doc
       .controls
         %select{:name =>"tipo_doc", :required => true}
           - for tipo_doc in @tipo_docs
-            %option{ :selected => (@tipo_doc is tipo_doc) } #{tipo_doc}
+            %option{ :selected => (@crop_control.tipo_doc is tipo_doc) } #{tipo_doc}
+
+    .control-group
+      %label.control-label{:for => "store_id"} Depósito
+      .controls
+        %select{:name =>"store_id", :required => true}
+          - for store in @stores
+            %option{ :selected => (@crop_control.store_id is store._id), :value => store._id }  #{store.name}
+            
+    .control-group
+      %label.control-label{:for => "crop_id"} Cultivo
+      .controls
+        %select{:name =>"crop_id", :required => true}
+          - for crop in @crops
+            %option{ :selected => (@crop_control.crop_id is crop._id), :value => crop._id }  #{crop.name}
+
           
     .control-group
       .controls
         %label.checkbox
-          %input.checkbox{:name =>"contabilidad", :checked=> @contabilidad, "data-label"=>"Contabilidad", "type"=>"checkbox"} 
-          %input.checkbox{:name =>"gestion", :checked=> @gestion, "data-label"=>"Gestion", "type"=>"checkbox"} 
+          %input.checkbox{:name =>"contabilidad", :checked=> @crop_control.contabilidad, "data-label"=>"Contabilidad", "type"=>"checkbox"} 
+          %input.checkbox{:name =>"gestion", :checked=> @crop_control.gestion, "data-label"=>"Gestion", "type"=>"checkbox"} 
     .control-group
       %label.control-label{:for => "entrada"} Entrada
       .controls
-        %input{:name =>"entrada", :value=> @entrada, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+        %input{:name =>"entrada", :value=> @crop_control.entrada, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
     .control-group
       %label.control-label{:for => "salida"} Salida
       .controls
-        %input{:name =>"salida", :value=> @salida, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+        %input{:name =>"salida", :value=> @crop_control.salida, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
     .control-group
       %label.control-label{:for => "precio_unitario"} Precio Unitario
       .controls
-        %input{:name =>"precio_unitario", :value=> @precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+        %input{:name =>"precio_unitario", :value=> @crop_control.precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
     .control-group
       %label.control-label{:for => "comentario"} Comentarios
       .controls
         %textarea{:name =>"comentario"}
-          =@comentario
+          =@crop_control.comentario
     .form-actions
       %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Cancelar
       %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Aceptar

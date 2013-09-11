@@ -1,7 +1,16 @@
-%article.span4.data-block.plan-block
+
+.dark.data-block
+  %header
+    %h2
+      Intranet
   %section
-    %span.icon-play
-    %h3 Inicio
-    %p Debes seleccionar una empresa para comenzar
-    = link_to 'Seleccionar empresa', companies_path, :class => "btn btn-alt btn-info"
+    %p.lead Bienvenido
+    %p 
+      Para acceder a cualquier sistema de la Intranet es necesario registrarse.
+    %p     
+      Si ya estás registrado, ingresa 
+      = link_to('ingresa aquí', new_user_session_path)
+    %p
+      De lo contrario, 
+      = link_to('registrate', new_user_registration_path)
 

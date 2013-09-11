@@ -3,7 +3,7 @@
   - if user_signed_in?
     %figure
       / User profile avatar
-      %img{:alt => "John Pixel avatar", :src => "http://placekitten.com/60/60"}/
+      /%img{:alt => "John Pixel avatar", :src => "http://placekitten.com/60/60"}/
       / User profile info
       %figcaption
         %strong
@@ -19,9 +19,9 @@
       / User profile info
       %figcaption
         %strong
-          %a{:href => "#"} John Pixel
+          = link_to('Ingresar', new_user_session_path)
         %ul
           %li
-            = link_to('Ingresar', new_user_session_path)
+            %a o
           %li
             = link_to('Registrarse', new_user_registration_path)
