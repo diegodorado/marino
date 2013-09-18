@@ -9,8 +9,9 @@ class Marino.Views.CropControls.CropControlView extends Backbone.View
   tagName: "tr"
 
   destroy: () ->
-    @model.destroy()
-    this.remove()
+    if (confirm('Está seguro de querer eliminar este registro?'))
+      @model.destroy()
+      @remove()
     
 
     return false

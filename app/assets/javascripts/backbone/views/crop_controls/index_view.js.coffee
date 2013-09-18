@@ -8,8 +8,8 @@ class Marino.Views.CropControls.IndexView extends Backbone.View
     @shadowCollection = @collection.clone()
 
     @listenTo @collection, "add", (model, collection, options) => @shadowCollection.add(model, options)
-    @listenTo @collection, "remove", (model, collection, options) =>
-      @shadowCollection.remove(model, options)
+    @listenTo @shadowCollection, "remove", (model, collection, options) =>
+      @collection.remove(model, options)
       @collection.trigger('filters_changed')
     @listenTo @collection, "reset", (collection, options) => 
       options = _.extend({reindex: true}, options || {})
