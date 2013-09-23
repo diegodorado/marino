@@ -1,10 +1,10 @@
 Marino.Views.Crops ||= {}
 
 class Marino.Views.Crops.EditView extends Backbone.View
-  template: JST["backbone/templates/crops/edit"]
+  template: JST["backbone/templates/crops/form"]
 
   events:
-    "submit #edit-crop": "update"
+    "submit form": "update"
 
   update: (e) ->
     e.preventDefault()

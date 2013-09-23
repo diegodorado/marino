@@ -2,6 +2,9 @@
   %thead
     %tr
       %th Nombre
+      %th Mercado
+      %th Fuente
+      %th Unidad
       %th
   %tbody
 

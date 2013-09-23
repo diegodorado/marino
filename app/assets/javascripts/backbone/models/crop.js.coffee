@@ -2,8 +2,6 @@ class Marino.Models.Crop extends Backbone.Model
   paramRoot: 'crop'
   idAttribute: '_id'
 
-  defaults:
-    name: null
 
 class Marino.Collections.CropsCollection extends Backbone.Collection
   model: Marino.Models.Crop

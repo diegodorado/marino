@@ -10,10 +10,10 @@ class Crop
 
 
   def as_json(options={})
-    options[:include] = [:crop_prices]
+    #options[:include] = [:crop_prices]
 
     attrs = super(options)
-    attrs["id"] = self.persisted? ? self._id : nil
+    #attrs["id"] = self.persisted? ? self._id : nil
     #attrs.merge! attrs.delete 'prices'
     attrs
   end
@@ -48,26 +48,6 @@ class Crop
     result
   end
 
-  def self.grid
-
-    {
-      :columns => [
-        self.grid_column("name"),
-        self.grid_column("market"),
-        self.grid_column("source"),
-        self.grid_column("unit")
-      ]+price_columns,
-
-
-      :options => {
-        :enableCellNavigation => true,
-        :editable => true,
-        :asyncEditorLoading => false,
-        :autoEdit => true
-      },
-      :data => self.all
-    }
-  end
 
 
 end

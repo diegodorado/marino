@@ -1,10 +1,10 @@
 Marino.Views.Crops ||= {}
 
 class Marino.Views.Crops.NewView extends Backbone.View
-  template: JST["backbone/templates/crops/new"]
+  template: JST["backbone/templates/crops/form"]
 
   events:
-    "submit #new-crop": "save"
+    "submit form": "save"
 
   constructor: (options) ->
     super(options)
