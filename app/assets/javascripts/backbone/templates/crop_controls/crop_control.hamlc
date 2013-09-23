@@ -10,10 +10,10 @@
 %td =@updater_email
 %td =@comentario
 %td{:style => "font-size:1.5em;text-align:center"}
-  %a{:href => "#/#{@id}/edit"}
+  %a{:href => "#/#{@_id}/edit"}
     %span.awe-pencil
   &nbsp;&nbsp;&nbsp;
-  %a.destroy{:href => "#/#{@id}/destroy"}
+  %a.destroy{:href => "#/#{@_id}/destroy"}
     %span.awe-remove
   
 

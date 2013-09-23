@@ -49,6 +49,6 @@
         %textarea{:name =>"comentario"}
           =@crop_control.comentario
     .form-actions
-      %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Cancelar
+      %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Volver al Listado
       %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Guardar
       %a.save_and_add.btn.btn-large.btn-alt{:href => "#"} Guardar y nuevo

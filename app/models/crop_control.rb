@@ -19,7 +19,7 @@ class CropControl
     options[:methods] ||= []
     options[:methods] << :updater_email
     attrs = super(options)
-    attrs["id"] = attrs["_id"]
+    #attrs["id"] = attrs["_id"]
     attrs
   end
 

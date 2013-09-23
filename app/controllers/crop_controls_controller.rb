@@ -4,8 +4,28 @@ class CropControlsController < ApplicationController
 
   respond_to :json
 
+  before_filter :set_valid_params
+
+  def set_valid_params
+    valid_params = [
+      :fecha,
+      :crop_id,
+      :store_id,
+      :entrada,
+      :salida,
+      :precio_unitario,
+      :gestion,
+      :contabilidad,
+      :tipo_doc,
+      :comentario
+    ]
+    logger.debug params
+    crop_control = params[:crop_control]
+    crop_control.keep_if {| key, value | valid_params.include?(key.to_sym) }
+    params[:crop_control] = crop_control
+  end
+
   def create
-    #params.keep_if {| key, value | [:fecha, :tipo_doc,:entrada,:salida, :precio_unitario, :store_id, :crop_id, :comentario].include?(key.to_sym) }
     @crop_control = CropControl.new(params[:crop_control])
     @crop_control.updater = current_user
     @crop_control.save!
@@ -19,7 +39,6 @@ class CropControlsController < ApplicationController
   end
 
   def update
-    #params.keep_if {| key, value | [:fecha, :tipo_doc,:entrada,:salida, :precio_unitario, :comentario].include?(key.to_sym) }
     @crop_control.update_attributes(params[:crop_control])
     @crop_control.updater = current_user
 

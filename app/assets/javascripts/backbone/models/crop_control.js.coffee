@@ -1,5 +1,7 @@
 class Marino.Models.CropControl extends Backbone.Model
   paramRoot: 'crop_control'
+  idAttribute: '_id'
+  
 
   defaults:
     entrada: 0

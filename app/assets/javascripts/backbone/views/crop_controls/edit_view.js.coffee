@@ -4,13 +4,13 @@ class Marino.Views.CropControls.EditView extends Backbone.View
   template: JST["backbone/templates/crop_controls/form"]
 
   events:
+    "click .save_and_add": "save_and_add"    
     "submit form": "update"
     'change select[name="tipo_doc"]': 'tipo_doc_changed'
 
   constructor: (options) ->
     super(options)
     @collection = @options.crop_controls
-    
     
         
   update: (e) ->
@@ -25,6 +25,26 @@ class Marino.Views.CropControls.EditView extends Backbone.View
         
     )
 
+
+  save_and_add: (e) ->
+      e.preventDefault()
+
+      e.stopPropagation()
+
+      @model.unset("errors")
+
+      @model.save(null,
+        success: (crop_control) =>
+          @model = crop_control.clone()
+          @model.set 
+            entrada: 0
+            salida: 0          
+          @render()
+
+        error: (crop_control, jqXHR) =>
+          @model.set({errors: $.parseJSON(jqXHR.responseText)})
+      )
+      
   tipo_doc_changed: () ->
     if @model.isEntrada()
       @$('input[name="entrada"]').prop "disabled", false

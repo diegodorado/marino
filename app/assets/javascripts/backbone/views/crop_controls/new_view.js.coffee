@@ -14,11 +14,17 @@ class Marino.Views.CropControls.NewView extends Backbone.View
     @initModel()
     
   initModel: () ->
-    @model = new @collection.model()
-    @model.set @collection.params #sets filters
-    @model.set 
-      precio_unitario: @collection.precio_unitario()
-      fecha: (new Date).toJSON().substring(0, 10)
+    if @model
+      @model = @model.clone()
+      @model.set 
+        entrada: 0
+        salida: 0
+    else
+      @model = new @collection.model()
+      @model.set @collection.params #sets filters
+      @model.set 
+        precio_unitario: @collection.precio_unitario()
+        fecha: (new Date).toJSON().substring(0, 10)
 
     @model.bind("change:errors", () =>
       this.render()
