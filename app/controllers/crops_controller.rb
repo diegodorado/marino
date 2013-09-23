@@ -1,74 +1,50 @@
 class CropsController < ApplicationController
-  # GET /crops
-  # GET /crops.json
+
+  load_and_authorize_resource
+
+  respond_to :json
+
   def index
-    @crops = Crop.all
-
-    respond_to do |format|
-      format.html {}
-      format.json {render json: @crops}
-    end
-
   end
 
-  # GET /crops/1
   def show
-    @crop = Crop.find(params[:id])
   end
 
-  # GET /crops/new
-  def new
-    @crop = Crop.new
-  end
-
-  # GET /crops/1/edit
-  def edit
-    @crop = Crop.find(params[:id])
-  end
-
-  # POST /crops
   def create
-    @crop = Crop.new(params[:crop])
 
     if @crop.save
-      redirect_to @crop, notice: 'Crop was successfully created.'
+      render json: @crop, status: :created, location: @crop
     else
-      render action: "new" 
+      render json: @crop.errors, status: :unprocessable_entity
     end
 
   end
 
-  # PUT /crops/1
-  # PUT /crops/1.json
   def update
-    @crop = Crop.find(params[:id])
+    if @crop.save
+      render json: @crop, status: :ok
+    else
+      render json: @crop.errors, status: :unprocessable_entity
+    end
 
-    respond_to do |format|
-      format.html do
-        if @crop.update_attributes(params[:crop])
-          redirect_to @crop, notice: 'Crop was successfully updated.'
-        else
-          render action: "edit"
-        end
-      end
+  end
 
-      format.json do
-        if @crop.update_price(params[:month], params[:price], current_user)
-          render json: @crop #head :no_content
-        else
-          render json: @crop.errors, status: :unprocessable_entity
-        end
-      end
-
+  def destroy
+    if @crop.destroy
+      render json: '', status: :ok
+    else
+      render json: '', status: :unprocessable_entity
     end
   end
 
-  # DELETE /crops/1
-  def destroy
+  def update_prices
     @crop = Crop.find(params[:id])
-    @crop.destroy
 
-    redirect_to crops_url
+    if @crop.update_price(params[:month], params[:price], current_user)
+      render json: @crop #head :no_content
+    else
+      render json: @crop.errors, status: :unprocessable_entity
+    end
 
   end
 

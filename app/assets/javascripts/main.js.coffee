@@ -20,7 +20,8 @@ class Application
 
 
     if @options.crop_prices
-      @grid = new @CropGrid '#crop_prices_grid', @options.crop_prices
+      window.router = new Marino.Routers.CropsRouter(@options)
+      Backbone.history.start()
 
 
     if @options.crop_control

@@ -13,7 +13,7 @@ class Marino.Views.Crops.EditView extends Backbone.View
     @model.save(null,
       success: (crop) =>
         @model = crop
-        window.location.hash = "/#{@model.id}"
+        window.location.hash = "index"
     )
 
   render: ->

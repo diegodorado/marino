@@ -28,7 +28,6 @@ class CropControlsController < ApplicationController
   def create
     @crop_control = CropControl.new(params[:crop_control])
     @crop_control.updater = current_user
-    @crop_control.save!
 
     if @crop_control.save
       render json: @crop_control, status: :created, location: @crop_control

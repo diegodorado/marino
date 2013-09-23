@@ -1,26 +1,9 @@
-%h1 Listing crops
+.dark.data-block
+  %header
+    %h2
+      Cultivos
+  %section
+    #crops
 
-%table.table
-  %tr
-    %th Cultivo
-    %th
-    %th
-    %th
+= app_js_load :crops=> @crops, :crop_prices=> true
 
-  - @crops.each do |crop|
-    %tr
-      %td #{crop.name}
-      %td= link_to 'Show', crop
-      %td= link_to 'Edit', edit_crop_path(crop)
-      %td= link_to 'Destroy', crop, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Crop', new_crop_path
-
-%hr
-
-#crop_prices_grid(style="height: 400px")
-  
-  
-= app_js_load :crop_prices=> Crop.grid

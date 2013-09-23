@@ -23,7 +23,7 @@ class Marino.Views.Crops.NewView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (crop) =>
         @model = crop
-        window.location.hash = "/#{@model.id}"
+        window.location.hash = "index"
 
       error: (crop, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})

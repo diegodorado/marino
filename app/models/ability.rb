@@ -11,7 +11,7 @@ class Ability
     if user.role? :admin
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
-      can :manage, :all 
+      can :manage, :all
       #if user.role? :superadmin
       #  can :manage, :all             # allow superadmins to do anything
       #elsif user.role? :manager
