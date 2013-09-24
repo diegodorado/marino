@@ -19,9 +19,17 @@ class Marino.Views.CropControls.NewView extends Backbone.View
       @model.set 
         entrada: 0
         salida: 0
+        comentario: ''     
+        
     else
       @model = new @collection.model()
-      @model.set @collection.params #sets filters
+      #set defaults to first store and crop
+      @model.set 
+        store_id: @options.stores.first().id
+        crop_id: @options.crops.first().id
+      
+      #sets defaults to filters if any
+      @model.set @collection.params 
       @model.set 
         precio_unitario: @collection.precio_unitario()
         fecha: (new Date).toJSON().substring(0, 10)

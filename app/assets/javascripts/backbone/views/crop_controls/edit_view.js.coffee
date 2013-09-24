@@ -38,7 +38,8 @@ class Marino.Views.CropControls.EditView extends Backbone.View
           @model = crop_control.clone()
           @model.set 
             entrada: 0
-            salida: 0          
+            salida: 0
+            comentario: ''     
           @render()
 
         error: (crop_control, jqXHR) =>

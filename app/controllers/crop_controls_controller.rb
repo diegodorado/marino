@@ -4,7 +4,7 @@ class CropControlsController < ApplicationController
 
   respond_to :json
 
-  before_filter :set_valid_params
+  before_filter :set_valid_params , :except => [:destroy]
 
   def set_valid_params
     valid_params = [

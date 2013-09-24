@@ -6,7 +6,7 @@
       %th Entrada (tn)
       %th Salida (tn)
       %th Saldo (tn)
-      %th Precio ($/tn)
+      %th(style="border-left: 3px dashed #2c3e50") Precio ($/tn)
       %th Debe ($)
       %th Haber ($)
       %th Saldo ($)

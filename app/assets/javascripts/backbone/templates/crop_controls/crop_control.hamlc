@@ -3,7 +3,7 @@
 %td.number =accounting.formatNumber(@entrada)
 %td.number =accounting.formatNumber(@salida)
 %td.number =accounting.formatNumber(@saldo)
-%td.number =accounting.formatNumber(@precio_unitario)
+%td.number(style="border-left: 3px dashed #2c3e50") =accounting.formatMoney(@precio_unitario)
 %td.number =accounting.formatMoney(@debe)
 %td.number =accounting.formatMoney(@haber)
 %td.number =accounting.formatMoney(@saldo_p)

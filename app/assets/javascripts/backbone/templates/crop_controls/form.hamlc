@@ -42,7 +42,7 @@
     .control-group
       %label.control-label{:for => "precio_unitario"} Precio Unitario
       .controls
-        %input{:name =>"precio_unitario", :value=> @crop_control.precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+        %input{:name =>"precio_unitario", :value=> @crop_control.precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0.001"}
     .control-group
       %label.control-label{:for => "comentario"} Comentarios
       .controls

@@ -2,6 +2,18 @@
 %td =@market
 %td =@source
 %td =@unit
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
+%td 0.00
 
 %td{:style => "font-size:1.5em;text-align:center"}
   %a{:href => "#/#{@_id}/edit"}

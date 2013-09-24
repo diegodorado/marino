@@ -12,3 +12,18 @@ Esos precios son Brutos. Cada empresa tiene su precio Neto que dependerá de los
  (por ahora dejaría exento la variación por campo dentro de una empresa).
 
  ·          Donde agrego un cultivo???
+ 
+ 
+
+ ·         Ver tema de depósitos (no graba el dep 1).
+
+
+
+
+ ·         Colocar un lugar donde se expongan los precios brutos y los % de gtos de comerc.
+
+ ·         Se definió Valuacion por grano (bajar todo al precio anterior y subir todo al precio actual). Poner la opción Valuacion (en Tipo Doc) y dejar en gris las entradas y salidas de granos.
+
+ ·         Poner mínimo al precio unitario ($ 0,001)
+
+ 
