@@ -1,4 +1,8 @@
 %ul.data-header-actions
+
+  %li
+    %button#excel_crop_control.btn.btn-alt.btn-success Descargar Excel
+
   %li
     #switch-filter.make-switch{"data-on-label"=>"Cont", "data-off-label"=>"Gest"}
       %input{:type=>"checkbox", :value=>false} 

@@ -27,6 +27,10 @@ class CropControl
     updater.email rescue nil
   end
 
+  def crop_name
+    crop.name rescue nil
+  end
+
 end
 
 

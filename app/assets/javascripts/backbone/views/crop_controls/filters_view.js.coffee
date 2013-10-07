@@ -8,6 +8,7 @@ class Marino.Views.CropControls.FiltersView extends Backbone.View
     "change #crop-filter" : "crop_filter_changed"
     "switch-change #switch-filter" : "switch_filter_changed"
     "click #new_crop_control" : "new_crop_control_click"
+    "click #excel_crop_control" : "excel_crop_control_click"
 
   initialize: () ->
     @options.crop_controls.params = 
@@ -48,6 +49,9 @@ class Marino.Views.CropControls.FiltersView extends Backbone.View
 
   new_crop_control_click: (ev) ->
     window.location.hash = "new"
+    
+  excel_crop_control_click: (ev) ->
+    window.location = "/crop_controls.xlsx"
 
 
   render: =>
