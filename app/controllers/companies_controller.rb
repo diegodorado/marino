@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company
-    @crop_controls = CropControl.all
+    @crop_controls = CropControl.in(store_id: @stores.pluck(:_id))
     @company_comments = @company.comments
   end
 

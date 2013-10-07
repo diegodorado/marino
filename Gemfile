@@ -18,6 +18,7 @@ gem "cancan"
 gem "figaro"
 
 gem "rails_admin"
+gem 'axlsx_rails'
 
 
 gem 'thin'
