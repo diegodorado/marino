@@ -55,6 +55,11 @@ class Marino.Views.CropControls.EditView extends Backbone.View
       @$('input[name="entrada"]').prop "disabled", true
       @$('input[name="salida"]').prop "disabled", false
       @model.set 'entrada', 0
+    if @model.isValuacion()
+      @$('input[name="entrada"]').prop "disabled", true
+      @$('input[name="salida"]').prop "disabled", true
+      @model.set 'entrada', 0
+      @model.set 'salida', 0
 
   render: ->
     @$el.html @template

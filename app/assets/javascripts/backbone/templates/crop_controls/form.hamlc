@@ -19,7 +19,7 @@
             %option{ :selected => (@crop_control.store_id is store._id), :value => store._id }  #{store.name}
             
     .control-group
-      %label.control-label{:for => "crop_id"} Cultivo
+      %label.control-label{:for => "crop_id"} Grano
       .controls
         %select{:name =>"crop_id", :required => true}
           - for crop in @crops
