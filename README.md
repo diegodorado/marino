@@ -19,3 +19,23 @@ Esos precios son Brutos. Cada empresa tiene su precio Neto que dependerá de los
  ·         Se definió Valuacion por grano (bajar todo al precio anterior y subir todo al precio actual). Poner la opción Valuacion (en Tipo Doc) y dejar en gris las entradas y salidas de granos.
 
  
+ 1-      Borrar comentarios cuando se pone “guardar y nuevo”
+
+ 2-      La columna Precio $/tn, ponerle el signo pesos.
+
+ 3-      Línea separatoria entre Saldo en tn y $ unitarios.
+
+ 4-      Ver tema de depósitos (no graba el dep 1).
+
+
+ 6-      Colocar un lugar donde se expongan los precios brutos y los % de gtos de comerc.
+
+ 7-      Se definió Valuacion por grano (bajar todo al precio anterior y subir todo al precio actual). Poner la opción Valuacion (en Tipo Doc) y dejar en gris las entradas y salidas de granos.
+
+ 8-      Poner mínimo al precio unitario ($ 0,001)
+
+ 9-      Agregar la opción de guardar backups o similar
+
+ 10-   Que exista la posibilidad de exportar a Excel, o copiar o pegar o similar……Algo para que la gente se pueda guardar un papel de trabajo.
+
+ 
