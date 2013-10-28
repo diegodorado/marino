@@ -1,4 +1,7 @@
 .vagrant
+.sudo_as_admin_successful
+.cache
+.bash_history
 
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
