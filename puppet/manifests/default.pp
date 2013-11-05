@@ -76,6 +76,6 @@ exec { "${as_vagrant} 'gem install bundler --no-rdoc --no-ri'":
 }
 
 
-class mongodb {
-  init => 'sysv',
-}
+#class mongodb {
+#  init => 'sysv'
+#}
