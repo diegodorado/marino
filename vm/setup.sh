@@ -14,6 +14,7 @@ fi
 if [[ ! -f /.vm/initial-setup-apt-get-update ]]; then
     echo "Running initial-setup apt-get update"
     apt-get update >/dev/null
+    apt-get -y install build-essential git-core zlib1g-dev libssl-dev libxml2-dev libxslt-dev libreadline6-dev libyaml-dev >/dev/null
     touch /.vm/initial-setup-apt-get-update
     echo "Finished running initial-setup apt-get update"
 fi
@@ -21,10 +22,6 @@ fi
 
 
 if [[ ! -f /.vm/soft-installed ]]; then
-
-
-    apt-get -y update >/dev/null
-    apt-get -y install build-essential git-core zlib1g-dev libssl-dev libxml2-dev libxslt-dev libreadline6-dev libyaml-dev >/dev/null
 
 
     #Install Mongodb
@@ -37,40 +34,44 @@ if [[ ! -f /.vm/soft-installed ]]; then
     #Add GPG key
 
     apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10 >/dev/null
-    
+
+
     #Update package
     apt-get update >/dev/null
-    
+
     #Install Mongodb
     apt-get install mongodb-10gen
     mkdir -p /data/db 
-    chown -R mongodb:mongodb /data
+    chown -R mongodb:mongodb /data    
     
-    #Install Ruby.
 
-    cd /tmp
-    wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p286.tar.gz
-    tar -xvzf ruby-1.9.3-p286.tar.gz
-    cd ruby-1.9.3-p286/
-    ./configure --prefix=/usr/local
-    make
-    make install
-
-    echo "gem: --no-rdoc --no-ri " >> /etc/gemrc
-
-    #Install bundler
-    gem install bundler
-
-    echo 'Finished installing basic packages'
-
-
-    cd /vagrant
-    bundle install
 
 
     touch /.vm/soft-installed
 fi
 
+
+if [[ ! -f /.vm/heroku-installed ]]; then
+
+
+    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+    touch /.vm/heroku-installed
+
+fi
+
+
+if [[ ! -f /.vm/bundle-installed ]]; then
+
+    echo "gem: --no-rdoc --no-ri " >> /etc/gemrc
+    cd /vagrant
+    rvm --create use  ruby-2.0.0-p247@marino
+    bundle install
+
+    touch /.vm/bundle-installed
+
+fi
 #wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 #heroku plugins:install http://github.com/marcofognog/heroku-mongo-sync
-gem install mongo
+#service mongodb stop
+#rm /var/log/mongodb/mongodb.log
