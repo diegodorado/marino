@@ -16,12 +16,7 @@ class CompaniesController < ApplicationController
 
   def select
     session[:company_id] = @company.id
-
-    @stores = @company.stores
-    @crops = Crop.only(:_id,:name).all
-    #todo: filter by company
-    @crop_controls = CropControl.in(store_id: @stores.pluck(:_id))
-    @company_comments = @company.comments
+    redirect_to crop_controls_path, notice: "Seleccionaste una empresa."
   end
 
 

@@ -55,6 +55,8 @@ if [[ ! -f /.vm/heroku-installed ]]; then
 
 
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+#heroku plugins:install http://github.com/marcofognog/heroku-mongo-sync
+#https://github.com/hsbt/heroku-mongodb
 
     touch /.vm/heroku-installed
 
@@ -71,7 +73,17 @@ if [[ ! -f /.vm/bundle-installed ]]; then
     touch /.vm/bundle-installed
 
 fi
-#wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-#heroku plugins:install http://github.com/marcofognog/heroku-mongo-sync
-#service mongodb stop
-#rm /var/log/mongodb/mongodb.log
+
+
+
+    
+#   If you do a repair operation as root user be shure 
+#   that afterwards all db files are owned by the mongodb user, 
+#   otherwise mongodb will not start
+
+# service mongodb stop
+# mongod --repair
+# chown -R mongodb:mongodb /var/lib/mongodb
+# rm /var/lib/mongodb/mongod.lock
+# service mongodb start
+# rm /var/log/mongodb/mongodb.log

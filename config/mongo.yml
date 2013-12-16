@@ -4,7 +4,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: marino_development
+  database: marino
 
 test:
   <<: *defaults

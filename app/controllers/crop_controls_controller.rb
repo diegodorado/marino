@@ -4,7 +4,7 @@ class CropControlsController < ApplicationController
 
   respond_to :json
 
-  before_filter :set_valid_params , :except => [:index, :destroy]
+  before_filter :set_valid_params , :except => [:index,:crud, :destroy]
 
   def set_valid_params
     valid_params = [
@@ -19,7 +19,7 @@ class CropControlsController < ApplicationController
       :tipo_doc,
       :comentario
     ]
-    logger.debug params
+    #logger.debug params
     crop_control = params[:crop_control]
     crop_control.keep_if {| key, value | valid_params.include?(key.to_sym) }
     params[:crop_control] = crop_control
@@ -29,10 +29,22 @@ class CropControlsController < ApplicationController
     stores = Store.only(:_id).where(:company_id => session[:company_id])
     @crop_controls = CropControl.in(store_id: stores.pluck(:_id))
     respond_to do |format|
-      #format.xlsx
+      format.html
       format.xlsx {
         render xlsx: "index", disposition: "attachment", filename: "control_de_granos.xlsx"
       }
+    end
+  end
+
+  def crud
+    @stores = @company.stores
+    @crops = Crop.only(:_id,:name).all
+    #todo: filter by company
+    @crop_controls = CropControl.in(store_id: @stores.pluck(:_id))
+    @company_comments = @company.comments
+
+    respond_to do |format|
+      format.html
     end
   end
 
