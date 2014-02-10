@@ -1,0 +1,7 @@
+%td #{@crop}
+%td.number =accounting.formatNumber(@gestion.tn)
+%td.number =accounting.formatMoney(@gestion.unit)
+%td.number =accounting.formatMoney(@gestion.total)
+%td.number =accounting.formatNumber(@contabilidad.tn)
+%td.number =accounting.formatMoney(@contabilidad.unit)
+%td.number =accounting.formatMoney(@contabilidad.total)

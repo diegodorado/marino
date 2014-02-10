@@ -4,7 +4,8 @@ class CropControlsController < ApplicationController
 
   respond_to :json
 
-  before_filter :set_valid_params , :except => [:index,:crud, :destroy]
+  before_filter :require_company!
+  before_filter :set_valid_params , :except => [:index,:list, :summary, :destroy]
 
   def set_valid_params
     valid_params = [
@@ -25,18 +26,18 @@ class CropControlsController < ApplicationController
     params[:crop_control] = crop_control
   end
 
-  def index
-    stores = Store.only(:_id).where(:company_id => session[:company_id])
+  def summary
+    @company = current_company
+    stores = @company.stores
+    @crops = Crop.only(:_id,:name).all            
     @crop_controls = CropControl.in(store_id: stores.pluck(:_id))
     respond_to do |format|
       format.html
-      format.xlsx {
-        render xlsx: "index", disposition: "attachment", filename: "control_de_granos.xlsx"
-      }
     end
   end
 
-  def crud
+  def list
+    @company = current_company
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company
@@ -45,6 +46,9 @@ class CropControlsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.xlsx {
+        render xlsx: "list", disposition: "attachment", filename: "control_de_granos.xlsx"
+      }
     end
   end
 

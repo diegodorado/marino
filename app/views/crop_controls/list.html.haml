@@ -1,0 +1,21 @@
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Control de granos
+    #filters
+    %ul.data-header-actions
+      %li
+        =link_to "Resumen",  summary_crop_controls_path, :class=> "active"
+      %li
+  %section
+    #crop_controls
+
+#comments
+  
+
+= app_js_load :company=> @company
+= app_js_load :company_comments=> @company_comments
+= app_js_load :crop_control=> true
+= app_js_load :crop_controls=> @crop_controls
+= app_js_load :stores=> @stores
+= app_js_load :crops=> @crops

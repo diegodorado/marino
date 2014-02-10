@@ -28,6 +28,9 @@
 //= require slick/controls/pager
 //= require slick/controls/columnpicker
 
+
+//= require date.min.js
+
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

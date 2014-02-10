@@ -41,4 +41,13 @@ class Application
       #  crops: @options.crops
       
 
+    if @options.crop_controls_summary
+      
+      view = new Marino.Views.CropControls.SummaryView
+        company: @options.company
+        crops: @options.crops
+        crop_controls: @options.crop_controls
+
+      view.render()
+
 window.app = new Application  

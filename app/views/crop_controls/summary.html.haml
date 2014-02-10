@@ -1,0 +1,15 @@
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Control de granos - Resumen
+    %ul.data-header-actions
+      %li.active
+        =link_to "EDITAR MOVIMIENTOS", list_crop_controls_path
+  %section
+    #crop_controls_summary
+  
+
+= app_js_load :company=> @company
+= app_js_load :crop_controls_summary=> true
+= app_js_load :crop_controls=> @crop_controls
+= app_js_load :crops=> @crops  

@@ -23,7 +23,10 @@ Marino::Application.routes.draw do
   end
 
 
-  resources :crop_controls
+  resources :crop_controls do
+    get 'list', :on => :collection
+    get 'summary', :on => :collection
+  end
   resources :backups
 
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords=> "passwords" , :omniauth_callbacks => "omniauth_callbacks" }

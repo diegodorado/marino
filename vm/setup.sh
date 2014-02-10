@@ -68,6 +68,7 @@ if [[ ! -f /.vm/bundle-installed ]]; then
     echo "gem: --no-rdoc --no-ri " >> /etc/gemrc
     cd /vagrant
     rvm --create use  ruby-2.0.0-p247@marino
+    gem install bundler
     bundle install
 
     touch /.vm/bundle-installed

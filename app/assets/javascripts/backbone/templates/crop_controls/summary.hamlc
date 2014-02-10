@@ -1,0 +1,23 @@
+%form.form-horizontal
+  .form-group
+    %label.col-sm-2.control-label{for: "balance_at"} Saldo al:
+    .col-sm-5
+      %input#balance_at.form-control{type: "date"}/
+   
+
+%table.table
+  %thead
+    %tr
+      %th 
+      %th(colspan="3") GESTIÓN
+      %th(colspan="3") CONTABILIDAD
+    %tr
+      %th GRANO
+      %th TN
+      %th $ UNIT
+      %th $ TOTAL
+      %th(style="border-left: 3px dashed #2c3e50") TN
+      %th $ UNIT
+      %th $ TOTAL
+  %tfoot
+  %tbody

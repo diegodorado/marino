@@ -19,8 +19,11 @@ class Marino.Models.CropControl extends Backbone.Model
 
   isSalida: () ->
     @get('tipo_doc') in ['VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -']
-    
-
+  
+  tn: () ->
+    parseFloat(@get('entrada')) - parseFloat(@get('salida'))
+  unit: () ->
+    parseFloat(@get('precio_unitario'))
 
 class Marino.Collections.CropControlsCollection extends Backbone.Collection
   model: Marino.Models.CropControl
