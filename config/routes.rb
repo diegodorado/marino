@@ -24,6 +24,7 @@ Marino::Application.routes.draw do
 
 
   resources :crop_controls do
+    post 'excel', :on => :collection
     get 'list', :on => :collection
     get 'summary', :on => :collection
   end

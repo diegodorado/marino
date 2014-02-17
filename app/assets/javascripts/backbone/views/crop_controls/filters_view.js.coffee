@@ -51,8 +51,14 @@ class Marino.Views.CropControls.FiltersView extends Backbone.View
     window.location.hash = "new"
     
   excel_crop_control_click: (ev) ->
-    window.location = "/crop_controls.xlsx"
-
+    p = @options.crop_controls.params
+    title = if p.contabilidad then "Contabilidad"  else "Gestion"
+    title += "  -  #{@$('#store-filter :selected').text()} - #{@$('#crop-filter :selected').text()}"
+    data = 
+      title: title
+      ids: @options.crop_controls.filteredIds()
+      authenticity_token: $('meta[name=csrf-token]').attr('content')
+    $.form(Routes.excel_crop_controls_path(), data , 'POST').submit()
 
   render: =>
     @$el.html(@template(stores: @options.stores.toJSON(), crops: @options.crops.toJSON() ))

@@ -18,13 +18,22 @@ wb.styles do |s|
 
   wb.add_worksheet(name: "Control_de_granos") do |sheet|
 
-    sheet.add_row ['Grano', 'Deposito','Fecha',	'Tipo Doc',	'Entrada (tn)',	'Salida (tn)',	'Saldo (tn)',	'Precio ($/tn)',	'Debe ($)',	'Haber ($)',	'Saldo ($)',	'Actualizado por',	'Comentario']
-    @crop_controls.each_with_index do |cc, i|
-      sheet.add_row [cc.crop.name,cc.store.name,cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], (i > 0 ? "=G#{i+1} +" : "=") + "F#{i+2}-E#{i+2}",cc[:precio_unitario],"=E#{i+2}*H#{i+2}","=F#{i+2}*H#{i+2}",(i > 0 ? "=K#{i+1} +" : "=") +" J#{i+2}-I#{i+2}",cc[:updater_email],cc[:comentario]] rescue nil
+    sheet.add_row [@title]
+    sheet.merge_cells "A1:D1"
+    sheet['A1:A1'].each { |c| c.style = title_cell }
+    sheet.add_row []
+
+    sheet.add_row ['Fecha',	'Tipo Doc',	'Entrada (tn)',	'Salida (tn)',	'Saldo (tn)',	'Precio ($/tn)',	'Debe ($)',	'Haber ($)',	'Saldo ($)',	'Actualizado por',	'Comentario']
+    i = 2
+    @crop_controls.each do |cc|
+      sheet.add_row [cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], (i > 2 ? "=E#{i+1} +" : "=") + "C#{i+2}-D#{i+2}",cc[:precio_unitario],"=C#{i+2}*F#{i+2}","=D#{i+2}*F#{i+2}",(i > 2 ? "=I#{i+1} +" : "=") +" G#{i+2}-H#{i+2}",cc.updater_email,cc[:comentario]] rescue nil
+      i = i + 1
     end
 
-    sheet.auto_filter = "A1:M1"
+    sheet.auto_filter = "A3:K3"
     sheet.page_setup.fit_to :width => 1, :height => 1
-    sheet['A1:M1'].each { |c| c.style = title_cell }
+    sheet['A3:K3'].each { |c| c.style = title_cell }
+    sheet.column_widths 14, nil, nil, nil, nil
+
   end
 end

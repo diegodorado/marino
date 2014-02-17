@@ -1,4 +1,4 @@
-%td =@fecha
+%td =Date.parse(@fecha+'T00:00:00').toString('MMM-yy') 
 %td =@tipo_doc
 %td.number =accounting.formatNumber(@entrada)
 %td.number =accounting.formatNumber(@salida)

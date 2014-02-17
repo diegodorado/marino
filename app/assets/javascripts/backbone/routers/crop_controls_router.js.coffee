@@ -22,6 +22,8 @@ class Marino.Routers.CropControlsRouter extends Backbone.Router
     ":id/edit" : "edit"
     ".*"        : "index"
 
+
+
   newCropControl: ->
     @view = new Marino.Views.CropControls.NewView
       collection: @crop_controls

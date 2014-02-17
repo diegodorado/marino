@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+
 //= require js-routes
 //= require store
 //= require accounting
@@ -19,6 +20,7 @@
 //= require datepicker_hack
 //= require jquery.timeago
 //= require jquery.timeago.es
+//= require jquery-post
 //= require bootstrap
 //= require slick
 //= require slick/dataview
@@ -29,7 +31,8 @@
 //= require slick/controls/columnpicker
 
 
-//= require date.min.js
+
+//= require date-es-AR.js
 
 //= require underscore
 //= require backbone

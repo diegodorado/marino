@@ -15,8 +15,7 @@
   %li
     %select#crop-filter
       - for crop in @crops
-        %option{ :value => crop._id }
-          #{crop.name}  
+        %option{ :value => crop._id } #{crop.name}  
   %li
     %button#new_crop_control.btn.btn-alt.btn-success Nuevo
 

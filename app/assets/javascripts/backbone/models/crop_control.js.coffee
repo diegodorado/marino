@@ -43,6 +43,10 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
   comparator: (model) ->
     model.get("fecha")
 
+  filteredIds: ()->
+    models = @where @params
+    _.pluck(models, 'id')
+ 
   calculate: ()->
     models = @where @params
     models = _.invoke(models, 'toJSON')

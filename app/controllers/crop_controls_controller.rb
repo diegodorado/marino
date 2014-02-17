@@ -5,7 +5,7 @@ class CropControlsController < ApplicationController
   respond_to :json
 
   before_filter :require_company!
-  before_filter :set_valid_params , :except => [:index,:list, :summary, :destroy]
+  before_filter :set_valid_params , :except => [:index,:list, :excel, :summary, :destroy]
 
   def set_valid_params
     valid_params = [
@@ -46,10 +46,14 @@ class CropControlsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xlsx {
-        render xlsx: "list", disposition: "attachment", filename: "control_de_granos.xlsx"
-      }
     end
+  end
+
+
+  def excel
+    @crop_controls = CropControl.in(_id: params[:ids] )
+    @title = params[:title]
+    render xlsx: "list", disposition: "attachment", filename: "control_de_granos.xlsx"
   end
 
   def create
