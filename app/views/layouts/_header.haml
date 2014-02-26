@@ -1,4 +1,8 @@
 / Main page header
 %header#header.container-fluid
+  - if current_company
+    %h1
+      =current_company.name
   = render 'layouts/usermenu'
   = render 'layouts/mainmenu'
+
