@@ -25,11 +25,10 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
     @$("tbody").empty()
 
     sorted = @collection.sortBy (cc) ->
-       
       cc.get('fecha')
 
     filtered = sorted.filter (cc) =>
-      cc.get('fecha') < @balance_at 
+      cc.get('fecha') <= @balance_at 
     
     grouped = _.groupBy filtered, (cc) ->
       cc.get('crop_id')
