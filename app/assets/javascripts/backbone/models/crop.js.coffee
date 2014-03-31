@@ -5,4 +5,5 @@ class Marino.Models.Crop extends Backbone.Model
 
 class Marino.Collections.CropsCollection extends Backbone.Collection
   model: Marino.Models.Crop
-  url: '/crops'
+  url: ->
+    Routes.crops_path()

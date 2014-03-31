@@ -2,32 +2,34 @@
   %thead
     %tr
       %th Nombre
-      %th Mercado
-      %th Fuente
-      %th Unidad
-      %th(colspan="12") 
-        %span Precios
-        %select
-          %option 2008
+      /
+        %th Mercado
+        %th Fuente
+        %th Unidad
+        %th(colspan="12") 
+          %span Precios
+          %select
+            %option 2008
       %th
-    %tr
-      %th 
-      %th 
-      %th 
-      %th 
-      %th Ene
-      %th Feb
-      %th Mar
-      %th Abr
-      %th May
-      %th Jun
-      %th Jul
-      %th Ago
-      %th Sep
-      %th Oct
-      %th Nov
-      %th Dic
-      %th
+    /
+      %tr
+        %th 
+        %th 
+        %th 
+        %th 
+        %th Ene
+        %th Feb
+        %th Mar
+        %th Abr
+        %th May
+        %th Jun
+        %th Jul
+        %th Ago
+        %th Sep
+        %th Oct
+        %th Nov
+        %th Dic
+        %th
   %tbody
 
 

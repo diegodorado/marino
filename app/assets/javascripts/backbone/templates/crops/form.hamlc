@@ -4,18 +4,19 @@
       %label.control-label{:for => "name"} Nombre
       .controls
         %input{:name =>"name", :required => true, :value=> @name}
-    .control-group
-      %label.control-label{:for => "market"} Mercado
-      .controls
-        %input{:name =>"market", :value=> @market}
-    .control-group
-      %label.control-label{:for => "source"} Fuente
-      .controls
-        %input{:name =>"source", :value=> @source}
-    .control-group
-      %label.control-label{:for => "unit"} Unidad
-      .controls
-        %input{:name =>"unit", :value=> @unit}
+    /
+      .control-group
+        %label.control-label{:for => "market"} Mercado
+        .controls
+          %input{:name =>"market", :value=> @market}
+      .control-group
+        %label.control-label{:for => "source"} Fuente
+        .controls
+          %input{:name =>"source", :value=> @source}
+      .control-group
+        %label.control-label{:for => "unit"} Unidad
+        .controls
+          %input{:name =>"unit", :value=> @unit}
     .form-actions
       %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Volver al Listado
       %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Guardar

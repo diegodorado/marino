@@ -19,7 +19,7 @@ class Application
     @user_id = @options.user_id
 
 
-    if @options.crop_prices
+    if @options.crops
       window.router = new Marino.Routers.CropsRouter(@options)
       Backbone.history.start()
 

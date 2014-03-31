@@ -11,7 +11,7 @@ class CropsController < ApplicationController
   end
 
   def create
-    @crop = CropControl.new(params[:crop])
+    @crop = Crop.new(params[:crop])
 
     if @crop.save
       render json: @crop, status: :created, location: @crop
