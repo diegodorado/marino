@@ -1,19 +1,21 @@
-%h1 Listing stores
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Depositos de #{@company.name}
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
+  %section
+    %table.table.table-bordered
+      %tr
+        %th Nombre
+        %th
 
-  - @stores.each do |store|
-    %tr
-      %td= store.name
-      %td= link_to 'Show', store
-      %td= link_to 'Edit', edit_store_path(store)
-      %td= link_to 'Destroy', store, method: :delete, data: { confirm: 'Are you sure?' }
+      - @stores.each do |store|
+        %tr
+          %td= store.name
+          %td(style ="text-align:center;font-size:1.5em")
+            = link_to edit_store_path(store) do              
+              %i.icon-edit
+            = link_to store, method: :delete, data: { confirm: 'Are you sure?' } do              
+              %i.icon-remove
 
-%br
-
-= link_to 'New Store', new_store_path
+    = link_to 'Nuevo Deposito', new_store_path

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def require_company!
     unless current_company
-      redirect_to companies_path, notice: "Debes seleccionar una empresa para comenzar."
+      redirect_to root_path, notice: "Debes seleccionar una empresa para comenzar."
     end
   end
   

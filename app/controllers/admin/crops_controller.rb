@@ -1,4 +1,4 @@
-class CropsController < ApplicationController
+class Admin::CropsController < ApplicationController
 
   load_and_authorize_resource
 

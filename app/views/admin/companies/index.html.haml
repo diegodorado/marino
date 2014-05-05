@@ -1,0 +1,29 @@
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Empresas
+
+  %section
+    %table.table.table-bordered
+      %tr
+        %th Nombre
+        %th Propietario
+        %th Usuarios
+        %th Depositos
+        %th
+
+
+      - @companies.each do |company|
+        %tr
+          %td= company.name
+          %td= company.owner.email
+          %td= company.users.pluck('email').join("<br/>").html_safe
+          %td= company.stores.pluck('name').join("<br/>").html_safe
+          %td(style ="text-align:center;font-size:1.5em")
+            = link_to edit_admin_company_path(company) do              
+              %i.icon-edit
+            = link_to admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?' } do              
+              %i.icon-remove
+
+    = link_to 'Nueva Empresa', new_admin_company_path
+

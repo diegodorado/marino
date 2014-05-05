@@ -15,10 +15,10 @@ class Marino.Models.CropControl extends Backbone.Model
     @get('tipo_doc') in ['VALUACION']
 
   isEntrada: () ->
-    @get('tipo_doc') in ['EX INIC','COSECHA','AJUSTE +']
+    @get('tipo_doc') in ['EX INIC','COSECHA','AJUSTE +','ALQUILER +','APARCERIA +']
 
   isSalida: () ->
-    @get('tipo_doc') in ['VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -']
+    @get('tipo_doc') in ['VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -','ALQUILER -','APARCERIA -']
   
   tn: () ->
     parseFloat(@get('entrada')) - parseFloat(@get('salida'))
@@ -30,7 +30,7 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
   url: '/crop_controls'
 
   params: {}
-  tipo_docs: ['EX INIC','COSECHA','AJUSTE +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -', 'VALUACION']
+  tipo_docs: ['EX INIC','COSECHA','AJUSTE +','ALQUILER +','APARCERIA +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -','ALQUILER -','APARCERIA -', 'VALUACION']
   
   precio_unitario: ()->
     models = @where @params

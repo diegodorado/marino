@@ -13,15 +13,24 @@
         %a{:href => "/"}
           %span.icon-home
           Inicio
-      %li
-        %a{:href => "/backups"}
-          %span.icon-file
-          Backups
-      %li
-        = link_to companies_path do
-          %span.icon-info-sign
-          Mis Empresas
-      %li
-        = link_to crops_path do
-          %span.icon-info-sign
-          Granos         
+      -if can? :manage, Store
+        %li
+          = link_to stores_path do
+            Depositos
+      -if can? :manage, Backup
+        %li
+          %a{:href => "/backups"}
+            %span.icon-file
+            Backups
+      -if can? :manage, Crop
+        %li
+          = link_to admin_crops_path do
+            Granos
+      -if can? :manage, User      
+        %li
+          = link_to admin_users_path do
+            Usuarios
+      -if can? :manage, Company      
+        %li
+          = link_to admin_companies_path do
+            Empresas

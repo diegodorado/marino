@@ -2,7 +2,7 @@
   %thead
     %tr
       %th Fecha
-      %th Tipo Dococ
+      %th Tipo Doc
       %th Entrada (tn)
       %th Salida (tn)
       %th Saldo (tn)

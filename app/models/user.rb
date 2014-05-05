@@ -1,6 +1,6 @@
 class User
   include Mongoid::Document
-
+  rolify
   # Include default devise modules. Others available are:
   #  :encryptable, :lockable, :timeoutable and :omniauthable
   devise :token_authenticatable,  :confirmable,

@@ -11,7 +11,7 @@
       %option{ :value => "all" }  (Todos los Depósitos)
       - for store in @stores
         %option{ :value => store._id } #{store.name}
-      %option{ :value => "add" }  Agregar Depósito  
+
   %li
     %select#crop-filter
       - for crop in @crops

@@ -1,0 +1,9 @@
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Editando #{@company.name}
+
+  %section
+
+    = render 'form'
+    = link_to 'Back',  admin_companies_path

@@ -30,14 +30,11 @@ class Marino.Views.CropControls.FiltersView extends Backbone.View
 
   store_filter_changed: (ev) ->
     val = $(ev.target).val()
-    #@$("#new_crop_control").addClass "disabled"
-    switch val 
-      when "add" then ev.preventDefault()
+    switch val
       when "all"  
         delete @options.crop_controls.params.store_id
         @options.crop_controls.trigger('filters_changed')
-      else 
-        @$("#new_crop_control").removeClass "disabled"
+      else
         @options.crop_controls.params.store_id = val
         @options.crop_controls.trigger('filters_changed')
 
