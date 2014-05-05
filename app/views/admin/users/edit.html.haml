@@ -19,7 +19,7 @@
 
           = f.label :role_ids, 'Permisos',  :class =>'control-label'
           .controls
-            = f.select :role_ids, options_for_select(Role.all.map{|r| [r.name, r.id]}, @user[:role_ids]),{}, :multiple => true
+            = f.select :role_ids, options_for_select(Role.all.map{|r| [r.pretty_name, r.id]}, @user[:role_ids]),{}, :multiple => true
 
 
 

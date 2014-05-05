@@ -7,14 +7,14 @@
     %table.table.table-bordered
       %tr
         %th Email
-        %th Roles
+        %th Permisos
         %th Ultimo ingreso
         %th
 
       - @users.each do |user|
         %tr
           %td= user.email
-          %td= user.roles.pluck('name').join(", ")
+          %td= user.roles.pluck('pretty_name').join(", ")
           %td= user.last_sign_in_at.to_formatted_s(:short)  if user.last_sign_in_at?
           %td(style ="text-align:center;font-size:1.5em")
             = link_to edit_admin_user_path(user) do              

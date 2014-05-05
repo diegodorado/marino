@@ -13,4 +13,6 @@ class Role
   { :unique => true})
   
   scopify
+
+  field :pretty_name
 end
