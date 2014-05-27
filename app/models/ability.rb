@@ -37,7 +37,8 @@ class Ability
 
     can :create, Backup
     can [:read, :destroy], Backup , :creator_id => user.id
-    can :update, Company , :user_ids => user.id
+    can :read, Company , :user_ids => user.id
+    #can :update, Company , :user_ids => user.id
     can :create, Store
     can :manage, Store , :company => {:user_ids => user.id}
     can :manage, CropControl , :store_id => user.store_ids
