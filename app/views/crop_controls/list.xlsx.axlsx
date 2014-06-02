@@ -24,10 +24,40 @@ wb.styles do |s|
     sheet.add_row []
 
     sheet.add_row ['Fecha',	'Tipo Doc',	'Entrada (tn)',	'Salida (tn)',	'Saldo (tn)',	'Precio ($/tn)',	'Debe ($)',	'Haber ($)',	'Saldo ($)',	'Actualizado por',	'Comentario']
-    i = 2
+
+
+
+    precio_anterior = 0
+    saldo = 0
+    saldo_p = 0
+
     @crop_controls.each do |cc|
-      sheet.add_row [cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], (i > 2 ? "=E#{i+1} +" : "=") + "C#{i+2}-D#{i+2}",cc[:precio_unitario],"=C#{i+2}*F#{i+2}","=D#{i+2}*F#{i+2}",(i > 2 ? "=I#{i+1} +" : "=") +" G#{i+2}-H#{i+2}",cc.updater_email,cc[:comentario]] rescue nil
-      i = i + 1
+
+      saldo += ((cc[:entrada].to_f  - cc[:salida].to_f) *100).round / 100.0
+
+      if cc[:tipo_doc] == 'VALUACION'
+        
+        #=F17*E17-F16*E16
+        cant = ((cc[:precio_unitario].to_f  - precio_anterior) * saldo *100).round / 100.0
+        if cant >= 0
+          debe = cant
+          haber = 0
+        else
+          debe = 0
+          haber = -cant
+        end
+          
+      else
+        debe = (cc[:entrada].to_f * cc[:precio_unitario].to_f * 100).round / 100.0
+        haber = (cc[:salida].to_f * cc[:precio_unitario].to_f * 100).round / 100.0
+      end
+  
+      saldo_p += ((debe-haber) *100).round / 100.0
+      #watch out! first item cant be valuacion
+      precio_anterior = cc[:precio_unitario].to_f
+
+      sheet.add_row [cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], saldo ,cc[:precio_unitario],debe,haber,saldo_p,cc.updater_email,cc[:comentario]] rescue nil
+
     end
 
     sheet.auto_filter = "A3:K3"

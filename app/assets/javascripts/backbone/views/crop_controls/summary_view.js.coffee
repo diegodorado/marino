@@ -48,12 +48,12 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
       data.gestion.tn = _.reduce gestion, ((memo, cc) -> memo + cc.tn() ) , 0
       data.gestion.unit = 0
       if gestion.length > 0
-        data.gestion.unit = _.first(gestion).unit()
+        data.gestion.unit = _.last(gestion).unit()
       data.gestion.total = data.gestion.tn * data.gestion.unit
       data.contabilidad.tn = _.reduce contabilidad, ((memo, cc) -> memo + cc.tn() ) , 0
       data.contabilidad.unit = 0
       if contabilidad.length > 0
-        data.contabilidad.unit = _.first(contabilidad).unit()      
+        data.contabilidad.unit = _.last(contabilidad).unit()      
       data.contabilidad.total = data.contabilidad.tn * data.contabilidad.unit
 
       gestion_total += data.gestion.total

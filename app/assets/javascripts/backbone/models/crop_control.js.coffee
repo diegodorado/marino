@@ -51,7 +51,6 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
     models = @where @params
     models = _.invoke(models, 'toJSON')
     precio_anterior = 0
-    saldo_anterior = 0
     saldo = 0
     saldo_p = 0
     _.each models, (item) ->
@@ -61,7 +60,7 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
       if item.tipo_doc is 'VALUACION'
         
         #=F17*E17-F16*E16
-        cant =  item.precio_unitario * saldo - precio_anterior * saldo_anterior
+        cant =  (item.precio_unitario  - precio_anterior) * saldo
         cant = Math.round(cant * 1000) / 1000
         if cant >= 0
           item.debe = cant
@@ -78,6 +77,6 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
       item.saldo_p = Math.round(saldo_p * 1000) / 1000
       #watch out! first item cant be valuacion
       precio_anterior = item.precio_unitario
-      saldo_anterior = saldo
+
       
     models
