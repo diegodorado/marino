@@ -3,8 +3,6 @@ ruby "1.9.3"
 
 gem 'rails', '3.2.9'
 
-#gem "rails-settings-cached" ...alternative for mongodb?
-
 gem 'mongo'
 gem 'mongoid' #must be loaded before cancan
 gem 'bson_ext'  #improve MongoDB performance
@@ -35,7 +33,6 @@ end
 
 
 gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"  #this gem has some helpers
-#gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git" , :group => [:production, :development, :assets]#this gem has some helpers
 gem 'slickgrid-rails' #, :path => "~/proyectos/gems/slickgrid-rails"
 
 gem 'mongoid-slugify'

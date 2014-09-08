@@ -1,0 +1,41 @@
+xlsx_package.use_shared_strings = true
+wb = xlsx_package.workbook
+
+#wb.use_autowidth = false
+
+wb.styles do |s|
+  # define your styles
+  title_cell = s.add_style(:bg_color => "0000FF",
+                             :fg_color=>"FF",
+                             :sz => 12,
+                             :border=>Axlsx::STYLE_THIN_BORDER,
+                             :alignment=>{:horizontal => :center})
+
+  date_time = s.add_style(:num_fmt => Axlsx::NUM_FMT_YYYYMMDDHHMMSS,
+                                 :border=>Axlsx::STYLE_THIN_BORDER)
+
+  percent = s.add_style(:num_fmt => Axlsx::NUM_FMT_PERCENT,
+                               :border=>Axlsx::STYLE_THIN_BORDER)
+
+  currency = s.add_style(:format_code=>"¥#,##0;[Red]¥-#,##0",
+                                :border=>Axlsx::STYLE_THIN_BORDER)
+
+  wb.add_worksheet(name: "RESUMEN") do |sheet|
+
+    sheet.add_row [@title]
+    sheet.merge_cells "A1:D1"
+    sheet['A1:A1'].each { |c| c.style = title_cell }
+    sheet.add_row []
+
+    sheet.add_row ['Fecha',	'Tipo Doc',	'Entrada (tn)',	'Salida (tn)',	'Saldo (tn)',	'Precio ($/tn)',	'Debe ($)',	'Haber ($)',	'Saldo ($)',	'Actualizado por',	'Comentario']
+
+
+
+
+    sheet.auto_filter = "A3:K3"
+    sheet.page_setup.fit_to :width => 1, :height => 1
+    sheet['A3:K3'].each { |c| c.style = title_cell }
+    sheet.column_widths 14, nil, nil, nil, nil
+
+  end
+end

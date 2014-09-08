@@ -33,6 +33,10 @@ class CropControlsController < ApplicationController
     @crop_controls = CropControl.in(store_id: stores.pluck(:_id))
     respond_to do |format|
       format.html
+      format.xlsx do
+        @title = "Resumen Ctrl de Granos"
+        render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
+      end
     end
   end
 

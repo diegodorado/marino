@@ -4,6 +4,8 @@
       Control de granos - Resumen
     %ul.data-header-actions
       %li.active
+        =link_to "Descargar Excel", summary_crop_controls_path(format: :xlsx)
+      %li.active
         =link_to "EDITAR MOVIMIENTOS", list_crop_controls_path
   %section
     #crop_controls_summary
