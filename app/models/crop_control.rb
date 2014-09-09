@@ -7,19 +7,16 @@ class CropControl
 
   field :fecha #, type: Date
   field :tipo_doc
-  field :entrada
-  field :salida
-  field :precio_unitario
+  field :entrada, type: Float
+  field :salida, type: Float
+  field :precio_unitario, type: Float
   field :comentario
 
 
   def as_json(options={})
-
-    #options[:only] = [:id, :fecha, :tipo_doc, :debe, :haber, :precio_unitario]
     options[:methods] ||= []
     options[:methods] << :updater_email
     attrs = super(options)
-    #attrs["id"] = attrs["_id"]
     attrs
   end
 
@@ -32,5 +29,3 @@ class CropControl
   end
 
 end
-
-

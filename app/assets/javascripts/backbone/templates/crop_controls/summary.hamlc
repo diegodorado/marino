@@ -3,7 +3,8 @@
     %label.col-sm-2.control-label{for: "balance_at"} Saldo al:
     .col-sm-5
       %input#balance_at.form-control{type: "date"}/
-   
+      %a#download_excel.btn.btn-alt
+        Descargar en Excel
 
 %table.table
   %thead

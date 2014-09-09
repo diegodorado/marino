@@ -30,10 +30,71 @@ class CropControlsController < ApplicationController
     @company = current_company
     stores = @company.stores
     @crops = Crop.only(:_id,:name).all            
-    @crop_controls = CropControl.in(store_id: stores.pluck(:_id))
     respond_to do |format|
-      format.html
+      format.html do
+        @crop_controls = CropControl.in(store_id: stores.pluck(:_id))
+      end
       format.xlsx do
+      
+        map = %Q{         
+          function() { 
+            emit(
+              this.crop_id, 
+              { 
+                tn: (this.entrada-this.salida), 
+                unit: this.precio_unitario }
+              );  
+          }
+        }
+            
+        reduce = %Q{
+          function(key, values) { 
+            var result = { tn: 0, unit:0 };    
+            
+            values.forEach( function(value) {      
+              result.tn += value.tn;      
+              result.unit = value.unit;    
+              });    
+              
+            return result;  }
+        }
+
+
+        @crop_controls = CropControl
+          .in(store_id: stores.pluck(:_id))
+          .where(:fecha.lte => params[:balance_at])
+          .map_reduce(map, reduce)
+          .out(inline: true)
+
+      
+
+    for crop_id, ccs of grouped
+
+      data=
+        crop: @crops.get(crop_id).get('name')
+        gestion: {}
+        contabilidad: {}
+
+      gestion = _.filter ccs, (cc) -> cc.get('gestion')
+      contabilidad = _.filter ccs, (cc) -> cc.get('contabilidad')
+
+      data.gestion.tn = _.reduce gestion, ((memo, cc) -> memo + cc.tn() ) , 0
+      data.gestion.unit = 0
+      if gestion.length > 0
+        data.gestion.unit = _.last(gestion).unit()
+      data.gestion.total = data.gestion.tn * data.gestion.unit
+      data.contabilidad.tn = _.reduce contabilidad, ((memo, cc) -> memo + cc.tn() ) , 0
+      data.contabilidad.unit = 0
+      if contabilidad.length > 0
+        data.contabilidad.unit = _.last(contabilidad).unit()      
+      data.contabilidad.total = data.contabilidad.tn * data.contabilidad.unit
+
+      gestion_total += data.gestion.total
+      contabilidad_total += data.contabilidad.total
+
+          
+      
+      
         @title = "Resumen Ctrl de Granos"
         render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
       end

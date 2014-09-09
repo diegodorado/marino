@@ -6,7 +6,8 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
   el: "#crop_controls_summary"
   events :
     "change #balance_at" : "date_changed_handler"
-
+    "click #download_excel" : "download_excel_handler"
+    
   initialize: () ->
     @collection = new Marino.Collections.CropControlsCollection()
     @collection.reset @options.crop_controls
@@ -20,6 +21,8 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
     @balance_at = d.toString('yyyy-MM-dd')
     @addAll()
 
+  download_excel_handler: (event)=>
+    console.log Routes.crop_controls_path({format:"xlsx", balance_at: @balance_at})
 
   addAll: () =>
     @$("tbody").empty()
