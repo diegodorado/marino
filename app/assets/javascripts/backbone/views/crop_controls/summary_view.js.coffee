@@ -22,7 +22,7 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
     @addAll()
 
   download_excel_handler: (event)=>
-    console.log Routes.crop_controls_path({format:"xlsx", balance_at: @balance_at})
+    window.location = Routes.summary_crop_controls_path({format:"xlsx", balance_at: @balance_at})
 
   addAll: () =>
     @$("tbody").empty()

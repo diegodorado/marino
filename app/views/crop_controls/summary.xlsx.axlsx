@@ -11,31 +11,42 @@ wb.styles do |s|
                              :border=>Axlsx::STYLE_THIN_BORDER,
                              :alignment=>{:horizontal => :center})
 
-  date_time = s.add_style(:num_fmt => Axlsx::NUM_FMT_YYYYMMDDHHMMSS,
-                                 :border=>Axlsx::STYLE_THIN_BORDER)
+  subtitle = s.add_style(:border=>Axlsx::STYLE_THIN_BORDER,
+                             :alignment=>{:horizontal => :center})
 
-  percent = s.add_style(:num_fmt => Axlsx::NUM_FMT_PERCENT,
-                               :border=>Axlsx::STYLE_THIN_BORDER)
-
-  currency = s.add_style(:format_code=>"¥#,##0;[Red]¥-#,##0",
-                                :border=>Axlsx::STYLE_THIN_BORDER)
+  border = s.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+  number_fmt = s.add_style(:num_fmt => 2,:border=>Axlsx::STYLE_THIN_BORDER)
+  currency = s.add_style(:format_code=>"$ #,##0.00",:border=>Axlsx::STYLE_THIN_BORDER)
 
   wb.add_worksheet(name: "RESUMEN") do |sheet|
 
+
     sheet.add_row [@title]
     sheet.merge_cells "A1:D1"
-    sheet['A1:A1'].each { |c| c.style = title_cell }
     sheet.add_row []
+    sheet.add_row ['',	'Gestion',	'',	'',	'Contabilidad',	'',	'']
+    sheet.merge_cells "B3:D3"
+    sheet.merge_cells "E3:G3"
+    sheet.add_row ['GRANO',	'TN',	'$ UNIT',	'$ TOTAL',	'TN',	'$ UNIT',	'$ TOTAL']
+    @result.map do |r|
+      sheet.add_row [r["cropname"], r["tn_gest"], r["unit_gest"], r["tn_gest"] * r["unit_gest"], r["tn_cont"], r["unit_cont"], r["tn_cont"] * r["unit_cont"] ]
+    end
+    puts sheet.rows.last.methods
+    sheet.add_row ['TOTALES','' ,'' , "=SUM(D5:D#{sheet.rows.last.index+1})",'' ,'' , "=SUM(G5:G#{sheet.rows.last.index+1})"]
 
-    sheet.add_row ['Fecha',	'Tipo Doc',	'Entrada (tn)',	'Salida (tn)',	'Saldo (tn)',	'Precio ($/tn)',	'Debe ($)',	'Haber ($)',	'Saldo ($)',	'Actualizado por',	'Comentario']
 
+    sheet.row_style 3, subtitle    
+    sheet.col_style 0, border    
+    sheet.col_style 1, number_fmt    
+    sheet.col_style 2..3, currency    
+    sheet.col_style 4, number_fmt
+    sheet.col_style 5..6, currency
+    sheet['A1:A1'].each { |c| c.style = title_cell }
+    sheet['B3:G3'].each  { |c| c.style = title_cell }
+    
 
-
-
-    sheet.auto_filter = "A3:K3"
     sheet.page_setup.fit_to :width => 1, :height => 1
-    sheet['A3:K3'].each { |c| c.style = title_cell }
-    sheet.column_widths 14, nil, nil, nil, nil
+    sheet.column_widths 14, 14,14,14,14,14
 
   end
 end

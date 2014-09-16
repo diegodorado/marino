@@ -41,6 +41,8 @@ class CropControlsController < ApplicationController
             emit(
               this.crop_id, 
               { 
+                gestion: this.gestion,
+                contabilidad: this.contabilidad,
                 tn: (this.entrada-this.salida), 
                 unit: this.precio_unitario }
               );  
@@ -49,52 +51,39 @@ class CropControlsController < ApplicationController
             
         reduce = %Q{
           function(key, values) { 
-            var result = { tn: 0, unit:0 };    
+            var result = {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };    
             
-            values.forEach( function(value) {      
-              result.tn += value.tn;      
-              result.unit = value.unit;    
+            values.forEach( function(value) {
+                if(value.gestion){
+                  result.tn_gest += value.tn;      
+                  result.unit_gest = value.unit;    
+                }
+                if(value.contabilidad){
+                  result.tn_cont += value.tn;      
+                  result.unit_cont = value.unit;    
+                }
               });    
               
-            return result;  }
+            return result;  
+            }
         }
 
 
-        @crop_controls = CropControl
-          .in(store_id: stores.pluck(:_id))
-          .where(:fecha.lte => params[:balance_at])
-          .map_reduce(map, reduce)
-          .out(inline: true)
+        @result = CropControl.in(store_id: stores.pluck(:_id)).where(:fecha.lte => params[:balance_at]).map_reduce(map, reduce).out(inline: 1)
 
-      
+        @result = @result.each{|x| x}
+        crop_ids = @result.map{|x| x["_id"]}
 
-    for crop_id, ccs of grouped
+        crops = Crop.in(_id: crop_ids).all
+        crops.each do |c|
+          @result.map do |r|
+            if r["_id"] == c.id
+              r["value"]["cropname"] = c.name
+            end
+          end
+        end
+        @result = @result.map{|x| x["value"]}
 
-      data=
-        crop: @crops.get(crop_id).get('name')
-        gestion: {}
-        contabilidad: {}
-
-      gestion = _.filter ccs, (cc) -> cc.get('gestion')
-      contabilidad = _.filter ccs, (cc) -> cc.get('contabilidad')
-
-      data.gestion.tn = _.reduce gestion, ((memo, cc) -> memo + cc.tn() ) , 0
-      data.gestion.unit = 0
-      if gestion.length > 0
-        data.gestion.unit = _.last(gestion).unit()
-      data.gestion.total = data.gestion.tn * data.gestion.unit
-      data.contabilidad.tn = _.reduce contabilidad, ((memo, cc) -> memo + cc.tn() ) , 0
-      data.contabilidad.unit = 0
-      if contabilidad.length > 0
-        data.contabilidad.unit = _.last(contabilidad).unit()      
-      data.contabilidad.total = data.contabilidad.tn * data.contabilidad.unit
-
-      gestion_total += data.gestion.total
-      contabilidad_total += data.contabilidad.total
-
-          
-      
-      
         @title = "Resumen Ctrl de Granos"
         render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
       end
