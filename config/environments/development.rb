@@ -1,4 +1,9 @@
 Marino::Application.configure do
+
+  Mongoid.logger = nil
+  Moped.logger  = nil
+
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -34,4 +39,5 @@ Marino::Application.configure do
   
   #unncomment if you want to temporarily turn on back assets' log 
   #config.quiet_assets = false
+  
 end

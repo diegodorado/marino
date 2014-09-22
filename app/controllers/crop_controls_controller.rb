@@ -38,51 +38,46 @@ class CropControlsController < ApplicationController
       
         map = %Q{         
           function() { 
-            emit(
-              this.crop_id, 
-              { 
-                gestion: this.gestion,
-                contabilidad: this.contabilidad,
-                tn: (this.entrada-this.salida), 
-                unit: this.precio_unitario }
-              );  
+            
+            var values = { 
+                tn_gest: this.gestion ?  (this.entrada-this.salida) : 0,   
+                unit_gest: this.gestion ? this.precio_unitario : 0,  
+                tn_cont: this.contabilidad ?  (this.entrada-this.salida) : 0,  
+                unit_cont: this.contabilidad ? this.precio_unitario : 0  
+              };    
+          
+            emit( this.crop_id, values);  
           }
         }
             
         reduce = %Q{
           function(key, values) { 
-            var result = {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };    
+
+            var result =  {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };    
             
             values.forEach( function(value) {
-                if(value.gestion){
-                  result.tn_gest += value.tn;      
-                  result.unit_gest = value.unit;    
-                }
-                if(value.contabilidad){
-                  result.tn_cont += value.tn;      
-                  result.unit_cont = value.unit;    
-                }
-              });    
+                result.tn_gest += value.tn_gest;      
+                result.unit_gest = value.unit_gest;    
+                result.tn_cont += value.tn_cont;      
+                result.unit_cont = value.unit_cont;    
+              });
               
             return result;  
             }
         }
 
-
-        @result = CropControl.in(store_id: stores.pluck(:_id)).where(:fecha.lte => params[:balance_at]).map_reduce(map, reduce).out(inline: 1)
-
-        @result = @result.each{|x| x}
-        crop_ids = @result.map{|x| x["_id"]}
-
-        crops = Crop.in(_id: crop_ids).all
-        crops.each do |c|
-          @result.map do |r|
-            if r["_id"] == c.id
-              r["value"]["cropname"] = c.name
+        @result = CropControl.in(store_id: stores.pluck(:_id))
+          .where(:fecha.lte => params[:balance_at])
+          .map_reduce(map, reduce)
+          .out(inline: 1)
+          .map do |x|
+              x["value"]["cropname"] = Crop.find(x["_id"]).name
+              x["value"]
             end
-          end
-        end
-        @result = @result.map{|x| x["value"]}
+          
+        puts @result.to_yaml
+
+
 
         @title = "Resumen Ctrl de Granos"
         render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
