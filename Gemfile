@@ -77,6 +77,14 @@ group :test do
   gem 'database_cleaner'
 end
 
+
+#required by afip service
+#todo: check prawn new versions
+gem 'prawn', :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
+gem 'barby'
+gem 'savon'
+gem 'httpclient' #used by savon because net_http fallback is failing
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

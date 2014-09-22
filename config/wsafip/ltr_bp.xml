@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loginTicketRequest version="1.0">
+  <header>
+    <uniqueId>%s</uniqueId>
+    <generationTime>%s</generationTime>
+    <expirationTime>%s</expirationTime>
+  </header>
+  <service>wsfe</service>
+</loginTicketRequest>

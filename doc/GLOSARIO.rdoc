@@ -1,0 +1,25 @@
+compras > purchases
+ventas > sales
+contabilidad > accounting
+configuracion > setup
+stock > inventory
+
+cheque>cheque
+cliente>customer
+cuenta>account
+deposito>warehouse
+orden de compra>po (purchase order)
+pedido> do (delivery order)
+producto> product
+proveedor> supplier
+pago> payment
+recibo> receipt
+unidad> unit
+entregas> delivery
+facturas> invoice
+ndc> credit note
+ndd> debit note
+remito> ds (delivery slip)
+lote>batch
+despacho>dispatch
+

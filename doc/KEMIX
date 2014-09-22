@@ -1,0 +1,103 @@
+Private Sub cmd_get_cae_Click()
+    Dim url As String
+    Dim sql As String
+    Dim rs As New ADODB.Recordset
+    Dim fac As Integer
+
+    fac = Me.Factura
+    url = "http://192.168.0.102:3000/sales/build_access_invoice?"
+    
+    sql = "SELECT top 1 Fecha, Cliente, Remito, [Orden de compra], Moneda, Cotizacion FROM Facturas WHERE factura = " & fac
+    rs.Open sql, CurrentProject.Connection
+    
+    If rs.EOF Then
+        MsgBox "No se puede encontrar la Factura " & fac
+        Exit Sub
+    End If
+    
+    url = url & "d=" & rs(0) & "&c=" & rs(1) & "&r=" & rs(2) & "&odc=" & rs(3) & "&lc=" & -CInt(rs(4) = "$") & "&cr=" & Replace(rs(5), ",", ".")
+    rs.Close
+
+
+    sql = "SELECT Producto, Detalle, Kilos, Importe FROM Facturas WHERE factura = " & Factura
+    rs.Open sql, CurrentProject.Connection
+
+
+     Do While Not rs.EOF
+        url = url & "&i[][p]=" & rs(0) & "&i[][d]=" & rs(1) & "&i[][q]=" & rs(2) & "&i[][a]=" & Replace(Replace(rs(3), ".", ""), ",", ".")
+        rs.MoveNext
+    Loop
+    rs.Close
+    Application.FollowHyperlink url
+    
+End Sub
+
+
+ordenes de compra
+  productos que no van a stock (resmas de papel, bobinas de embalaje)
+  para cotejar precios cuando venga la factura 
+ 
+Enter Supplier Invoice
+  agregar a la factura percepciones de iva
+  
+Payments to Suppliers
+  nro de cheques
+  retenciones
+
+Cheques....cheques en cartera
+
+cheques:  crear grilla para asociar varios cheques a un mismo pago
+  
+retenciones:  crear grilla
+  
+un banco para cada tipo de documento??
+
+cuentas corrientes:  se manejan en pesos
+  
+autogenerar una nc o nd por diferencia de cambio
+ejemplo:
+  factura, por U$S 1000, tipo de cambio 3.8, $3800
+  pago, por U$S 1000,  tipo de cambio 3.9, $3900
+  aplicar 3800 a la factura y generar nc por $100 por diferencia de cambio
+  
+
+listados_a_final_de_mes:
+  listado de facturas de importacion
+    (datos del despacho)
+    importe bruto
+    iva 10
+    iva 21
+    iva 27
+    percepcion de iva
+    iibb cap
+    iibb bs as
+    totales
+  listado de facturas de compras
+    importe bruto
+    iva 10
+    iva 21
+    iva 27
+    percepcion de iva
+    iibb cap
+    iibb bs as
+    totales
+  listado de anticipos de ganancias (no va a compras porque se rinde a fin de ejercicio)
+
+  listado de facturas de ventas
+    facturas, nd/nc con iva,nd sin iva (ch rechazado, gtos de ch rechazado)  
+    importe
+    iva
+    total
+  listado de facturas de exportacion
+
+  listado de retenciones de iva
+  listado de retenciones de iibb cap
+  listado de retenciones de iibb bs as
+  listado de retenciones de ganancias
+  listado de retenciones de suss
+    fecha
+    nro de retencion
+    cliente
+    cuit-cliente
+    importe
+    total
