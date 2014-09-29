@@ -1,16 +1,15 @@
-#todo: what is private and what public?
-#todo:avoid editing if got cae
+class Invoice
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-class Invoice < ActiveRecord::Base
-  belongs_to :delivery_slip
-  belongs_to :customer
-  belongs_to :currency
-  has_many :invoice_items, :dependent => :destroy
-  has_many :invoice_taxes, :dependent => :destroy
-  accepts_nested_attributes_for :invoice_items
-  accepts_nested_attributes_for :invoice_taxes
-  acts_as_searchable :doc_no
-  after_initialize :defaults
+  field :invoiced_at , type: Date
+  field :tipo_doc
+  field :entrada, type: Float
+  field :salida, type: Float
+  field :precio_unitario, type: Float
+  field :comentario
+
+
 
   def defaults
     #fixme: only for new records!!
@@ -37,6 +36,73 @@ class Invoice < ActiveRecord::Base
     last = AfipService::Wsfe.get_last_authorized(invoice_type,pos)
     self.doc_no = last + 1 if last
   end
+
+
+  def afip_request
+
+      det_request = {
+                    'Concepto'=>1, #01 - productos
+                    'DocTipo'=>80, #80 - cuit
+                    'DocNro'=>customer.cuit,
+                    'CbteDesde'=>doc_no,
+                    'CbteHasta'=>doc_no,
+                    'CbteFch'=>date.strftime('%Y%m%d'),
+                    'ImpTotal'=>total_amount,#Importe neto no gravado + Importe exento + Importe neto gravado + todos los campos de IVA al XX% + Importe de tributos
+                    'ImpTotConc'=>untaxed_amount,#Importe neto no gravado.
+                    'ImpNeto'=>taxed_amount,#Importe neto gravado.
+                    'ImpOpEx'=>exempt_amount,#Importe exento
+                    'ImpTrib'=>taxes_amount,#Suma de los importes del array de Tributos
+                    'ImpIVA'=>iva_amount,#Suma de los importes del array de IVA
+                    'MonId'=>currency.afip_code,
+                    'MonCotiz'=>currency_rate, #Para PES, pesos argentinos la misma debe ser 1
+                  }
+
+      #invoice_taxes.map do |t|
+      #  det_request['Iva'] = {'AlicIva'=>{'Id'=>t.tax.afip_code,'BaseImp'=>t.tax_base.round(2),'Importe'=>t.tax_amount.round(2)}}
+      #end                  
+      det_request['Iva'] = {'AlicIva'=>{'Id'=>5,'BaseImp'=>taxed_amount,'Importe'=>iva_amount}}
+
+      {'FeCAEReq'=>
+        {'FeCabReq'=> {'CantReg'=>1,'PtoVta'=>pos,'CbteTipo'=>invoice_type},
+          'FeDetReq'=>  {'FECAEDetRequest'=> det_request}
+        }}
+  
+  end
+
+
+  def barcode
+    #a. Clave Única de Identificación Tributaria (C.U.I.T.) del emisor de la factura .
+    code = APP_CONFIG['cuit']
+    #b. Código de tipo de comprobante (2 caracteres).
+    code << "%02d" % invoice_type
+    #c. Punto de venta (4 caracteres).
+    code << "%04d" % doc_no
+    #d. Código de Autorización de Impresión (C.A.I.) (14 caracteres).
+    code << cae
+    #e. Fecha de vencimiento (8 caracteres).
+    code << date.strftime('%Y%m%d')
+    #f. Dígito verificador (1 carácter).
+    code << digito_verificador(code)
+    code
+  end
+  
+  def digito_verificador(codigo)
+    #"Rutina para el cálculo del dígito verificador 'módulo 10'"
+    # http://www.consejo.org.ar/Bib_elect/diciembre04_CT/documentos/rafip1702.htm
+    # comenzar desde la izquierda, sumar todos los caracteres ubicados en las posiciones impares.
+    impares = codigo.each_char.inject(0){|memo,c| memo + (c.to_i % 2 ==1? c.to_i : 0)}
+    # comenzar desde la izquierda, sumar todos los caracteres que están ubicados en las posiciones pares.
+    pares = codigo.each_char.inject(0){|memo,c| memo + (c.to_i % 2 ==0? c.to_i : 0)}
+    # sumar los resultados obtenidos en las etapas 2 y 3.
+    total = impares*3 + pares
+    # Etapa 5: buscar el menor número que sumado al resultado obtenido en la etapa 4 dé un número múltiplo de 10. Este será el valor del dígito verificador del módulo 10.
+    (total % 10 > 0 ? 10 - total % 10 : 0).to_s
+  end  
+  
+end
+
+
+
 
 =begin
   #update total_amount on any amount change
@@ -73,9 +139,8 @@ class Invoice < ActiveRecord::Base
     it.tax_base = self.taxed_amount
     self.iva_amount = it.tax_amount
   end  
-=end
 
-=begin
+
   def build_from_delivery_slip(ds)
     self.delivery_slip_id = ds.id
     self.customer_id = ds.customer_id
@@ -97,76 +162,3 @@ class Invoice < ActiveRecord::Base
     self
   end
 =end
-
-  def afip_request
-
-      det_request = {
-                    'Concepto'=>1, #01 - productos
-                    'DocTipo'=>80, #80 - cuit
-                    'DocNro'=>customer.cuit,
-                    'CbteDesde'=>doc_no,
-                    'CbteHasta'=>doc_no,
-                    'CbteFch'=>date.strftime('%Y%m%d'),
-                    'ImpTotal'=>total_amount,#Importe neto no gravado + Importe exento + Importe neto gravado + todos los campos de IVA al XX% + Importe de tributos
-                    'ImpTotConc'=>untaxed_amount,#Importe neto no gravado.
-                    'ImpNeto'=>taxed_amount,#Importe neto gravado.
-                    'ImpOpEx'=>exempt_amount,#Importe exento
-                    'ImpTrib'=>taxes_amount,#Suma de los importes del array de Tributos
-                    'ImpIVA'=>iva_amount,#Suma de los importes del array de IVA
-                    'MonId'=>currency.afip_code,
-                    'MonCotiz'=>currency_rate, #Para PES, pesos argentinos la misma debe ser 1
-                  }
-
-      #invoice_taxes.map do |t|
-      #  det_request['Iva'] = {'AlicIva'=>{'Id'=>t.tax.afip_code,'BaseImp'=>t.tax_base.round(2),'Importe'=>t.tax_amount.round(2)}}
-      #end                  
-      det_request['Iva'] = {'AlicIva'=>{'Id'=>5,'BaseImp'=>taxed_amount,'Importe'=>iva_amount}}
-
-      {'FeCAEReq'=>
-        {'FeCabReq'=> {'CantReg'=>1,'PtoVta'=>pos,'CbteTipo'=>invoice_type},
-          'FeDetReq'=>  {'FECAEDetRequest'=> det_request}
-        }}
-  
-  end
-
-  def update_delivery_slip
-    #todo: mark delivery_slip as invoiced
-  end
-  
-  def save
-    if super 
-      self.update_delivery_slip
-      true
-    end
-  end
-
-  def barcode
-    #a. Clave Única de Identificación Tributaria (C.U.I.T.) del emisor de la factura .
-    code = APP_CONFIG['cuit']
-    #b. Código de tipo de comprobante (2 caracteres).
-    code << "%02d" % invoice_type
-    #c. Punto de venta (4 caracteres).
-    code << "%04d" % doc_no
-    #d. Código de Autorización de Impresión (C.A.I.) (14 caracteres).
-    code << cae
-    #e. Fecha de vencimiento (8 caracteres).
-    code << date.strftime('%Y%m%d')
-    #f. Dígito verificador (1 carácter).
-    code << digito_verificador(code)
-    code
-  end
-  
-  def digito_verificador(codigo)
-    #"Rutina para el cálculo del dígito verificador 'módulo 10'"
-    # http://www.consejo.org.ar/Bib_elect/diciembre04_CT/documentos/rafip1702.htm
-    # comenzar desde la izquierda, sumar todos los caracteres ubicados en las posiciones impares.
-    impares = codigo.each_char.inject(0){|memo,c| memo + (c.to_i % 2 ==1? c.to_i : 0)}
-    # comenzar desde la izquierda, sumar todos los caracteres que están ubicados en las posiciones pares.
-    pares = codigo.each_char.inject(0){|memo,c| memo + (c.to_i % 2 ==0? c.to_i : 0)}
-    # sumar los resultados obtenidos en las etapas 2 y 3.
-    total = impares*3 + pares
-    # Etapa 5: buscar el menor número que sumado al resultado obtenido en la etapa 4 dé un número múltiplo de 10. Este será el valor del dígito verificador del módulo 10.
-    (total % 10 > 0 ? 10 - total % 10 : 0).to_s
-  end  
-  
-end

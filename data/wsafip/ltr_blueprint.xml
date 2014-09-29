@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<loginTicketRequest version="1.0">
+  <header>
+    <source>cn=kemix2,ou=bitnami,o=KEMIX,c=ar,serialNumber=CUIT 30652143527</source>
+    <destination>cn=wsaa,o=afip,c=ar,serialNumber=CUIT 33693450239</destination>
+    <uniqueId>%s</uniqueId>
+    <generationTime>%s</generationTime>
+    <expirationTime>%s</expirationTime>
+  </header>
+  <service>wsfe</service>
+</loginTicketRequest>
