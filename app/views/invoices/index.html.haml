@@ -1,0 +1,21 @@
+.dark.data-block
+  %header
+    %h2(style="float: left;")
+      Facturas
+
+  %section
+    %table.table.table-bordered
+      %tr
+        %th Nombre
+        %th
+
+      - @invoices.each do |invoice|
+        %tr
+          %td= store.name
+          %td(style ="text-align:center;font-size:1.5em")
+            = link_to edit_store_path(store) do              
+              %i.icon-edit
+            = link_to store, method: :delete, data: { confirm: 'Are you sure?' } do              
+              %i.icon-remove
+
+    = link_to 'Nueva Factura', new_invoice_path
