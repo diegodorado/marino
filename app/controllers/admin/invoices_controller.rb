@@ -1,16 +1,68 @@
-class InvoicesController < ApplicationController
-  skip_before_filter :require_company!
-  skip_before_filter :authenticate_user!
+
+class Admin::InvoicesController < ApplicationController
+  #skip_before_filter :require_company!
+  #skip_before_filter :authenticate_user!
+
+  load_and_authorize_resource
+  before_filter :require_company!
+
+  respond_to :json
 
   def index
       @invoices = Invoice.all
   end
 
 
-  def test
-    invoice = resource
-    template = "#{RAILS_ROOT}/data/invoice_template.pdf"
-    tmp_filename = "#{RAILS_ROOT}/tmp/factura.pdf"
+  def show
+  end
+
+  def create
+    @invoice = Invoice.new(params[:invoice])
+
+    if @invoice.save
+      render json: @invoice, status: :created, location: @invoice
+    else
+      render json: @invoice.errors, status: :unprocessable_entity
+    end
+
+  end
+
+  def update
+    @invoice.update_attributes(params[:invoice])
+
+    if @invoice.save
+      render json: @invoice, status: :ok
+    else
+      render json: @invoice.errors, status: :unprocessable_entity
+    end
+
+  end
+
+  def destroy
+    if @invoice.destroy
+      render json: '', status: :ok
+    else
+      render json: '', status: :unprocessable_entity
+    end
+  end
+
+
+  def pdf
+    template =  "#{Rails.root}/data/invoice_template.pdf"
+    
+    pdf = Prawn::Document.new
+    pdf.text "Factura nro: " +  @invoice.nro_doc
+    # Use whatever prawn methods you need on the pdf object to generate the PDF file right here.
+
+    send_data pdf.render, type: "application/pdf", disposition: "inline"
+    
+    
+  end
+  
+  def old_thing
+    
+    return send_file template, :type => 'application/pdf', :disposition => 'attachment'
+    
     Prawn::Document.new(:template => template,
                         :left_margin => 0,
                         :right_margin => 0,
@@ -18,11 +70,11 @@ class InvoicesController < ApplicationController
                         :top_margin => 0 ) do
       self.font_size=9
       bounding_box [494, bounds.top - 40 ], :width => 78 do
-        text invoice.date.strftime('%d/%m/%Y'), :size => 12, :align => :center
+        text @invoice.date.strftime('%d/%m/%Y'), :size => 12, :align => :center
       end
 
       bounding_box [345, bounds.top - 22 ], :width => 120 do
-        text "%04d" % invoice.pos + "-%08d" % invoice.doc_no, :size => 14
+        text "%04d" % @invoice.pos + "-%08d" % @invoice.doc_no, :size => 14
       end
       bounding_box [345, bounds.top - 43 ], :width => 120 do
         text "FACTURA", :size => 12
@@ -117,12 +169,22 @@ class InvoicesController < ApplicationController
       end
 
       
-      render_file tmp_filename
+
     end
   
-    #send_file tmp_filename, :type => 'application/pdf', :disposition => 'attachment'
+    
   
   end
+
+  def cae
+    #todo: validate afip_request
+    #validate result
+    
+    response = AfipService::Wsfe.dummy
+    puts response
+    return
+  end
+
   
   def get_cae
     #todo: validate afip_request

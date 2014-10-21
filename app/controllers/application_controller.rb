@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
     unless current_company
       redirect_to root_path, notice: "Debes seleccionar una empresa para comenzar."
     end
+    @company = current_company
+    
   end
   
   helper_method :current_company

@@ -36,7 +36,7 @@ module AfipService
   
     def self.dummy
       client = Savon::Client.new do
-        wsdl.document = ::Rails.root.to_s + APP_CONFIG['wsfe_wsdl']
+        wsdl.document = Rails.root.to_s + APP_CONFIG['wsfe_wsdl']
       end
       response = client.request :fe_dummy
       response.to_hash.first[1].first[1]

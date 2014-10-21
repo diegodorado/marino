@@ -1,0 +1,9 @@
+%form.form-horizontal.no-margin{:name => "invoice"}
+  %fieldset
+    .control-group
+      %label.control-label{:for => "name"} Nro Doc
+      .controls
+        %input{:name =>"nro_doc", :required => true, :value=> @nro_doc}
+    .form-actions
+      %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Volver al Listado
+      %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Guardar

@@ -27,7 +27,6 @@ class CropControlsController < ApplicationController
   end
 
   def summary
-    @company = current_company
     stores = @company.stores
     @crops = Crop.only(:_id,:name).all            
     respond_to do |format|
@@ -86,7 +85,6 @@ class CropControlsController < ApplicationController
   end
 
   def list
-    @company = current_company
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company

@@ -8,7 +8,15 @@ defaults: &defaults
   cuit: '30652143527'
   company: 'SAMPLE SA'
 
+test:
+  <<: *defaults
+
 development:
+  <<: *defaults
+
+
+production:
+  <<: *defaults
   wsaa_url: https://wsaa.afip.gov.ar/ws/services/LoginCms
   wsfe_url: https://servicios1.afip.gov.ar/wsfev1/service.asmx
   wsaa_wsdl: /data/wsafip/wsaa.wsdl
@@ -17,9 +25,3 @@ development:
   key: /data/wsafip/sample.key
   cuit: '30652143527'
   company: 'SAMPLE SA'
-
-test:
-  <<: *defaults
-
-production:
-  <<: *defaults
