@@ -1,16 +1,28 @@
 .row
-  .span5
-    .well
-      %h3 Olvidaste tu contraseña?
-      %hr
-      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
-        = devise_error_messages!    
-        %fieldset
-          .control-group
-            = f.label :email
-            .controls
-              = f.text_field :email
-          .form-actions
+  .span6
+    .dark.data-block
+      %header
+        %h2
+          %span.icon-thumbs-up
+          Olvidaste tu contraseña?
+      %section  
+
+        = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
+          = devise_error_messages!    
+          %fieldset
+            .control-group
+              = f.label :email
+              .controls
+                = f.text_field :email
+            .form-actions
             = f.submit "Resetear", :class => 'btn-primary btn-large'
-  .span4
-    = render :partial => "devise/shared/links"
+  .span6
+    .dark.data-block
+      %header
+        %h2
+          %span.icon-thumbs-up
+          Entrar utilizando
+      %section
+        Puedes entrar a través de estos servicios
+        = render :partial => "devise/shared/authentications"
+        = render :partial => "devise/shared/links"

@@ -1,0 +1,8 @@
+.dark.data-block
+  %header
+    %h2
+      Facturas de #{@company.name}
+  %section
+    #invoices
+
+= app_js_load :invoices=> @invoices, :invoices_admin=> true

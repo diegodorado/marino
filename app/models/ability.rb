@@ -4,9 +4,6 @@ class Ability
 
   def initialize(user)
 
-    print user
-    return unless user
-
     user ||= User.new # guest user (not logged in)
 
     alias_action :create, :read, :update, :destroy, :to => :crud
@@ -17,13 +14,6 @@ class Ability
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
       can :manage, :all
-      #if user.role? :superadmin
-      #  can :manage, :all             # allow superadmins to do anything
-      #elsif user.role? :manager
-      #  can :manage, [User, Product]  # allow managers to do anything to products and users
-      #elsif user.role? :sales
-      #  can :update, Product, :hidden => false  # allow sales to only update visible products
-      #end
 
     end
 

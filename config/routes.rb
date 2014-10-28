@@ -3,6 +3,8 @@ Marino::Application.routes.draw do
 
   resources :stores
 
+
+
   resources :companies, :only => [:index] do
     get 'select', :on => :member
     post 'comment', :on => :member
@@ -26,6 +28,10 @@ Marino::Application.routes.draw do
     resources :companies
     resources :crops do
       get 'get_price', :on => :collection
+    end
+    resources :invoices do
+      get 'cae', :on => :member
+      get 'pdf', :on => :member
     end
   end
 

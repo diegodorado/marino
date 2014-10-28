@@ -1,19 +1,68 @@
-class Sales::InvoicesController < CrudController
 
-  def pending_delivery_slips
-    @delivery_slips = DeliverySlip.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
+class Admin::InvoicesController < ApplicationController
+  #skip_before_filter :require_company!
+  #skip_before_filter :authenticate_user!
+
+  load_and_authorize_resource
+  before_filter :require_company!
+
+  respond_to :json
+
+  def index
+      @invoices = Invoice.all
+  end
+
+
+  def show
+  end
+
+  def create
+    @invoice = Invoice.new(params[:invoice])
+
+    if @invoice.save
+      render json: @invoice, status: :created, location: @invoice
+    else
+      render json: @invoice.errors, status: :unprocessable_entity
+    end
+
+  end
+
+  def update
+    @invoice.update_attributes(params[:invoice])
+
+    if @invoice.save
+      render json: @invoice, status: :ok
+    else
+      render json: @invoice.errors, status: :unprocessable_entity
+    end
+
+  end
+
+  def destroy
+    if @invoice.destroy
+      render json: '', status: :ok
+    else
+      render json: '', status: :unprocessable_entity
+    end
+  end
+
+
+  def pdf
+    template =  "#{Rails.root}/data/invoice_template.pdf"
+    
+    pdf = Prawn::Document.new
+    pdf.text "Factura nro: " +  @invoice.nro_doc
+    # Use whatever prawn methods you need on the pdf object to generate the PDF file right here.
+
+    send_data pdf.render, type: "application/pdf", disposition: "inline"
+    
+    
   end
   
-  def invoice_delivery_slip
-    ds = DeliverySlip.find(params[:id])
-    @invoice = Invoice.new
-    @invoice.build_from_delivery_slip(ds)  
-  end
-
-  def test
-    invoice = resource
-    template = "#{RAILS_ROOT}/data/invoice_template.pdf"
-    tmp_filename = "#{RAILS_ROOT}/tmp/factura.pdf"
+  def old_thing
+    
+    return send_file template, :type => 'application/pdf', :disposition => 'attachment'
+    
     Prawn::Document.new(:template => template,
                         :left_margin => 0,
                         :right_margin => 0,
@@ -21,11 +70,11 @@ class Sales::InvoicesController < CrudController
                         :top_margin => 0 ) do
       self.font_size=9
       bounding_box [494, bounds.top - 40 ], :width => 78 do
-        text invoice.date.strftime('%d/%m/%Y'), :size => 12, :align => :center
+        text @invoice.date.strftime('%d/%m/%Y'), :size => 12, :align => :center
       end
 
       bounding_box [345, bounds.top - 22 ], :width => 120 do
-        text "%04d" % invoice.pos + "-%08d" % invoice.doc_no, :size => 14
+        text "%04d" % @invoice.pos + "-%08d" % @invoice.doc_no, :size => 14
       end
       bounding_box [345, bounds.top - 43 ], :width => 120 do
         text "FACTURA", :size => 12
@@ -120,12 +169,22 @@ class Sales::InvoicesController < CrudController
       end
 
       
-      render_file tmp_filename
+
     end
   
-    #send_file tmp_filename, :type => 'application/pdf', :disposition => 'attachment'
+    
   
   end
+
+  def cae
+    #todo: validate afip_request
+    #validate result
+    
+    response = AfipService::Wsfe.dummy
+    puts response
+    return
+  end
+
   
   def get_cae
     #todo: validate afip_request
@@ -198,64 +257,3 @@ class Sales::InvoicesController < CrudController
   
 end
 
-
-
-
-=begin
-
-  headers = ["Date", "Patient Name", "Description", "Charges / Payments", 
-             "Patient Portion Due", "Balance"]
-
-  head = make_table([headers], :column_widths => [50, 90, 170, 90, 90, 50])
-
-  data = []
-
-  def row(date, pt, charges, portion_due, balance)
-    rows = charges.map { |c| ["", "", c[0], c[1], "", ""] }
-
-    # Date and Patient Name go on the first line.
-    rows[0][0] = date
-    rows[0][1] = pt
-
-    # Due and Balance go on the last line.
-    rows[-1][4] = portion_due
-    rows[-1][5] = balance
-
-    # Return a Prawn::Table object to be used as a subtable.
-    make_table(rows) do |t|
-      t.column_widths = [50, 90, 170, 90, 90, 50]
-      t.cells.style :borders => [:left, :right], :padding => 2
-      t.columns(4..5).align = :right
-    end
-
-  end
-
-  data << row("1/1/2010", "", [["Balance Forward", ""]], "0.00", "0.00")
-  50.times do
-    data << row("1/1/2010", "John", [["Foo", "Bar"], 
-                                     ["Foo", "Bar"]], "5.00", "0.00")
-  end
-
-
-  # Wrap head and each data element in an Array -- the outer table has only one
-  # column.
-  table([[head], *(data.map{|d| [d]})], :header => true,
-        :row_colors => %w[cccccc ffffff]) do
-    
-    row(0).style :background_color => '000000', :text_color => 'ffffff'
-    cells.style :borders => []
-  end
-
-
-    table([['codigo']*5]*4, :cell_style => { :padding => 12 }, :header => true,
-        :row_colors => %w[e7e7e7 ffffff],:column_widths=>[45,75,265,75,85]) do
-      #cells.borders = []
-      # Use the row() and style() methods to select and style a row.
-      #style row(0), :border_width => 2, :borders => [:bottom]
-
-      # The style method can take a block, allowing you to customize properties
-      # per-cell.
-      #style(columns(0..1)) { |cell| cell.borders |= [:right] }
-    end
-    
-=end

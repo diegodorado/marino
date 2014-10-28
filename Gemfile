@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+ruby "2.1.2"
 
 gem 'rails', '3.2.9'
 
@@ -82,7 +82,7 @@ end
 #todo: check prawn new versions
 gem 'prawn' #, :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
 gem 'barby'
-gem 'savon'
+gem 'savon', github: 'savonrb/savon', :branch => "version1"
 gem 'httpclient' #used by savon because net_http fallback is failing
 
 # Use unicorn as the app server
