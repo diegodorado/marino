@@ -11,17 +11,16 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap
 
 //= require js-routes
 //= require store
 //= require accounting
-//= require jquery
-//= require jquery_ujs
-//= require datepicker_hack
 //= require jquery.timeago
 //= require jquery.timeago.es
 //= require jquery-post
-//= require bootstrap
 //= require date-es-AR.js
 
 //= require underscore
