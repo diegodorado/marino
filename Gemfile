@@ -45,7 +45,8 @@ group :assets do
   #gem 'execjs'
 
   gem "less-rails"
-  gem 'sass-rails',   '3.2.5'
+  gem "sass", "3.2.13"
+  gem 'sass-rails',   '3.2.6'
   gem 'compass-rails', '1.0.1'
   gem "susy"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
