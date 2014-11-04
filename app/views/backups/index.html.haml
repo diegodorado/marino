@@ -3,37 +3,57 @@
     %h2(style="float: left;")
       Backups de G3
 
-  %section
-    %table.table.table-bordered
-      %tr
-        %th Fecha
-        %th Archivo
-        %th Creado por
-        %th
-        %th
+  %section.container-fluid
+    .row-fluid
+      .span6
+        .well
+          = form_for @backup do |f|
+            .fileupload.fileupload-new{"data-provides" => "fileupload"}
+              .input-append
+                .uneditable-input.span4
+                  %i.icon-file.fileupload-exists
+                  %span.fileupload-preview
+                %span.btn.btn-file
+                  %span.fileupload-new Elegir Archivo
+                  %span.fileupload-exists Cambiar
+                  = f.file_field :zip
+                = f.submit "Subir", :class => 'btn btn-primary'
+            
+      .span6
+        %blockquote.no-margin
+          %p
+            Elije un archivo de tu PC para subir al sitio. 
+            %br
+            Será accesible por ti y por un adminstrador solamente.
+            %br
+            Los únicos formatos válidos son ZIP y RAR.
+        
 
-      - @backups.each do |backup|
+  %section
+  
+    -if @backups.size == 0
+      %blockquote.no-margin
+        %p
+          Aún no has subido ningún archivo.
+    -else
+      %table.table.table-bordered
         %tr
-          %td= backup.created_at
-          %td= backup[:zip]
-          %td= backup.creator.email
-          %td(style ="text-align:center;font-size:1.5em")
-            = link_to backup do
-              %i.icon-download-alt
-          %td(style ="text-align:center;font-size:1.5em")
-            = link_to backup, method: :delete, data: { confirm: 'Estas seguro?' } do              
-              %i.icon-remove
-    
-    
-    = form_for @backup do |f|
-      .fileupload.fileupload-new{"data-provides" => "fileupload"}
-        .input-append
-          .uneditable-input.span2
-            %i.icon-file.fileupload-exists
-            %span.fileupload-preview
-          %span.btn.btn-file
-            %span.fileupload-new Elegir Archivo
-            %span.fileupload-exists Cambiar
-            = f.file_field :zip
-          = f.submit "Subir", :class => 'btn fileupload-exists'
-          
+          %th Fecha
+          %th Usuario
+          %th Archivo
+          %th
+          %th
+
+        - @backups.each do |backup|
+          %tr
+            %td= l backup.created_at, format: :short 
+            %td= backup.creator.email
+            %td= backup[:zip]
+            %td(style ="text-align:center;font-size:1.5em")
+              = link_to backup do
+                %i.icon-download-alt
+            %td(style ="text-align:center;font-size:1.5em")
+              = link_to backup, method: :delete, data: { confirm: 'Estas seguro?' } do              
+                %i.icon-remove
+      
+      

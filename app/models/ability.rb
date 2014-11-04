@@ -25,7 +25,11 @@ class Ability
       can :manage, Crop
     end
 
-    can :create, Backup
+    if user.valid?
+      can :access, Backup
+      can :create, Backup
+    end
+
     can [:read, :destroy], Backup , :creator_id => user.id
     can :read, Company , :user_ids => user.id
     #can :update, Company , :user_ids => user.id

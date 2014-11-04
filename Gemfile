@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
-ruby "2.1.2"
 
 gem 'rails', '3.2.9'
 
-gem 'mongo'
-gem 'mongoid' #must be loaded before cancan
-gem 'bson_ext'  #improve MongoDB performance
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mongo', '1.8.0'
+gem 'mongoid', '3.1.1' #must be loaded before cancan
+gem 'bson_ext', '1.8.0'  #improve MongoDB performance
+gem 'carrierwave-mongoid', '0.6.1', :require => 'carrierwave/mongoid'
+gem 'mongoid-slugify', '0.1.0'
+gem 'mongoid_commentable', '0.0.6'
 
 gem 'devise'
 gem "omniauth"
@@ -35,8 +36,6 @@ end
 gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"  #this gem has some helpers
 gem 'slickgrid-rails' #, :path => "~/proyectos/gems/slickgrid-rails"
 
-gem 'mongoid-slugify'
-gem 'mongoid_commentable'
 
 
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
@@ -46,8 +45,8 @@ group :assets do
   #gem 'execjs'
 
   gem "less-rails"
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'compass-rails'
+  gem 'sass-rails',   '3.2.5'
+  gem 'compass-rails', '1.0.1'
   gem "susy"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby

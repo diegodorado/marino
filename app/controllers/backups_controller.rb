@@ -5,6 +5,7 @@ class BackupsController < ApplicationController
 
   def index
     @backup = Backup.new
+    @backups = @backups.order_by( :created_at => 'desc')
     respond_with @backups
   end
 
