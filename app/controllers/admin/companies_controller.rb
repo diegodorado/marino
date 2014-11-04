@@ -33,4 +33,19 @@ class Admin::CompaniesController < ApplicationController
   end
 
 
+
+  def destroy
+    respond_to do |format|
+      if @company.destroy
+        format.html { redirect_to admin_companies_path, notice: 'Se elimino la empresa.' }
+        format.json { render json: '', status: :ok }
+      else
+        format.html { redirect_to admin_companies_path, notice: 'Could not delete store.' }
+        format.json { render json: '', status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+  
 end

@@ -3,7 +3,7 @@ class User
   rolify
   # Include default devise modules. Others available are:
   #  :encryptable, :lockable, :timeoutable and :omniauthable
-  devise :token_authenticatable,  :confirmable,
+  devise :confirmable,
          :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
