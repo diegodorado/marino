@@ -1,20 +1,8 @@
-@import "partials/vars"
-@import "susy"
-@import "compass"
-
 @import "partials/chat"
 @import "partials/users"
 @import "partials/companies"
 @import "partials/sangoma"
 
-.container
-  +container($total-columns, $tablet, $computer)
-
-.container
-  img
-    max-width: 100%
-  +at-breakpoint($tablet)
-  +at-breakpoint($computer)
 
 #new_crop_control.disabled
   pointer-events: none
@@ -27,9 +15,9 @@ td.number, input[type="number"]
   left: 8px
   top: 50px
   +transition(opacity 0.4s)
-  +transparent
+  +opacity(0)
   &.on
-    +opaque
+    +opacity(100)
 
 
 .ui-datepicker-trigger
