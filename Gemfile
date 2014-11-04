@@ -51,7 +51,7 @@ group :assets do
 
 
   gem "js-routes" #, '0.7.4'
-  gem "rails-backbone" #, '0.6.1'
+  gem "rails-backbone" , '0.9.0'
 
 end
 
