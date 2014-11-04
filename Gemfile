@@ -32,22 +32,14 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 
-
-gem 'twitter-bootstrap-rails', :git => "git://github.com/seyhunak/twitter-bootstrap-rails.git"  #this gem has some helpers
-gem 'slickgrid-rails' #, :path => "~/proyectos/gems/slickgrid-rails"
-
-
-
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
 group :assets do
   gem 'haml_coffee_assets'
-  #gem 'execjs'
 
-  gem "less-rails"
   gem 'sass-rails'
-  gem 'compass-rails', '1.0.1'
-  gem "susy"
+  gem 'bootstrap-sass', '~> 2.3.2.2'
+  
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby
 

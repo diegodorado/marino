@@ -22,23 +22,12 @@
 //= require jquery.timeago.es
 //= require jquery-post
 //= require bootstrap
-//= require slick
-//= require slick/dataview
-//= require slick/editors
-//= require slick/formatters
-//= require slick/plugins/rowselectionmodel
-//= require slick/controls/pager
-//= require slick/controls/columnpicker
-
-
-
 //= require date-es-AR.js
 
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require backgrid
 //= require jasny-bootstrap
 //= require bootstrap-switch
 //= require prettyCheckable
@@ -47,6 +36,5 @@
 //= require backbone-link
 
 //= require main
-//= require grid
 //= require ajax_common
 
