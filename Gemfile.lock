@@ -350,8 +350,8 @@ GEM
     rspec-support (3.1.2)
     rubyzip (1.0.0)
     safe_yaml (0.9.7)
-    sass (3.2.13)
-    sass-rails (3.2.6)
+    sass (3.4.7)
+    sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
@@ -448,8 +448,7 @@ DEPENDENCIES
   rb-inotify
   rolify
   rspec-rails
-  sass (= 3.2.13)
-  sass-rails (= 3.2.6)
+  sass-rails (= 3.2.5)
   savon!
   slickgrid-rails
   spork-rails
