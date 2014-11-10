@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
-
+ruby "2.1.2"
 gem 'rails', '3.2.9'
 
-gem 'mongo', '1.8.0'
-gem 'mongoid', '3.1.1' #must be loaded before cancan
-gem 'bson_ext', '1.8.0'  #improve MongoDB performance
+gem 'mongo' #, '1.8.0'
+#gem 'mongoid', '3.1.1' #must be loaded before cancan
+#gem 'bson_ext', '1.8.0'  #improve MongoDB performance
+
 gem 'carrierwave-mongoid', '0.6.1', :require => 'carrierwave/mongoid'
 gem 'mongoid-slugify', '0.1.0'
 gem 'mongoid_commentable', '0.0.6'
@@ -36,8 +37,7 @@ gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
 group :assets do
   gem 'haml_coffee_assets'
-  #gem 'execjs'
-
+  gem 'sass', '3.2.13'
   gem 'sass-rails'
   gem 'bootstrap-sass', '~> 2.3.2.2'
   
@@ -51,7 +51,7 @@ group :assets do
 
 
   gem "js-routes" #, '0.7.4'
-  gem "rails-backbone" #, '0.6.1'
+  gem "rails-backbone" , '0.9.0'
 
 end
 
@@ -77,11 +77,3 @@ gem 'barby'
 gem 'savon', github: 'savonrb/savon', :branch => "version1"
 gem 'httpclient' #used by savon because net_http fallback is failing
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
