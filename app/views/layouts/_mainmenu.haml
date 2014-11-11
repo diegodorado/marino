@@ -22,6 +22,10 @@
           %a{:href => backups_path}
             %span.icon-file
             Backups
+      -if can? :manage, CropControl
+        %li
+          = link_to summary_crop_controls_path do
+            Control de Granos
       -if can? :manage, Crop
         %li
           = link_to admin_crops_path do

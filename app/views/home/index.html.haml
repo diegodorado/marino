@@ -31,7 +31,20 @@
       .dark.data-block
         %header
           %h2
-            Control de Granos
-        %section
-          %p.lead Bienvenido
-          %p Debes seleccionar una empresa para comenzar con el Control de Granos
+            Modulos disponibles
+        %section          
+          -if can? :manage, CropControl
+            = link_to summary_crop_controls_path, :class => "btn btn-primary btn-large" do
+              Ingresar al Control de Granos          
+          -else
+            %p Debes seleccionar una empresa para comenzar con el Control de Granos
+            
+          %br
+          %br
+          
+          -if can? :manage, Backup
+            = link_to backups_path, :class => "btn btn-primary btn-large" do
+              Ingresar a Backups
+          -else
+            %p Debes seleccionar una empresa para utilizar Backups
+          
