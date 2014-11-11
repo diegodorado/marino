@@ -10,16 +10,16 @@
   .nav-collapse.collapse{:role => "navigation"}
     %ul
       %li.active-
-        %a{:href => "/"}
+        %a{:href => root_path}
           %span.icon-home
           Inicio
       -if can? :manage, Store
         %li
           = link_to stores_path do
             Depositos
-      -if can? :access, Backup
+      -if can? :manage, Backup
         %li
-          %a{:href => "/backups"}
+          %a{:href => backups_path}
             %span.icon-file
             Backups
       -if can? :manage, Crop

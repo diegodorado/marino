@@ -39,6 +39,7 @@
       %table.table.table-bordered
         %tr
           %th Fecha
+          %th Empresa
           %th Usuario
           %th Archivo
           %th
@@ -47,6 +48,7 @@
         - @backups.each do |backup|
           %tr
             %td= l backup.created_at, format: :short 
+            %td= backup.company.name if backup.company
             %td= backup.creator.email
             %td= backup[:zip]
             %td(style ="text-align:center;font-size:1.5em")
