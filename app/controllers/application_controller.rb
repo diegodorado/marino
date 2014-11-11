@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   def require_company!
     unless current_company
+      session[:return_to] = request.fullpath
       redirect_to root_path, notice: "Debes seleccionar una empresa para comenzar."
     end
     @company = current_company
