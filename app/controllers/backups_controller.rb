@@ -2,7 +2,7 @@ class BackupsController < ApplicationController
   load_and_authorize_resource
 
   respond_to :html, :json
-  #before_filter :require_company!
+  before_filter :require_company!
 
   def index
     @backup = Backup.new
@@ -21,7 +21,7 @@ class BackupsController < ApplicationController
 
   def create
     @backup.creator = current_user
-    @backup.company = current_company if current_company 
+    @backup.company = current_company
 
     if @backup.save
       if current_company.auditor
