@@ -17,7 +17,7 @@
         %li
           = link_to stores_path do
             Depositos
-      -if can? :access, Backup
+      -if can? :manage, Backup
         %li
           %a{:href => "/backups"}
             %span.icon-file
