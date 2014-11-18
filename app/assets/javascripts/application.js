@@ -13,7 +13,13 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require bootstrap-sprockets
+//= require plugins/metisMenu/metisMenu.min.js
+//= require raphael
+//= require morris
+//= require sb-admin-2.js
+
+
 
 //= require js-routes
 //= require store

@@ -11,10 +11,10 @@
 %td =@comentario
 %td{:style => "font-size:1.5em;text-align:center"}
   %a{:href => "#/#{@_id}/edit"}
-    %span.awe-pencil
+    %i.fa.fa-pencil
   &nbsp;&nbsp;&nbsp;
   %a.destroy{:href => "#/#{@_id}/destroy"}
-    %span.awe-remove
+    %i.fa.fa-remove
   
 
 

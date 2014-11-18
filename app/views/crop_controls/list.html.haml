@@ -1,14 +1,16 @@
-.dark.data-block
-  %header
-    %h2(style="float: left;")
-      Control de granos
+.row
+  .col-lg-12
+    %h1.page-header Control de granos
+    =link_to "Resumen",  summary_crop_controls_path, :class=> "active"
     #filters
-    %ul.data-header-actions
-      %li
-        =link_to "Resumen",  summary_crop_controls_path, :class=> "active"
-      %li
-  %section
-    #crop_controls
+    
+    
+    
+.row
+  .col-lg-12
+    .table-responsive
+      #crop_controls
+
 
 #comments
   

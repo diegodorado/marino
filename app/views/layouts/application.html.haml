@@ -4,10 +4,14 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
     %title= content_for?(:title) ? yield(:title) : "Marino"
     = csrf_meta_tags
     /[if lt IE 9]
-      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+      = javascript_include_tag "//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"
+      = javascript_include_tag "//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"
+      
     = stylesheet_link_tag "application", :media => "all"
     %link(href="/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
     %link(href="/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
@@ -16,21 +20,14 @@
     %link(href="/favicon.ico" rel="shortcut icon")
 
   %body
-    #ajax-indicator
-      =image_tag 'loading.gif', :size=> '32x32'
     #wrapper
-      = render 'layouts/header'
-      %section.container-fluid{:role => "main"}
+      %nav.navbar.navbar-default.navbar-static-top{:role => "navigation", :style => "margin-bottom: 0"}
+        = render 'layouts/header'
+        = render 'layouts/sidebar'
+        
+      #page-wrapper
         = bootstrap_flash
         = yield
-        /= render 'layouts/row1'
-        /= render 'layouts/row2'
-        /= render 'layouts/row3'
-        /= render 'layouts/row4'
-
-      / Sticky footer push
-      #push
-    = render 'layouts/footer'
           
     = javascript_include_tag "application"
     = javascript_tag yield :app_js_load
