@@ -1,6 +1,7 @@
 .row
   .col-lg-12
-    %h1.page-header Backups de G3
+    %h1.page-header Archivos de Backups
+
     
 .row
   .col-lg-6
@@ -9,16 +10,17 @@
         Subir Backup
       .panel-body
         = form_for @backup do |f|
-          .fileupload.fileupload-new{"data-provides" => "fileupload"}
-            .input-append
-              .uneditable-input.span4
-                %i.icon-file.fileupload-exists
-                %span.fileupload-preview
-              %span.btn.btn-default.btn-file
-                %span.fileupload-new Elegir Archivo
-                %span.fileupload-exists Cambiar
-                = f.file_field :zip
-              = f.submit "Subir", :class => 'btn btn-primary'
+          .fileinput.fileinput-new.input-group{"data-provides" => "fileinput"}
+            .form-control{"data-trigger" => "fileinput"}
+              %i.glyphicon.glyphicon-file.fileinput-exists
+              %span.fileinput-filename          
+            %span.input-group-addon.btn.btn-default.btn-file
+              %span.fileinput-new Elegir Archivo
+              %span.fileinput-exists Cambiar
+              = f.file_field :zip
+            %a.input-group-addon.btn.btn-default.fileinput-exists{"data-dismiss" => "fileinput", :href => "#"} Quitar
+            %a.input-group-addon.btn.btn-default.btn-primary.fileinput-exists{"data-submit" => "fileinput", :href => "#"} Subir
+          = f.submit "Subir", :hidden => true
   .col-lg-6
     %blockquote.no-margin
       %p
@@ -60,3 +62,5 @@
             %td(style ="text-align:center;font-size:1.5em")
               = link_to backup, method: :delete, data: { confirm: 'Estas seguro?' } do              
                 %i.fa.fa-remove
+
+= app_js_load :backups => true

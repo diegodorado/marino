@@ -142,7 +142,7 @@ body {
     }
 }
 
-.btn-outline {
+.btn.btn-outline {
     color: inherit;
     background-color: transparent;
     transition: all .5s;
@@ -294,7 +294,7 @@ table.dataTable thead .sorting:after {
     font-size: 40px;
 }
 
-.panel-green {
+.panel.panel-green {
     border-color: #5cb85c;
 }
 
@@ -312,7 +312,7 @@ table.dataTable thead .sorting:after {
     color: #3d8b3d;
 }
 
-.panel-red {
+.panel.panel-red {
     border-color: #d9534f;
 }
 
@@ -330,7 +330,7 @@ table.dataTable thead .sorting:after {
     color: #b52b27;
 }
 
-.panel-yellow {
+.panel.panel-yellow {
     border-color: #f0ad4e;
 }
 

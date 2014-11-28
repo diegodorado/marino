@@ -18,7 +18,7 @@
 //= require raphael
 //= require morris
 //= require sb-admin-2.js
-
+//= require jasny-bootstrap
 
 
 //= require js-routes
@@ -33,7 +33,6 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require jasny-bootstrap
 //= require bootstrap-switch
 //= require prettyCheckable
 

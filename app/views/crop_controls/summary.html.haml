@@ -1,13 +1,19 @@
-.dark.data-block
-  %header
-    %h2(style="float: left;")
-      Control de granos - Resumen
-    %ul.data-header-actions
+.row
+  .col-lg-12
+    %h1.page-header 
+      Control de Granos
+
+    %ul.nav.nav-tabs
       %li.active
-        =link_to "EDITAR MOVIMIENTOS", list_crop_controls_path
-  %section
-    #crop_controls_summary
-  
+        =link_to  "Resumen", summary_crop_controls_path, :class=> "active"
+      %li
+        =link_to  "Editar", list_crop_controls_path
+    
+.row
+  .col-lg-12
+    .table-responsive
+      #crop_controls_summary
+
 
 = app_js_load :company=> @company
 = app_js_load :crop_controls_summary=> true
