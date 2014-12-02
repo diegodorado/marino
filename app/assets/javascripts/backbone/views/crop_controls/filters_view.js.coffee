@@ -9,6 +9,7 @@ class Marino.Views.CropControls.FiltersView extends Backbone.View
     "switch-change #switch-filter" : "switch_filter_changed"
     "click #new_crop_control" : "new_crop_control_click"
     "click #excel_crop_control" : "excel_crop_control_click"
+    "click #switch-filter-button" : "switch_filter_button_click"
 
   initialize: () ->
     @options.crop_controls.params = 
@@ -16,6 +17,10 @@ class Marino.Views.CropControls.FiltersView extends Backbone.View
       gestion: true
 
 
+  switch_filter_button_click: (ev) ->
+    console.log $('#switch-filter-button').buttons()
+    @$('input:radio').attr('checked', true);
+    console.log @$(':input:checked').val()
 
   switch_filter_changed: (ev, data) ->
     if data.value

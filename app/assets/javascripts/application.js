@@ -34,7 +34,6 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require bootstrap-switch
-//= require prettyCheckable
 
 //= require backbone/marino
 //= require backbone-link

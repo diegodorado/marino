@@ -1,54 +1,70 @@
 %form.form-horizontal.no-margin{:name => "crop_control"}
-  %fieldset
-    .control-group
-      %label.control-label{:for => "fecha"} Fecha
-      .controls
-        %input{:type=> "date", :name =>"fecha", :required => true, :value=> @crop_control.fecha}
-    .control-group
-      %label.control-label{:for => "tipo_doc"} Tipo Doc
-      .controls
-        %select{:name =>"tipo_doc", :required => true}
-          - for tipo_doc in @tipo_docs
-            %option{ :selected => (@crop_control.tipo_doc is tipo_doc) } #{tipo_doc}
+  %table.table
+    %thead
+      %tr
+        %th.col-sm-2 Fecha
+        %th.col-sm-2 Tipo Doc
+        %th.col-sm-2 Depósito
+        %th.col-sm-2 Grano
+        %th.col-sm-4 Inputación
+    %tbody
+      %tr
+        %td
+          %input.form-control{:type=> "date", :name =>"fecha", :required => true, :value=> @crop_control.fecha}
+        %td
+          %select.form-control{:name =>"tipo_doc", :required => true}
+            - for tipo_doc in @tipo_docs
+              %option{ :selected => (@crop_control.tipo_doc is tipo_doc) } #{tipo_doc}
+        %td
+          %select.form-control{:name =>"store_id", :required => true}
+            - for store in @stores
+              %option{ :selected => (@crop_control.store_id is store._id), :value => store._id }  #{store.name}
+        %td
+          %select.form-control{:name =>"crop_id", :required => true}
+            - for crop in @crops
+              %option{ :selected => (@crop_control.crop_id is crop._id), :value => crop._id }  #{crop.name}
+        %td
+          .btn-group{"data-toggle" => "buttons"}
+            -if @crop_control.contabilidad
+              -klass = "active"
+            %label.btn.btn-outline.btn-primary{:class=>  klass}
+              %input.checkbox{:autocomplete => "off", :name =>"contabilidad", :checked=> @crop_control.contabilidad, "type"=>"checkbox"} 
+              Contabilidad
+            -if @crop_control.gestion
+              -klass2 = "active"
+            %label.btn.btn-outline.btn-primary{:class=>  klass2}
+              %input.checkbox{:autocomplete => "off", :name =>"gestion", :checked=> @crop_control.gestion, "type"=>"checkbox"} 
+              Gestion
+              
 
-    .control-group
-      %label.control-label{:for => "store_id"} Depósito
-      .controls
-        %select{:name =>"store_id", :required => true}
-          - for store in @stores
-            %option{ :selected => (@crop_control.store_id is store._id), :value => store._id }  #{store.name}
+  %table.table
+    %thead
+      %tr
+        %th.col-sm-2 Entrada
+        %th.col-sm-2 Salida
+        %th.col-sm-3 Precio Unitario
+        %th.col-sm-5
+    %tbody
+      %tr
+        %td
+          %input.form-control{:name =>"entrada", :value=> @crop_control.entrada, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+        %td
+          %input.form-control{:name =>"salida", :value=> @crop_control.salida, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+        %td
+          %input.form-control{:name =>"precio_unitario", :value=> @crop_control.precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0.001"}
+      
+  %table.table
+    %thead
+      %tr
+        %th.col-sm-12 Comentarios
+    %tbody
+      %tr
+        %td
+          %textarea.form-control{:name =>"comentario"}
+            =@crop_control.comentario
             
-    .control-group
-      %label.control-label{:for => "crop_id"} Grano
-      .controls
-        %select{:name =>"crop_id", :required => true}
-          - for crop in @crops
-            %option{ :selected => (@crop_control.crop_id is crop._id), :value => crop._id }  #{crop.name}
-
-          
-    .control-group
-      .controls
-        %label.checkbox
-          %input.checkbox{:name =>"contabilidad", :checked=> @crop_control.contabilidad, "data-label"=>"Contabilidad", "type"=>"checkbox"} 
-          %input.checkbox{:name =>"gestion", :checked=> @crop_control.gestion, "data-label"=>"Gestion", "type"=>"checkbox"} 
-    .control-group
-      %label.control-label{:for => "entrada"} Entrada
-      .controls
-        %input{:name =>"entrada", :value=> @crop_control.entrada, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
-    .control-group
-      %label.control-label{:for => "salida"} Salida
-      .controls
-        %input{:name =>"salida", :value=> @crop_control.salida, :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
-    .control-group
-      %label.control-label{:for => "precio_unitario"} Precio Unitario
-      .controls
-        %input{:name =>"precio_unitario", :value=> @crop_control.precio_unitario, :required => true, :type=> "number", :step=>"0.001", :min=>"0.001"}
-    .control-group
-      %label.control-label{:for => "comentario"} Comentarios
-      .controls
-        %textarea{:name =>"comentario"}
-          =@crop_control.comentario
-    .form-actions
-      %a.cancel.btn.btn-large.btn-alt{:href => "#index"} Volver al Listado
+  .row
+    .col-sm-12
+      %a.btn-default.cancel.btn.btn-large.btn-alt{:href => "#index"} Volver al Listado
       %button.btn.btn-alt.btn-large.btn-primary{:type => "submit"} Guardar
-      %a.save_and_add.btn.btn-large.btn-alt{:href => "#"} Guardar y nuevo
+      %a.btn-default.save_and_add.btn.btn-large.btn-alt{:href => "#"} Guardar y nuevo

@@ -1,16 +1,22 @@
 .row
   .col-lg-12
-    %h1.page-header Inicio
+    %h3.page-header Panel de Control
  
 
 - unless user_signed_in?
   %p.lead Bienvenido
   %p     
-    Si ya estás registrado 
-    %a.btn.btn-primary.btn-sm{:href => new_user_session_path} Ingresa aquí
-  %p
-    De lo contrario
-    %a.btn.btn-primary.btn-sm{:href => new_user_registration_path} Registrate
+    Debes ingresar o registrarte para continuar.
+  %br
+  %br
+
+  .row
+    .col-lg-4
+      %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => new_user_session_path} Ingresa aquí
+      %br
+    .col-lg-4
+      %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => new_user_registration_path} Registrate
+
     
 - else
 
@@ -37,7 +43,7 @@
   - else      
     .row
       .col-lg-4
-        .panel.panel-primary
+        .panel.panel-default
           .panel-heading
             Empresa : #{current_company.name}
           .panel-body
@@ -57,5 +63,6 @@
     .row
       .col-lg-4
         %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => backups_path} Archivos de Backups
+        %br
       .col-lg-4
         %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => summary_crop_controls_path} Control de Granos

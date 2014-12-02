@@ -93,7 +93,6 @@ class Marino.Views.CropControls.NewView extends Backbone.View
       stores: @options.stores.toJSON()
       crops: @options.crops.toJSON()
       tipo_docs: @options.crop_controls.tipo_docs
-    @$('input.checkbox').prettyCheckable()
     @tipo_doc_changed()  #trigger this on render
 
     this.$("form").backboneLink(@model)

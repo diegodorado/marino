@@ -56,11 +56,11 @@
             %td= backup.company.name if backup.company
             %td= backup.creator.email
             %td= backup[:zip]
-            %td(style ="text-align:center;font-size:1.5em")
+            %td
               = link_to backup do
-                %i.fa.fa-download
-            %td(style ="text-align:center;font-size:1.5em")
+                %i.fa-2x.fa.fa-download
+            %td
               = link_to backup, method: :delete, data: { confirm: 'Estas seguro?' } do              
-                %i.fa.fa-remove
+                %i.fa-2x.fa.fa-remove
 
 = app_js_load :backups => true
