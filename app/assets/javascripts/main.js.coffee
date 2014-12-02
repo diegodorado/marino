@@ -55,5 +55,11 @@ class Application
         crop_controls: @options.crop_controls
 
       view.render()
+      
+    # backup upload
+    if @options.backups
+      $('.fileinput .btn-primary').on 'click', (ev) -> 
+        ev.preventDefault()
+        $(this).closest('form').submit() 
 
 window.app = new Application  

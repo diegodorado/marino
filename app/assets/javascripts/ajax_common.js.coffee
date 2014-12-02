@@ -6,6 +6,9 @@ $ ->
   $(document).ajaxError (e) -> 
     alert e
 
+  setTimeout ->
+    $("#bootstrap_alerts .alert").fadeTo(3000, 0).slideUp(3000, -> $(this.remove()))
+  ,3000
 
 jQuery ->
   $("a[rel=popover]").popover()

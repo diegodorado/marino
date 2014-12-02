@@ -5,37 +5,38 @@
       %li.active-
         %a{:href => root_path}
           %i.fa.fa-home.fa-fw
-          Inicio
+          Panel de Control
       -if can? :manage, Backup
         %li
           %a{:href => backups_path}
             %i.fa.fa-file-archive-o.fa-fw
-            Backups
+            Archivos de Backups
       -if can? :manage, CropControl
         %li
           = link_to summary_crop_controls_path do
             %i.fa.fa-bar-chart.fa-fw
             Control de Granos
           
-      %li
-        %a{:href => "#"}
-          %i.fa.fa-gears.fa-fw
-          Admin
-          %span.fa.arrow
-        %ul.nav.nav-second-level
-          -if can? :manage, Company      
-            %li
-              = link_to admin_companies_path do
-                Empresas
-          -if can? :manage, Store
-            %li
-              = link_to stores_path do
-                Depositos
-          -if can? :manage, User      
-            %li
-              = link_to admin_users_path do
-                Usuarios
-          -if can? :manage, Crop
-            %li
-              = link_to admin_crops_path do
-                Granos
+      -if  can? :manage, Crop or can? :manage, Company    or can? :manage, Store or can? :manage, User      
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-gears.fa-fw
+            Admin
+            %span.fa.arrow
+          %ul.nav.nav-second-level
+            -if can? :manage, Company      
+              %li
+                = link_to admin_companies_path do
+                  Empresas
+            -if can? :manage, Store
+              %li
+                = link_to stores_path do
+                  Depositos
+            -if can? :manage, User      
+              %li
+                = link_to admin_users_path do
+                  Usuarios
+            -if can? :manage, Crop
+              %li
+                = link_to admin_crops_path do
+                  Granos
