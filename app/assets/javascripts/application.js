@@ -14,10 +14,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require plugins/metisMenu/metisMenu.min.js
+//= require plugins/metisMenu/metisMenu
 //= require raphael
 //= require morris
-//= require sb-admin-2.js
+//= require sb-admin-2
 //= require jasny-bootstrap
 
 
@@ -27,7 +27,7 @@
 //= require jquery.timeago
 //= require jquery.timeago.es
 //= require jquery-post
-//= require date-es-AR.js
+//= require date-es-AR
 
 //= require underscore
 //= require backbone
