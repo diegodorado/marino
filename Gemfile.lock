@@ -305,7 +305,7 @@ GEM
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
     rubyzip (1.0.0)
-    sass (3.4.8)
+    sass (3.2.19)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -393,6 +393,7 @@ DEPENDENCIES
   rb-inotify
   rolify
   rspec-rails
+  sass (= 3.2.19)
   sass-rails (>= 3.2)
   savon!
   spork-rails
