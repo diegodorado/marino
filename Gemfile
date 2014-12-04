@@ -35,10 +35,11 @@ end
 
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
+gem 'sass', '3.2.13'
+gem 'sass-rails'
+
 group :assets do
   gem 'haml_coffee_assets'
-  gem 'sass', '3.2.13'
-  gem 'sass-rails'
   gem 'bootstrap-sass', '~> 2.3.2.2'
   
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
