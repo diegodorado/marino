@@ -36,11 +36,10 @@ end
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
 gem 'bootstrap-sass', '~> 3.3.1'
-gem 'sass-rails'
+gem 'sass-rails', '>= 3.2'
 
 group :assets do
   gem 'haml_coffee_assets'
-  gem 'sass-rails', '>= 3.2'
   gem 'font-awesome-sass', '~> 4.2.0'
   
   gem 'morrisjs-rails'
