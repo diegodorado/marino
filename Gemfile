@@ -36,6 +36,7 @@ end
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'sass-rails'
 
 group :assets do
   gem 'haml_coffee_assets'
