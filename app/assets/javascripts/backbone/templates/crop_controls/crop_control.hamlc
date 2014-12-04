@@ -3,18 +3,18 @@
 %td.number =accounting.formatNumber(@entrada)
 %td.number =accounting.formatNumber(@salida)
 %td.number =accounting.formatNumber(@saldo)
-%td.number(style="border-left: 3px dashed #2c3e50") =accounting.formatMoney(@precio_unitario)
+%td.number =accounting.formatMoney(@precio_unitario)
 %td.number =accounting.formatMoney(@debe)
 %td.number =accounting.formatMoney(@haber)
 %td.number =accounting.formatMoney(@saldo_p)
-%td =@updater_email
-%td =@comentario
-%td{:style => "font-size:1.5em;text-align:center"}
+%td.hidden-xs.hidden-sm.hidden-md =@updater_email
+%td.hidden-xs.hidden-sm.hidden-md =@comentario
+%td
   %a{:href => "#/#{@_id}/edit"}
-    %span.awe-pencil
-  &nbsp;&nbsp;&nbsp;
+    %i.fa-2x.fa.fa-pencil
+%td
   %a.destroy{:href => "#/#{@_id}/destroy"}
-    %span.awe-remove
+    %i.fa-2x.fa.fa-remove
   
 
 

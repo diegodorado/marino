@@ -18,7 +18,7 @@ gem "cancan"
 gem "rolify"
 gem "figaro"
 
-gem "rails_admin"
+
 gem 'axlsx_rails'
 
 
@@ -35,12 +35,15 @@ end
 
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
 
-gem 'sass', '3.2.13'
-gem 'sass-rails'
+gem 'bootstrap-sass', '~> 3.3.1'
 
 group :assets do
   gem 'haml_coffee_assets'
-  gem 'bootstrap-sass', '~> 2.3.2.2'
+  gem 'sass-rails', '>= 3.2'
+  gem 'font-awesome-sass', '~> 4.2.0'
+  
+  gem 'morrisjs-rails'
+  gem 'raphael-rails'
   
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby

@@ -35,8 +35,6 @@ Marino::Application.routes.draw do
     end
   end
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
   root :to => "home#index"
 
   get "/select-company/:id"  => "home#select_company", :as => 'select_company'

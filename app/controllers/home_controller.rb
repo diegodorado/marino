@@ -11,7 +11,9 @@ class HomeController < ApplicationController
 
   def select_company
     session[:company_id] = @company.id
-    redirect_to summary_crop_controls_path, notice: "Seleccionaste una empresa."
+    return_to = session.delete(:return_to) || root_path
+    redirect_to return_to , notice: "Seleccionaste la empresa #{@company.name}."
+
   end
 
 end

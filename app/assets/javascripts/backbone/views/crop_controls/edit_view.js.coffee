@@ -20,7 +20,6 @@ class Marino.Views.CropControls.EditView extends Backbone.View
     @model.save(null,
       success: (crop_control) =>
         @model = crop_control
-        #window.location.hash = "/#{@model.id}"
         window.location.hash = "/index"
         
     )
@@ -67,7 +66,6 @@ class Marino.Views.CropControls.EditView extends Backbone.View
       stores: @options.stores.toJSON()
       crops: @options.crops.toJSON()
       tipo_docs: @options.crop_controls.tipo_docs
-    @$('input.checkbox').prettyCheckable()
     @tipo_doc_changed()  #trigger this on render
 
     this.$("form").backboneLink(@model)

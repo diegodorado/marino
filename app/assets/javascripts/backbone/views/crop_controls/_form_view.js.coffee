@@ -5,7 +5,6 @@ class Marino.Views.CropControls.FormView extends Backbone.View
 
   render: ->
     @$el.html(@template(@model.toJSON() ))
-    @$('input.checkbox').prettyCheckable()
 
     this.$("form").backboneLink(@model)
 

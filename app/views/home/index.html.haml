@@ -1,37 +1,68 @@
+.row
+  .col-lg-12
+    %h3.page-header Panel de Control
+ 
+
 - unless user_signed_in?
-  .dark.data-block
-    %header
-      %h2
-        Intranet
-    %section
-      %p.lead Bienvenido
-      %p 
-        Para acceder a cualquier sistema de la Intranet es necesario registrarse.
-      %p     
-        Si ya estás registrado, ingresa 
-        = link_to('ingresa aquí', new_user_session_path)
-      %p
-        De lo contrario, 
-        = link_to('registrate', new_user_registration_path)
+  %p.lead Bienvenido
+  %p     
+    Debes ingresar o registrarte para continuar.
+  %br
+  %br
+
+  .row
+    .col-lg-4
+      %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => new_user_session_path} Ingresa aquí
+      %br
+    .col-lg-4
+      %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => new_user_registration_path} Registrate
+
+    
 - else
-  .row-fluid
-    .span8
-      .dark.data-block
-        %header
-          %h2
-            Mis Empresas
-      .row-fluid
-        - @companies.each do |company|
-          %a.span2.data-block.widget-block(href="#{select_company_path(company)}")
-            %section
-              %span.icon-website-alt
-              %strong #{company.name}      
-          
-    .span4
-      .dark.data-block
-        %header
-          %h2
-            Control de Granos
-        %section
-          %p.lead Bienvenido
-          %p Debes seleccionar una empresa para comenzar con el Control de Granos
+
+
+  -if !current_company
+    .row
+      .col-lg-6
+        .panel.panel-primary
+          .panel-heading
+            Empresa . . .
+          .panel-body
+            .dropdown
+              %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+                Seleccionar Empresa
+                %span.caret
+              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+                - @companies.each do |company|
+                  %li{:role => "presentation"}
+                    %a{:href => "#{select_company_path(company)}", :role => "menuitem", :tabindex => "-1"} #{company.name}
+                  
+
+        
+
+  - else      
+    .row
+      .col-lg-4
+        .panel.panel-default
+          .panel-heading
+            Empresa : #{current_company.name}
+          .panel-body
+            .dropdown
+              %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+                Cambiar de Empresa
+                %span.caret
+              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+                - @companies.each do |company|
+                  %li{:role => "presentation"}
+                    %a{:href => "#{select_company_path(company)}", :role => "menuitem", :tabindex => "-1"} #{company.name}
+                  
+              
+    .row
+      .col-lg-12
+        %h3.page-header Aplicaciones
+    .row
+      .col-lg-4
+        %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => backups_path} Archivos de Backups
+        %br
+      .col-lg-4
+        %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => summary_crop_controls_path} Control de Granos

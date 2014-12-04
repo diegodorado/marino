@@ -1,7 +1,6 @@
 @import "partials/chat"
 @import "partials/users"
-@import "partials/companies"
-@import "partials/sangoma"
+
 
 
 #new_crop_control.disabled
@@ -25,15 +24,10 @@ td.number, input[type="number"]
   padding: 0
   cursor: pointer
 
-#new_backup
-  .fileupload
-    vertical-align: middle
-    .btn-primary
-      height: 30px
-      padding-left: 30px
-      padding-right: 30px
-      display: none
-  .fileupload-exists
-    .btn-primary
-      display: inline-block
-  
+#bootstrap_alerts
+  z-index: 1000
+  position: fixed
+  top: 0
+  padding: 10px
+  left: 25%
+  right: 25%
