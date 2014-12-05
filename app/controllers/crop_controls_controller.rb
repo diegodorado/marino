@@ -31,7 +31,7 @@ class CropControlsController < ApplicationController
     @crops = Crop.only(:_id,:name).all            
     respond_to do |format|
       format.html do
-        @crop_controls = CropControl.in(store_id: stores.pluck(:_id))
+        @crop_controls = CropControl.in(store_id: stores.pluck(:_id)).order_by(:fecha => :asc)
       end
       format.xlsx do
       
@@ -67,6 +67,7 @@ class CropControlsController < ApplicationController
 
         @result = CropControl.in(store_id: stores.pluck(:_id))
           .where(:fecha.lte => params[:balance_at])
+          .order_by(:fecha => :asc)
           .map_reduce(map, reduce)
           .out(inline: 1)
           .map do |x|
@@ -74,10 +75,6 @@ class CropControlsController < ApplicationController
               x["value"]
             end
           
-        puts @result.to_yaml
-
-
-
         @title = "Resumen Ctrl de Granos"
         render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
       end
@@ -88,7 +85,7 @@ class CropControlsController < ApplicationController
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company
-    @crop_controls = CropControl.in(store_id: @stores.pluck(:_id))
+    @crop_controls = CropControl.in(store_id: @stores.pluck(:_id)).order_by(:fecha => :asc)
     @company_comments = @company.comments
 
     respond_to do |format|
@@ -98,7 +95,7 @@ class CropControlsController < ApplicationController
 
 
   def excel
-    @crop_controls = CropControl.in(_id: params[:ids] )
+    @crop_controls = CropControl.in(_id: params[:ids] ).order_by(:fecha => :asc)
     @title = params[:title]
     render xlsx: "list", disposition: "attachment", filename: "control_de_granos.xlsx"
   end

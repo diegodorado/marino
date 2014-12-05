@@ -4,8 +4,7 @@ class StoresController < ApplicationController
   before_filter :require_company!
   
   def index
-    @company = current_company
-    @stores = @company.stores
+    @stores = current_company.stores
   end
 
   def create
