@@ -8,7 +8,12 @@
             %label
               Saldo al:
           .col-sm-2
-            %input#balance_at.form-control{type: "date"}
+            .input-group.date
+              %input#balance_at.form-control{type: "text"}
+              %span.input-group-addon
+                %i.glyphicon.glyphicon-th
+            
+            
           .col-sm-7
           .col-sm-2
             %a#download_excel.btn.btn-alt.btn-primary.btn.block

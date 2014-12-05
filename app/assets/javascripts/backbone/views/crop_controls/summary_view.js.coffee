@@ -17,8 +17,7 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
 
   date_changed_handler: (event)=>
 
-    d = Date.parse(@$('#balance_at').val())
-    @balance_at = d.toString('yyyy-MM-dd')
+    @balance_at = @$('#balance_at').val()
     @addAll()
 
   download_excel_handler: (event)=>
@@ -72,4 +71,9 @@ class Marino.Views.CropControls.SummaryView extends Backbone.View
     @$el.html(@template())
     @addAll()
     @$('#balance_at').val @balance_at
+    
+    @$('.input-group.date').datepicker
+      format: "yyyy-mm-dd"
+      language: "es"
+      orientation: "top auto"
     @

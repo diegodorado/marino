@@ -28,7 +28,9 @@
 //= require jquery.timeago.es
 //= require jquery-post
 //= require date-es-AR
-
+//= require jquery.timeago.es
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker.es
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

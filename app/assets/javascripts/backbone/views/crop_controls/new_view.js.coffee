@@ -95,6 +95,11 @@ class Marino.Views.CropControls.NewView extends Backbone.View
       tipo_docs: @options.crop_controls.tipo_docs
     @tipo_doc_changed()  #trigger this on render
 
+    @$('.input-group.date').datepicker
+      format: "yyyy-mm-dd"
+      language: "es"
+      orientation: "top auto"
+      
     this.$("form").backboneLink(@model)
     $("#filters").hide()
 

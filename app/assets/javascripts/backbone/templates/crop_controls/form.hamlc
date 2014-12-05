@@ -10,7 +10,11 @@
     %tbody
       %tr
         %td
-          %input.form-control{:type=> "date", :name =>"fecha", :required => true, :value=> @crop_control.fecha}
+          .input-group.date
+            %input.form-control{:type=> "text", :name =>"fecha", :required => true, :value=> @crop_control.fecha}
+            %span.input-group-addon
+              %i.glyphicon.glyphicon-th        
+        
         %td
           %select.form-control{:name =>"tipo_doc", :required => true}
             - for tipo_doc in @tipo_docs
