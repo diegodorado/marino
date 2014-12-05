@@ -36,6 +36,10 @@
               %li
                 = link_to admin_users_path do
                   Usuarios
+            -if can? :manage, Role
+              %li
+                = link_to admin_roles_path do
+                  Roles
             -if can? :manage, Crop
               %li
                 = link_to admin_crops_path do

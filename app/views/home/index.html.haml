@@ -28,14 +28,19 @@
           .panel-heading
             Empresa . . .
           .panel-body
-            .dropdown
-              %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
-                Seleccionar Empresa
-                %span.caret
-              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
-                - @companies.each do |company|
-                  %li{:role => "presentation"}
-                    %a{:href => "#{select_company_path(company)}", :role => "menuitem", :tabindex => "-1"} #{company.name}
+            - if @companies.count == 0
+              %p
+                Parece que aún no hay ninguna Empresa asociada a tu cuenta.
+                
+            -else
+              .dropdown
+                %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+                  Seleccionar Empresa
+                  %span.caret
+                %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+                  - @companies.each do |company|
+                    %li{:role => "presentation"}
+                      %a{:href => "#{select_company_path(company)}", :role => "menuitem", :tabindex => "-1"} #{company.name}
                   
 
         

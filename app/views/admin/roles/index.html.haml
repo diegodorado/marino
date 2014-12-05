@@ -1,0 +1,44 @@
+.row
+  .col-lg-12
+    %h1.page-header Roles
+
+    
+.row
+  .col-lg-12
+    %table.table.table-bordered
+      %tr
+        %th Codigo
+        %th Nombre
+        %th
+        %th
+
+
+      - @roles.each do |role|
+        %tr
+          %td= role.name
+          %td= role.pretty_name
+          %td
+            = link_to edit_admin_role_path(role) do              
+              %i.fa-2x.fa.fa-pencil
+          %td
+            = link_to admin_role_path(role), method: :delete, data: { confirm: 'Are you sure?' } do              
+              %i.fa-2x.fa.fa-remove
+
+
+.row
+  .col-lg-12
+    = form_for [:admin, @role], :html=>{:class =>'form-horizontal'} do |f|
+      - if @role.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@role.errors.count, "error")} prohibited this user from being saved:"
+          %ul
+            - @role.errors.full_messages.each do |msg|
+              %li= msg
+
+      = f.label :name, 'Codigo', :class =>'control-label'
+      = f.text_field :name, :class =>'form-control'
+      = f.label :pretty_name, 'Nombre', :class =>'control-label'
+      = f.text_field :pretty_name, :class =>'form-control'
+      %br
+      %br
+      = f.submit "Agregar", :class => 'btn btn-primary btn-large'

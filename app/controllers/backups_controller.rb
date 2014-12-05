@@ -6,7 +6,7 @@ class BackupsController < ApplicationController
 
   def index
     @backup = Backup.new
-    @backups = @backups.order_by( :created_at => 'desc')
+    @backups = Backup.where(:company_id => current_company.id).order_by( :created_at => 'desc')
     respond_with @backups
   end
 
@@ -24,8 +24,8 @@ class BackupsController < ApplicationController
     @backup.company = current_company
 
     if @backup.save
-      if current_company.auditor
-        ActionMailer::Base.mail(:from => current_user.email, :to => current_company.auditor.email, :subject => "Nuevo Backup Creado", :body => "#{current_user.email} ha creado un backup sobre la empresa #{current_company.name}").deliver
+      current_company.auditors.each do |auditor|
+        ActionMailer::Base.mail(:from => current_user.email, :to => auditor.email, :subject => "Nuevo Backup Creado", :body => "#{current_user.email} ha creado un backup sobre la empresa #{current_company.name}").deliver
       end
       redirect_to backups_url , notice: "Backup creado con exito"
     else

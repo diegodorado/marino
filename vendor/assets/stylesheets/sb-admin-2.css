@@ -142,10 +142,16 @@ body {
     }
 }
 
-.btn.btn-outline {
+.btn-outline {
     color: inherit;
     background-color: transparent;
     transition: all .5s;
+    font-weight: normal;
+}
+
+
+.btn-outline:hover {
+    color: white !important;
 }
 
 .btn-primary.btn-outline {

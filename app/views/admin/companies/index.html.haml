@@ -1,14 +1,15 @@
-.dark.data-block
-  %header
-    %h2(style="float: left;")
-      Empresas
+.row
+  .col-lg-12
+    %h1.page-header Empresas
 
-  %section
+    
+.row
+  .col-lg-12
     %table.table.table-bordered
       %tr
         %th Nombre
         %th Propietario
-        %th Auditor
+        %th Auditores
         %th Usuarios
         %th Depositos
         %th
@@ -19,15 +20,15 @@
         %tr
           %td= company.name
           %td= company.owner.email
-          %td= company.auditor.email if company.auditor
+          %td= company.auditors.pluck('email').join("<br/>").html_safe
           %td= company.users.pluck('email').join("<br/>").html_safe
           %td= company.stores.pluck('name').join("<br/>").html_safe
-          %td(style ="text-align:center;font-size:1.5em")
+          %td
             = link_to edit_admin_company_path(company) do              
-              %i.icon-edit
-          %td(style ="text-align:center;font-size:1.5em")
+              %i.fa-2x.fa.fa-pencil
+          %td
             = link_to admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?' } do              
-              %i.icon-remove
+              %i.fa-2x.fa.fa-remove
 
     = link_to 'Nueva Empresa', new_admin_company_path
 

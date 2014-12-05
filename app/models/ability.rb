@@ -8,10 +8,7 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, :to => :crud
 
-    #can :read, :all                   # allow everyone to read everything
-
     if user.has_role? :admin or user.role? :admin #backward compatibily
-      can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard                  # allow access to dashboard
       can :manage, Company
       can :manage, Crop
@@ -29,14 +26,16 @@ class Ability
       can :manage, Crop
     end
 
-    can :manage, Backup , :company => {:user_ids => user.id}
-    can :manage, Backup , :company => {:auditor_id => user.id}
-    can :manage, Backup , :creator_id => user.id
+    #can :manage, Backup , :company_id => user.audited_company_ids
+    #can :manage, Backup , :company => {:user_ids => user.id}
+    #can :manage, Backup , :company => {:auditor_id => user.id}
+    #can :manage, Backup , :creator_id => user.id
     
     can :read, Company , :user_ids => user.id
+    can :read, Company , :auditor_id => user.id
     #can :update, Company , :user_ids => user.id
-    can :create, Store
-    can :manage, Store , :company => {:user_ids => user.id}
+    #can :create, Store
+    #can :manage, Store , :company => {:user_ids => user.id}
     can :manage, CropControl , :store_id => user.store_ids
 
 

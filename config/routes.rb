@@ -24,6 +24,7 @@ Marino::Application.routes.draw do
   get "signup" => "users#new", :as => "signup"  
 
   namespace :admin do
+    resources :roles
     resources :users
     resources :companies
     resources :crops do

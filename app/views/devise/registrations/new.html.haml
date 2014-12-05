@@ -1,28 +1,25 @@
 .row
-  .span5
-    .well
-      %h3 Regístrate
-      %hr
-      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
-        = devise_error_messages!    
-        %fieldset
-          .control-group
-            = f.label :email, :class =>'control-label'
-            .controls
-              = f.text_field :email
-          .control-group
-            = f.label :password, :class =>'control-label'
-            .controls
-              = f.password_field :password
-          .control-group
-            = f.label :password_confirmation, :class =>'control-label'
-            .controls
-              = f.password_field :password_confirmation
-          .form-actions
-            = f.submit "Registrarme", :class => 'btn-primary btn-large'
-
-  .span4
-    %h3 Entrar utilizando:
-    Puedes entrar a través de estos servicios
-    = render :partial => "devise/shared/authentications"
+  .col-lg-12
+    %h1.page-header Regístrate
+.row
+  .col-lg-6
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:class =>'form-horizontal'}) do |f|
+      = devise_error_messages!    
+      %fieldset
+        .control-group
+          = f.label :email, :class =>'control-label'
+          .controls
+            = f.text_field :email
+        .control-group
+          = f.label :password, :class =>'control-label'
+          .controls
+            = f.password_field :password
+        .control-group
+          = f.label :password_confirmation, :class =>'control-label'
+          .controls
+            = f.password_field :password_confirmation
+        .form-actions
+          = f.submit "Registrarme", :class => 'btn-primary btn-large'
+          
+  .col-lg-6
     = render :partial => "devise/shared/links"

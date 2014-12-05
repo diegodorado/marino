@@ -41,6 +41,7 @@ class User
   has_many :own_companies, :class_name => "Company", :inverse_of => :owner
   has_many :audited_companies, :class_name => "Company", :inverse_of => :auditor
   has_and_belongs_to_many :companies, :inverse_of => :users
+  has_and_belongs_to_many :audited_companies, :inverse_of => :auditors
 
   has_and_belongs_to_many :authentications
   has_many :backups, :inverse_of => :creator
