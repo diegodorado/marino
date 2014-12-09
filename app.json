@@ -1,0 +1,9 @@
+{
+"name": "Marino",
+"description": "App for marino",
+"addons": [
+"mongohq",
+"newrelic",
+"sendgrid"
+]
+}
