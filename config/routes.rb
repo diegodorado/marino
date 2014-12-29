@@ -1,9 +1,8 @@
 Marino::Application.routes.draw do
+
   match "/images/uploads/*path" => "gridfs#serve"
 
   resources :stores
-
-
 
   resources :companies, :only => [:index] do
     get 'select', :on => :member
@@ -21,7 +20,7 @@ Marino::Application.routes.draw do
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"  
+  get "signup" => "users#new", :as => "signup"
 
   namespace :admin do
     resources :roles
@@ -37,6 +36,7 @@ Marino::Application.routes.draw do
   end
 
   root :to => "home#index"
+  resources :recipes, only: [:index]
 
   get "/select-company/:id"  => "home#select_company", :as => 'select_company'
 

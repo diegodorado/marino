@@ -16,4 +16,5 @@ class CompaniesController < ApplicationController
     return render :json => @comment.to_json
   end
 
+
 end

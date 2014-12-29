@@ -62,7 +62,7 @@ module Marino
 
     config.generators do |g|
       g.orm :mongoid
-      g.template_engine :haml 
+      g.template_engine :haml
       g.test_framework :rspec
       g.fixture_replacement :factory_girl
     end
@@ -73,6 +73,11 @@ module Marino
 
     # Add the fonts path
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+
+
     # Precompile additional assets
     config.assets.precompile += %w( .svg .eot .woff .ttf )
 
