@@ -75,9 +75,27 @@
         %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => summary_crop_controls_path} Control de Granos
 
 
+.row
+  .col-lg-12
+    #receta
+      .view-container
+        .view-frame.animate-view{"ng-view" => ""}
+
+
 
 .row
   .col-lg-12
-    %div{"ng-app" => "receta"}
-      .view-container
-        .view-frame.animate-view{"ng-view" => ""}
+    #todoApp
+      %h2 Todo
+      %div{"ng-controller" => "TodoController"}
+        %span {{remaining()}} of {{todos.length}} remaining
+        [
+        %a{:href => "", "ng-click" => "archive()"} archive
+        ]
+        %ul.list-unstyled
+          %li{"ng-repeat" => "todo in todos"}
+            %input{"ng-model" => "todo.done", :type => "checkbox"}/
+            %span{:class => "done-{{todo.done}}"} {{todo.text}}
+        %form{"ng-submit" => "addTodo()"}
+          %input{"ng-model" => "todoText", :placeholder => "add new todo here", :size => "30", :type => "text"}/
+          %input.btn.btn-primary{:type => "submit", :value => "add"}/
