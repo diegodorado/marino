@@ -1,5 +1,10 @@
-controllers = angular.module('controllers')
-controllers.controller("RecipesController", [ '$scope', '$routeParams', '$location', '$resource',
+receta = angular.module('receta',[
+  'templates',
+  'ngRoute',
+  'ngResource',
+])
+
+receta.controller("RecipesController", [ '$scope', '$routeParams', '$location', '$resource',
   ($scope,$routeParams,$location,$resource)->
     $scope.search = (keywords)->  $location.path("/").search('keywords',keywords)
     Recipe = $resource('/recipes/:recipeId', { recipeId: "@id", format: 'json' })
@@ -8,4 +13,14 @@ controllers.controller("RecipesController", [ '$scope', '$routeParams', '$locati
       Recipe.query(keywords: $routeParams.keywords, (results)-> $scope.recipes = results)
     else
       $scope.recipes = []
+])
+
+
+receta.config([ '$routeProvider',
+  ($routeProvider)->
+    $routeProvider
+      .when('/',
+        templateUrl: "index.html"
+        controller: 'RecipesController'
+      )
 ])
