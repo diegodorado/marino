@@ -1,8 +1,17 @@
+
 .row
   .col-lg-12
     %h1.page-header Depositos de #{current_company.name}
 
-    
+
+.row{"ng-app" => "company_settings"}
+  .col-lg-12
+    .well
+      Loading...
+  .col-lg-12
+    %company-settings
+  
+
 .row
   .col-lg-12
 
@@ -16,10 +25,10 @@
         %tr
           %td= store.name
           %td
-            = link_to edit_store_path(store) do              
+            = link_to edit_store_path(store) do
               %i.fa-2x.fa.fa-pencil
           %td
-            = link_to store, method: :delete, data: { confirm: 'Are you sure?' } do              
+            = link_to store, method: :delete, data: { confirm: 'Are you sure?' } do
               %i.fa-2x.fa.fa-remove
 
     = link_to 'Nuevo Deposito', new_store_path, :class => 'btn btn-primary'

@@ -20,6 +20,9 @@ class Application
     @user_id = @options.user_id
 
 
+    if @options.company_settings
+      angular.bootstrap(document.getElementById("company_settings"),['company_settings']);
+
 
     if @options.invoices_admin
       window.router = new Marino.Routers.InvoicesRouter(@options)
@@ -40,12 +43,6 @@ class Application
 
       window.router = new Marino.Routers.CropControlsRouter(@options)
       Backbone.history.start()
-
-      #view = new Marino.Views.CropControls.IndexView
-      #  crop_controls: crop_controls
-      #  company: @options.company
-      #  stores: @options.stores
-      #  crops: @options.crops
 
 
     if @options.crop_controls_summary
