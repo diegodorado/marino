@@ -5,6 +5,13 @@
     %h3.page-header Panel de Control
 
 
+.row{"ng-app" => "company_settings"}
+  .col-lg-12
+    .well
+      Loading...
+  .col-lg-12
+    %company-settings
+
 - unless user_signed_in?
   %p.lead Bienvenido
   %p
@@ -73,18 +80,3 @@
         %br
       .col-lg-4
         %a.btn.btn-outline.btn-primary.btn-lg.btn-block{:href => summary_crop_controls_path} Control de Granos
-
-
-.row
-  .col-lg-12
-    #receta
-      .view-container
-        .view-frame.animate-view{"ng-view" => ""}
-
-
-
-.row
-  .col-lg-12
-    #todoApp
-      .view-container
-        .view-frame.animate-view{"ng-view" => ""}

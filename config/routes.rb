@@ -1,4 +1,8 @@
 Marino::Application.routes.draw do
+  
+  scope '/api' do
+    resources :stores, except: [:new, :edit]
+  end
 
   match "/images/uploads/*path" => "gridfs#serve"
 

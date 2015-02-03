@@ -50,6 +50,8 @@ GEM
       railties (>= 3.1)
       sprockets
       tilt
+    angular_rails_csrf (1.0.3)
+      rails (>= 3, < 5)
     arel (3.0.3)
     axlsx (2.0.1)
       htmlentities (~> 4.3.1)
@@ -375,6 +377,7 @@ PLATFORMS
 
 DEPENDENCIES
   angular-rails-templates
+  angular_rails_csrf
   axlsx_rails
   barby
   bootstrap-sass (~> 3.3.1)

@@ -1,14 +1,11 @@
-%h1.page-header Configuracion de Empresa
+%h1.page-header Depositos
 
-%div
-  %span {{remaining()}} of {{todos.length}} remaining
-  [
-  %a{:href => "", "ng-click" => "archive()"} archive
-  ]
-  %ul.list-unstyled
-    %li{"ng-repeat" => "todo in todos"}
-      %input{"ng-model" => "todo.done", :type => "checkbox"}/
-      %span{:class => "done-{{todo.done}}"} {{todo.text}}
-  %form{"ng-submit" => "addTodo()"}
-    %input{"ng-model" => "todoText", :placeholder => "add new todo here", :size => "30", :type => "text"}/
-    %input.btn.btn-primary{:type => "submit", :value => "add"}/
+%ul{ "ng-repeat" => "store in stores" }
+  %li
+    {{store.name}}
+
+%ul{ "ng-repeat" => "store in stores" }
+  %li
+    %form{"ng-submit" => "update(store)"}
+      %input{"ng-model" => "store.name", :type => "text", :value=> "{{store.name}}" }/
+      %input.btn.btn-primary{:type => "submit", :value => "update"}/

@@ -65,6 +65,7 @@ end
 gem "haml-rails"
 gem 'bower-rails'
 gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 gem "rspec-rails", :group => [:test, :development]
 
 group :test do

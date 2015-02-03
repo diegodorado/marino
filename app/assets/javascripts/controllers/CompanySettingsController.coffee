@@ -9,16 +9,22 @@ app.directive 'companySettings', ->
   {
     restrict: 'E'
     templateUrl: "company_settings/index.html"
-    controller: ->
-      @tab = 1
-
-      @isSet = (checkTab) ->
-        @tab == checkTab
-
-      @setTab = (setTab) ->
-        @tab = setTab
-        return
-
-      return
+    controller: 'StoresCtrl'
     controllerAs: 'tab'
   }
+
+app.factory 'Store', [
+  '$resource',
+  ($resource) ->
+    $resource '/api/stores/:id.json', {id: '@_id'}
+]
+
+app.controller 'StoresCtrl', [
+  '$scope',
+  'Store',
+  ($scope, Store) ->
+    $scope.stores = Store.query()
+    $scope.update = (store)->
+      Store.save(store)
+    return
+]
