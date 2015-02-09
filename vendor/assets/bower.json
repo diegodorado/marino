@@ -6,6 +6,8 @@
     "angular-resource": "latest",
     "angular-mocks": "latest",
     "bootstrap-sass-official": "latest",
-    "fontawesome": "latest"
+    "fontawesome": "latest",
+    "angular-input-modified": "latest",
+    "angular-bootstrap": "latest"
   }
 }

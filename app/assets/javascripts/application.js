@@ -24,6 +24,8 @@
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
 //= require angular-rails-templates
+//= require angular-input-modified/dist/angular-input-modified
+//= require angular-bootstrap/ui-bootstrap-tpls
 //= require_tree ./templates
 //= require_tree ./controllers
 //= require angular

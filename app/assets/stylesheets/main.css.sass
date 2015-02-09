@@ -1,12 +1,27 @@
 @import "partials/chat"
 @import "partials/users"
 
+a
+  cursor: pointer
 
+.crop-price
+  padding: 0 !important
+  input
+    border: none
+    box-shadow: none
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button
+      /* display: none - Crashes Chrome on hover */
+      -webkit-appearance: none
+      margin: 0 /* Apparently some margin are still there even though it's hidden */
 
-.done-true
-  text-decoration: line-through
-  color: grey
+.ng-invalid
+  border-color: red
+  outline-color: red
 
+.ng-valid.ng-dirty
+  border-color: green
+  outline-color: green
 
 
 #new_crop_control.disabled

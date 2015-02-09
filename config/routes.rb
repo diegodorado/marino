@@ -1,6 +1,7 @@
 Marino::Application.routes.draw do
-  
-  scope '/api' do
+
+  scope '/api', :module => :api do
+    resources :crops, except: [:new, :edit]
     resources :stores, except: [:new, :edit]
   end
 

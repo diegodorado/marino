@@ -1,9 +1,44 @@
-.dark.data-block
-  %header
-    %h2
-      Granos
-  %section
-    #crops
+.row{"ng-app" => "marinoApp"}
+  .col-lg-12{"ng-controller" => "CropsCtrl"}
 
-= app_js_load :crops=> @crops, :crops_prices=> true, :crops_admin=> true
+    %h3.page-header Granos
 
+    .panel.panel-default
+      .panel-heading
+        %button.btn.btn-primary{ "ng-click"=>"createCrop()" }
+          Crear Grano
+
+      .panel-body
+        .input-group{ "ng-repeat" => "crop in crops" }
+          %input.form-control{ "ng-model" => "crop.name", :type => "text", :value=> "{{crop.name}}" ,"ng-blur" => "updateCrop(crop)" }/
+          %a.input-group-addon{"tabindex" => -1, :href => "", "ng-click" => "removeCrop(crop)"}
+            %i.fa-1x.fa.fa-remove
+
+    %h3.page-header Precios Brutos
+
+
+    .panel.panel-default
+      .panel-heading
+        %nav
+          %ul.pagination
+            %li
+              %a{"aria-label" => "Previous", "ng-click"=>"previousYear()"}
+                %span{"aria-hidden" => "true"} «
+            %li
+              %a.active {{year}}
+            %li
+              %a{"aria-label" => "Next",  "ng-click"=>"nextYear()"}
+                %span{"aria-hidden" => "true"} »
+
+
+      .panel-body
+        %table.table.table-bordered
+          %tr
+            %th.col-md-1
+            %th{ "ng-repeat" => "month in months" }
+              {{month}}
+
+          %tr{ "ng-repeat" => "crop in crops" }
+            %td {{crop.name}}
+            %td.crop-price{ "ng-repeat" => "month in months" }
+              %input.form-control{ "ng-model" => "crop.prices[year][$index]", :type => "number", :value=> "{{crop.prices[year][$index] || 0}}" ,:min=>0, "ng-change" => "updateCrop(crop)"}/

@@ -1,4 +1,4 @@
-class StoresController < ApplicationController
+class Api::StoresController < ApplicationController
   load_and_authorize_resource
   before_filter :require_company!
   respond_to :json
@@ -25,11 +25,16 @@ class StoresController < ApplicationController
   end
 
   def destroy
-    if @store.destroy
-      render json: '', status: :ok
-    else
-      render json: '', status: :unprocessable_entity
+    begin
+      if @store.destroy
+        render json: '', status: :ok
+      else
+        render json: '', status: :unprocessable_entity
+      end
+    rescue
+      render json: '', status: :error
     end
+
   end
 
 end

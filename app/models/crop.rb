@@ -1,5 +1,6 @@
 class Crop
   include Mongoid::Document
+  has_many :crop_controls, dependent: :restrict
 
   field :name
   field :market

@@ -1,11 +1,26 @@
-%h1.page-header Depositos
+%h3.page-header Depositos - Gastos de Comercializacion
 
-%ul{ "ng-repeat" => "store in stores" }
-  %li
-    {{store.name}}
 
-%ul{ "ng-repeat" => "store in stores" }
-  %li
-    %form{"ng-submit" => "update(store)"}
-      %input{"ng-model" => "store.name", :type => "text", :value=> "{{store.name}}" }/
-      %input.btn.btn-primary{:type => "submit", :value => "update"}/
+.panel.panel-default
+  .panel-heading{:style=>"text-align: right"}
+    .btn-group
+      %button.btn.btn-primary{ "ng-click"=>"createStore()" }
+        Crear Deposito
+      %button.btn.btn-primary{ "ng-click"=>"saveChanges() && storeData.$setPristine()", "ng-disabled"=>"!storeData.modified" }
+        Guardar Cambios
+
+  .panel-body
+    %table.table.table-bordered{"ng-form" => "", :name => "storeData"}
+      %tr
+        %th.col-md-1
+        %th.col-md-1{ "ng-repeat" => "store in stores" }
+          .input-group
+            %input.form-control{ "ng-model" => "store.name", :type => "text", :value=> "{{store.name}}" ,"ng-blur" => "update(store)" }/
+            %a.input-group-addon{"tabindex" => -1, :href => "", "ng-click" => "removeStore(store)"}
+              %i.fa-1x.fa.fa-remove
+
+
+      %tr{ "ng-repeat" => "crop in crops" }
+        %td  {{crop.name}}
+        %td{ "ng-repeat" => "store in stores" }
+          %input.form-control{ "ng-model" => "store.marketing_costs[crop._id]", :type => "number", :value=> "{{store.marketing_costs[crop._id] || 0}}" ,:min=>0, :max => 100}/
