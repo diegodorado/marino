@@ -9,10 +9,13 @@
           Crear Grano
 
       .panel-body
-        .input-group{ "ng-repeat" => "crop in crops" }
-          %input.form-control{ "ng-model" => "crop.name", :type => "text", :value=> "{{crop.name}}" ,"ng-blur" => "updateCrop(crop)" }/
-          %a.input-group-addon{"tabindex" => -1, :href => "", "ng-click" => "removeCrop(crop)"}
-            %i.fa-1x.fa.fa-remove
+
+        %ul.list-group.col-lg-3
+          %li.list-group-item{ "ng-repeat" => "crop in crops" }
+            .input-group
+              %input.form-control{ "ng-model" => "crop.name", :type => "text", :value=> "{{crop.name}}" ,"ng-blur" => "updateCrop(crop)" }/
+              %a.input-group-addon{"tabindex" => -1, :href => "", "ng-click" => "removeCrop(crop)"}
+                %i.fa-1x.fa.fa-remove
 
     %h3.page-header Precios Brutos
 
@@ -41,4 +44,4 @@
           %tr{ "ng-repeat" => "crop in crops" }
             %td {{crop.name}}
             %td.crop-price{ "ng-repeat" => "month in months" }
-              %input.form-control{ "ng-model" => "crop.prices[year][$index]", :type => "number", :value=> "{{crop.prices[year][$index] || 0}}" ,:min=>0, "ng-change" => "updateCrop(crop)"}/
+              %input.form-control{ "ng-model" => "crop.prices[year][$index]", :type => "number", :value=> "{{crop.prices[year][$index] || 0}}" ,:min=>0, "ng-change" => "updateCrop(crop)" , "ng-model-options"=>"{updateOn: 'blur'}"  }/
