@@ -15,7 +15,7 @@ wb.styles do |s|
                              :alignment=>{:horizontal => :center})
 
   border = s.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
-  number_fmt = s.add_style(:num_fmt => 2,:border=>Axlsx::STYLE_THIN_BORDER)
+  number_fmt = s.add_style(:format_code=>"#,###0.000",:border=>Axlsx::STYLE_THIN_BORDER)
   currency = s.add_style(:format_code=>"$ #,##0.00",:border=>Axlsx::STYLE_THIN_BORDER)
 
   wb.add_worksheet(name: "RESUMEN") do |sheet|
@@ -31,19 +31,19 @@ wb.styles do |s|
     @result.map do |r|
       sheet.add_row [r["cropname"], r["tn_gest"], r["unit_gest"], r["tn_gest"] * r["unit_gest"], r["tn_cont"], r["unit_cont"], r["tn_cont"] * r["unit_cont"] ]
     end
-    puts sheet.rows.last.methods
+
     sheet.add_row ['TOTALES','' ,'' , "=SUM(D5:D#{sheet.rows.last.index+1})",'' ,'' , "=SUM(G5:G#{sheet.rows.last.index+1})"]
 
 
-    sheet.row_style 3, subtitle    
-    sheet.col_style 0, border    
-    sheet.col_style 1, number_fmt    
-    sheet.col_style 2..3, currency    
+    sheet.row_style 3, subtitle
+    sheet.col_style 0, border
+    sheet.col_style 1, number_fmt
+    sheet.col_style 2..3, currency
     sheet.col_style 4, number_fmt
     sheet.col_style 5..6, currency
     sheet['A1:A1'].each { |c| c.style = title_cell }
     sheet['B3:G3'].each  { |c| c.style = title_cell }
-    
+
 
     sheet.page_setup.fit_to :width => 1, :height => 1
     sheet.column_widths 14, 14,14,14,14,14

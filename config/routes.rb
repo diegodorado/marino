@@ -14,6 +14,11 @@ Marino::Application.routes.draw do
     post 'comment', :on => :member
   end
 
+  match "/companies/stores" => "companies#stores"
+  match "/companies/marketing_costs" => "companies#marketing_costs"
+
+
+
   resources :crop_controls do
     post 'excel', :on => :collection
     get 'list', :on => :collection
@@ -32,7 +37,7 @@ Marino::Application.routes.draw do
     resources :users
     resources :companies
     resources :crops do
-      get 'get_price', :on => :collection
+      get 'prices', :on => :collection
     end
     resources :invoices do
       get 'cae', :on => :member

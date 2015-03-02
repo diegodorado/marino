@@ -1,0 +1,30 @@
+.row
+  .col-lg-12{"ng-controller" => "CropPricesCtrl"}
+
+    %h3.page-header Precios Brutos
+
+    .panel.panel-default
+      .panel-heading
+        %nav
+          %ul.pagination
+            %li
+              %a{"aria-label" => "Previous", "ng-click"=>"previousYear()"}
+                %span{"aria-hidden" => "true"} «
+            %li
+              %a.active {{year}}
+            %li
+              %a{"aria-label" => "Next",  "ng-click"=>"nextYear()"}
+                %span{"aria-hidden" => "true"} »
+
+
+      .panel-body
+        %table.table.table-bordered
+          %tr
+            %th.col-md-1
+            %th{ "ng-repeat" => "month in months" }
+              {{month}}
+
+          %tr{ "ng-repeat" => "crop in crops" }
+            %td {{crop.name}}
+            %td.crop-price{ "ng-repeat" => "month in months" }
+              %input.form-control{ "ng-model" => "crop.prices[year][$index]", :type => "number", :value=> "{{crop.prices[year][$index] || 0}}" ,:min=>0, "ng-change" => "updateCrop(crop)" , "ng-model-options"=>"{updateOn: 'blur'}"  }/

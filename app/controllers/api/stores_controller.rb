@@ -16,12 +16,16 @@ class Api::StoresController < ApplicationController
     end
   end
 
+
   def update
-    if @store.update_attributes(params[:store])
-      head :no_content
+    @store.update_attributes(params[:store])
+
+    if @store.save
+      render json: @store, status: :ok
     else
       render json: @store.errors, status: :unprocessable_entity
     end
+
   end
 
   def destroy

@@ -51,11 +51,7 @@ class Admin::CropsController < ApplicationController
   end
 
 
-  def get_price
-    @crop = Crop.find(params[:crop_id])
-    @crop.update_price(params[:month], '22.8', current_user)
-
-    render json: @crop.get_price(params[:month])
+  def prices
   end
 
 

@@ -13,8 +13,11 @@ wb.styles do |s|
   percent = s.add_style(:num_fmt => Axlsx::NUM_FMT_PERCENT,
                                :border=>Axlsx::STYLE_THIN_BORDER)
 
-  currency = s.add_style(:format_code=>"¥#,##0;[Red]¥-#,##0",
-                                :border=>Axlsx::STYLE_THIN_BORDER)
+  number_fmt = s.add_style(:format_code=>"#,###0.000",:border=>Axlsx::STYLE_THIN_BORDER)
+
+  currency = s.add_style(:format_code=>"$ #,##0.00",:border=>Axlsx::STYLE_THIN_BORDER)
+  border = s.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+
 
   wb.add_worksheet(name: "Control_de_granos") do |sheet|
 
@@ -36,7 +39,7 @@ wb.styles do |s|
       saldo += ((cc[:entrada].to_f  - cc[:salida].to_f) *100).round / 100.0
 
       if cc[:tipo_doc] == 'VALUACION'
-        
+
         #=F17*E17-F16*E16
         cant = ((cc[:precio_unitario].to_f  - precio_anterior) * saldo *100).round / 100.0
         if cant >= 0
@@ -46,12 +49,12 @@ wb.styles do |s|
           debe = 0
           haber = -cant
         end
-          
+
       else
         debe = (cc[:entrada].to_f * cc[:precio_unitario].to_f * 100).round / 100.0
         haber = (cc[:salida].to_f * cc[:precio_unitario].to_f * 100).round / 100.0
       end
-  
+
       saldo_p += ((debe-haber) *100).round / 100.0
       #watch out! first item cant be valuacion
       precio_anterior = cc[:precio_unitario].to_f
@@ -59,6 +62,11 @@ wb.styles do |s|
       sheet.add_row [cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], saldo ,cc[:precio_unitario],debe,haber,saldo_p,cc.updater_email,cc[:comentario]] rescue nil
 
     end
+
+    sheet.col_style 0..1, border
+    sheet.col_style 2..4, number_fmt
+    sheet.col_style 5..8, currency
+    sheet.col_style 9..10, border
 
     sheet.auto_filter = "A3:K3"
     sheet.page_setup.fit_to :width => 1, :height => 1
