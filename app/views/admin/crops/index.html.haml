@@ -1,9 +1,15 @@
-.dark.data-block
-  %header
-    %h2
-      Granos
-  %section
-    #crops
+.row
+  .col-lg-12{"ng-controller" => "CropsCtrl"}
 
-= app_js_load :crops=> @crops, :crops_prices=> true, :crops_admin=> true
+    %h3.page-header Granos
 
+    .input-group{ "ng-repeat" => "crop in crops" }
+      %input.form-control{ "ng-model" => "crop.name", :type => "text", :value=> "{{crop.name}}" ,"ng-blur" => "updateCrop(crop)" }/
+      %a.input-group-addon{"tabindex" => -1, :href => "", "ng-click" => "removeCrop(crop)"}
+        %i.fa-1x.fa.fa-remove
+
+    %br
+
+    %button.btn.btn-primary{ "ng-click"=>"createCrop()" }
+      %i.glyphicon.glyphicon-plus
+      Crear Grano

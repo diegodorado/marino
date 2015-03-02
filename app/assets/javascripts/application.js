@@ -20,6 +20,15 @@
 //= require sb-admin-2
 //= require jasny-bootstrap
 
+//= require angular/angular
+//= require angular-route/angular-route
+//= require angular-resource/angular-resource
+//= require angular-rails-templates
+//= require angular-input-modified/dist/angular-input-modified
+//= require angular-bootstrap/ui-bootstrap-tpls
+//= require_tree ./templates
+//= require_tree ./controllers
+//= require angular
 
 //= require js-routes
 //= require store
@@ -36,10 +45,8 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require bootstrap-switch
-
 //= require backbone/marino
 //= require backbone-link
 
 //= require main
 //= require ajax_common
-

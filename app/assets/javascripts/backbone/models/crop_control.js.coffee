@@ -61,7 +61,6 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
         
         #=F17*E17-F16*E16
         cant =  (item.precio_unitario  - precio_anterior) * saldo
-        cant = Math.round(cant * 1000) / 1000
         if cant >= 0
           item.debe = cant
           item.haber = 0
@@ -70,11 +69,11 @@ class Marino.Collections.CropControlsCollection extends Backbone.Collection
           item.haber = -cant
           
       else
-        item.debe = Math.round(item.entrada*item.precio_unitario * 1000) / 1000
-        item.haber = Math.round(item.salida*item.precio_unitario * 1000) / 1000
+        item.debe = item.entrada*item.precio_unitario
+        item.haber = item.salida*item.precio_unitario
         
       saldo_p += item.debe-item.haber
-      item.saldo_p = Math.round(saldo_p * 1000) / 1000
+      item.saldo_p = saldo_p
       #watch out! first item cant be valuacion
       precio_anterior = item.precio_unitario
 

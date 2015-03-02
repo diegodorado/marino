@@ -1,26 +1,20 @@
 .row
   .col-lg-12
-    %h1.page-header 
-      Control de Granos de #{current_company.name}
-
-    %ul.nav.nav-tabs
-      %li
-        =link_to  "Resumen", summary_crop_controls_path
-      %li.active
-        =link_to  "Editar", list_crop_controls_path, :class=> "active"
+    %h3.page-header
+      Movimientos - Control de Granos de #{current_company.name}
 
 .row
   %br
   .col-lg-12
     .panel.panel-default
-      .panel-heading  
+      .panel-heading
         #filters
-      .panel-body  
+      .panel-body
         #crop_controls
 
 
 #comments
-  
+
 
 = app_js_load :company=> @company
 = app_js_load :company_comments=> @company_comments

@@ -16,4 +16,10 @@ class CompaniesController < ApplicationController
     return render :json => @comment.to_json
   end
 
+  def stores
+  end
+
+  def marketing_costs
+  end
+
 end

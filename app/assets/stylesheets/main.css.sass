@@ -1,6 +1,30 @@
 @import "partials/chat"
 @import "partials/users"
 
+*
+  outline: none !important
+
+a
+  cursor: pointer
+
+.crop-price, .marketing_cost
+  padding: 0 !important
+  input
+    border: none
+    box-shadow: none
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button
+      /* display: none - Crashes Chrome on hover */
+      -webkit-appearance: none
+      margin: 0 /* Apparently some margin are still there even though it's hidden */
+
+.ng-invalid
+  border: 1px solid red !important
+  outline-color: red
+
+.ng-valid.ng-dirty
+  border: 1px solid green !important
+  outline-color: green
 
 
 #new_crop_control.disabled
@@ -45,4 +69,3 @@ label.btn.btn-outline.btn-primary
   &:hover
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25)
     text-decoration: underline
-    

@@ -1,5 +1,5 @@
 !!! 5
-%html(lang="en")
+%html{:lang=>"en", "ng-app" => "marinoApp"}
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
@@ -11,7 +11,7 @@
     /[if lt IE 9]
       = javascript_include_tag "//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"
       = javascript_include_tag "//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"
-      
+
     = stylesheet_link_tag "application", :media => "all"
     %link(href="/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
     %link(href="/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
@@ -19,18 +19,18 @@
     %link(href="/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
     %link(href="/favicon.ico" rel="shortcut icon")
 
-  %body
+  %body.ng-cloak
     #wrapper
       %nav.navbar.navbar-default.navbar-static-top{:role => "navigation", :style => "margin-bottom: 0"}
         = render 'layouts/header'
         = render 'layouts/sidebar'
-        
+
       #page-wrapper
         = yield
 
-    #bootstrap_alerts  
+    #bootstrap_alerts
       = bootstrap_flash
-          
+
     = javascript_include_tag "application"
     = javascript_tag yield :app_js_load
     = javascript_tag "app.start();"

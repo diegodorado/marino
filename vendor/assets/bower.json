@@ -1,0 +1,13 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-resource": "latest",
+    "angular-mocks": "latest",
+    "bootstrap-sass-official": "latest",
+    "fontawesome": "latest",
+    "angular-input-modified": "latest",
+    "angular-bootstrap": "latest"
+  }
+}

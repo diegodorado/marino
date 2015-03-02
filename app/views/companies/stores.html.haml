@@ -1,0 +1,15 @@
+.row
+  .col-lg-12{"ng-controller" => "StoresCtrl"}
+
+    %h3.page-header Depositos
+
+    .input-group{ "ng-repeat" => "store in stores" }
+      %input.form-control{ "ng-model" => "store.name", :type => "text", :value=> "{{store.name}}" ,"ng-blur" => "updateStore(store)" }/
+      %a.input-group-addon{"tabindex" => -1, :href => "", "ng-click" => "removeStore(store)"}
+        %i.fa-1x.fa.fa-remove
+
+    %br
+
+    %button.btn.btn-primary{ "ng-click"=>"createStore()" }
+      %i.glyphicon.glyphicon-plus
+      Crear Deposito

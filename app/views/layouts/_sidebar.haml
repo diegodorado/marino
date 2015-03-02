@@ -1,7 +1,7 @@
 .navbar-default.sidebar{:role => "navigation"}
   .sidebar-nav.navbar-collapse
     %ul#side-menu.nav
-          
+
       %li.active-
         %a{:href => root_path}
           %i.fa.fa-home.fa-fw
@@ -13,26 +13,32 @@
             Archivos de Backups
       -if can? :manage, CropControl
         %li
-          = link_to summary_crop_controls_path do
+          %a{:href => "#"}
             %i.fa.fa-bar-chart.fa-fw
             Control de Granos
-          
-      -if  can? :manage, Crop or can? :manage, Company    or can? :manage, Store or can? :manage, User      
+            %span.fa.arrow
+          %ul.nav.nav-second-level
+            %li
+              = link_to "Depositos", companies_stores_path
+            %li
+              = link_to "Gastos de Comercializacion", companies_marketing_costs_path
+            %li
+              = link_to "Movimientos", list_crop_controls_path
+            %li
+              = link_to "Resumen", summary_crop_controls_path
+
+      -if  can? :manage, Crop or can? :manage, Company    or can? :manage, Store or can? :manage, User
         %li
           %a{:href => "#"}
             %i.fa.fa-gears.fa-fw
             Admin
             %span.fa.arrow
           %ul.nav.nav-second-level
-            -if can? :manage, Company      
+            -if can? :manage, Company
               %li
                 = link_to admin_companies_path do
                   Empresas
-            -if can? :manage, Store
-              %li
-                = link_to stores_path do
-                  Depositos
-            -if can? :manage, User      
+            -if can? :manage, User
               %li
                 = link_to admin_users_path do
                   Usuarios
@@ -44,3 +50,6 @@
               %li
                 = link_to admin_crops_path do
                   Granos
+              %li
+                = link_to prices_admin_crops_path do
+                  Precios Brutos de Granos

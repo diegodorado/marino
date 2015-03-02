@@ -7,13 +7,10 @@ class HomeController < ApplicationController
   def index
   end
 
-
-
   def select_company
     session[:company_id] = @company.id
     return_to = session.delete(:return_to) || root_path
     redirect_to return_to , notice: "Seleccionaste la empresa #{@company.name}."
-
   end
 
 end

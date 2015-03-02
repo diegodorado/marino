@@ -17,11 +17,6 @@ gem 'omniauth-google-oauth2'
 gem "cancan"
 gem "rolify"
 gem "figaro"
-
-
-gem 'axlsx_rails'
-
-
 gem 'thin'
 
 group :development do
@@ -30,11 +25,18 @@ group :development do
   gem "faker"
 end
 
+
+gem "foreman"
+group :production, :staging do
+  gem "rails_12factor"
+  gem "rails_stdout_logging"
+  gem "rails_serve_static_assets"
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 
 gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
-
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass', '3.2.19'
 gem 'sass-rails', '>= 3.2'
@@ -42,10 +44,10 @@ gem 'sass-rails', '>= 3.2'
 group :assets do
   gem 'haml_coffee_assets'
   gem 'font-awesome-sass', '~> 4.2.0'
-  
+
   gem 'morrisjs-rails'
   gem 'raphael-rails'
-  
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer' #, :platforms => :ruby
 
@@ -61,8 +63,11 @@ group :assets do
 end
 
 gem "haml-rails"
-
+gem 'bower-rails'
+gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 gem "rspec-rails", :group => [:test, :development]
+
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
@@ -72,13 +77,14 @@ group :test do
   gem "rb-inotify"
   gem 'launchy'
   gem 'database_cleaner'
+  gem "selenium-webdriver"
 end
 
 
+gem 'axlsx_rails'
 #required by afip service
 #todo: check prawn new versions
 gem 'prawn' #, :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
 gem 'barby'
 gem 'savon', github: 'savonrb/savon', :branch => "version1"
 gem 'httpclient' #used by savon because net_http fallback is failing
-

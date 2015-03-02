@@ -1,0 +1,15 @@
+.row
+  .col-lg-12{"ng-controller" => "MarketingCostsCtrl"}
+
+    %h3.page-header Gastos de Comercializacion
+
+    %table.table.table-bordered
+      %tr
+        %th.col-md-1
+        %th.col-md-1{ "ng-repeat" => "store in stores" }
+          {{store.name}}
+
+      %tr{ "ng-repeat" => "crop in crops" }
+        %td  {{crop.name}}
+        %td.marketing_cost{ "ng-repeat" => "store in stores" }
+          %input.form-control{ "ng-model" => "store.marketing_costs[crop._id]", :type => "number", :value=> "{{store.marketing_costs[crop._id] || 0}}" ,:min=>0, :max => 100 , "ng-change" => "updateStore(store)" , "ng-model-options"=>"{updateOn: 'blur'}"  }/
