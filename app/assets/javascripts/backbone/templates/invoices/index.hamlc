@@ -1,9 +1,0 @@
-%table.table
-  %thead
-    %tr
-      %th Nº Doc
-      %th
-  %tbody
-
-
-%a.btn.btn-alt.btn-success(href="#/new") Nuevo
