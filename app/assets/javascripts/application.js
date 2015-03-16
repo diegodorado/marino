@@ -26,20 +26,14 @@
 //= require angular-rails-templates
 //= require angular-input-modified/dist/angular-input-modified
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require angular
 //= require_tree ./templates
 //= require_tree ./controllers
-//= require angular
 
 //= require js-routes
 //= require store
 //= require accounting
-//= require jquery.timeago
-//= require jquery.timeago.es
 //= require jquery-post
-//= require date-es-AR
-//= require jquery.timeago.es
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker.es
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

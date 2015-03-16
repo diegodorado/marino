@@ -19,40 +19,9 @@ class Application
     #set users
     @user_id = @options.user_id
 
-
-    if @options.company_settings
-      angular.bootstrap(document.getElementById("company_settings"),['company_settings']);
-
-
-    if @options.invoices_admin
-      window.router = new Marino.Routers.InvoicesRouter(@options)
-      Backbone.history.start()
-
-
-    if @options.crops_admin
-      window.router = new Marino.Routers.CropsRouter(@options)
-      Backbone.history.start()
-
-
     if @options.crop_control
-
-      comments = new Marino.Collections.CommentsCollection()
-      comments.reset @options.company_comments
-      view = new Marino.Views.Comments.IndexView(comments: comments)
-      #view.render()
-
       window.router = new Marino.Routers.CropControlsRouter(@options)
       Backbone.history.start()
-
-
-    if @options.crop_controls_summary
-
-      view = new Marino.Views.CropControls.SummaryView
-        company: @options.company
-        crops: @options.crops
-        crop_controls: @options.crop_controls
-
-      view.render()
 
     # backup upload
     if @options.backups

@@ -1,30 +1,7 @@
-class CropControlsController < ApplicationController
-
+class Api::CropControlsController < ApplicationController
   load_and_authorize_resource
-
   respond_to :json
-
   before_filter :require_company!
-  before_filter :set_valid_params , :except => [:index,:list, :excel, :summary, :destroy]
-
-  def set_valid_params
-    valid_params = [
-      :fecha,
-      :crop_id,
-      :store_id,
-      :entrada,
-      :salida,
-      :precio_unitario,
-      :gestion,
-      :contabilidad,
-      :tipo_doc,
-      :comentario
-    ]
-    #logger.debug params
-    crop_control = params[:crop_control]
-    crop_control.keep_if {| key, value | valid_params.include?(key.to_sym) }
-    params[:crop_control] = crop_control
-  end
 
   def summary
     stores = @company.stores
@@ -70,40 +47,15 @@ class CropControlsController < ApplicationController
         x["value"]
       end
 
+    render json: @result
 
-
-    respond_to do |format|
-      format.html do
-        @crop_controls = CropControl.in(store_id: stores.pluck(:_id)).order_by(:fecha => :asc)
-      end
-      format.json do
-        render json: @result
-      end
-      format.xlsx do
-        @title = "Resumen Ctrl de Granos"
-        render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
-      end
-    end
-    
   end
 
   def list
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
-    #todo: filter by company
     @crop_controls = CropControl.in(store_id: @stores.pluck(:_id)).order_by(:fecha => :asc)
-    @company_comments = @company.comments
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
-
-  def excel
-    @crop_controls = CropControl.in(_id: params[:ids] ).order_by(:fecha => :asc)
-    @title = params[:title]
-    render xlsx: "list", disposition: "attachment", filename: "control_de_granos.xlsx"
+    render json: @crop_controls
   end
 
   def create

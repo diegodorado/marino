@@ -1,5 +1,0 @@
-%tr.success
-	%td(colspan="3") TOTALES
-	%td.number =accounting.formatMoney(@gestion_total)
-	%td(colspan="2") 
-	%td.number =accounting.formatMoney(@contabilidad_total)

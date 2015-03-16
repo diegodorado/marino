@@ -25,7 +25,7 @@
             %li
               = link_to "Movimientos", list_crop_controls_path
             %li
-              = link_to "Resumen", summary_crop_controls_path
+              = link_to "Resumen", crop_controls_summary_path
 
       -if  can? :manage, Crop or can? :manage, Company    or can? :manage, Store or can? :manage, User
         %li
