@@ -1,0 +1,105 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      Movimientos - Control de Granos de #{current_company.name}
+
+.row
+  %br
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        #filters
+      .panel-body
+        #crop_controls
+
+.row{"ng-controller" => "CropControlListCtrl"}
+  %br
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-sm-2
+            %button#excel_crop_control.btn.btn-alt.btn-primary.btn-block Descargar Excel
+
+          .col-sm-2
+            #switch-filter.make-switch{"data-on-label"=>"Cont", "data-off-label"=>"Gest"}
+              %input{:type=>"checkbox", :value=>false}
+            %button.btn.btn-alt.btn-primary.btn-block
+              Gestión
+
+          .col-sm-2
+            %select#store-filter.form-control
+              %option{ :value => "all" }  (Todos los Depósitos)
+              - for store in @stores
+                %option{ :value => store._id } #{store.name}
+          .col-sm-2
+            %select#crop-filter.form-control
+              - for crop in @crops
+                %option{ :value => crop._id } #{crop.name}
+          .col-sm-2
+          .col-sm-2
+            %button#new_crop_control.btn.btn-alt.btn-primary.btn-block Nuevo
+
+
+      .panel-body
+        .table-responsive
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th
+                  Fecha
+                %th
+                  Tipo Doc
+                %th
+                  Entrada
+                  %small (tn)
+                %th
+                  Salida
+                  %small (tn)
+                %th
+                  Saldo
+                  %small (tn)
+                %th
+                  Precio
+                  %small ($/tn)
+                %th
+                  Debe
+                  %small ($)
+                %th
+                  Haber
+                  %small ($)
+                %th
+                  Saldo
+                  %small ($)
+                %th.hidden-xs.hidden-sm.hidden-md Actualizado por
+                %th.hidden-xs.hidden-sm.hidden-md Comentario
+                %th
+                %th
+            %tbody
+              %tr{ "ng-repeat" => "crop_control in crop_controls" }
+                -#%td =Date.parse(@fecha+'T00:00:00').toString('MMM-yy')
+                %td
+                %td =@tipo_doc
+                %td.number =accounting.formatNumber(@entrada,3)
+                %td.number =accounting.formatNumber(@salida,3)
+                %td.number =accounting.formatNumber(@saldo,3)
+                %td.number =accounting.formatMoney(@precio_unitario)
+                %td.number =accounting.formatMoney(@debe)
+                %td.number =accounting.formatMoney(@haber)
+                %td.number =accounting.formatMoney(@saldo_p)
+                %td.hidden-xs.hidden-sm.hidden-md =@updater_email
+                %td.hidden-xs.hidden-sm.hidden-md =@comentario
+                %td
+                  %a{:href => "#/#{@_id}/edit"}
+                    %i.fa-2x.fa.fa-pencil
+                %td
+                  %a.destroy{:href => "#/#{@_id}/destroy"}
+                    %i.fa-2x.fa.fa-remove
+
+
+= app_js_load :company=> @company
+= app_js_load :company_comments=> @company_comments
+= app_js_load :crop_control=> true
+= app_js_load :crop_controls=> @crop_controls
+= app_js_load :stores=> @stores
+= app_js_load :crops=> @crops

@@ -84,10 +84,10 @@ class CropControlsController < ApplicationController
         render xlsx: "summary", disposition: "attachment", filename: "control_de_granos-resumen.xlsx"
       end
     end
-    
+
   end
 
-  def list
+  def index
     @stores = @company.stores
     @crops = Crop.only(:_id,:name).all
     #todo: filter by company

@@ -21,12 +21,11 @@ Marino::Application.routes.draw do
   match "/companies/stores" => "companies#stores"
   match "/companies/marketing_costs" => "companies#marketing_costs"
 
+  match "/crop_controls/index" => "crop_controls#index"
   match "/crop_controls/summary" => "crop_controls#summary"
 
   resources :crop_controls do
     post 'excel', :on => :collection
-    get 'list', :on => :collection
-    get 'summary', :on => :collection
   end
   resources :backups
 
