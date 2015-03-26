@@ -11,8 +11,6 @@ Marino::Application.routes.draw do
 
   match "/images/uploads/*path" => "gridfs#serve"
 
-  resources :stores
-
   resources :companies, :only => [:index] do
     get 'select', :on => :member
     post 'comment', :on => :member

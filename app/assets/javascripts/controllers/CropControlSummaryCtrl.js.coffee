@@ -42,6 +42,8 @@ angular
         startingDay: 1
         showWeeks: 0
 
+      $scope.excel = () ->
+        window.location = '/crop_controls/summary.xlsx?balance_at='+$scope.balance_at
 
       return
   ]

@@ -17,3 +17,11 @@ app.factory 'Crop', [
   ($resource) ->
     $resource '/api/crops/:id.json', {id: '@_id'}, update: method: 'PUT'
 ]
+
+
+
+app.factory 'CropControl', [
+  '$resource',
+  ($resource) ->
+    $resource '/api/crop_controls/:id.json', {id: '@_id'}, update: method: 'PUT'
+]

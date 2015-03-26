@@ -4,56 +4,13 @@ class Api::CropControlsController < ApplicationController
   before_filter :require_company!
 
   def summary
-    stores = @company.stores
-    @crops = Crop.only(:_id,:name).all
-
-    map = %Q{
-      function() {
-
-        var values = {
-          tn_gest: this.gestion ?  (this.entrada-this.salida) : 0,
-          unit_gest: this.gestion ? this.precio_unitario : 0,
-          tn_cont: this.contabilidad ?  (this.entrada-this.salida) : 0,
-          unit_cont: this.contabilidad ? this.precio_unitario : 0
-          };
-
-          emit( this.crop_id, values);
-        }
-      }
-
-    reduce = %Q{
-      function(key, values) {
-
-        var result =  {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };
-
-        values.forEach( function(value) {
-          result.tn_gest += value.tn_gest;
-          result.unit_gest = value.unit_gest;
-          result.tn_cont += value.tn_cont;
-          result.unit_cont = value.unit_cont;
-          });
-
-          return result;
-        }
-      }
-
-    @result = CropControl.in(store_id: stores.pluck(:_id))
-      .where(:fecha.lte => params[:balance_at])
-      .order_by(:fecha => :asc)
-      .map_reduce(map, reduce)
-      .out(inline: 1)
-      .map do |x|
-        x["value"]["cropname"] = Crop.find(x["_id"]).name
-        x["value"]
-      end
-
+    @result = CropControl.summary(params[:balance_at], @company.stores.pluck(:_id))
     render json: @result
-
   end
 
   def index
     stores = @company.stores
-    @result = CropControl.in(store_id: stores.pluck(:_id))
+    @result = CropControl.in(store_id: params[:store_id],crop_id: params[:crop_id])
       .order_by(:fecha => :asc)
 
     precio_anterior = 0
