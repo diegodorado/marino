@@ -1,6 +1,6 @@
 class Api::CropControlsController < ApplicationController
   load_and_authorize_resource
-  respond_to :json
+  respond_to :json, :xlsx
   before_filter :require_company!
 
   def summary
@@ -9,8 +9,14 @@ class Api::CropControlsController < ApplicationController
   end
 
   def index
-    stores = @company.stores
-    @result = CropControl.in(store_id: params[:store_id],crop_id: params[:crop_id])
+    filter= params.select{|k,v| ["store_id","crop_id"].include?(k)}
+    if params[:gestion]
+      filter[:gestion] = true
+    else
+      filter[:contabilidad] = true
+    end
+    @result = CropControl
+      .where(filter)
       .order_by(:fecha => :asc)
 
     precio_anterior = 0
@@ -20,10 +26,7 @@ class Api::CropControlsController < ApplicationController
       saldo += doc[:entrada]-doc[:salida];
       doc[:saldo] = saldo.round(3)
 
-
       if doc[:tipo_doc] == 'VALUACION'
-
-        #=F17*E17-F16*E16
         cant =  (doc[:precio_unitario]  - precio_anterior) * saldo
         if cant >= 0
           doc[:debe] = cant
@@ -36,16 +39,26 @@ class Api::CropControlsController < ApplicationController
         doc[:debe] = doc[:entrada]*doc[:precio_unitario]
         doc[:haber] = doc[:salida]*doc[:precio_unitario]
 
-        saldo_p += doc[:debe]-doc[:haber]
-        doc[:saldo_p] = saldo_p
-        #watch out! first item cant be valuacion
-        precio_anterior = doc[:precio_unitario]
       end
+
+      saldo_p += doc[:debe]-doc[:haber]
+      doc[:saldo_p] = saldo_p
+      #watch out! first item cant be valuacion
+      precio_anterior = doc[:precio_unitario]
 
       doc
     end
 
-    render json: @result
+    respond_to do |format|
+      format.json do
+        render json: @result
+      end
+      format.xlsx do
+        @title = params[:title]
+        @title = "Ctrl de Granos"
+        render xlsx: "crop_controls/index", disposition: "attachment", filename: "control_de_granos.xlsx"
+      end
+    end
 
   end
 

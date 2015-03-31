@@ -10,7 +10,7 @@
       .panel-heading
         .row
           .col-sm-2
-            %button.btn.btn-alt.btn-primary.btn-block Descargar Excel
+            %button.btn.btn-alt.btn-primary.btn-block{"ng-click" => "excel()"} Descargar Excel
 
           .col-sm-4
             .btn-group
@@ -30,9 +30,10 @@
             %button.btn.btn-alt.btn-primary.btn-block Nuevo
 
 
+
       .panel-body
         .table-responsive
-          %table.table.table-striped.table-bordered
+          %table.table.table-striped.table-bordered{"ng-table"=>"tableParams"}
             %thead
               %tr
                 %th
@@ -65,7 +66,7 @@
                 %th
                 %th
             %tbody
-              %tr{ "ng-repeat" => "cc in crop_controls" }
+              %tr{ "ng-repeat" => "cc in $data" }
                 %td {{cc.fecha | date : "dd-MM-yyyy"}}
                 %td {{cc.tipo_doc}}
                 %td.number {{cc.entrada| number:3}}
