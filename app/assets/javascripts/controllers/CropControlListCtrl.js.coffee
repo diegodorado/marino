@@ -12,6 +12,8 @@ angular
         gestion: 0
         contabilidad: 1
       $scope.crop_controls = []
+      $scope.crop_control =  null
+
       $scope.$data = []
 
       $scope.crops = Crop.query ->
@@ -52,6 +54,55 @@ angular
           $defer.resolve $scope.crop_controls.slice((params.page() - 1) * params.count(), params.page() * params.count())
       }
 
+
+      #form functions
+      $scope.tipo_docs = ['EX INIC','COSECHA','AJUSTE +','ALQUILER +','APARCERIA +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -','ALQUILER -','APARCERIA -', 'VALUACION']
+
+
+      $scope.datePickerOpen = ($event) ->
+        $event.preventDefault()
+        $event.stopPropagation()
+        $scope.datePickerOpened = true
+        return
+
+      $scope.dateOptions =
+        formatYear: "yy"
+        startingDay: 1
+        showWeeks: 0
+
+      $scope.newCropControl = () ->
+        defaults=
+          entrada: 0
+          salida: 0
+          precio_unitario: 0
+          gestion: true
+          contabilidad: true
+          tipo_doc: 'EX INIC'
+          crop_id: $scope.filters.crop_id
+          store_id: $scope.filters.store_id
+          fecha: $filter('date')(new Date, 'yyyy-MM-dd')
+
+        $scope.crop_control =  new CropControl(defaults)
+        return
+
+      $scope.editCropControl = (cc) ->
+        $scope.crop_control =  cc
+
+      $scope.destroyCropControl = (cc) ->
+        console.log(cc)
+        $scope.crop_control =  null
+
+
+      $scope.cancel = () ->
+        $scope.crop_control =  null
+
+
+
+      $scope.save = () ->
+        $scope.crop_control =  null
+
+      $scope.saveAndAdd = () ->
+        $scope.crop_control =  null
 
 
       return

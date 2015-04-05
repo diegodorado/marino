@@ -28,20 +28,12 @@
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require ng-table/dist/ng-table.js
 //= require angular
-//= require_tree ./templates
+// require_tree ./templates
 //= require_tree ./controllers
 
 //= require js-routes
 //= require store
-//= require accounting
 //= require jquery-post
-//= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require bootstrap-switch
-//= require backbone/marino
-//= require backbone-link
 
 //= require main
 //= require ajax_common
