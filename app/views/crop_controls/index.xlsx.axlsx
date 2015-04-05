@@ -16,6 +16,7 @@ wb.styles do |s|
   number_fmt = s.add_style(:format_code=>"#,###0.000",:border=>Axlsx::STYLE_THIN_BORDER)
 
   currency = s.add_style(:format_code=>"$ #,##0.00",:border=>Axlsx::STYLE_THIN_BORDER)
+  currency2 = s.add_style(:format_code=>"$ #,##0.000",:border=>Axlsx::STYLE_THIN_BORDER)
   border = s.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
 
 
@@ -34,7 +35,8 @@ wb.styles do |s|
 
     sheet.col_style 0..1, border
     sheet.col_style 2..4, number_fmt
-    sheet.col_style 5..8, currency
+    sheet.col_style 5..5, currency2
+    sheet.col_style 6..8, currency
     sheet.col_style 9..10, border
 
     sheet.auto_filter = "A3:K3"

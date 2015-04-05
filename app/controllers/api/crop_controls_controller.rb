@@ -9,45 +9,7 @@ class Api::CropControlsController < ApplicationController
   end
 
   def index
-    filter= params.select{|k,v| ["store_id","crop_id"].include?(k)}
-    if params[:gestion]
-      filter[:gestion] = true
-    else
-      filter[:contabilidad] = true
-    end
-    @result = CropControl
-      .where(filter)
-      .order_by(:fecha => :asc)
-
-    precio_anterior = 0
-    saldo = 0
-    saldo_p = 0
-    @result = @result.map do |doc|
-      saldo += doc[:entrada]-doc[:salida];
-      doc[:saldo] = saldo.round(3)
-
-      if doc[:tipo_doc] == 'VALUACION'
-        cant =  (doc[:precio_unitario]  - precio_anterior) * saldo
-        if cant >= 0
-          doc[:debe] = cant
-          doc[:haber] = 0
-        else
-          doc[:debe] = 0
-          doc[:haber] = -cant
-        end
-      else
-        doc[:debe] = doc[:entrada]*doc[:precio_unitario]
-        doc[:haber] = doc[:salida]*doc[:precio_unitario]
-
-      end
-
-      saldo_p += doc[:debe]-doc[:haber]
-      doc[:saldo_p] = saldo_p
-      #watch out! first item cant be valuacion
-      precio_anterior = doc[:precio_unitario]
-
-      doc
-    end
+    @result = CropControl.list(params[:store_id],params[:crop_id],params[:gestion].to_i==1)
 
     respond_to do |format|
       format.json do

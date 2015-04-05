@@ -56,8 +56,6 @@ angular
 
 
       #form functions
-      $scope.tipo_docs = ['EX INIC','COSECHA','AJUSTE +','ALQUILER +','APARCERIA +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -','ALQUILER -','APARCERIA -', 'VALUACION']
-
 
       $scope.datePickerOpen = ($event) ->
         $event.preventDefault()
@@ -74,7 +72,6 @@ angular
         defaults=
           entrada: 0
           salida: 0
-          precio_unitario: 0
           gestion: true
           contabilidad: true
           tipo_doc: 'EX INIC'
@@ -89,8 +86,8 @@ angular
         $scope.crop_control =  cc
 
       $scope.destroyCropControl = (cc) ->
-        console.log(cc)
-        $scope.crop_control =  null
+        cc.$delete ->
+          $scope.reQuery()
 
 
       $scope.cancel = () ->
@@ -99,10 +96,17 @@ angular
 
 
       $scope.save = () ->
-        $scope.crop_control =  null
+        console.log $scope.crop_control
+
+        $scope.crop_control.$save ()->
+          $scope.crop_control =  null
+          $scope.reQuery()
+
 
       $scope.saveAndAdd = () ->
-        $scope.crop_control =  null
+        $scope.crop_control.$save ()->
+          $scope.reQuery()
+          $scope.newCropControl()
 
 
       return
