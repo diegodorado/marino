@@ -52,20 +52,20 @@ class CropControl
       function(key, values) {
 
         var result =  {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };
-        var date = "";
+        var date_gest = "";
+        var date_cont = "";
         values.forEach( function(value) {
           result.tn_gest += value.tn_gest;
           result.tn_cont += value.tn_cont;
-          if(value.fecha>date){
-            date = value.fecha;
-            if(value.unit_gest>0){
-              result.unit_gest = value.unit_gest;
-            }
-            if(value.unit_cont>0){
-              result.unit_cont = value.unit_cont;
-            }
+          if(value.fecha>date_gest && value.unit_gest>0){
+            date_gest = value.fecha;
+            result.unit_gest = value.unit_gest;
           }
-        });
+          if(value.fecha>date_cont && value.unit_cont>0){
+            date_cont = value.fecha;
+            result.unit_cont = value.unit_cont;
+          }
+          });
 
         return result;
       }
