@@ -57,6 +57,7 @@ class CropControl
           result.tn_gest += value.tn_gest;
           result.tn_cont += value.tn_cont;
           if(value.fecha>date){
+            date = value.fecha;
             result.unit_gest = value.unit_gest;
             result.unit_cont = value.unit_cont;
           }
