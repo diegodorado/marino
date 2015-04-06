@@ -141,11 +141,11 @@
                 %td {{cc.tipo_doc}}
                 %td.number {{cc.entrada| number:3}}
                 %td.number {{cc.salida| number:3}}
-                %td.number {{cc.saldo| number:3}}
+                %td.number{"ng-class"=>"{'negative-balance': cc.saldo < 0}"} {{cc.saldo| number:3}}
                 %td.number {{cc.precio_unitario| currency:"$":3}}
                 %td.number {{cc.debe| currency:"$":2}}
                 %td.number {{cc.haber| currency:"$":2}}
-                %td.number {{cc.saldo_p| currency:"$":2}}
+                %td.number{"ng-class"=>"{'negative-balance': cc.saldo_p < 0}"} {{cc.saldo_p| currency:"$":2}}
                 %td.hidden-xs.hidden-sm.hidden-md {{cc.updater_email}}
                 %td.hidden-xs.hidden-sm.hidden-md {{cc.comentario}}
                 %td

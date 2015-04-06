@@ -16,9 +16,18 @@ class CropControlsController < ApplicationController
   end
 
   def index
+
     respond_to do |format|
-      format.html
+      format.html do
+      end
+      format.xlsx do
+        @result = CropControl.list(params[:store_id],params[:crop_id],params[:gestion].to_i==1)
+        @title = params[:title]
+        @title = "Ctrl de Granos"
+        render xlsx: "crop_controls/index", disposition: "attachment", filename: "control_de_granos.xlsx"
+      end
     end
+
   end
 
 end

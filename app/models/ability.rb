@@ -30,9 +30,10 @@ class Ability
     can :manage, Backup , :company => {:user_ids => user.id}
     can :manage, Backup , :company => {:auditor_ids => user.id}
     can :manage, Backup , :creator_id => user.id
-    
+
     can :read, Company , :user_ids => user.id
     can :read, Company , :auditor_id => user.id
+    can :read, Store , :company => {:user_ids => user.id}
     #can :update, Company , :user_ids => user.id
     #can :create, Store
     #can :manage, Store , :company => {:user_ids => user.id}

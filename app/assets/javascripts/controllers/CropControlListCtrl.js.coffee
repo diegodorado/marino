@@ -24,7 +24,8 @@ angular
 
       $scope.reQuery = ()->
         $scope.crop_controls = CropControl.query $scope.filters , ->
-          $scope.tableParams.$params.page = 1
+          $scope.tableParams.$params.page = Math.ceil($scope.crop_controls.length/$scope.tableParams.$params.count)
+          console.log $scope.tableParams.$params
           $scope.tableParams.total($scope.crop_controls.length)
           $scope.tableParams.reload()
 
@@ -41,7 +42,7 @@ angular
         $scope.reQuery()
 
       $scope.excel = () ->
-        window.location = "/api/crop_controls.xlsx?store_id=#{$scope.filters.store_id}&crop_id=#{$scope.filters.crop_id}&gestion=#{$scope.filters.gestion}&contabilidad=#{$scope.filters.contabilidad}"
+        window.location = "/crop_controls/index.xlsx?store_id=#{$scope.filters.store_id}&crop_id=#{$scope.filters.crop_id}&gestion=#{$scope.filters.gestion}&contabilidad=#{$scope.filters.contabilidad}"
 
 
       $scope.tableParams = new ngTableParams {
