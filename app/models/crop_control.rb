@@ -37,6 +37,7 @@ class CropControl
       function() {
 
         var values = {
+          fecha: this.fecha,
           tn_gest: this.gestion ?  (this.entrada-this.salida) : 0,
           unit_gest: this.gestion ? this.precio_unitario : 0,
           tn_cont: this.contabilidad ?  (this.entrada-this.salida) : 0,
@@ -51,21 +52,22 @@ class CropControl
       function(key, values) {
 
         var result =  {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };
-
+        var date = "";
         values.forEach( function(value) {
           result.tn_gest += value.tn_gest;
-          result.unit_gest = value.unit_gest;
           result.tn_cont += value.tn_cont;
-          result.unit_cont = value.unit_cont;
-          });
+          if(value.fecha>date){
+            result.unit_gest = value.unit_gest;
+            result.unit_cont = value.unit_cont;
+          }
+        });
 
-          return result;
-        }
+        return result;
       }
+    }
 
     result = self.in(store_id: store_ids)
       .where(:fecha.lte => balance_at)
-      .order_by(:fecha => :asc)
       .map_reduce(map, reduce)
       .out(inline: 1)
       .map do |x|
