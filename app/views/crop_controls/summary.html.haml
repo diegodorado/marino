@@ -3,12 +3,55 @@
     %h3.page-header
       Resumen - Control de Granos de #{current_company.name}
 
-.row
+.row{"ng-controller" => "CropControlSummaryCtrl"}
+  %br
   .col-lg-12
-    #crop_controls_summary
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-sm-1
+            %label
+              Saldo al:
+          .col-sm-4
+            .input-group
+              %input.form-control{"close-text" => "Cerrar", "datepicker-options" => "dateOptions", "datepicker-popup" => "", "is-open" => "opened", "ng-required" => "true", :type => "text", "ng-model" => "balance_at", "ng-change" => "selectDate(balance_at)"}/
+              %span.input-group-btn
+                %button.btn.btn-default{"ng-click" => "open($event)", :type => "button"}
+                  %i.glyphicon.glyphicon-calendar
 
+          .col-sm-4
+          .col-sm-3
+            %a.btn.btn-alt.btn-primary.btn.block{"ng-click" => "excel()"}
+              Descargar en Excel
 
-= app_js_load :company=> @company
-= app_js_load :crop_controls_summary=> true
-= app_js_load :crop_controls=> @crop_controls
-= app_js_load :crops=> @crops
+      .panel-body
+        .table-responsive
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th
+                %th(colspan="3") GESTIÓN
+                %th(colspan="3") CONTABILIDAD
+              %tr
+                %th GRANO
+                %th TN
+                %th $ UNIT
+                %th $ TOTAL
+                %th TN
+                %th $ UNIT
+                %th $ TOTAL
+            %tbody
+              %tr{ "ng-repeat" => "crop in crops" }
+                %td {{crop.cropname}}
+                %td.number {{crop.tn_gest| number:3}}
+                %td.number {{crop.unit_gest| currency:"$":2}}
+                %td.number {{crop.tn_gest*crop.unit_gest| currency:"$":2}}
+                %td.number {{crop.tn_cont| number:3}}
+                %td.number {{crop.unit_cont| currency:"$":2}}
+                %td.number {{crop.tn_cont*crop.unit_cont| currency:"$":2}}
+            %tfoot
+              %tr.success
+                %td(colspan="3") TOTALES
+                %td.number {{getTotalGestion()| currency:"$":2}}
+                %td(colspan="2")
+                %td.number {{getTotalContabilidad()| currency:"$":2}}

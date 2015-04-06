@@ -26,27 +26,14 @@
 //= require angular-rails-templates
 //= require angular-input-modified/dist/angular-input-modified
 //= require angular-bootstrap/ui-bootstrap-tpls
-//= require_tree ./templates
-//= require_tree ./controllers
+//= require ng-table/dist/ng-table.js
 //= require angular
+// require_tree ./templates
+//= require_tree ./controllers
 
 //= require js-routes
 //= require store
-//= require accounting
-//= require jquery.timeago
-//= require jquery.timeago.es
 //= require jquery-post
-//= require date-es-AR
-//= require jquery.timeago.es
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker.es
-//= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require bootstrap-switch
-//= require backbone/marino
-//= require backbone-link
 
 //= require main
 //= require ajax_common

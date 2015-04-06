@@ -12,7 +12,7 @@
             %i.fa.fa-file-archive-o.fa-fw
             Archivos de Backups
       -if can? :manage, CropControl
-        %li
+        %li.active
           %a{:href => "#"}
             %i.fa.fa-bar-chart.fa-fw
             Control de Granos
@@ -23,9 +23,9 @@
             %li
               = link_to "Gastos de Comercializacion", companies_marketing_costs_path
             %li
-              = link_to "Movimientos", list_crop_controls_path
+              = link_to "Movimientos", crop_controls_index_path
             %li
-              = link_to "Resumen", summary_crop_controls_path
+              = link_to "Resumen", crop_controls_summary_path
 
       -if  can? :manage, Crop or can? :manage, Company    or can? :manage, Store or can? :manage, User
         %li

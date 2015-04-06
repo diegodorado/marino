@@ -18,6 +18,9 @@ a
       -webkit-appearance: none
       margin: 0 /* Apparently some margin are still there even though it's hidden */
 
+[ng\:cloak], [ng-cloak], .ng-cloak
+  display: none !important
+
 .ng-invalid
   border: 1px solid red !important
   outline-color: red
@@ -32,6 +35,9 @@ a
 
 td.number, input[type="number"]
   text-align: right
+
+.ng-table
+  border: 1px solid #ccc
 
 #ajax-indicator
   position: fixed

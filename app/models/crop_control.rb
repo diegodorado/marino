@@ -11,6 +11,8 @@ class CropControl
   field :salida, type: Float
   field :precio_unitario, type: Float
   field :comentario
+  field :gestion, type: Boolean
+  field :contabilidad, type: Boolean
 
 
   def as_json(options={})
@@ -27,5 +29,110 @@ class CropControl
   def crop_name
     crop.name rescue nil
   end
+
+  def self.summary(balance_at, store_ids)
+
+
+    map = %Q{
+      function() {
+
+        var values = {
+          tn_gest: this.gestion ?  (this.entrada-this.salida) : 0,
+          unit_gest: this.gestion ? this.precio_unitario : 0,
+          tn_cont: this.contabilidad ?  (this.entrada-this.salida) : 0,
+          unit_cont: this.contabilidad ? this.precio_unitario : 0
+          };
+
+          emit( this.crop_id, values);
+        }
+      }
+
+    reduce = %Q{
+      function(key, values) {
+
+        var result =  {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };
+
+        values.forEach( function(value) {
+          result.tn_gest += value.tn_gest;
+          result.unit_gest = value.unit_gest;
+          result.tn_cont += value.tn_cont;
+          result.unit_cont = value.unit_cont;
+          });
+
+          return result;
+        }
+      }
+
+    result = self.in(store_id: store_ids)
+      .where(:fecha.lte => balance_at)
+      .order_by(:fecha => :asc)
+      .map_reduce(map, reduce)
+      .out(inline: 1)
+      .map do |x|
+        x["value"]["cropname"] = Crop.find(x["_id"]).name
+        x["value"]
+      end
+
+    result
+
+  end
+
+
+  def self.list(store_id, crop_id, gestion)
+
+      filter = {:store_id=>store_id,:crop_id=>crop_id}
+      if gestion
+        filter[:gestion] = true
+      else
+        filter[:contabilidad] = true
+      end
+
+
+      result = self
+        .where(filter)
+        .order_by(:fecha => :asc, :created_at => :asc)
+
+      precio_anterior = 0
+      saldo = 0
+      saldo_p = 0
+      result = result.map do |doc|
+        doc[:entrada] ||= 0
+        doc[:salida] ||= 0
+        #utilizar el precio anterior si no lleva ninguno
+        doc[:precio_unitario] ||= precio_anterior
+
+
+
+        saldo += doc[:entrada]-doc[:salida];
+        doc[:saldo] = saldo.round(3)
+
+
+        if doc[:tipo_doc] == 'VALUACION'
+          cant =  (doc[:precio_unitario]  - precio_anterior) * saldo
+          if cant >= 0
+            doc[:debe] = cant
+            doc[:haber] = 0
+          else
+            doc[:debe] = 0
+            doc[:haber] = -cant
+          end
+        else
+          doc[:debe] = doc[:entrada]*doc[:precio_unitario]
+          doc[:haber] = doc[:salida]*doc[:precio_unitario]
+
+        end
+
+        saldo_p += doc[:debe]-doc[:haber]
+        doc[:saldo_p] = saldo_p
+        #watch out! first item cant be valuacion
+        precio_anterior = doc[:precio_unitario]
+
+        doc
+      end
+
+      result
+
+  end
+
 
 end

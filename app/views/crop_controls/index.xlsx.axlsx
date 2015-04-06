@@ -1,0 +1,48 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+  # define your styles
+  title_cell = s.add_style(:bg_color => "0000FF",
+                             :fg_color=>"FF",
+                             :sz => 12,
+                             :border=>Axlsx::STYLE_THIN_BORDER,
+                             :alignment=>{:horizontal => :center})
+
+  date_time = s.add_style(:num_fmt => Axlsx::NUM_FMT_YYYYMMDDHHMMSS,
+                                 :border=>Axlsx::STYLE_THIN_BORDER)
+
+  percent = s.add_style(:num_fmt => Axlsx::NUM_FMT_PERCENT,
+                               :border=>Axlsx::STYLE_THIN_BORDER)
+
+  number_fmt = s.add_style(:format_code=>"#,###0.000",:border=>Axlsx::STYLE_THIN_BORDER)
+
+  currency = s.add_style(:format_code=>"$ #,##0.00",:border=>Axlsx::STYLE_THIN_BORDER)
+  currency2 = s.add_style(:format_code=>"$ #,##0.000",:border=>Axlsx::STYLE_THIN_BORDER)
+  border = s.add_style(:border=>Axlsx::STYLE_THIN_BORDER)
+
+
+  wb.add_worksheet(name: "Control_de_granos") do |sheet|
+
+    sheet.add_row [@title]
+    sheet.merge_cells "A1:D1"
+    sheet['A1:A1'].each { |c| c.style = title_cell }
+    sheet.add_row []
+
+    sheet.add_row ['Fecha',	'Tipo Doc',	'Entrada (tn)',	'Salida (tn)',	'Saldo (tn)',	'Precio ($/tn)',	'Debe ($)',	'Haber ($)',	'Saldo ($)',	'Actualizado por',	'Comentario']
+
+    @result.each do |cc|
+      sheet.add_row [cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], cc[:saldo] ,cc[:precio_unitario],cc[:debe],cc[:haber],cc[:saldo_p],cc.updater_email,cc[:comentario]] rescue nil
+    end
+
+    sheet.col_style 0..1, border
+    sheet.col_style 2..4, number_fmt
+    sheet.col_style 5..5, currency2
+    sheet.col_style 6..8, currency
+    sheet.col_style 9..10, border
+
+    sheet.auto_filter = "A3:K3"
+    sheet.page_setup.fit_to :width => 1, :height => 1
+    sheet['A3:K3'].each { |c| c.style = title_cell }
+    sheet.column_widths 14, nil, nil, nil, nil
+
+  end
+end

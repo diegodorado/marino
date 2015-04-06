@@ -1,7 +1,0 @@
-%td 
-  %time{ datetime: "#{@created_at}"}
-%td 
-  %strong #{@author_name}: 
-%td =@text
-
-  

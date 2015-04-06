@@ -1,156 +1,67 @@
-app = angular.module('marinoApp',[
+app = angular.module('app',[
   'templates',
   'ngResource',
   'ngInputModified',
   'ui.bootstrap',
+  'ngTable',
 ])
 
 
 
-app.directive 'contenteditable', ->
-  {
-    require: 'ngModel'
-    link: (scope, elm, attrs, ctrl) ->
-      # view -> model
-      elm.bind 'blur change', ->
-        scope.$apply ->
-          ctrl.$setViewValue elm.text().trim()
-      # model -> view
-      ctrl.$render = ->
-        elm.html ctrl.$viewValue
-  }
+app.factory 'Resource', [
+  '$resource'
+  ($resource) ->
+    (url, params, methods) ->
+      defaults =
+        update:
+          method: 'put'
+          isArray: false
+        create: method: 'post'
+      defaultsParams =
+        id: '@_id'
+      params = angular.extend(defaultsParams, params)
+      methods = angular.extend(defaults, methods)
+      resource = $resource(url, params, methods)
+
+      resource::$save = (args)->
+        if !@_id
+          @$create(args)
+        else
+          @$update( args)
+
+      resource
+]
 
 
 app.factory 'Store', [
-  '$resource',
+  'Resource',
   ($resource) ->
-    $resource '/api/stores/:id.json', {id: '@_id'}, update: method: 'PUT'
+    $resource '/api/stores/:id.json'
 ]
 
 app.factory 'Crop', [
-  '$resource',
+  'Resource',
   ($resource) ->
-    $resource '/api/crops/:id.json', {id: '@_id'}, update: method: 'PUT'
+    $resource '/api/crops/:id.json'
 ]
 
+app.factory 'CropControl', [
+  'Resource',
+  ($resource) ->
+    CropControl = $resource '/api/crop_controls/:id.json'
 
-app.controller 'CropsCtrl', [
-  '$scope',
-  'Crop',
-  ($scope, Crop) ->
-    $scope.crops = Crop.query()
+    CropControl::canValuate= () ->
+      return @tipo_doc in ['VALUACION','EX INIC','COSECHA']
 
-    $scope.createCrop = ()->
-      crop = new Crop({name:"Grano #{$scope.crops.length + 1}"})
-      crop.$save {},  (crop)->
-        #success
-        $scope.crops.push(crop)
-      , ->
-        console.log("error")
-        # error
-        return
+    CropControl::isEntrada= () ->
+      return @tipo_doc in ['EX INIC','COSECHA','AJUSTE +','ALQUILER +','APARCERIA +']
 
-    $scope.updateCrop = (crop)->
-      Crop.update(crop.toJSON())
+    CropControl::isSalida= () ->
+      return @tipo_doc in ['VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -','ALQUILER -','APARCERIA -']
 
-    $scope.removeCrop = (crop)->
-      crop.$remove {}, (crop)->
-        #success
-        index = $scope.crops.indexOf(crop)
-        $scope.crops.splice index, 1
-      , (data)->
-        # error
-        console.log(data)
-        console.log("error")
+    CropControl::tipoDocs= () ->
+      return ['EX INIC','COSECHA','AJUSTE +','ALQUILER +','APARCERIA +','VENTAS','MERMAS','CONSUMOS','SEMILLA','AJUSTE -','ALQUILER -','APARCERIA -', 'VALUACION']
 
-    return
-]
+    CropControl
 
-
-
-
-
-
-app.controller 'CropPricesCtrl', [
-  '$scope',
-  'Crop',
-  ($scope, Crop) ->
-    $scope.crops = Crop.query()
-    $scope.year = new Date().getFullYear()
-    $scope.months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic']
-
-    $scope.updateCrop = (crop)->
-      Crop.update(crop.toJSON())
-
-    $scope.previousYear = ()->
-      $scope.year--
-    $scope.nextYear = ()->
-      $scope.year++
-
-    return
-]
-
-
-
-
-app.controller 'StoresCtrl', [
-  '$scope',
-  'Crop',
-  'Store',
-  ($scope, Crop, Store) ->
-    $scope.crops = Crop.query()
-    $scope.stores = Store.query()
-
-    $scope.createStore = ()->
-      store = new Store({name:"Deposito #{$scope.stores.length + 1}"})
-      store.$save {},  (store)->
-        #success
-        $scope.stores.push(store)
-
-      , ->
-        console.log("error")
-        # error
-        return
-
-    $scope.updateStore = (store)->
-      Store.update(store.toJSON())
-
-    $scope.removeStore = (store)->
-      console.log($scope.storeData)
-      store.$remove {}, (store)->
-        #success
-        index = $scope.stores.indexOf(store)
-        $scope.stores.splice index, 1
-
-      , (data)->
-        console.log(data)
-        console.log("error")
-        # error
-        return
-
-
-
-    return
-]
-
-
-
-
-app.controller 'MarketingCostsCtrl', [
-  '$scope',
-  'Crop',
-  'Store',
-  ($scope, Crop, Store) ->
-    $scope.crops = Crop.query()
-    $scope.stores = Store.query()
-
-    $scope.updateStore = (store)->
-      console.log store
-      Store.update(store.toJSON())
-
-    $scope.saveChanges = ()->
-      for store in $scope.stores
-        Store.update(store.toJSON())
-
-    return
 ]

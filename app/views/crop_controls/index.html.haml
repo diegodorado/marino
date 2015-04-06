@@ -1,0 +1,156 @@
+.row
+  .col-lg-12
+    %h3.page-header
+      Movimientos - Control de Granos de #{current_company.name}
+
+.row{"ng-controller" => "CropControlListCtrl"}
+  %br
+
+
+  .col-lg-12{"ng-show"=>"crop_control!=null"}
+
+    .panel.panel-default
+      .panel-body
+        %table.table
+          %thead
+            %tr
+              %th.col-sm-2 Fecha
+              %th.col-sm-2 Tipo Doc
+              %th.col-sm-2 Depósito
+              %th.col-sm-2 Grano
+              %th.col-sm-4 Inputación
+          %tbody
+            %tr
+              %td
+                .input-group
+                  %input.form-control{"close-text" => "Cerrar", "datepicker-options" => "dateOptions", "datepicker-popup" => "", "is-open" => "datePickerOpened", :required => true, :type => "text", "ng-model" => "crop_control.fecha"}/
+                  %span.input-group-btn
+                    %button.btn.btn-default{"ng-click" => "datePickerOpen($event)", :type => "button"}
+                      %i.glyphicon.glyphicon-calendar
+
+              %td
+                %select.form-control{"ng-model" => "crop_control.tipo_doc", "ng-options" => "tipo_doc for tipo_doc in crop_control.tipoDocs()", :required => true }
+              %td
+                %select.form-control{"ng-model" => "crop_control.store_id", "ng-options" => "store._id as store.name for store in stores", :required => true , :disabled=>true}
+              %td
+                %select.form-control{"ng-model" => "crop_control.crop_id", "ng-options" => "crop._id as crop.name for crop in crops", :required => true , :disabled=>true}
+              %td
+                .btn-group
+                  %button.btn{"ng-class" => "{'btn-primary': crop_control.gestion, 'btn-default': crop_control.contabilidad}", "ng-click" => "crop_control.gestion=!crop_control.gestion"}
+                    Gestión
+                  %button.btn{"ng-class" => "{'btn-primary': crop_control.contabilidad, 'btn-default': crop_control.gestion}", "ng-click" => "crop_control.contabilidad=!crop_control.contabilidad"}
+                    Contabilidad
+
+
+
+        %table.table
+          %thead
+            %tr
+              %th.col-sm-2 Entrada
+              %th.col-sm-2 Salida
+              %th.col-sm-3 Precio Unitario
+              %th.col-sm-5
+          %tbody
+            %tr
+              %td
+                %input.form-control{"ng-model" => "crop_control.entrada", "ng-disabled" => "!crop_control.isEntrada()", :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+              %td
+                %input.form-control{"ng-model" => "crop_control.salida", "ng-disabled" => "!crop_control.isSalida()", :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+              %td
+                %input.form-control{"ng-model" => "crop_control.precio_unitario", "ng-disabled" => "!crop_control.canValuate()", :type=> "number", :step=>"0.001", :min=>"0.001"}
+
+        %table.table
+          %thead
+            %tr
+              %th.col-sm-12 Comentarios
+          %tbody
+            %tr
+              %td
+                %textarea.form-control{"ng-model" => "crop_control.comentario"}
+
+      .panel-footer
+        %a.btn-default.cancel.btn.btn-large.btn-alt{"ng-click" => "cancel()"} Cancelar
+        %button.btn.btn-alt.btn-large.btn-primary{"ng-click" => "save()"} Guardar
+        %a.btn-default.save_and_add.btn.btn-large.btn-alt{"ng-click" => "saveAndAdd()"} Guardar y nuevo
+
+
+
+
+
+  .col-lg-12{"ng-show"=>"crop_control==null"}
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-sm-2
+            %button.btn.btn-alt.btn-primary.btn-block{"ng-click" => "excel()"} Descargar Excel
+
+          .col-sm-4
+            .btn-group
+              %button.btn{"ng-class" => "{'btn-primary': filters.gestion, 'btn-default': filters.contabilidad}", "ng-click" => "gestion()"}
+                Gestión
+              %button.btn{"ng-class" => "{'btn-primary': filters.contabilidad, 'btn-default': filters.gestion}", "ng-click" => "contabilidad()"}
+                Contabilidad
+
+          .col-sm-2
+            %select.form-control{:name =>"store_id", "ng-model" => "filters.store_id", "ng-change" => "reQuery()"}
+              %option{ "ng-repeat" => "store in stores" , :value => "{{store._id}}" } {{store.name}}
+          .col-sm-2
+            %select.form-control{:name =>"crop_id", "ng-model" => "filters.crop_id", "ng-change" => "reQuery()"}
+              %option{ "ng-repeat" => "crop in crops" , :value => "{{crop._id}}" } {{crop.name}}
+          .col-sm-2
+          .col-sm-2
+            %button.btn.btn-alt.btn-primary.btn-block{"ng-click" => "newCropControl()"} Nuevo
+
+
+
+      .panel-body
+        .table-responsive
+          %table.table.table-striped.table-bordered{"ng-table"=>"tableParams"}
+            %thead
+              %tr
+                %th Fecha
+                %th Tipo Doc
+                %th
+                  Entrada
+                  %small (tn)
+                %th
+                  Salida
+                  %small (tn)
+                %th
+                  Saldo
+                  %small (tn)
+                %th
+                  Precio
+                  %small ($/tn)
+                %th
+                  Debe
+                  %small ($)
+                %th
+                  Haber
+                  %small ($)
+                %th
+                  Saldo
+                  %small ($)
+                %th.hidden-xs.hidden-sm.hidden-md Actualizado por
+                %th.hidden-xs.hidden-sm.hidden-md Comentario
+                %th
+                %th
+            %tbody
+              %tr{ "ng-repeat" => "cc in $data" }
+                %td {{cc.fecha | date : "dd-MM-yyyy"}}
+                %td {{cc.tipo_doc}}
+                %td.number {{cc.entrada| number:3}}
+                %td.number {{cc.salida| number:3}}
+                %td.number {{cc.saldo| number:3}}
+                %td.number {{cc.precio_unitario| currency:"$":3}}
+                %td.number {{cc.debe| currency:"$":2}}
+                %td.number {{cc.haber| currency:"$":2}}
+                %td.number {{cc.saldo_p| currency:"$":2}}
+                %td.hidden-xs.hidden-sm.hidden-md {{cc.updater_email}}
+                %td.hidden-xs.hidden-sm.hidden-md {{cc.comentario}}
+                %td
+                  %a{"ng-click" => "editCropControl(cc)"}
+                    %i.fa-2x.fa.fa-pencil
+                %td
+                  %a{"ng-click" => "destroyCropControl(cc)"}
+                    %i.fa-2x.fa.fa-remove
