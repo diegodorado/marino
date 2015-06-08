@@ -105,8 +105,10 @@ class CropControl
       result = result.map do |doc|
         doc[:entrada] ||= 0
         doc[:salida] ||= 0
-        #utilizar el precio anterior si no lleva ninguno
-        doc[:precio_unitario] ||= precio_anterior
+        #utilizar el precio anterior si no lleva ninguno o si es cero
+        doc[:precio_unitario] = precio_anterior if doc[:precio_unitario].to_f.zero?
+        
+        doc[:fecha].slice!(10..-1) #removes iso8601 extra chars from fecha
 
 
 
