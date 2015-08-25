@@ -5,7 +5,7 @@ class CropControl
   belongs_to :store
   belongs_to :crop
 
-  field :fecha #, type: Date
+  field :fecha , type: Date
   field :tipo_doc
   field :entrada, type: Float
   field :salida, type: Float
@@ -52,8 +52,8 @@ class CropControl
       function(key, values) {
 
         var result =  {tn_gest: 0, unit_gest:0,  tn_cont: 0, unit_cont:0 };
-        var date_gest = "";
-        var date_cont = "";
+        var date_gest = null;
+        var date_cont = null;
         values.forEach( function(value) {
           result.tn_gest += value.tn_gest;
           result.tn_cont += value.tn_cont;
@@ -71,8 +71,10 @@ class CropControl
       }
     }
 
-    result = self.in(store_id: store_ids)
-      .where(:fecha.lte => balance_at)
+    puts balance_at.to_date
+    puts balance_at.to_date.beginning_of_day
+    puts (balance_at.to_date + 1).to_date
+    result = self.in(store_id: store_ids).where(:fecha.lt => (balance_at.to_date + 1).to_date )
       .map_reduce(map, reduce)
       .out(inline: 1)
       .map do |x|
@@ -107,14 +109,9 @@ class CropControl
         doc[:salida] ||= 0
         #utilizar el precio anterior si no lleva ninguno o si es cero
         doc[:precio_unitario] = precio_anterior if doc[:precio_unitario].to_f.zero?
-        
-        doc[:fecha].slice!(10..-1) #removes iso8601 extra chars from fecha
-
-
-
+        doc[:fecha]
         saldo += doc[:entrada]-doc[:salida];
         doc[:saldo] = saldo.round(3)
-
 
         if doc[:tipo_doc] == 'VALUACION'
           cant =  (doc[:precio_unitario]  - precio_anterior) * saldo
