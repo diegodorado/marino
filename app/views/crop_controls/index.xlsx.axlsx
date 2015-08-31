@@ -7,7 +7,7 @@ wb.styles do |s|
                              :border=>Axlsx::STYLE_THIN_BORDER,
                              :alignment=>{:horizontal => :center})
 
-  date_time = s.add_style(:num_fmt => Axlsx::NUM_FMT_YYYYMMDDHHMMSS,
+  date_time = s.add_style(:format_code => "dd/mm/yyyy",
                                  :border=>Axlsx::STYLE_THIN_BORDER)
 
   percent = s.add_style(:num_fmt => Axlsx::NUM_FMT_PERCENT,
@@ -33,7 +33,7 @@ wb.styles do |s|
       sheet.add_row [cc[:fecha],cc[:tipo_doc],cc[:entrada],cc[:salida], cc[:saldo] ,cc[:precio_unitario],cc[:debe],cc[:haber],cc[:saldo_p],cc.updater_email,cc[:comentario]] rescue nil
     end
 
-    sheet.col_style 0..1, border
+    sheet.col_style 0..1, date_time
     sheet.col_style 2..4, number_fmt
     sheet.col_style 5..5, currency2
     sheet.col_style 6..8, currency
