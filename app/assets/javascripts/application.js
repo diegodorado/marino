@@ -12,7 +12,6 @@
 //
 
 //= require jquery
-//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require plugins/metisMenu/metisMenu
 //= require raphael
@@ -28,12 +27,8 @@
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require ng-table/dist/ng-table.js
 //= require angular
-// require_tree ./templates
+//= require_tree ./templates
 //= require_tree ./controllers
 
 //= require js-routes
 //= require store
-//= require jquery-post
-
-//= require main
-//= require ajax_common

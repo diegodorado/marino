@@ -6,11 +6,6 @@
         %a{:href => root_path}
           %i.fa.fa-home.fa-fw
           Panel de Control
-      -if can? :manage, Backup
-        %li
-          %a{:href => backups_path}
-            %i.fa.fa-file-archive-o.fa-fw
-            Archivos de Backups
       -if can? :manage, CropControl
         %li.active
           %a{:href => "#"}
