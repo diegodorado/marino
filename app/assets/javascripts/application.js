@@ -25,6 +25,7 @@
 //= require angular-rails-templates
 //= require angular-input-modified/dist/angular-input-modified
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require angular-i18n/angular-locale_es.js
 //= require ng-table/dist/ng-table.js
 //= require angular
 //= require_tree ./templates

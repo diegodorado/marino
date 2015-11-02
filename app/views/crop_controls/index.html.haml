@@ -18,7 +18,7 @@
               %th.col-sm-2 Tipo Doc
               %th.col-sm-2 Depósito
               %th.col-sm-2 Grano
-              %th.col-sm-4 Inputación
+              %th.col-sm-4 Imputación
           %tbody
             %tr
               %td
@@ -53,7 +53,7 @@
           %tbody
             %tr
               %td
-                %input.form-control{"ng-model" => "crop_control.entrada", "ng-disabled" => "!crop_control.isEntrada()", :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
+                %input.form-control{"ng-model" => "crop_control.entrada", "ng-disabled" => "!crop_control.isEntrada()", :required => true, :type=> "number", :step=>"0.001", :min=>"0" }
               %td
                 %input.form-control{"ng-model" => "crop_control.salida", "ng-disabled" => "!crop_control.isSalida()", :required => true, :type=> "number", :step=>"0.001", :min=>"0"}
               %td

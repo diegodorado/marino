@@ -9,6 +9,7 @@
     "fontawesome": "latest",
     "angular-input-modified": "latest",
     "angular-bootstrap": "latest",
-    "ng-table": "latest"
+    "ng-table": "latest",
+    "angular-i18n": "latest"
   }
 }
