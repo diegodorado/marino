@@ -9,25 +9,22 @@ Marino::Application.routes.draw do
     end
   end
 
-  match "/images/uploads/*path" => "gridfs#serve"
-
   resources :companies, :only => [:index] do
-    get 'select', :on => :member
+    #get 'select', :on => :member
     post 'comment', :on => :member
   end
 
-  match "/companies/stores" => "companies#stores"
-  match "/companies/marketing_costs" => "companies#marketing_costs"
+  get "/companies/stores" => "companies#stores"
+  get "/companies/marketing_costs" => "companies#marketing_costs"
 
-  match "/crop_controls/index" => "crop_controls#index"
-  match "/crop_controls/summary" => "crop_controls#summary"
+  get "/crop_controls/index" => "crop_controls#index"
+  get "/crop_controls/summary" => "crop_controls#summary"
 
   resources :crop_controls do
     post 'excel', :on => :collection
   end
-  resources :backups
 
-  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords=> "passwords" , :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords=> "passwords"  }
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"

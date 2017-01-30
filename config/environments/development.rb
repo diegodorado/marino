@@ -1,7 +1,7 @@
 Marino::Application.configure do
 
   Mongoid.logger = nil
-  Moped.logger  = nil
+  #Moped.logger  = nil
 
 
   # Settings specified here will take precedence over those in config/application.rb
@@ -12,7 +12,7 @@ Marino::Application.configure do
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  #config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -36,8 +36,8 @@ Marino::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
-  #unncomment if you want to temporarily turn on back assets' log 
+
+  #unncomment if you want to temporarily turn on back assets' log
   #config.quiet_assets = false
-  
+
 end

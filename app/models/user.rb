@@ -5,8 +5,7 @@ class User
   #  :encryptable, :lockable, :timeoutable and :omniauthable
   devise :confirmable,
          :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
+         :recoverable, :rememberable, :trackable, :validatable
 
   field :email, :type => String
   field :encrypted_password, :type => String
@@ -14,7 +13,7 @@ class User
   validates_presence_of :email
   validates_presence_of :encrypted_password
   ## Recoverable
-  field :reset_password_token, :type => String 
+  field :reset_password_token, :type => String
   field :reset_password_sent_at, :type => Time
 
   ## Rememberable

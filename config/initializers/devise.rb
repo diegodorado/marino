@@ -15,7 +15,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/mongoid'
-  
+
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -207,8 +207,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
-  config.omniauth :google_oauth2, ENV["GOOGLE_OAUTH_APP_ID"], ENV["GOOGLE_OAUTH_APP_SECRET"], { access_type: "offline", approval_prompt: "" }
+  #config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
+  #config.omniauth :google_oauth2, ENV["GOOGLE_OAUTH_APP_ID"], ENV["GOOGLE_OAUTH_APP_SECRET"], { access_type: "offline", approval_prompt: "" }
 
 
   # ==> Warden configuration

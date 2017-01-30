@@ -1,90 +1,52 @@
 source 'https://rubygems.org'
 ruby "2.1.2"
-gem 'rails', '3.2.9'
+gem 'rails', '4.0.0'
 
-gem 'mongo' #, '1.8.0'
-#gem 'mongoid', '3.1.1' #must be loaded before cancan
-#gem 'bson_ext', '1.8.0'  #improve MongoDB performance
-
-gem 'carrierwave-mongoid', '0.6.1', :require => 'carrierwave/mongoid'
-gem 'mongoid-slugify', '0.1.0'
-gem 'mongoid_commentable', '0.0.6'
-
+gem 'mongo'
+gem 'mongoid', '~> 5.1.1'
+gem 'mongoid-slug'
 gem 'devise'
-gem "omniauth"
-gem 'omniauth-facebook'
-gem 'omniauth-google-oauth2'
+
 gem "cancan"
 gem "rolify"
-gem "figaro"
-gem 'thin'
+#gem "figaro"
+#gem 'thin'
 
-group :development do
-  gem 'quiet_assets'
-  gem 'guard-livereload'
-  gem "faker"
-end
-
-
-gem "foreman"
-group :production, :staging do
-  gem "rails_12factor"
-  gem "rails_stdout_logging"
-  gem "rails_serve_static_assets"
-end
+#gem "foreman"
+#group :production, :staging do
+#  gem "rails_12factor"
+#  gem "rails_stdout_logging"
+#  gem "rails_serve_static_assets"
+#end
 
 # Gems used only for assets and not required
 # in production environments by default.
+gem 'coffee-rails'
+gem "bootstrap-sass", "~> 3.1.1.0"
+#gem 'bootstrap-sass'
+gem 'sass'
+gem 'sass-rails'
+gem 'haml_coffee_assets'
+gem 'font-awesome-sass'
 
-gem 'coffee-rails', '~> 3.2.1'  #coffee responses are used
-gem 'bootstrap-sass', '~> 3.3.1'
-gem 'sass', '3.2.19'
-gem 'sass-rails', '>= 3.2'
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 
-group :assets do
-  gem 'haml_coffee_assets'
-  gem 'font-awesome-sass', '~> 4.2.0'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+#gem 'therubyracer' #, :platforms => :ruby
 
-  gem 'morrisjs-rails'
-  gem 'raphael-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-plugins-rails'
+#gem 'uglifier'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer' #, :platforms => :ruby
-
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'jquery-plugins-rails'
-  gem 'uglifier', '>= 1.0.3'
-
-
-  gem "js-routes" #, '0.7.4'
-  gem "rails-backbone" , '0.9.0'
-
-end
 
 gem "haml-rails"
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
-gem "rspec-rails", :group => [:test, :development]
+#gem "rspec-rails", :group => [:test, :development]
 
-group :test do
-  gem "factory_girl_rails"
-  gem "capybara"
-  gem 'spork-rails'
-  gem "guard-spork"
-  gem "guard-rspec"
-  gem "rb-inotify"
-  gem 'launchy'
-  gem 'database_cleaner'
-  gem "selenium-webdriver"
-end
 
 
 gem 'axlsx_rails'
-#required by afip service
-#todo: check prawn new versions
-gem 'prawn' #, :git => "git://github.com/sandal/prawn.git", :tag => '0.10.2', :submodules => true
-gem 'barby'
-gem 'savon', github: 'savonrb/savon', :branch => "version1"
-gem 'httpclient' #used by savon because net_http fallback is failing

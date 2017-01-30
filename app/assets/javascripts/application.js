@@ -12,7 +12,6 @@
 //
 
 //= require jquery
-//= require bootstrap-sprockets
 //= require plugins/metisMenu/metisMenu
 //= require raphael
 //= require morris
@@ -31,5 +30,4 @@
 //= require_tree ./templates
 //= require_tree ./controllers
 
-//= require js-routes
 //= require store
