@@ -1,5 +1,5 @@
 class Admin::CompaniesController < ApplicationController
-  load_and_authorize_resource  :find_by => :slug
+  load_and_authorize_resource
 
 
   # POST /admin/companies
@@ -47,5 +47,5 @@ class Admin::CompaniesController < ApplicationController
 
   end
 
-  
+
 end

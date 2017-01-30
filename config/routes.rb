@@ -9,21 +9,6 @@ Marino::Application.routes.draw do
     end
   end
 
-  resources :companies, :only => [:index] do
-    #get 'select', :on => :member
-    post 'comment', :on => :member
-  end
-
-  get "/companies/stores" => "companies#stores"
-  get "/companies/marketing_costs" => "companies#marketing_costs"
-
-  get "/crop_controls/index" => "crop_controls#index"
-  get "/crop_controls/summary" => "crop_controls#summary"
-
-  resources :crop_controls do
-    post 'excel', :on => :collection
-  end
-
   devise_for :users, :controllers => { :sessions => "sessions", :registrations => "registrations", :passwords=> "passwords"  }
 
   get "logout" => "sessions#destroy", :as => "logout"
@@ -46,6 +31,14 @@ Marino::Application.routes.draw do
   root :to => "home#index"
 
   get "/select-company/:id"  => "home#select_company", :as => 'select_company'
+  get "/companies/stores" => "companies#stores"
+  get "/companies/marketing_costs" => "companies#marketing_costs"
+  get "/crop_controls/index" => "crop_controls#index"
+  get "/crop_controls/summary" => "crop_controls#summary"
+
+  resources :crop_controls do
+    post 'excel', :on => :collection
+  end
 
 
 end

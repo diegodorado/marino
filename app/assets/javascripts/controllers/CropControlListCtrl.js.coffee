@@ -25,7 +25,6 @@ angular
       $scope.reQuery = ()->
         $scope.crop_controls = CropControl.query $scope.filters , ->
           $scope.tableParams.$params.page = Math.ceil($scope.crop_controls.length/$scope.tableParams.$params.count)
-          console.log $scope.tableParams.$params
           $scope.tableParams.total($scope.crop_controls.length)
           $scope.tableParams.reload()
 
@@ -97,15 +96,13 @@ angular
 
 
       $scope.save = () ->
-        console.log $scope.crop_control
-
-        $scope.crop_control.$save ()->
+        $scope.crop_control.$save ({crop_control: $scope.crop_control})->
           $scope.crop_control =  null
           $scope.reQuery()
 
 
       $scope.saveAndAdd = () ->
-        $scope.crop_control.$save ()->
+        $scope.crop_control.$save ({crop_control: $scope.crop_control})->
           $scope.reQuery()
           $scope.newCropControl()
 

@@ -18,6 +18,7 @@ class Api::StoresController < ApplicationController
 
 
   def update
+    params[:store].inspect
     @store.update_attributes(params[:store])
 
     if @store.save

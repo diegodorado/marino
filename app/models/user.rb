@@ -42,7 +42,6 @@ class User
   has_and_belongs_to_many :audited_companies, :class_name => "Company", :inverse_of => :auditors
 
   has_and_belongs_to_many :authentications
-  has_many :backups, :inverse_of => :creator
 
   def password_required?
     (authentications.empty? || !password.blank?) && super
@@ -65,31 +64,5 @@ class User
     companies.map{|c| c.stores}.flatten.map{|s| s._id}
   end
 
-
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                           provider:auth.provider,
-                           uid:auth.uid,
-                           email:auth.info.email,
-                           password:Devise.friendly_token[0,20]
-                           )
-    end
-    user
-  end
-
-  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-      data = access_token.info
-      user = User.where(:email => data["email"]).first
-
-      unless user
-          user = User.new(name: data["name"],
-  	    		   email: data["email"],
-  	    		   password: Devise.friendly_token[0,20]
-  	    		  )
-      end
-      user
-  end
 
 end

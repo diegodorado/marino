@@ -7,12 +7,7 @@ angular.module('app').controller 'MarketingCostsCtrl', [
     $scope.stores = Store.query()
 
     $scope.updateStore = (store)->
-      console.log store
       Store.update(store.toJSON())
-
-    $scope.saveChanges = ()->
-      for store in $scope.stores
-        Store.update(store.toJSON())
 
     return
 ]

@@ -12,11 +12,16 @@
 //
 
 //= require jquery
-//= require plugins/metisMenu/metisMenu
+//= require bootstrap
+//= require datatables
+//= require datatables-responsive
+//= require flot
+//= require holderjs
+//= require metisMenu
 //= require raphael
-//= require morris
-//= require sb-admin-2
-//= require jasny-bootstrap
+//= require morrisjs
+//= require sb-admin-2.js
+
 
 //= require angular/angular
 //= require angular-route/angular-route
