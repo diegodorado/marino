@@ -6,7 +6,6 @@ gem 'responders', '~> 2.0'
 
 gem 'mongo'
 gem 'mongoid'
-gem 'mongoid-slug'
 gem 'devise'
 
 gem "cancan"

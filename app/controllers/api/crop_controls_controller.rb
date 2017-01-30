@@ -16,9 +16,6 @@ class Api::CropControlsController < ApplicationController
 
 
   def create
-    puts "asdfasdfasdef"
-    puts params
-    puts "asdfasdfasdef"
     @crop_control = CropControl.new(crop_control_params)
     @crop_control.updater = current_user
 

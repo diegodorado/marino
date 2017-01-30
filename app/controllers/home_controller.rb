@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   skip_before_filter :authenticate_user!
 
   #show companies on homepage
-  load_resource :company, :parent => false, :find_by => :slug, :order => :name
+  load_resource :company, :parent => false
 
   def index
     @companies = @companies.order_by(:name=>:asc)

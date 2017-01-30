@@ -91,7 +91,7 @@ module Marino
 
 
     config.action_mailer.default_url_options = { :host => 'marino.herokuapp.com' }
-    config.serve_static_assets = true
+    config.serve_static_files = true
 
   end
 end
