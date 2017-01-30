@@ -59,7 +59,7 @@ module Marino
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
-    
+
     #config.mongoid.logger = Logger.new('/dev/null')
     #config.mongoid.logger = Logger.new($stdout)
 
@@ -91,6 +91,7 @@ module Marino
 
 
     config.action_mailer.default_url_options = { :host => 'marino.herokuapp.com' }
+    config.serve_static_assets = true
 
   end
 end
