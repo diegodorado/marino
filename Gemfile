@@ -13,6 +13,7 @@ gem "cancan"
 gem "rolify"
 gem 'protected_attributes'
 
+gem 'rails_12factor', group: :production
 gem 'coffee-rails'
 gem 'sass-rails'
 gem 'haml_coffee_assets'
