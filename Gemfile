@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
-ruby "2.1.2"
-gem 'rails', '4.2'
+# ruby "2.1.2"
+ruby "2.4.10"
+gem 'rails', '4.2.8'
+# gem 'rails', '5.0'
+
+gem 'sprockets', '~> 3.7.1'
+gem 'bcrypt', '~> 3.1.12'
 
 gem 'responders', '~> 2.0'
 
@@ -13,18 +18,19 @@ gem "rolify"
 gem 'protected_attributes'
 
 gem 'rails_12factor', group: :production
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'coffee-rails'
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0.6'
 gem 'haml_coffee_assets'
 
 gem "haml-rails"
 gem 'bower-rails'
-gem 'angular-rails-templates'
-gem 'angular_rails_csrf'
+gem 'angular-rails-templates', '~> 1.0.2'
+gem 'angular_rails_csrf', '~> 2.0.0'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-jquery'
-  gem 'rails-assets-bootstrap-sass'
+  gem 'rails-assets-bootstrap-sass', '~> 3.3.7'
   gem 'rails-assets-datatables'
   gem 'rails-assets-font-awesome', '~> 4.3.0'
   gem 'rails-assets-metisMenu'

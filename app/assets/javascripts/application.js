@@ -15,7 +15,6 @@
 //= require bootstrap
 //= require datatables
 //= require datatables-responsive
-//= require flot
 //= require holderjs
 //= require metisMenu
 //= require raphael

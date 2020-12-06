@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def user_list
-    User.user_list
+    Role.find()
   end
 
   def app_js_load(options)

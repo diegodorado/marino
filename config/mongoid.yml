@@ -3,7 +3,7 @@ production:
   clients:
     # Defines the default client. (required)
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      uri: <%= ENV['MONGO_URI'] %>
       options:
         connect_timeout: 15
 
@@ -14,35 +14,14 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: marino_development
-      # Provides the hosts the default client can connect to. Must be an array
-      # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
+      uri: <%= ENV['MONGO_URI'] %>
       options:
-        # Change the default write concern. (default = { w: 1 })
-        # write:
-        #   w: 1
-
-        # Change the default read preference. Valid options for mode are: :secondary,
-        # :secondary_preferred, :primary, :primary_preferred, :nearest
-        # (default: primary)
-        # read:
-        #   mode: :secondary_preferred
-        #   tag_sets:
-        #     - use: web
-
         # The name of the user for authentication.
         # user: 'user'
 
         # The password of the user for authentication.
         # password: 'password'
 
-        # The user's database roles.
-        # roles:
-        #   - 'dbOwner'
-
-        # Change the default authentication mechanism. Valid options are: :scram,
         # :mongodb_cr, :mongodb_x509, and :plain. (default on 3.0 is :scram, default
         # on 2.4 and 2.6 is :plain)
         # auth_mech: :scram
