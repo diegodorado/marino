@@ -4,7 +4,7 @@ ruby "2.4.10"
 gem 'rails', '4.2.8'
 # gem 'rails', '5.0'
 
-gem 'sprockets', '~> 3.7.1'
+gem 'sprockets', '~> 3.7.2'
 gem 'bcrypt', '~> 3.1.12'
 
 gem 'responders', '~> 2.0'
