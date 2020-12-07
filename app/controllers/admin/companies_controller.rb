@@ -47,5 +47,8 @@ class Admin::CompaniesController < ApplicationController
 
   end
 
+  def company_params
+    params.require(:company).permit(:name, :owner_id, :auditor_ids => [],:user_ids => [])
+  end
 
 end

@@ -153,6 +153,8 @@ GEM
     rails-assets-font-awesome (4.3.0)
     rails-assets-holderjs (2.9.6)
     rails-assets-jquery (3.4.1)
+    rails-assets-jquery-ujs (1.2.2)
+      rails-assets-jquery (> 1.8)
     rails-assets-metisMenu (3.0.3)
     rails-assets-mocha (1.17.1)
     rails-assets-morrisjs (0.5.1)
@@ -238,6 +240,7 @@ DEPENDENCIES
   rails-assets-font-awesome (~> 4.3.0)!
   rails-assets-holderjs!
   rails-assets-jquery!
+  rails-assets-jquery-ujs!
   rails-assets-metisMenu!
   rails-assets-morrisjs!
   rails_12factor

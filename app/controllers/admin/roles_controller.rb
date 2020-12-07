@@ -51,5 +51,9 @@ class Admin::RolesController < ApplicationController
     end
 
   end
+  
+  def role_params
+    params.require(:role).permit(:name, :pretty_name)
+  end
 
 end

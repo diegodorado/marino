@@ -2,7 +2,6 @@ module ApplicationHelper
 
   ALERT_TYPES = [:success, :info, :warning, :danger] unless const_defined?(:ALERT_TYPES)
 
-
   def body_classes
     [controller.controller_name, controller.action_name]
   end
@@ -11,16 +10,9 @@ module ApplicationHelper
     current_user.id if current_user
   end
 
-  def user_list
-    Role.find()
-  end
-
   def app_js_load(options)
     content_for :app_js_load , "app.load(#{options.to_json});\n".html_safe
   end
-  
-  
-
 
   def bootstrap_flash(options = {})
     flash_messages = []

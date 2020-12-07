@@ -12,6 +12,7 @@
 //
 
 //= require jquery
+//= require jquery-ujs
 //= require bootstrap
 //= require datatables
 //= require datatables-responsive

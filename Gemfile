@@ -30,6 +30,7 @@ gem 'angular_rails_csrf', '~> 2.0.0'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery-ujs'
   gem 'rails-assets-bootstrap-sass', '~> 3.3.7'
   gem 'rails-assets-datatables'
   gem 'rails-assets-font-awesome', '~> 4.3.0'
