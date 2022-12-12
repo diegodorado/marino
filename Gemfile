@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.7.7"
 gem 'rails', '4.2.8'
 
-gem 'sprockets', '~> 3.7.1'
+gem 'sprockets', '~> 3.7.2'
 gem 'bcrypt', '~> 3.1.12'
 
 gem 'responders', '~> 2.0'
