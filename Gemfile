@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
-# ruby "2.1.2"
-ruby "2.4.10"
+ruby "2.7.7"
 gem 'rails', '4.2.8'
-# gem 'rails', '5.0'
 
 gem 'sprockets', '~> 3.7.1'
 gem 'bcrypt', '~> 3.1.12'
