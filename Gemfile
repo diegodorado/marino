@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.7.7"
 gem 'rails', '4.2.8'
+gem 'bigdecimal', '1.3.5'
 
 gem 'sprockets', '~> 3.7.1'
 gem 'bcrypt', '~> 3.1.12'
